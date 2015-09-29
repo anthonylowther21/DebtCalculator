@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.4" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/DebtSnowball/DebtManager.cs">
+    <Files>
+      <File FileName="DebtCalculator/DebtSnowball/DebtEntry.cs" Line="11" Column="51" />
+      <File FileName="DebtCalculator/DebtCalculator.cs" Line="36" Column="42" />
+      <File FileName="DebtCalculator/DebtSnowball/DebtSnowballCalculator.cs" Line="12" Column="102" />
+      <File FileName="DebtCalculator/DebtSnowball/DebtManager.cs" Line="27" Column="36" />
+      <File FileName="DebtCalculator/DebtSnowball/PaymentManager.cs" Line="8" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
