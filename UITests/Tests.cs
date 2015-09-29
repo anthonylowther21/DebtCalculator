@@ -32,6 +32,20 @@ namespace DebtCalculator.UITests
 			app.Screenshot ("Welcome screen.");
 
 			Assert.IsTrue (results.Any ());
+
+            DebtManager debtManager = DebtManager.CreateDebtManager();
+            PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
+
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 1", 25000, 25000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 2", 32000, 32000, 3.25, 360));
+
+            paymentManager.AddSalaryEntry(70000, 3, DateTime.Now);
+            paymentManager.SetSnowballAmount(500);
+            paymentManager.AddWindfallEntry(1000, DateTime.Now, true, 6);
+
+
+
+            DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);      
 		}
 	}
 }
