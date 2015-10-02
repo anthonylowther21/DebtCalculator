@@ -9,7 +9,7 @@ namespace DebtCalculator
             return new SalaryEntry()
             {
                 StartingSalary = startingSalary,
-                YearlyIncreasePercent = yearlyIncreasePercent,
+                YearlySnowballIncreasePercent = yearlyIncreasePercent,
                 YearlyIncreaseAppliedDate = appliedDate
             };
         }
@@ -19,7 +19,7 @@ namespace DebtCalculator
 		}
 
 		public double StartingSalary { get; private set; }
-		public double YearlyIncreasePercent { get; private set; }
+		public double YearlySnowballIncreasePercent { get; private set; }
 		public DateTime YearlyIncreaseAppliedDate { get; private set; }
 	}
 }

@@ -56,6 +56,57 @@ namespace DebtCalculator
             _windfallEntries.Add(
                 WindfallEntry.CreateWindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
         }
+
+        public double GetTotalMonthlySnowball( DateTime startDate, DateTime simulatedDate)
+        {
+            double amount = SnowballAmount;
+
+            foreach (WindfallEntry windfallEntry in this.WindfallEntries)
+            {
+                if (simulatedDate.Year == windfallEntry.WindfallDate.Year)
+                {
+                    if (simulatedDate.Month == windfallEntry.WindfallDate.Month)
+                    {
+                        amount += windfallEntry.Amount;
+                    }
+                }
+                else if (windfallEntry.IsReccurring)
+                {
+                    int monthDifference = ((simulatedDate.Year - startDate.Year) * 12) + simulatedDate.Month - startDate.Month;
+                    if (monthDifference % windfallEntry.ReccurringFrequency == 0)
+                    {
+                        amount += windfallEntry.Amount;
+                    }
+
+                }
+
+            }
+
+
+            foreach (SalaryEntry salaryEntry in this.SalaryEntries)
+            {
+                double finalSalary = salaryEntry.StartingSalary;
+                while (startDate <= simulatedDate)
+                {
+                    if (startDate.Month == salaryEntry.YearlyIncreaseAppliedDate.Month)
+                    {
+                        finalSalary *= (1.0 + salaryEntry.YearlySnowballIncreasePercent);
+                        startDate = startDate.AddYears(1);
+                    }
+                    else
+                    {
+                        startDate = startDate.AddMonths(1);
+                    }
+                }
+
+                amount += ((finalSalary - salaryEntry.StartingSalary) / 12);
+            }
+
+
+
+            return amount;
+
+        }
 	}
 }
 

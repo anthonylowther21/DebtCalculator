@@ -11,16 +11,32 @@ namespace DebtCalculator
 
 		static public Collection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManager, PaymentManager paymentManager)
 		{
+
+
             foreach (DebtEntry debt in debtManager.DebtEntries)
             {
+                int month = 0;
+                double snowballAmount = paymentManager.SnowballAmount;
+
                 while (debt.CurrentBalance > 0)
                 {
-                    DebtSnowballCalculator.ApplyMonthlyPayment(debt, 1000);
+                    double salarySnowball = paymentManager.GetTotalMonthlySnowball(DateTime.Now, new DateTime(2020, 12, 1));
+
+                    DebtSnowballCalculator.ApplyMonthlyPayment(debt, salarySnowball);
+                    month++;
                 }
             }        
 
 			return null;
 		}
+
+//        static public void PopulateAllWindfalls(PaymentManager paymentManager)
+//        {
+//            foreach (WindfallEntry windfallEntry in paymentManager)
+//            {
+//                int year
+//            }
+//        }
 
 		static public void ApplyMonthlyPayment(DebtEntry debtEntry, double additionalPrinciple = 0)
 		{

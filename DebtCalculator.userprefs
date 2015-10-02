@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="UITests/DebtCalculator.UITests.csproj">
+﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.4" />
   <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/DebtSnowball/DebtManager.cs">
     <Files>
