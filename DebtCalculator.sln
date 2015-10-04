@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtCalculator.Droid", "Dro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtCalculator.UITests", "UITests\DebtCalculator.UITests.csproj", "{C5A94EE9-792F-49B7-9BE1-39482E647F50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtCalculator.Library", "DebtCalculator.Library\DebtCalculator.Library.csproj", "{8264C868-E7EC-4939-8BC7-70E9F490F2DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -19,6 +21,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Release|iPhone.Build.0 = Release|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{8264C868-E7EC-4939-8BC7-70E9F490F2DE}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{B0AE1B2C-AB8D-47C2-B48B-7831D09B6243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0AE1B2C-AB8D-47C2-B48B-7831D09B6243}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0AE1B2C-AB8D-47C2-B48B-7831D09B6243}.Debug|iPhone.ActiveCfg = Debug|Any CPU

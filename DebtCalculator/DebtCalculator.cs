@@ -2,6 +2,7 @@
 
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using DebtCalculator.Library;
 
 namespace DebtCalculator
 {
@@ -39,19 +40,25 @@ namespace DebtCalculator
             paymentManager.AddSalaryEntry(70000, 0.01, new DateTime(2016, 9, 1));
             paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));
             paymentManager.SetSnowballAmount(860);
-            paymentManager.AddWindfallEntry(500, new DateTime(2016, 3, 1), true, 6); 
-            paymentManager.AddWindfallEntry(500, new DateTime(2016, 6, 1), true, 6);
+            paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6); 
+            paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 
-            DateTime start = DateTime.Now;
-            Collection<PaymentPlanOutputEntry> output =
+            Collection<PaymentPlanOutputEntry> outputs =
             DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);	
-            DateTime end = DateTime.Now;
-            Console.WriteLine("Milliseconds " + end.Subtract(start).TotalMilliseconds);
 
-//            foreach (var entry in output)
-//            {
-//                PaymentPlanOutputEntry.WriteToConsole(entry);
-//            }
+            foreach (var output in outputs)
+            {
+                string message = output.DebtName +
+                    ": " + DateTimeExtensions.ToShortMonthName(output.Date) + " " + output.Date.Year +
+                    " Starting Balance: " + output.StartBalance.ToString("C") +
+                    " Min Interest: " + output.MinimumInterest.ToString("C") +
+                    " Min Principal: " + output.MinimumPrincipal.ToString("C") +
+                    " Add Principal: " + output.AdditionalPrincipal.ToString("C") +
+                    " Total Payment: " + output.TotalPayment.ToString("C") +
+                    " Ending Balance: " + output.EndBalance.ToString("C");
+
+                Console.WriteLine(message);
+            }
 		}
 
 		protected override void OnStart ()

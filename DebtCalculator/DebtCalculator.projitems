@@ -10,17 +10,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DebtCalculator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\DebtEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\PaymentManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\SalaryEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\DebtSnowballCalculator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\DebtManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\WindfallEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\Enums.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\PaymentPlanOutputEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DateTime.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)DebtSnowball\" />
   </ItemGroup>
 </Project>
