@@ -1,57 +1,62 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace DebtCalculator
 {
-	static public class DebtSnowballCalculator
-	{
-		static DebtSnowballCalculator ()
-		{
-		}
+    static public class DebtSnowballCalculator
+    {
+        static DebtSnowballCalculator ()
+        {
+        }
 
-		static public Collection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManager, PaymentManager paymentManager)
-		{
+        static public Collection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManager, PaymentManager paymentManager)
+        {
+            Collection<PaymentPlanOutputEntry> col = new Collection<PaymentPlanOutputEntry>();
 
+            DateTime startDate = DateTime.Now;
+            DateTime currentDate = DateTime.Now;
 
             foreach (DebtEntry debt in debtManager.DebtEntries)
             {
-                int month = 0;
-                double snowballAmount = paymentManager.SnowballAmount;
-
                 while (debt.CurrentBalance > 0)
                 {
-                    double salarySnowball = paymentManager.GetTotalMonthlySnowball(DateTime.Now, new DateTime(2020, 12, 1));
-
-                    DebtSnowballCalculator.ApplyMonthlyPayment(debt, salarySnowball);
-                    month++;
+                    double salarySnowball = paymentManager.GetTotalMonthlySnowball(startDate, currentDate);
+                    col.Add(DebtSnowballCalculator.ApplyMonthlyPayment(currentDate, debt, paymentManager, salarySnowball));
+                    currentDate = currentDate.AddMonths(1);
                 }
             }        
 
-			return null;
-		}
+            return col;
+        }
 
-//        static public void PopulateAllWindfalls(PaymentManager paymentManager)
-//        {
-//            foreach (WindfallEntry windfallEntry in paymentManager)
-//            {
-//                int year
-//            }
-//        }
+        static public PaymentPlanOutputEntry ApplyMonthlyPayment(DateTime currentDate, DebtEntry debtEntry, 
+            PaymentManager paymentManager, double additionalPrinciple = 0)
+        {
+            double startingBalance = debtEntry.CurrentBalance;
 
-		static public void ApplyMonthlyPayment(DebtEntry debtEntry, double additionalPrinciple = 0)
-		{
-            Console.Write (debtEntry.Name);
-			Console.Write (" Starting Balance: " + debtEntry.CurrentBalance.ToString("C"));
+            double interestPortion = debtEntry.MonthlyInterest * debtEntry.CurrentBalance;
+            double minimumPrinciple = debtEntry.MinimumMonthlyPayment - interestPortion;
+            double principalPortion = minimumPrinciple + additionalPrinciple;
 
-			double interestPortion = debtEntry.MonthlyInterest * debtEntry.CurrentBalance;
-			double principalPortion = debtEntry.MinimumMonthlyPayment + additionalPrinciple - interestPortion;
-			debtEntry.CurrentBalance -= principalPortion;
+            double possibleBalance = debtEntry.CurrentBalance -= principalPortion;
 
-			Console.Write (" Interest: " + interestPortion.ToString("C"));
-			Console.Write (" Principal: " + principalPortion.ToString("C"));
-			Console.Write (" Ending Balance: " + debtEntry.CurrentBalance.ToString("C"));
-			Console.WriteLine();
-		}
-	}
+            if (possibleBalance < 0)
+            {
+                debtEntry.CurrentBalance = 0;
+                paymentManager.AddWindfallEntry(Math.Abs(possibleBalance), currentDate.AddMonths(1));
+            }
+            else
+            {
+                debtEntry.CurrentBalance = possibleBalance;
+            }
+
+            PaymentPlanOutputEntry output = PaymentPlanOutputEntry.Create(
+                debtEntry.Name, currentDate, startingBalance, interestPortion, 
+                minimumPrinciple, additionalPrinciple, debtEntry.CurrentBalance);
+            //PaymentPlanOutputEntry.WriteToConsole(output);
+            return output;
+        }
+    }
 }
 

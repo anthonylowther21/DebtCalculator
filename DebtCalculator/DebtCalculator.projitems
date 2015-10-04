@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\WindfallEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\PaymentPlanOutputEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)DebtSnowball\" />
