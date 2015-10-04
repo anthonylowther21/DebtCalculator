@@ -8,8 +8,21 @@ namespace DebtCalculator
 {
 	public class App : Application
 	{
+        Label label;
+        int clickTotal = 0;
+
 		public App ()
 		{
+            Button button = new Button
+                {
+                    Text = "Click Me!",
+                    Font = Font.SystemFontOfSize(NamedSize.Large),
+                    BorderWidth = 1,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
+            button.Clicked += OnButtonClicked;
+
 			// The root page of your application
 			MainPage = new ContentPage {
 				Content = new StackLayout {
@@ -18,11 +31,17 @@ namespace DebtCalculator
 						new Label {
 							XAlign = TextAlignment.Center,
 							Text = "Welcome to Xamarin Forms!"
-						}
+						},
+                        button
 					}
 				}
 			};
 
+
+		}
+
+        void OnButtonClicked(object sender, EventArgs e)
+        {
             DebtManager debtManager = DebtManager.CreateDebtManager();
             PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
 
@@ -44,22 +63,22 @@ namespace DebtCalculator
             paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 
             Collection<PaymentPlanOutputEntry> outputs =
-            DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);	
+                DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);  
 
-            foreach (var output in outputs)
-            {
-                string message = output.DebtName +
-                    ": " + DateTimeExtensions.ToShortMonthName(output.Date) + " " + output.Date.Year +
-                    " Starting Balance: " + output.StartBalance.ToString("C") +
-                    " Min Interest: " + output.MinimumInterest.ToString("C") +
-                    " Min Principal: " + output.MinimumPrincipal.ToString("C") +
-                    " Add Principal: " + output.AdditionalPrincipal.ToString("C") +
-                    " Total Payment: " + output.TotalPayment.ToString("C") +
-                    " Ending Balance: " + output.EndBalance.ToString("C");
-
-                Console.WriteLine(message);
-            }
-		}
+//            foreach (var output in outputs)
+//            {
+//                string message = output.DebtName +
+//                    ": " + DateTimeExtensions.ToShortMonthName(output.Date) + " " + output.Date.Year +
+//                    " Starting Balance: " + output.StartBalance.ToString("C") +
+//                    " Min Interest: " + output.MinimumInterest.ToString("C") +
+//                    " Min Principal: " + output.MinimumPrincipal.ToString("C") +
+//                    " Add Principal: " + output.AdditionalPrincipal.ToString("C") +
+//                    " Total Payment: " + output.TotalPayment.ToString("C") +
+//                    " Ending Balance: " + output.EndBalance.ToString("C");
+//
+//                Console.WriteLine(message);
+//            }
+        }
 
 		protected override void OnStart ()
 		{

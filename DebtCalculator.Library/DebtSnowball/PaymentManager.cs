@@ -49,9 +49,9 @@ namespace DebtCalculator.Library
         }
 
         public void AddWindfallEntry(double amount, 
-                                    DateTime windfallDate, 
-                                    bool isRecurring = false, 
-                                    int recurringFrequency = -1)
+                                     DateTime windfallDate, 
+                                     bool isRecurring = false, 
+                                     int recurringFrequency = -1)
         {
             _windfallEntries.Add(
                 WindfallEntry.CreateWindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
