@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace DebtCalculator.Library
 {
@@ -12,8 +13,9 @@ namespace DebtCalculator.Library
 
         static public Collection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManager, PaymentManager paymentManager)
         {
-            DateTime startDate = DateTime.Now;
-            DateTime currentDate = DateTime.Now;
+            DateTime simulatedDate = DateTime.Now;
+
+            var watch = Stopwatch.StartNew();
 
             Collection<PaymentPlanOutputEntry> col = new Collection<PaymentPlanOutputEntry>();
 
@@ -21,14 +23,15 @@ namespace DebtCalculator.Library
             {
                 while (debt.CurrentBalance > 0)
                 {
-                    double salarySnowball = paymentManager.GetTotalMonthlySnowball(startDate, currentDate);
-                    col.Add(DebtSnowballCalculator.ApplyMonthlyPayment(currentDate, debt, paymentManager, salarySnowball));
-                    currentDate = currentDate.AddMonths(1);
+                    double salarySnowball = paymentManager.GetTotalMonthlySnowball(simulatedDate);
+                    col.Add(DebtSnowballCalculator.ApplyMonthlyPayment(simulatedDate, debt, paymentManager, salarySnowball));
+                    simulatedDate = simulatedDate.AddMonths(1);
                 }
             }  
 
-            DateTime end = DateTime.Now;
-            System.Diagnostics.Debug.WriteLine("Milliseconds " + end.Subtract(startDate).TotalMilliseconds);
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            System.Diagnostics.Debug.WriteLine("Milliseconds " + elapsedMs);
 
             return col;
         }

@@ -18,6 +18,7 @@ namespace DebtCalculator.Library
 
         protected PaymentManager ()
 		{
+            _snowballAmount = 0;
 			_salaryEntries = new Collection<SalaryEntry> ();
 			_windfallEntries = new Collection<WindfallEntry> ();
 		}
@@ -57,19 +58,16 @@ namespace DebtCalculator.Library
                 WindfallEntry.CreateWindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
         }
 
-        public double GetTotalMonthlySnowball( DateTime startDate, DateTime simulatedDate)
+        public double GetTotalMonthlySnowball (DateTime simulatedDate)
         {
             double amount = SnowballAmount;
-            DateTime calculatedDate = startDate;
 
             foreach (WindfallEntry windfallEntry in this.WindfallEntries)
             {
-                if (simulatedDate.Year == windfallEntry.WindfallDate.Year)
+                if (simulatedDate.Year  == windfallEntry.WindfallDate.Year &&
+                    simulatedDate.Month == windfallEntry.WindfallDate.Month)
                 {
-                    if (simulatedDate.Month == windfallEntry.WindfallDate.Month)
-                    {
-                        amount += windfallEntry.Amount;
-                    }
+                    amount += windfallEntry.Amount;
                 }
                 else if (windfallEntry.IsReccurring)
                 {
@@ -85,23 +83,14 @@ namespace DebtCalculator.Library
 
             foreach (SalaryEntry salaryEntry in this.SalaryEntries)
             {
-                calculatedDate = startDate;
                 double finalSalary = salaryEntry.StartingSalary;
-                while (calculatedDate <= simulatedDate)
-                {
-                    if (calculatedDate.Month == salaryEntry.YearlyIncreaseAppliedDate.Month)
-                    {
-                        finalSalary *= (1.0 + salaryEntry.YearlySnowballIncreasePercent);
-                        //calculatedDate = calculatedDate.AddYears(1);
 
-                        int yearDifference = simulatedDate.Year - salaryEntry.YearlyIncreaseAppliedDate.Year;
-                        finalSalary *= Math.Pow((1.0 + salaryEntry.YearlySnowballIncreasePercent), yearDifference );
-                        break;
-                    }
-                    else
-                    {
-                        calculatedDate = calculatedDate.AddMonths(1);
-                    }
+                if (simulatedDate.Year  >= salaryEntry.YearlyIncreaseAppliedDate.Year && 
+                    simulatedDate.Month >= salaryEntry.YearlyIncreaseAppliedDate.Month)
+                {
+                    int yearDifference = simulatedDate.Year - salaryEntry.YearlyIncreaseAppliedDate.Year;
+                    finalSalary *= 
+                        Math.Pow((1.0 + salaryEntry.YearlySnowballIncreasePercent), yearDifference + 1);
                 }
 
                 amount += ((finalSalary - salaryEntry.StartingSalary) / 12.0);

@@ -4,6 +4,7 @@ using System.Linq;
 using NUnit.Framework;
 using Xamarin.UITest;
 using Xamarin.UITest.Queries;
+using DebtCalculator.Library;
 
 namespace DebtCalculator.UITests
 {
@@ -36,16 +37,25 @@ namespace DebtCalculator.UITests
             DebtManager debtManager = DebtManager.CreateDebtManager();
             PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
 
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 1", 25000, 25000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 2", 32000, 32000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 1", 25000, 5000, 2.99, 60));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 2", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 3", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 4", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 5", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 6", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 7", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 8", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 9", 190000, 180000, 3.25, 360));
+            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 10", 190000, 180000, 3.25, 360));
 
-            paymentManager.AddSalaryEntry(70000, 3, DateTime.Now);
-            paymentManager.SetSnowballAmount(500);
-            paymentManager.AddWindfallEntry(1000, DateTime.Now, true, 6);
+            paymentManager.AddSalaryEntry(70000, 0.01, new DateTime(2016, 9, 1));
+            paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));
+            paymentManager.SetSnowballAmount(860);
+            paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6); 
+            paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 
-
-
-            DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);      
+            DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);  
+            
 		}
 	}
 }

@@ -58,6 +58,10 @@
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\DebtCalculator.Library\DebtCalculator.Library.csproj">
+      <Project>{8264C868-E7EC-4939-8BC7-70E9F490F2DE}</Project>
+      <Name>DebtCalculator.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests.cs" />

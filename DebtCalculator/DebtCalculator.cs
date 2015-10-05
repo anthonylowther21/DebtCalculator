@@ -7,10 +7,7 @@ using DebtCalculator.Library;
 namespace DebtCalculator
 {
 	public class App : Application
-	{
-        Label label;
-        int clickTotal = 0;
-
+    {
 		public App ()
 		{
             Button button = new Button
@@ -37,11 +34,11 @@ namespace DebtCalculator
 				}
 			};
 
-
 		}
-
+            
         void OnButtonClicked(object sender, EventArgs e)
         {
+
             DebtManager debtManager = DebtManager.CreateDebtManager();
             PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
 
@@ -78,6 +75,9 @@ namespace DebtCalculator
 //
 //                Console.WriteLine(message);
 //            }
+
+            paymentManager = null;
+            debtManager = null;           
         }
 
 		protected override void OnStart ()
