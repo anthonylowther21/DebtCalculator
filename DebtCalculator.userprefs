@@ -1,22 +1,12 @@
 ﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.4" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator.Library/DebtSnowball/PaymentManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/DebtCalculator.cs">
     <Files>
-      <File FileName="DebtCalculator/DebtSnowball/PaymentPlanOutputEntry.cs" Line="39" Column="45" />
-      <File FileName="DebtCalculator/DebtSnowball/DebtSnowballCalculator.cs" Line="30" Column="24" />
-      <File FileName="DebtCalculator/DebtCalculator.cs" Line="47" Column="46" />
-      <File FileName="DebtCalculator/DebtSnowball/PaymentManager.cs" Line="90" Column="1" />
-      <File FileName="DebtCalculator/DebtSnowball/DebtEntry.cs" Line="42" Column="1" />
-      <File FileName="UITests/Tests.cs" Line="31" Column="91" />
-      <File FileName="DebtCalculator.Library/MyClass.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/PaymentPlanOutputEntry.cs" Line="3" Column="33" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtEntry.cs" Line="3" Column="33" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtManager.cs" Line="6" Column="33" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtSnowballCalculator.cs" Line="24" Column="73" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/Enums.cs" Line="3" Column="33" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/PaymentManager.cs" Line="109" Column="83" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/SalaryEntry.cs" Line="3" Column="33" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/WindfallEntry.cs" Line="3" Column="33" />
+      <File FileName="DebtCalculator.Library/DebtSnowball/PaymentManager.cs" Line="21" Column="33" />
+      <File FileName="DebtCalculator/DebtCalculator.cs" Line="62" Column="48" />
+      <File FileName="DebtCalculator.Library/DebtSnowball/DebtSnowballCalculator.cs" Line="34" Column="13" />
+      <File FileName="DebtCalculator.Library/DebtSnowball/DebtManager.cs" Line="12" Column="9" />
+      <File FileName="UITests/Tests.cs" Line="30" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

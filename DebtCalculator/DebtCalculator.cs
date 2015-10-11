@@ -8,6 +8,11 @@ namespace DebtCalculator
 {
 	public class App : Application
     {
+        Label finishDate;
+        Entry salary1;
+        Entry salary2;
+        Entry snowball;
+
 		public App ()
 		{
             Button button = new Button
@@ -20,6 +25,35 @@ namespace DebtCalculator
                 };
             button.Clicked += OnButtonClicked;
 
+            finishDate = new Label
+                {
+                    Text = "Finish Date",
+                    Font = Font.SystemFontOfSize(NamedSize.Large),
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
+
+            salary1 = new Entry
+                {
+                    Placeholder="Enter Salary 1 Here",
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
+
+            salary2 = new Entry
+                {
+                    Placeholder="Enter Salary 1 Here",
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
+
+            snowball = new Entry
+                {
+                    Placeholder="Enter Snowball Here",
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.CenterAndExpand
+                };
+
 			// The root page of your application
 			MainPage = new ContentPage {
 				Content = new StackLayout {
@@ -29,7 +63,11 @@ namespace DebtCalculator
 							XAlign = TextAlignment.Center,
 							Text = "Welcome to Xamarin Forms!"
 						},
-                        button
+                        salary1,
+                        salary2,
+                        snowball,
+                        button,
+                        finishDate
 					}
 				}
 			};
@@ -42,25 +80,30 @@ namespace DebtCalculator
             DebtManager debtManager = DebtManager.CreateDebtManager();
             PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
 
+            double snowballAmount = Double.Parse(snowball.Text);
+            double salary1Amount = Double.Parse(salary1.Text);
+            double salary2Amount = Double.Parse(salary2.Text);
             debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 1", 25000, 5000, 2.99, 60));
             debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 2", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 3", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 4", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 5", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 6", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 7", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 8", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 9", 190000, 180000, 3.25, 360));
-            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 10", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 3", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 4", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 5", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 6", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 7", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 8", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 9", 190000, 180000, 3.25, 360));
+//            debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 10", 190000, 180000, 3.25, 360));
 
-            paymentManager.AddSalaryEntry(70000, 0.01, new DateTime(2016, 9, 1));
-            paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));
-            paymentManager.SetSnowballAmount(860);
+            paymentManager.AddSalaryEntry(salary1Amount, 0.01, new DateTime(2016, 9, 1));
+            paymentManager.AddSalaryEntry(salary2Amount, 0.01, new DateTime(2016, 9, 1));
+            paymentManager.SetSnowballAmount(snowballAmount);
             paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6); 
             paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 
             Collection<PaymentPlanOutputEntry> outputs =
                 DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);  
+
+            finishDate.Text = outputs[outputs.Count - 1].Date.ToShortDateString();
 
 //            foreach (var output in outputs)
 //            {
