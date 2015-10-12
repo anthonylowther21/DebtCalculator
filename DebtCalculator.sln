@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtCalculator.Droid", "Dro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtCalculator.UITests", "UITests\DebtCalculator.UITests.csproj", "{C5A94EE9-792F-49B7-9BE1-39482E647F50}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DebtCalculator.Library", "DebtCalculatorLibrary\DebtCalculator.Library.shproj", "{9CB4C11E-A15A-452F-9C29-819F3A0B2DE6}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DebtCalculator.Library", "DebtCalculator.Library\DebtCalculator.Library.shproj", "{9CB4C11E-A15A-452F-9C29-819F3A0B2DE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,4 +11,11 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DebtCalculator.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
+    <None Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelLocator.cs" />
+  </ItemGroup>
 </Project>
