@@ -1,12 +1,13 @@
 ﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.4" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/DebtCalculator.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator.Library/DebtSnowball/DebtEntry.cs">
     <Files>
-      <File FileName="DebtCalculator.Library/DebtSnowball/PaymentManager.cs" Line="21" Column="33" />
-      <File FileName="DebtCalculator/DebtCalculator.cs" Line="62" Column="48" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtSnowballCalculator.cs" Line="34" Column="13" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtManager.cs" Line="12" Column="9" />
-      <File FileName="UITests/Tests.cs" Line="30" Column="27" />
+      <File FileName="DebtCalculator.Library/DebtSnowball/PaymentManager.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/DebtCalculator.cs" Line="82" Column="97" />
+      <File FileName="DebtCalculator.Library/DebtSnowball/DebtSnowballCalculator.cs" Line="27" Column="96" />
+      <File FileName="DebtCalculator.Library/DebtSnowball/DebtManager.cs" Line="1" Column="1" />
+      <File FileName="UITests/Tests.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator.Library/DebtSnowball/DebtEntry.cs" Line="38" Column="76" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
