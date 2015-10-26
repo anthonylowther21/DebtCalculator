@@ -6,8 +6,8 @@ namespace DebtCalculator.Library
   {
     static public WindfallEntry CreateWindfallEntry(double amount, 
       DateTime windfallDate, 
-      bool isRecurring = false, 
-      int recurringFrequency = -1)
+      bool isRecurring, 
+      int recurringFrequency)
     {
       return new WindfallEntry()
       {

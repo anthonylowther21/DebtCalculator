@@ -37,11 +37,7 @@ namespace DebtCalculator.Library
     public double SnowballAmount 
     { 
       get { return _snowballAmount; }
-    }
-
-    public void SetSnowballAmount(double amount)
-    {
-      _snowballAmount = amount;
+      set { _snowballAmount = value; }
     }
 
     public void AddSalaryEntry(double startingSalary, double yearlyIncreasePercent, DateTime appliedDate)
@@ -53,7 +49,7 @@ namespace DebtCalculator.Library
     public void AddWindfallEntry(double amount, 
       DateTime windfallDate, 
       bool isRecurring = false, 
-      int recurringFrequency = -1)
+      int recurringFrequency = int.MinValue)
     {
       _windfallEntries.Add(
         WindfallEntry.CreateWindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
@@ -65,20 +61,11 @@ namespace DebtCalculator.Library
 
       foreach (WindfallEntry windfallEntry in this.WindfallEntries)
       {
-        if (simulatedDate.Year  == windfallEntry.WindfallDate.Year &&
-          simulatedDate.Month == windfallEntry.WindfallDate.Month)
+        int monthDifference = GetMonthDifference(simulatedDate, windfallEntry.WindfallDate);
+
+        if (monthDifference % windfallEntry.ReccurringFrequency == 0)
         {
           amount += windfallEntry.Amount;
-        }
-        else if (windfallEntry.IsReccurring)
-        {
-          int monthDifference = ((simulatedDate.Year - windfallEntry.WindfallDate.Year) * 12) + 
-            simulatedDate.Month - windfallEntry.WindfallDate.Month;
-
-          if (monthDifference % windfallEntry.ReccurringFrequency == 0)
-          {
-            amount += windfallEntry.Amount;
-          }
         }
       }
 
@@ -86,11 +73,11 @@ namespace DebtCalculator.Library
       {
         double finalSalary = salaryEntry.StartingSalary;
 
-        int monthDifference = (int)GetMonthDifference(simulatedDate, salaryEntry.YearlyIncreaseAppliedDate);
+        int monthDifference = GetMonthDifference(simulatedDate, salaryEntry.YearlyIncreaseAppliedDate);
 
         if (monthDifference >= 0)
         {
-          int yearDiff = (monthDifference * inv_twelve);
+          int yearDiff = (int)(monthDifference * inv_twelve);
           finalSalary *= 
             Math.Pow((1.0 + salaryEntry.YearlySnowballIncreasePercent), yearDiff + 1);
         }
@@ -102,7 +89,7 @@ namespace DebtCalculator.Library
 
     }
 
-    int GetMonthDifference(DateTime lValue, DateTime rValue)
+    private int GetMonthDifference(DateTime lValue, DateTime rValue)
     {
       return (lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year);
     }

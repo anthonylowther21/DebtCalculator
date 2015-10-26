@@ -51,6 +51,7 @@ namespace DebtCalculator.Library
       {
         debtEntry.CurrentBalance = 0;
         paymentManager.AddWindfallEntry(Math.Abs(possibleBalance), currentDate.AddMonths(1));
+        paymentManager.SnowballAmount += debtEntry.MinimumMonthlyPayment;
       }
       else
       {

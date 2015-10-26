@@ -50,7 +50,7 @@ namespace DebtCalculator.UITests
 
       paymentManager.AddSalaryEntry(70000, 0.01, new DateTime(2016, 9, 1));
       paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));
-      paymentManager.SetSnowballAmount(860);
+      paymentManager.SnowballAmount = 860;
       paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6); 
       paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 

@@ -54,9 +54,9 @@ namespace DebtCalculator
 //      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 9", 190000, 180000, 3.25, 360));
 //      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 10", 190000, 180000, 3.25, 360));
 
-      paymentManager.AddSalaryEntry(70000, 0.03, new DateTime(2016, 9, 1));
-      //paymentManager.AddSalaryEntry(40000, 0.03, new DateTime(2016, 9, 1));
-      //paymentManager.SetSnowballAmount(1200);
+      paymentManager.AddSalaryEntry(70000, 0.01, new DateTime(2016, 9, 1));
+      //paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));
+      //paymentManager.SnowballAmount = 700;
       //paymentManager.AddWindfallEntry(1500, new DateTime(2015, 11, 1)); 
       //paymentManager.AddWindfallEntry(2000, new DateTime(2016, 3, 1), true, 12); 
       //paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
