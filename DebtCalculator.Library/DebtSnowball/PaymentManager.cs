@@ -5,100 +5,107 @@ using System.Linq;
 
 namespace DebtCalculator.Library
 {
-	public class PaymentManager
-	{
-		private Collection<SalaryEntry> _salaryEntries = null;
-		private Collection<WindfallEntry> _windfallEntries = null;
-		private double _snowballAmount = Double.NaN;
+  public class PaymentManager
+  {
+    private Collection<SalaryEntry> _salaryEntries = null;
+    private Collection<WindfallEntry> _windfallEntries = null;
+    private double _snowballAmount = Double.NaN;
+    private const double inv_twelve = 1 / 12.0;
 
-        static public PaymentManager CreatePaymentManager()
+    static public PaymentManager CreatePaymentManager()
+    {
+      return new PaymentManager();
+    }
+
+    protected PaymentManager ()
+    {
+      _snowballAmount = 0;
+      _salaryEntries = new Collection<SalaryEntry> ();
+      _windfallEntries = new Collection<WindfallEntry> ();
+    }
+
+    public IEnumerable<SalaryEntry> SalaryEntries
+    { 
+      get { return _salaryEntries.ToArray(); }
+    }
+
+    public IEnumerable<WindfallEntry> WindfallEntries
+    { 
+      get { return _windfallEntries.ToArray(); }
+    }
+
+    public double SnowballAmount 
+    { 
+      get { return _snowballAmount; }
+    }
+
+    public void SetSnowballAmount(double amount)
+    {
+      _snowballAmount = amount;
+    }
+
+    public void AddSalaryEntry(double startingSalary, double yearlyIncreasePercent, DateTime appliedDate)
+    {
+      _salaryEntries.Add(
+        SalaryEntry.CreateSalaryEntry(startingSalary, yearlyIncreasePercent, appliedDate));
+    }
+
+    public void AddWindfallEntry(double amount, 
+      DateTime windfallDate, 
+      bool isRecurring = false, 
+      int recurringFrequency = -1)
+    {
+      _windfallEntries.Add(
+        WindfallEntry.CreateWindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
+    }
+
+    public double GetTotalMonthlySnowball (DateTime simulatedDate)
+    {
+      double amount = SnowballAmount;
+
+      foreach (WindfallEntry windfallEntry in this.WindfallEntries)
+      {
+        if (simulatedDate.Year  == windfallEntry.WindfallDate.Year &&
+          simulatedDate.Month == windfallEntry.WindfallDate.Month)
         {
-            return new PaymentManager();
+          amount += windfallEntry.Amount;
+        }
+        else if (windfallEntry.IsReccurring)
+        {
+          int monthDifference = ((simulatedDate.Year - windfallEntry.WindfallDate.Year) * 12) + 
+            simulatedDate.Month - windfallEntry.WindfallDate.Month;
+
+          if (monthDifference % windfallEntry.ReccurringFrequency == 0)
+          {
+            amount += windfallEntry.Amount;
+          }
+        }
+      }
+
+      foreach (SalaryEntry salaryEntry in this.SalaryEntries)
+      {
+        double finalSalary = salaryEntry.StartingSalary;
+
+        int monthDifference = (int)GetMonthDifference(simulatedDate, salaryEntry.YearlyIncreaseAppliedDate);
+
+        if (monthDifference >= 0)
+        {
+          int yearDiff = (monthDifference * inv_twelve);
+          finalSalary *= 
+            Math.Pow((1.0 + salaryEntry.YearlySnowballIncreasePercent), yearDiff + 1);
         }
 
-        protected PaymentManager ()
-		{
-            _snowballAmount = 0;
-			_salaryEntries = new Collection<SalaryEntry> ();
-			_windfallEntries = new Collection<WindfallEntry> ();
-		}
+        amount += ((finalSalary - salaryEntry.StartingSalary) * inv_twelve);
+      }
 
-		public IEnumerable<SalaryEntry> SalaryEntries
-		{ 
-            get { return _salaryEntries.ToArray(); }
-		}
+      return amount;
 
-        public IEnumerable<WindfallEntry> WindfallEntries
-		{ 
-			get { return _windfallEntries.ToArray(); }
-		}
+    }
 
-		public double SnowballAmount 
-		{ 
-			get { return _snowballAmount; }
-		}
-
-        public void SetSnowballAmount(double amount)
-        {
-            _snowballAmount = amount;
-        }
-
-        public void AddSalaryEntry(double startingSalary, double yearlyIncreasePercent, DateTime appliedDate)
-        {
-            _salaryEntries.Add(
-                SalaryEntry.CreateSalaryEntry(startingSalary, yearlyIncreasePercent, appliedDate));
-        }
-
-        public void AddWindfallEntry(double amount, 
-                                     DateTime windfallDate, 
-                                     bool isRecurring = false, 
-                                     int recurringFrequency = -1)
-        {
-            _windfallEntries.Add(
-                WindfallEntry.CreateWindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
-        }
-
-        public double GetTotalMonthlySnowball (DateTime simulatedDate)
-        {
-            double amount = SnowballAmount;
-
-            foreach (WindfallEntry windfallEntry in this.WindfallEntries)
-            {
-                if (simulatedDate.Year  == windfallEntry.WindfallDate.Year &&
-                    simulatedDate.Month == windfallEntry.WindfallDate.Month)
-                {
-                    amount += windfallEntry.Amount;
-                }
-                else if (windfallEntry.IsReccurring)
-                {
-                    int monthDifference = ((simulatedDate.Year - windfallEntry.WindfallDate.Year) * 12) + 
-                        simulatedDate.Month - windfallEntry.WindfallDate.Month;
-                    
-                    if (monthDifference % windfallEntry.ReccurringFrequency == 0)
-                    {
-                        amount += windfallEntry.Amount;
-                    }
-                }
-            }
-
-            foreach (SalaryEntry salaryEntry in this.SalaryEntries)
-            {
-                double finalSalary = salaryEntry.StartingSalary;
-
-                if (simulatedDate.Year  >= salaryEntry.YearlyIncreaseAppliedDate.Year && 
-                    simulatedDate.Month >= salaryEntry.YearlyIncreaseAppliedDate.Month)
-                {
-                    int yearDifference = simulatedDate.Year - salaryEntry.YearlyIncreaseAppliedDate.Year;
-                    finalSalary *= 
-                        Math.Pow((1.0 + salaryEntry.YearlySnowballIncreasePercent), yearDifference + 1);
-                }
-
-                amount += ((finalSalary - salaryEntry.StartingSalary) / 12.0);
-            }
-
-            return amount;
-
-        }
-	}
+    int GetMonthDifference(DateTime lValue, DateTime rValue)
+    {
+      return (lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year);
+    }
+  }
 }
 
