@@ -1,25 +1,15 @@
-﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Views/RootPage.cs">
+﻿<Properties StartupItem="Droid/DebtCalculator.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.57.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Views/MainTabbedPage.xaml">
     <Files>
-      <File FileName="DebtCalculator.Library/DebtSnowball/PaymentManager.cs" Line="105" Column="1" />
-      <File FileName="DebtCalculator/DebtCalculator.cs" Line="119" Column="37" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtSnowballCalculator.cs" Line="69" Column="1" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtManager.cs" Line="35" Column="1" />
-      <File FileName="UITests/Tests.cs" Line="57" Column="83" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/DebtEntry.cs" Line="47" Column="1" />
-      <File FileName="iOS/AppDelegate.cs" Line="22" Column="40" />
-      <File FileName="iOS/obj/iPhoneSimulator/Debug/DebtCalculator.iOS..Users.anthonylowther.Github.DebtCalculator.DebtCalculator.Views.App.xaml.g.cs" Line="17" Column="26" />
-      <File FileName="DebtCalculator/App.xaml" Line="5" Column="15" />
-      <File FileName="DebtCalculator/Views/RootPage.cs" Line="50" Column="85" />
-      <File FileName="DebtCalculator/App.xaml.cs" Line="36" Column="1" />
-      <File FileName="Droid/MainActivity.cs" Line="27" Column="1" />
-      <File FileName="iOS/Main.cs" Line="22" Column="1" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/Enums.cs" Line="13" Column="1" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/PaymentPlanOutputEntry.cs" Line="60" Column="1" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/SalaryEntry.cs" Line="27" Column="1" />
-      <File FileName="DebtCalculator.Library/DebtSnowball/WindfallEntry.cs" Line="32" Column="1" />
-      <File FileName="DebtCalculator.Library/DateTime.cs" Line="20" Column="1" />
+      <File FileName="DebtCalculator.Library/Model/DebtEntry.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/ViewModels/DebtEntryViewModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/ViewModels/DebtsViewModel.cs" Line="1" Column="1" />
+      <File FileName="iOS/obj/iPhoneSimulator/Debug/DebtCalculator.iOS..Users.anthonylowther.Github.DebtCalculator.DebtCalculator.Views.MainTabbedPage.xaml.g.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Views/OverallSummaryPage.xaml" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Views/OverallSummaryPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Views/MainTabbedPage.xaml" Line="10" Column="1" />
+      <File FileName="DebtCalculator/Views/MainTabbedPage.xaml.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

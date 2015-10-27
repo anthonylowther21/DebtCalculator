@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
+using DebtCalculator.Views;
 
 namespace DebtCalculator
 {
@@ -11,7 +11,9 @@ namespace DebtCalculator
     {
       InitializeComponent();
 
-      MainPage = new RootPage();
+      NavigationPage np = new NavigationPage (new MainTabbedPage ());
+      np.BarBackgroundColor = Color.Gray;
+      MainPage = np;
 
     }
 

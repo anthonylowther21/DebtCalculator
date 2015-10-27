@@ -103,5 +103,15 @@ Global
 		$4.inheritsSet = VisualStudio
 		$4.inheritsScope = text/plain
 		$4.scope = text/plain
+		$0.TextStylePolicy = $5
+		$5.FileWidth = 120
+		$5.TabWidth = 2
+		$5.IndentWidth = 2
+		$5.inheritsSet = VisualStudio
+		$5.inheritsScope = text/plain
+		$5.scope = application/xaml+xml
+		$0.XmlFormattingPolicy = $6
+		$6.inheritsSet = null
+		$6.scope = application/xaml+xml
 	EndGlobalSection
 EndGlobal

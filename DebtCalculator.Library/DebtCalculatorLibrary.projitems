@@ -9,14 +9,14 @@
     <Import_RootNamespace>DebtCalculatorLibrary</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\DebtEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\DebtManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\DebtSnowballCalculator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\Enums.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\PaymentManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\PaymentPlanOutputEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\SalaryEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DebtSnowball\WindfallEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DateTime.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DebtEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DebtManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\DebtSnowballCalculator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentPlanOutputEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\SalaryEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\WindfallEntry.cs" />
   </ItemGroup>
 </Project>
