@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using DebtCalculator.Library;
+using DebtCalculator.Utility;
 
 namespace DebtCalculator.Views
 {
@@ -41,8 +42,8 @@ namespace DebtCalculator.Views
     void OnButtonClicked(object sender, EventArgs e)
     {
 
-      DebtManager debtManager = DebtManager.CreateDebtManager();
-      PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
+      DebtManager debtManager = new DebtManager();
+      PaymentManager paymentManager = new PaymentManager();
 
       //double snowballAmount = Double.Parse(snowball.Text);
       //double salary1Amount = Double.Parse(salary1.Text);
@@ -59,10 +60,10 @@ namespace DebtCalculator.Views
       //      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 10", 190000, 180000, 3.25, 360));
 
       paymentManager.AddSalaryEntry(70000, 0.01, new DateTime(2016, 9, 1));
-      //paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));
-      //paymentManager.SnowballAmount = 700;
-      //paymentManager.AddWindfallEntry(1500, new DateTime(2015, 11, 1)); 
-      //paymentManager.AddWindfallEntry(2000, new DateTime(2016, 3, 1), true, 12); 
+      paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));
+      paymentManager.SnowballAmount = 700;
+      paymentManager.AddWindfallEntry(1000, new DateTime(2015, 11, 1), true, 6); 
+      paymentManager.AddWindfallEntry(2000, new DateTime(2016, 3, 1), true, 12); 
       //paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 
       DebtSnowballCalculator solver = new DebtSnowballCalculator();

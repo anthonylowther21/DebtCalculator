@@ -7,31 +7,26 @@ namespace DebtCalculator.Library
 {
   public class PaymentManager
   {
-    private Collection<SalaryEntry> _salaryEntries = null;
-    private Collection<WindfallEntry> _windfallEntries = null;
+    private ObservableCollection<SalaryEntry> _salaryEntries = null;
+    private ObservableCollection<WindfallEntry> _windfallEntries = null;
     private double _snowballAmount = Double.NaN;
     private const double inv_twelve = 1 / 12.0;
 
-    static public PaymentManager CreatePaymentManager()
-    {
-      return new PaymentManager();
-    }
-
-    protected PaymentManager ()
+    public PaymentManager ()
     {
       _snowballAmount = 0;
-      _salaryEntries = new Collection<SalaryEntry> ();
-      _windfallEntries = new Collection<WindfallEntry> ();
+      _salaryEntries = new ObservableCollection<SalaryEntry> ();
+      _windfallEntries = new ObservableCollection<WindfallEntry> ();
     }
 
-    public IEnumerable<SalaryEntry> SalaryEntries
+    public ObservableCollection<SalaryEntry> SalaryEntries
     { 
-      get { return _salaryEntries.ToArray(); }
+      get { return _salaryEntries; }
     }
 
-    public IEnumerable<WindfallEntry> WindfallEntries
+    public ObservableCollection<WindfallEntry> WindfallEntries
     { 
-      get { return _windfallEntries.ToArray(); }
+      get { return _windfallEntries; }
     }
 
     public double SnowballAmount 
@@ -42,8 +37,7 @@ namespace DebtCalculator.Library
 
     public void AddSalaryEntry(double startingSalary, double yearlyIncreasePercent, DateTime appliedDate)
     {
-      _salaryEntries.Add(
-        SalaryEntry.CreateSalaryEntry(startingSalary, yearlyIncreasePercent, appliedDate));
+      _salaryEntries.Add(new SalaryEntry(startingSalary, yearlyIncreasePercent, appliedDate));
     }
 
     public void AddWindfallEntry(double amount, 
@@ -51,8 +45,7 @@ namespace DebtCalculator.Library
       bool isRecurring = false, 
       int recurringFrequency = int.MinValue)
     {
-      _windfallEntries.Add(
-        WindfallEntry.CreateWindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
+      _windfallEntries.Add( new WindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
     }
 
     public double GetTotalMonthlySnowball (DateTime simulatedDate)

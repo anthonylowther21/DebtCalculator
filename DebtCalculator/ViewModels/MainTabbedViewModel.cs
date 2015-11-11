@@ -22,8 +22,8 @@ namespace DebtCalculator.ViewModels
     /// </summary>
     public MainTabbedViewModel()
     {
-      //PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
-      //DebtManager debtManager = DebtManager.CreateDebtManager();
+      //PaymentManager paymentManager = new PaymentManager();
+      //DebtManager debtManager = new DebtManager();
       ////if (IsInDesignMode)
       ////{
       ////    // Code runs in Blend --> create design time data.

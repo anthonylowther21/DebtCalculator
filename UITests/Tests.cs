@@ -34,8 +34,8 @@ namespace DebtCalculator.UITests
 
       Assert.IsTrue (results.Any ());
 
-      DebtManager debtManager = DebtManager.CreateDebtManager();
-      PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
+      DebtManager debtManager = new DebtManager();
+      PaymentManager paymentManager = new PaymentManager();
 
       debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 1", 25000, 5000, 2.99, 60));
       debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 2", 190000, 180000, 3.25, 360));

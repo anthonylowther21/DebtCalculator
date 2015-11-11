@@ -1,28 +1,26 @@
 ﻿using System;
+using DebtCalculator.Utility;
 
 namespace DebtCalculator.Library
 {
   public class PaymentPlanOutputEntry
   {
-    static public PaymentPlanOutputEntry Create(string debtName, DateTime date, double startBalance, 
-      double interest, double minPrincipal, double addPrinciple, double endBalance)
+    public PaymentPlanOutputEntry ( string debtName,      
+                                    DateTime date, 
+                                    double startBalance,  
+                                    double interest, 
+                                    double minPrincipal,  
+                                    double addPrinciple, 
+                                    double endBalance)
     {
-      return new PaymentPlanOutputEntry()
-      {
-        DebtName = debtName,
-        Date = date,
-        StartBalance = startBalance,
-        MinimumInterest = interest,
-        MinimumPrincipal = minPrincipal,
-        AdditionalPrincipal = addPrinciple,
-        TotalPayment = interest + minPrincipal + addPrinciple,
-        EndBalance = endBalance
-      };
-
-    }
-
-    protected PaymentPlanOutputEntry ()
-    {
+      DebtName = debtName;
+      Date = date;
+      StartBalance = startBalance;
+      MinimumInterest = interest;
+      MinimumPrincipal = minPrincipal;
+      AdditionalPrincipal = addPrinciple;
+      TotalPayment = interest + minPrincipal + addPrinciple;
+      EndBalance = endBalance;
     }
 
     public string DebtName { get; private set; }
@@ -34,7 +32,7 @@ namespace DebtCalculator.Library
     public double TotalPayment { get; private set; }
     public double EndBalance { get; private set; }
 
-    static public void WriteToConsole(PaymentPlanOutputEntry output)
+    public void WriteToConsole(PaymentPlanOutputEntry output)
     {
       string message = output.DebtName +
         ": " + DateTimeExtensions.ToShortMonthName(output.Date) + " " + output.Date.Year +
@@ -45,10 +43,10 @@ namespace DebtCalculator.Library
         " Total Payment: " + output.TotalPayment.ToString("C") +
         " Ending Balance: " + output.EndBalance.ToString("C");
 
-      PaymentPlanOutputEntry.Print(message);
+      output.Print(message);
     }
 
-    static public void Print(string message)
+    public void Print(string message)
     {
       System.Diagnostics.Debug.WriteLine(message);
     }

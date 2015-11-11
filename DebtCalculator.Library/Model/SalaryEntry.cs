@@ -4,18 +4,13 @@ namespace DebtCalculator.Library
 {
   public class SalaryEntry
   {
-    static public SalaryEntry CreateSalaryEntry(double startingSalary, double yearlyIncreasePercent, DateTime appliedDate)
+    public SalaryEntry ( double startingSalary, 
+                            double yearlyIncreasePercent, 
+                            DateTime appliedDate)
     {
-      return new SalaryEntry()
-      {
-        StartingSalary = startingSalary,
-        YearlySnowballIncreasePercent = yearlyIncreasePercent,
-        YearlyIncreaseAppliedDate = appliedDate
-      };
-    }
-
-    protected SalaryEntry ()
-    {
+      StartingSalary = startingSalary;
+      YearlySnowballIncreasePercent = yearlyIncreasePercent;
+      YearlyIncreaseAppliedDate = appliedDate;
     }
 
     public double StartingSalary { get; private set; }

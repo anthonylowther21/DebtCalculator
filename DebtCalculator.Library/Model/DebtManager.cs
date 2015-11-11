@@ -9,12 +9,7 @@ namespace DebtCalculator.Library
   {
     private ObservableCollection<DebtEntry> _debtEntries;
 
-    static public DebtManager CreateDebtManager()
-    {
-      return new DebtManager();
-    }
-
-    protected DebtManager ()
+    public DebtManager ()
     {
       _debtEntries = new ObservableCollection<DebtEntry>();
     }

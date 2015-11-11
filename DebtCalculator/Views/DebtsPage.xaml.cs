@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using DebtCalculator.Library;
 using System.Collections.ObjectModel;
+using DebtCalculator.Utility;
 
 namespace DebtCalculator.Views
 {
@@ -43,8 +44,8 @@ namespace DebtCalculator.Views
     void OnButtonClicked(object sender, EventArgs e)
     {
 
-      DebtManager debtManager = DebtManager.CreateDebtManager();
-      PaymentManager paymentManager = PaymentManager.CreatePaymentManager();
+      DebtManager debtManager = new DebtManager();
+      PaymentManager paymentManager = new PaymentManager();
 
       //double snowballAmount = Double.Parse(snowball.Text);
       //double salary1Amount = Double.Parse(salary1.Text);

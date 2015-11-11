@@ -4,22 +4,15 @@ namespace DebtCalculator.Library
 {
   public class WindfallEntry
   {
-    static public WindfallEntry CreateWindfallEntry(double amount, 
-      DateTime windfallDate, 
-      bool isRecurring, 
-      int recurringFrequency)
+    public WindfallEntry (double amount, 
+                          DateTime windfallDate, 
+                          bool isRecurring, 
+                          int recurringFrequency)
     {
-      return new WindfallEntry()
-      {
-        Amount = amount,
-        WindfallDate = windfallDate,
-        IsReccurring = isRecurring,
-        ReccurringFrequency = recurringFrequency
-      };
-    }
-
-    protected WindfallEntry ()
-    {
+      Amount = amount;
+      WindfallDate = windfallDate;
+      IsReccurring = isRecurring;
+      ReccurringFrequency = recurringFrequency;
     }
 
     public double Amount { get; private set; }
