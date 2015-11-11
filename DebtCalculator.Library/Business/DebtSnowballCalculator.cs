@@ -11,13 +11,13 @@ namespace DebtCalculator.Library
     {
     }
 
-    public Collection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManager, PaymentManager paymentManager)
+    public ObservableCollection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManager, PaymentManager paymentManager)
     {
       DateTime simulatedDate = DateTime.Now;
 
       var watch = Stopwatch.StartNew();
 
-      Collection<PaymentPlanOutputEntry> col = new Collection<PaymentPlanOutputEntry>();
+      ObservableCollection<PaymentPlanOutputEntry> col = new ObservableCollection<PaymentPlanOutputEntry>();
 
       foreach (DebtEntry debt in debtManager.DebtEntries)
       {
