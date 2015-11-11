@@ -1,7 +1,7 @@
 using GalaSoft.MvvmLight;
 using DebtCalculator.Library;
 
-namespace DebtCalculator.ViewModels
+namespace DebtCalculator.PageModels
 {
   /// <summary>
   /// This class contains properties that the main View can data bind to.

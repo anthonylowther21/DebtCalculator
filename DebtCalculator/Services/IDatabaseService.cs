@@ -6,13 +6,8 @@ namespace DebtCalculator
 {
   public interface IDatabaseService
   {
-    List<DebtEntry> GetDebts ();
-
-    void UpdateDebt (DebtEntry contact);
-
-    List<SalaryEntry> GetSalaries ();
-
-    void UpdateSalary (SalaryEntry quote);
+    DebtManager GetDebtManager();
+    PaymentManager GetPaymentManager();
   }
 }
 

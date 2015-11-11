@@ -19,7 +19,7 @@ namespace DebtCalculator.Library
 
       ObservableCollection<PaymentPlanOutputEntry> col = new ObservableCollection<PaymentPlanOutputEntry>();
 
-      foreach (DebtEntry debt in debtManager.DebtEntries)
+      foreach (DebtEntry debt in debtManager.Debts)
       {
         while (debt.CurrentBalance > 0)
         {

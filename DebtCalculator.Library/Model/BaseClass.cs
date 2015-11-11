@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DebtCalculatorLibrary.Library
+namespace DebtCalculator.Library
 {
   public class BaseClass
   {

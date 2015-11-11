@@ -6,7 +6,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Xamarin.Forms;
 
-namespace DebtCalculator.ViewModels
+namespace DebtCalculator.PageModels
 {
   public class DebtsViewModel : ViewModelBase
   {

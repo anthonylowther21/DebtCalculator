@@ -14,15 +14,32 @@ namespace DebtCalculator.Library
       _debtEntries = new ObservableCollection<DebtEntry>();
     }
 
-    public ObservableCollection<DebtEntry> DebtEntries 
+    public ObservableCollection<DebtEntry> Debts 
     { 
       get { return _debtEntries; } 
     }
 
-    public bool AddDebtEntry(DebtEntry debtEntry)
+    public void UpdateDebt (DebtEntry newItem)
     {
-      _debtEntries.Add(debtEntry);
-      return true;
+      DebtEntry oldItem = null;
+
+      foreach (DebtEntry item in _debtEntries)
+      {
+        if (item.Id == newItem.Id)
+        {
+          oldItem = item;
+          break;
+        }
+      }
+
+      if (oldItem != null)
+      {
+        oldItem.Name = newItem.Name;
+      }
+      else
+      {
+        _debtEntries.Add(newItem);
+      }
     }
   }
 }

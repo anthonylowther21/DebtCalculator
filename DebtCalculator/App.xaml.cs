@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using DebtCalculator.Views;
+using FreshMvvm;
+using DebtCalculator.Navigation;
 
 namespace DebtCalculator
 {
@@ -11,9 +12,12 @@ namespace DebtCalculator
     {
       InitializeComponent();
 
-      NavigationPage np = new NavigationPage (new MainTabbedPage ());
-      np.BarBackgroundColor = Color.Gray;
-      MainPage = np;
+      FreshIOC.Container.Register<IDatabaseService, DatabaseService> ();
+
+      MainPage = new NavigationPage( new CustomImplementedNav ());
+      //NavigationPage np = new NavigationPage (new MainTabbedPage ());
+      //np.BarBackgroundColor = Color.Gray;
+      //MainPage = np;
 
     }
 

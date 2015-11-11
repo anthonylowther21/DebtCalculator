@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace DebtCalculator.Library
 {
-  public class DebtEntry
+  public class DebtEntry : BaseClass
   {
     private string  _name               = "Debt Name";
     private double  _startingBalance    = 10000;
@@ -22,6 +22,10 @@ namespace DebtCalculator.Library
       LoanTerm = loanTerm;
 
       InitializeMonthlyPayment();
+    }
+
+    public DebtEntry()
+    {
     }
 
     public string Name 

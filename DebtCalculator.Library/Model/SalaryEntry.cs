@@ -2,7 +2,7 @@
 
 namespace DebtCalculator.Library
 {
-  public class SalaryEntry
+  public class SalaryEntry : BaseClass
   {
     public SalaryEntry ( double startingSalary, 
                             double yearlyIncreasePercent, 
