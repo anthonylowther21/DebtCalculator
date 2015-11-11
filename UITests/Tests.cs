@@ -37,16 +37,16 @@ namespace DebtCalculator.UITests
       DebtManager debtManager = new DebtManager();
       PaymentManager paymentManager = new PaymentManager();
 
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 1", 25000, 5000, 2.99, 60));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 2", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 3", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 4", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 5", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 6", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 7", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 8", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 9", 190000, 180000, 3.25, 360));
-      debtManager.AddDebtEntry(DebtEntry.CreateDebtEntry("Debt 10", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 1", 25000, 5000, 2.99, 60));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 2", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 3", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 4", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 5", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 6", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 7", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 8", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 9", 190000, 180000, 3.25, 360));
+      debtManager.AddDebtEntry(new DebtEntry("Debt 10", 190000, 180000, 3.25, 360));
 
       paymentManager.AddSalaryEntry(70000, 0.01, new DateTime(2016, 9, 1));
       paymentManager.AddSalaryEntry(40000, 0.01, new DateTime(2016, 9, 1));

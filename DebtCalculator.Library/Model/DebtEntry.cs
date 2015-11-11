@@ -13,24 +13,15 @@ namespace DebtCalculator.Library
 
     private const double _yearly_to_monthly_interest_term_inverse = 1.0 / 12.0 / 100.0;
 
-    static public DebtEntry CreateDebtEntry(string name, double startBalance, double currentBalance, double yearlyInterest, int loanTerm)
+    public DebtEntry(string name, double startBalance, double currentBalance, double yearlyInterest, int loanTerm)
     {
-      DebtEntry debtEntry = new DebtEntry() 
-        {
-          Name = name,
-          StartingBalance = startBalance,
-          CurrentBalance = currentBalance,
-          YearlyInterestRate = yearlyInterest,
-          LoanTerm = loanTerm
-        };
+      Name = name;
+      StartingBalance = startBalance;
+      CurrentBalance = currentBalance;
+      YearlyInterestRate = yearlyInterest;
+      LoanTerm = loanTerm;
 
-      InitializeMonthlyPayment(debtEntry);
-
-      return debtEntry;
-    }
-
-    public DebtEntry()
-    {
+      InitializeMonthlyPayment();
     }
 
     public string Name 
@@ -42,7 +33,11 @@ namespace DebtCalculator.Library
     public double StartingBalance
     {
       get { return _startingBalance; }
-      set { _startingBalance = value; }
+      set 
+      { 
+        _startingBalance = value; 
+        InitializeMonthlyPayment();
+      }
     }
 
     public double CurrentBalance
@@ -54,23 +49,31 @@ namespace DebtCalculator.Library
     public double YearlyInterestRate
     {
       get { return _yearlyInterestRate; }
-      set { _yearlyInterestRate = value; }
+      set 
+      { 
+        _yearlyInterestRate = value; 
+        InitializeMonthlyPayment();
+      }
     }
 
     public int LoanTerm
     {
       get { return _loanTerm; }
-      set { _loanTerm = value; }
+      set 
+      { 
+        _loanTerm = value; 
+        InitializeMonthlyPayment();
+      }
     }
       
     public double MinimumMonthlyPayment { get; private set; }
     public double MonthlyInterest { get; private set; }
 
-    static protected void InitializeMonthlyPayment(DebtEntry debtEntry)
+    void InitializeMonthlyPayment()
     {
-      debtEntry.MonthlyInterest = debtEntry.YearlyInterestRate * _yearly_to_monthly_interest_term_inverse;
-      double monthlyInterest_Loan_Term = Math.Pow ((1 + debtEntry.MonthlyInterest), debtEntry.LoanTerm);
-      debtEntry.MinimumMonthlyPayment = debtEntry.MonthlyInterest * debtEntry.StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
+      MonthlyInterest = YearlyInterestRate * _yearly_to_monthly_interest_term_inverse;
+      double monthlyInterest_Loan_Term = Math.Pow ((1 + MonthlyInterest), LoanTerm);
+      MinimumMonthlyPayment = MonthlyInterest * StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
     }
   }
 }
