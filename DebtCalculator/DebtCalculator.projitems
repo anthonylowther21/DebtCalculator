@@ -31,9 +31,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\CreateDebtPage.xaml.cs">
       <DependentUpon>CreateDebtPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IDatabaseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DatabaseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelLocator.cs" />

@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\WindfallEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Business\DebtSnowballCalculator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTime.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\BaseClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Business\" />
