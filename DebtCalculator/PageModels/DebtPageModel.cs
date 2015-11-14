@@ -8,11 +8,11 @@ using PropertyChanged;
 namespace DebtCalculator.PageModels
 {
   [ImplementPropertyChanged]
-  public class ContactPageModel : FreshBasePageModel
+  public class DebtPageModel : FreshBasePageModel
   {
     IDatabaseService _dataService;
 
-    public ContactPageModel (IDatabaseService dataService)
+    public DebtPageModel (IDatabaseService dataService)
     {
       _dataService = dataService;
     }

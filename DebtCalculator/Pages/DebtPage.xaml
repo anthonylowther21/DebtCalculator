@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<BasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.DebtPage">
+	<BasePage.Content>
+		<StackLayout Padding="15">
+			<Label Text="Debt Name" ></Label>
+			<Entry Text="{Binding Debt.Name}"></Entry>
+			<Label Text="Debt Balance" ></Label>
+			<Entry Text="{Binding Debt.CurrentBalance}"></Entry>
+			<Button Text="Save" Command="{Binding SaveCommand}"></Button>
+			<BoxView HeightRequest="30"></BoxView>
+			<Button Text="Test Modal" Command="{Binding TestModal}"></Button>
+		</StackLayout>
+	</BasePage.Content>
+</BasePage>

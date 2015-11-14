@@ -14,7 +14,7 @@ namespace DebtCalculator
 
       FreshIOC.Container.Register<IDatabaseService, DatabaseService> ();
 
-      MainPage = new NavigationPage( new CustomImplementedNav ());
+      MainPage = new CustomImplementedNav ();
       //NavigationPage np = new NavigationPage (new MainTabbedPage ());
       //np.BarBackgroundColor = Color.Gray;
       //MainPage = np;

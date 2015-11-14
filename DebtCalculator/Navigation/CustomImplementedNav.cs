@@ -1,9 +1,9 @@
 ﻿using System;
-using FreshMvvm;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DebtCalculator.PageModels;
+using FreshMvvm;
 
 namespace DebtCalculator.Navigation
 {
@@ -25,7 +25,7 @@ namespace DebtCalculator.Navigation
     void SetupTabbedPage()
     {
       _tabbedNavigationPage = new FreshTabbedNavigationContainer ();
-      //_debtsPage = _tabbedNavigationPage.AddTab<ContactListPageModel> ("Debts", "contacts.png");
+      _debtsPage = _tabbedNavigationPage.AddTab<DebtListPageModel> ("Debts", "");
       this.Detail = _tabbedNavigationPage;
     }
 
@@ -40,13 +40,13 @@ namespace DebtCalculator.Navigation
       _menuPage.Title = menuPageTitle;
       var listView = new ListView();
 
-      listView.ItemsSource = new string[] { "Contacts", "Modal Demo" };
+      listView.ItemsSource = new string[] { "Debts", "Modal Demo" };
 
       listView.ItemSelected += async (sender, args) =>
         {
 
           switch ((string)args.SelectedItem) {
-            case "Contacts":
+            case "Debts":
               _tabbedNavigationPage.CurrentPage = _debtsPage;
               break;
             case "Modal Demo":

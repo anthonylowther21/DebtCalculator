@@ -15,17 +15,24 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDatabaseService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\DatabaseService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtEntryPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\ModalPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtListPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtListPage.xaml.cs">
+      <DependentUpon>DebtListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\MyBasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml.cs">
+      <DependentUpon>DebtPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)PageModels\DebtsViewModel.cs" />
-    <None Include="$(MSBuildThisFileDirectory)PageModels\MainTabbedViewModel.cs" />
     <None Include="$(MSBuildThisFileDirectory)Views\MainTabbedPage.xaml.cs">
       <DependentUpon>MainTabbedPage.xaml</DependentUpon>
     </None>
@@ -65,6 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
