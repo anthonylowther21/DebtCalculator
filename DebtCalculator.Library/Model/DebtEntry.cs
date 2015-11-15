@@ -24,7 +24,7 @@ namespace DebtCalculator.Library
       InitializeMonthlyPayment();
     }
 
-    public DebtEntry()
+    public DebtEntry() : base()
     {
     }
 

@@ -6,7 +6,7 @@ namespace DebtCalculator.Library
   {
     public BaseClass()
     {
-      Id = new Guid();
+      Id = Guid.NewGuid();
     }
 
     public Guid Id { get; private set; }

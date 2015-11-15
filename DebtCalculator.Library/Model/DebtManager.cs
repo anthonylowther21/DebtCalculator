@@ -35,6 +35,7 @@ namespace DebtCalculator.Library
       if (oldItem != null)
       {
         oldItem.Name = newItem.Name;
+        oldItem.CurrentBalance = newItem.CurrentBalance;
       }
       else
       {

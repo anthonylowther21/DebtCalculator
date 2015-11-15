@@ -21,9 +21,11 @@ namespace DebtCalculator.PageModels
 
     public override void Init (object initData)
     {
-      if (initData != null) {
+      if (initData != null) 
+      {
         Debt = (DebtEntry)initData;
-      } else {
+      } else 
+      {
         Debt = new DebtEntry ();
       }
     }
