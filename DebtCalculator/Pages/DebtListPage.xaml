@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<BasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.DebtListPage">
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.DebtListPage"
+xmlns:d="clr-namespace:DebtCalculator.Pages">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Add" Command="{Binding AddDebt}" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
-	<BasePage.Content>
+	<d:MyBasePage.Content>
 		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt}" >
 			<ListView.ItemTemplate>
 				<DataTemplate>
@@ -11,5 +12,5 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-	</BasePage.Content>
-</BasePage>
+	</d:MyBasePage.Content>
+</d:MyBasePage>
