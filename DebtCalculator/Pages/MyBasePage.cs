@@ -4,14 +4,15 @@ using DebtCalculator.Navigation;
 
 namespace DebtCalculator.Pages
 {
-    public class MyBasePage : ContentPage
+  public class MyBasePage : ContentPage
+  {
+    public MyBasePage ()
     {
-        public MyBasePage ()
+      ToolbarItems.Add (new ToolbarItem ("Main Menu", null, () => 
         {
-            ToolbarItems.Add (new ToolbarItem ("Main Menu", null, () => {
-                Application.Current.MainPage = new NavigationPage (new CustomImplementedNav ());
-            }));
-        }
+          Application.Current.MainPage = new NavigationPage (new CustomImplementedNav ());
+        }));
     }
+  }
 }
 

@@ -23,30 +23,50 @@ namespace DebtCalculator.PageModels
     {
       if (initData != null) 
       {
-        Debt = (DebtEntry)initData;
-      } else 
+        Debt = ((DebtEntry)initData).Clone();
+      } 
+      else 
       {
         Debt = new DebtEntry ();
       }
     }
 
-    public Command SaveCommand {
-      get { 
-        return new Command (() => {
-          _dataService.GetDebtManager().UpdateDebt(Debt);
-          CoreMethods.PopPageModel (Debt);
-        }
+    public Command SaveCommand 
+    {
+      get 
+      { 
+        return new Command (() => 
+          {
+            _dataService.GetDebtManager().UpdateDebt(Debt);
+            CoreMethods.PopPageModel (Debt);
+          }
         );
       }
     }
 
-    public Command TestModal {
-      get {
-        return new Command (async () => {
-          await CoreMethods.PushPageModel<ModalPageModel> (null, true);
-        });
+    public Command DeleteCommand 
+    {
+      get 
+      { 
+        return new Command (() => 
+          {
+            _dataService.GetDebtManager().DeleteDebt(Debt);
+            CoreMethods.PopPageModel (Debt);
+          }
+        );
       }
     }
+
+//    public Command TestModal 
+//    {
+//      get 
+//      {
+//        return new Command (async () => 
+//          {
+//            await CoreMethods.PushPageModel<ModalPageModel> (null, true);
+//          });
+//      }
+//    }
   }
 }
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
+  [ImplementPropertyChanged]
   public class DebtEntry : BaseClass
   {
     private string  _name               = "Debt Name";
@@ -26,6 +28,17 @@ namespace DebtCalculator.Library
 
     public DebtEntry() : base()
     {
+    }
+
+    public DebtEntry Clone()
+    {
+      DebtEntry clone = new DebtEntry();
+
+      clone.Name = this.Name;
+      clone.CurrentBalance = this.CurrentBalance;
+      clone.Id = this.Id;
+
+      return clone;
     }
 
     public string Name 

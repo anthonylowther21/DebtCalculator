@@ -26,8 +26,6 @@ namespace DebtCalculator.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::GalaSoft.MvvmLight.Resource.String.ApplicationName = global::DebtCalculator.Droid.Resource.String.ApplicationName;
-			global::GalaSoft.MvvmLight.Resource.String.Hello = global::DebtCalculator.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::DebtCalculator.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::DebtCalculator.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::DebtCalculator.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;

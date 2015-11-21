@@ -5,10 +5,10 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
         <ToolbarItem Name="Add" Command="{Binding AddDebt}" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
 	<d:MyBasePage.Content>
-		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt}" >
+		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt, Mode=TwoWay}" >
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<TextCell Text="{Binding Name}" Detail="{Binding CurrentBalance}"></TextCell>
+					<TextCell Text="{Binding Name, Mode=OneWay}" Detail="{Binding CurrentBalance, Mode=OneWay}"></TextCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>

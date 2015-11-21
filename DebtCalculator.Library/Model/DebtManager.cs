@@ -2,44 +2,43 @@
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
+using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
   public class DebtManager
   {
-    private ObservableCollection<DebtEntry> _debtEntries;
+    private List<DebtEntry> _debtEntries;
 
     public DebtManager ()
     {
-      _debtEntries = new ObservableCollection<DebtEntry>();
+      _debtEntries = new List<DebtEntry>();
     }
 
-    public ObservableCollection<DebtEntry> Debts 
+    public List<DebtEntry> Debts 
     { 
       get { return _debtEntries; } 
     }
 
     public void UpdateDebt (DebtEntry newItem)
     {
-      DebtEntry oldItem = null;
-
-      foreach (DebtEntry item in _debtEntries)
-      {
-        if (item.Id == newItem.Id)
-        {
-          oldItem = item;
-          break;
-        }
-      }
+      var oldItem = _debtEntries.Find(c => c.Id == newItem.Id);
 
       if (oldItem != null)
       {
-        oldItem.Name = newItem.Name;
-        oldItem.CurrentBalance = newItem.CurrentBalance;
+        _debtEntries.Remove(oldItem);
       }
-      else
+
+      _debtEntries.Add(newItem);
+    }
+
+    public void DeleteDebt (DebtEntry item)
+    {
+      var oldItem = _debtEntries.Find(c => c.Id == item.Id);
+
+      if (oldItem != null)
       {
-        _debtEntries.Add(newItem);
+        _debtEntries.Remove(oldItem);
       }
     }
   }

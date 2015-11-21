@@ -9,7 +9,7 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
 			<Entry Text="{Binding Debt.CurrentBalance}"></Entry>
 			<Button Text="Save" Command="{Binding SaveCommand}"></Button>
 			<BoxView HeightRequest="30"></BoxView>
-			<Button Text="Test Modal" Command="{Binding TestModal}"></Button>
+			<Button Text="Delete" Command="{Binding DeleteCommand}"></Button>
 		</StackLayout>
 	</d:MyBasePage.Content>
-</d:MyBasePage>
+</d:MyBasePage> 
