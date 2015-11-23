@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.SalaryPage"
+xmlns:d="clr-namespace:DebtCalculator.Pages">
+  <d:MyBasePage.Content>
+    <StackLayout Orientation="Vertical" Padding="15">
+      <Label Text="Starting Salary" ></Label>
+      <Entry Text="{Binding Salary.StartingSalary}"> </Entry>
+      <Label Text="Yearly Increase Percent" ></Label>
+      <Entry Text="{Binding Salary.YearlySnowballIncreasePercent}"> </Entry>
+      <Label Text="Yearly Applied Date" ></Label>
+      <DatePicker Date="{Binding Salary.YearlyAppliedDate}"></DatePicker>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
+    </StackLayout>
+  </d:MyBasePage.Content>
+</d:MyBasePage> 

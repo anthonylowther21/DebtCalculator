@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.SalaryListPage"
+xmlns:d="clr-namespace:DebtCalculator.Pages">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Add" Command="{Binding AddSalary}" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+	<d:MyBasePage.Content>
+		<ListView ItemsSource="{Binding Salaries}" SelectedItem="{Binding SelectedSalary, Mode=TwoWay}" >
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<TextCell Text="{Binding StartingSalary, Mode=OneWay}" Detail="{Binding YearlySnowballIncreasePercent, Mode=OneWay}"></TextCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</d:MyBasePage.Content>
+</d:MyBasePage>

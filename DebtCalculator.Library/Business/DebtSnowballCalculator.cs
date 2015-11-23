@@ -2,29 +2,46 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace DebtCalculator.Library
 {
   public class DebtSnowballCalculator
   {
+    private DebtManager _localDebtManager;
+    private PaymentManager _localPaymentManager;
+
     public DebtSnowballCalculator ()
     {
     }
 
-    public ObservableCollection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManager, PaymentManager paymentManager)
+    private void CreateLocalCopies(DebtManager debtManager, PaymentManager paymentManager)
     {
+      _localDebtManager = new DebtManager();
+      _localDebtManager.Debts = debtManager.CloneDebts();
+
+      _localPaymentManager = new PaymentManager();
+      _localPaymentManager.WindfallEntries = paymentManager.CloneWindfalls();
+      _localPaymentManager.SalaryEntries = paymentManager.CloneSalaries();
+      _localPaymentManager.SnowballAmount = paymentManager.SnowballAmount;
+    }
+
+    public ObservableCollection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManagerXX, PaymentManager paymentManagerXX)
+    {
+      CreateLocalCopies(debtManagerXX, paymentManagerXX);
+
       DateTime simulatedDate = DateTime.Now;
 
       var watch = Stopwatch.StartNew();
 
       ObservableCollection<PaymentPlanOutputEntry> col = new ObservableCollection<PaymentPlanOutputEntry>();
 
-      foreach (DebtEntry debt in debtManager.Debts)
+      foreach (DebtEntry debt in _localDebtManager.Debts)
       {
         while (debt.CurrentBalance > 0)
         {
-          double salarySnowball = paymentManager.GetTotalMonthlySnowball(simulatedDate);
-          col.Add(this.ApplyMonthlyPayment(simulatedDate, debt, paymentManager, salarySnowball));
+          double salarySnowball = _localPaymentManager.GetTotalMonthlySnowball(simulatedDate);
+          col.Add(this.ApplyMonthlyPayment(simulatedDate, debt, _localPaymentManager, salarySnowball));
           simulatedDate = simulatedDate.AddMonths(1);
         }
       }  

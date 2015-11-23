@@ -8,10 +8,10 @@ namespace DebtCalculator.Pages
   {
     public MyBasePage ()
     {
-      ToolbarItems.Add (new ToolbarItem ("Main Menu", null, () => 
-        {
-          Application.Current.MainPage = new NavigationPage (new CustomImplementedNav ());
-        }));
+//      ToolbarItems.Add (new ToolbarItem ("Run", null, () => 
+//        {
+//          Application.Current.MainPage = new CustomImplementedNav ();
+//        }));
     }
   }
 }

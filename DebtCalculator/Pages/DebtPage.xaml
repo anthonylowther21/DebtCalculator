@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.DebtPage"
 xmlns:d="clr-namespace:DebtCalculator.Pages">
-	<d:MyBasePage.Content>
-		<StackLayout Padding="15">
-			<Label Text="Debt Name" ></Label>
-			<Entry Text="{Binding Debt.Name}"></Entry>
-			<Label Text="Debt Balance" ></Label>
-			<Entry Text="{Binding Debt.CurrentBalance}"></Entry>
-			<Button Text="Save" Command="{Binding SaveCommand}"></Button>
-			<BoxView HeightRequest="30"></BoxView>
-			<Button Text="Delete" Command="{Binding DeleteCommand}"></Button>
-		</StackLayout>
-	</d:MyBasePage.Content>
+  <d:MyBasePage.Content>
+    <StackLayout Orientation="Vertical" Padding="15">
+      <Label Text="Debt Name" ></Label>
+      <Entry Text="{Binding Debt.Name}"> </Entry>
+      <Label Text="Start Balance" ></Label>
+      <Entry Text="{Binding Debt.StartingBalance}"> </Entry>
+      <Label Text="Current Balance" ></Label>
+      <Entry Text="{Binding Debt.CurrentBalance}"></Entry>
+      <Label Text="Yearly Interest" ></Label>
+      <Entry Text="{Binding Debt.YearlyInterestRate}"></Entry>
+      <Label Text="Loan Term" ></Label>
+      <Entry Text="{Binding Debt.LoanTerm, Mode=TwoWay}"></Entry>
+      <Label Text="Monthly Payment" ></Label>
+      <Label Text="{Binding Debt.MinimumMonthlyPayment, Mode=TwoWay}" ></Label>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
+    </StackLayout>
+  </d:MyBasePage.Content>
 </d:MyBasePage> 

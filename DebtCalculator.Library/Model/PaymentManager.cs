@@ -7,32 +7,39 @@ namespace DebtCalculator.Library
 {
   public class PaymentManager
   {
-    private ObservableCollection<SalaryEntry> _salaryEntries = null;
-    private ObservableCollection<WindfallEntry> _windfallEntries = null;
+    private List<SalaryEntry> _salaryEntries = null;
+    private List<WindfallEntry> _windfallEntries = null;
     private double _snowballAmount = Double.NaN;
     private const double inv_twelve = 1 / 12.0;
 
     public PaymentManager ()
     {
       _snowballAmount = 0;
-      _salaryEntries = new ObservableCollection<SalaryEntry> ();
-      _windfallEntries = new ObservableCollection<WindfallEntry> ();
+      _salaryEntries = new List<SalaryEntry> ();
+      _windfallEntries = new List<WindfallEntry> ();
     }
 
-    public ObservableCollection<SalaryEntry> SalaryEntries
+    public List<SalaryEntry> SalaryEntries
     { 
       get { return _salaryEntries; }
+      set { _salaryEntries = value; }
     }
 
-    public ObservableCollection<WindfallEntry> WindfallEntries
+    public List<WindfallEntry> WindfallEntries
     { 
       get { return _windfallEntries; }
+      set { _windfallEntries = value; }
     }
 
     public double SnowballAmount 
     { 
       get { return _snowballAmount; }
       set { _snowballAmount = value; }
+    }
+
+    public List<object> GetAllPayments()
+    {
+      return new List<object>() { new object[] { SalaryEntries, WindfallEntries, SnowballAmount } };
     }
 
     public void AddSalaryEntry(double startingSalary, double yearlyIncreasePercent, DateTime appliedDate)
@@ -56,7 +63,7 @@ namespace DebtCalculator.Library
       {
         int monthDifference = GetMonthDifference(simulatedDate, windfallEntry.WindfallDate);
 
-        if (monthDifference % windfallEntry.ReccurringFrequency == 0)
+        if (monthDifference % windfallEntry.RecurringFrequency == 0)
         {
           amount += windfallEntry.Amount;
         }
@@ -82,9 +89,73 @@ namespace DebtCalculator.Library
 
     }
 
+    public void UpdateSalary (SalaryEntry newItem)
+    {
+      var oldItem = _salaryEntries.Find(c => c.Id == newItem.Id);
+
+      if (oldItem != null)
+      {
+        _salaryEntries.Remove(oldItem);
+      }
+
+      _salaryEntries.Add(newItem);
+    }
+
+    public void DeleteSalary (SalaryEntry item)
+    {
+      var oldItem = _salaryEntries.Find(c => c.Id == item.Id);
+
+      if (oldItem != null)
+      {
+        _salaryEntries.Remove(oldItem);
+      }
+    }
+
+    public void UpdateWindfall (WindfallEntry newItem)
+    {
+      var oldItem = _windfallEntries.Find(c => c.Id == newItem.Id);
+
+      if (oldItem != null)
+      {
+        _windfallEntries.Remove(oldItem);
+      }
+
+      _windfallEntries.Add(newItem);
+    }
+
+    public void DeleteWindfall (WindfallEntry item)
+    {
+      var oldItem = _windfallEntries.Find(c => c.Id == item.Id);
+
+      if (oldItem != null)
+      {
+        _windfallEntries.Remove(oldItem);
+      }
+    }
+
     private int GetMonthDifference(DateTime lValue, DateTime rValue)
     {
       return (lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year);
+    }
+
+    public List<SalaryEntry> CloneSalaries()
+    {
+      List<SalaryEntry> clones = new List<SalaryEntry>();
+      foreach (var item in _salaryEntries)
+      {
+        clones.Add(item.Clone());
+      }
+      return clones;
+    }
+
+    public List<WindfallEntry> CloneWindfalls()
+    {
+      List<WindfallEntry> clones = new List<WindfallEntry>();
+      foreach (var item in _windfallEntries)
+      {
+        clones.Add(item.Clone());
+      }
+      return clones;
     }
   }
 }

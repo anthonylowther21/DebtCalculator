@@ -10,7 +10,7 @@ namespace DebtCalculator.Library
     private string  _name               = "Debt Name";
     private double  _startingBalance    = 10000;
     private double  _currentBalance     = 5000;
-    private double  _yearlyInterestRate = 0.0325;
+    private double  _yearlyInterestRate = 3.25;
     private int     _loanTerm           = 36;
 
     private const double _yearly_to_monthly_interest_term_inverse = 1.0 / 12.0 / 100.0;
@@ -28,17 +28,13 @@ namespace DebtCalculator.Library
 
     public DebtEntry() : base()
     {
+      InitializeMonthlyPayment();
     }
 
-    public DebtEntry Clone()
+    public new DebtEntry Clone()
     {
-      DebtEntry clone = new DebtEntry();
-
-      clone.Name = this.Name;
-      clone.CurrentBalance = this.CurrentBalance;
-      clone.Id = this.Id;
-
-      return clone;
+      DebtEntry debt = (DebtEntry)base.Clone();
+      return debt;
     }
 
     public string Name 
@@ -86,7 +82,7 @@ namespace DebtCalculator.Library
     public double MinimumMonthlyPayment { get; private set; }
     public double MonthlyInterest { get; private set; }
 
-    void InitializeMonthlyPayment()
+    private void InitializeMonthlyPayment()
     {
       MonthlyInterest = YearlyInterestRate * _yearly_to_monthly_interest_term_inverse;
       double monthlyInterest_Loan_Term = Math.Pow ((1 + MonthlyInterest), LoanTerm);

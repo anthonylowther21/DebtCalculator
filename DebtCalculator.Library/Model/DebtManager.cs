@@ -18,6 +18,7 @@ namespace DebtCalculator.Library
     public List<DebtEntry> Debts 
     { 
       get { return _debtEntries; } 
+      set { _debtEntries = value; }
     }
 
     public void UpdateDebt (DebtEntry newItem)
@@ -40,6 +41,16 @@ namespace DebtCalculator.Library
       {
         _debtEntries.Remove(oldItem);
       }
+    }
+
+    public List<DebtEntry> CloneDebts()
+    {
+      List<DebtEntry> clones = new List<DebtEntry>();
+      foreach (var item in _debtEntries)
+      {
+        clones.Add(item.Clone());
+      }
+      return clones;
     }
   }
 }

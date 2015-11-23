@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.WindfallPage"
+xmlns:d="clr-namespace:DebtCalculator.Pages">
+  <d:MyBasePage.Content>
+    <StackLayout Orientation="Vertical" Padding="15">
+      <Label Text="Amount"></Label>
+      <Entry Text="{Binding Windfall.Amount}"> </Entry>
+      <Label Text="Applied Date" ></Label>
+      <DatePicker Date="{Binding Windfall.WindfallDate}"> </DatePicker>
+      <Label Text="Recurring?" ></Label>
+      <Switch IsToggled="{Binding Windfall.IsRecurring}"></Switch>
+      <Label Text="Recurring Frequency" IsVisible="{Binding Windfall.IsRecurring}"></Label>
+      <Entry Text="{Binding Windfall.RecurringFrequency}" IsVisible="{Binding Windfall.IsRecurring}"> </Entry>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
+    </StackLayout>
+  </d:MyBasePage.Content>
+</d:MyBasePage> 

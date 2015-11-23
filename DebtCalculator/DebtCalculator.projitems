@@ -26,6 +26,34 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml.cs">
       <DependentUpon>DebtPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\SnowballPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SnowballPage.xaml.cs">
+      <DependentUpon>SnowballPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\PaymentListPage.xaml.cs">
+      <DependentUpon>PaymentListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\PaymentListPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\SalaryListPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\SalaryPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SalaryListPage.xaml.cs">
+      <DependentUpon>SalaryListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SalaryPage.xaml.cs">
+      <DependentUpon>SalaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\WindfallPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\WindfallListPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\WindfallPage.xaml.cs">
+      <DependentUpon>WindfallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\WindfallListPage.xaml.cs">
+      <DependentUpon>WindfallListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AmortizationListPage.cs">
+      <DependentUpon>AmortizationListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\AmortizationListPageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -78,6 +106,27 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SnowballPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\PaymentListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SalaryListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SalaryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\WindfallPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\WindfallListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\AmortizationListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

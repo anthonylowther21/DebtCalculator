@@ -46,6 +46,11 @@ namespace DebtCalculator.Library
       output.Print(message);
     }
 
+    public string Summary
+    {
+      get { return (DebtName + " - " + EndBalance).ToString(); }
+    }
+
     public void Print(string message)
     {
       System.Diagnostics.Debug.WriteLine(message);

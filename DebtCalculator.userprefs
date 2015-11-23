@@ -2,16 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.1" />
   <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Navigation/CustomImplementedNav.cs">
     <Files>
-      <File FileName="DebtCalculator/Pages/MyBasePage.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/DebtListPage.xaml" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/DebtListPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Navigation/CustomImplementedNav.cs" Line="28" Column="1" />
-      <File FileName="../../Downloads/FreshMvvm-master/samples/FreshMvvmSampleApp/FreshMvvmSampleApp/Pages/ContactListPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="../../Downloads/FreshMvvm-master/samples/FreshMvvmSampleApp/FreshMvvmSampleApp/FreshMvvmSampleApp.cs" Line="28" Column="31" />
+      <File FileName="DebtCalculator/Pages/SnowballPage.xaml" Line="8" Column="125" />
+      <File FileName="DebtCalculator/Navigation/CustomImplementedNav.cs" Line="29" Column="82" />
+      <File FileName="DebtCalculator/PageModels/DebtListPageModel.cs" Line="16" Column="64" />
+      <File FileName="DebtCalculator/PageModels/PaymentListPageModel.cs" Line="11" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/anthonylowther/Github/DebtCalculator/DebtCalculator/PageModels/SnowballPageModel.cs" line="40" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

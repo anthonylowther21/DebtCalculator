@@ -10,6 +10,11 @@ namespace DebtCalculator.Library
     }
 
     public Guid Id { get; set; }
+
+    public BaseClass Clone()
+    {
+      return (BaseClass)this.MemberwiseClone();
+    }
   }
 }
 

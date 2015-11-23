@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.SnowballPage"
+xmlns:d="clr-namespace:DebtCalculator.Pages">
+  <d:MyBasePage.Content>
+    <StackLayout Orientation="Vertical" Padding="15">
+      <Label Text="Snowball Amount" ></Label>
+      <Entry Text="{Binding Snowball}"> </Entry>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
+    </StackLayout>
+  </d:MyBasePage.Content>
+</d:MyBasePage> 
