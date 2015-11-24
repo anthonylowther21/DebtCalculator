@@ -9,7 +9,6 @@ namespace DebtCalculator.Library
     private double _startingSalary = 40000;
     private double _yearlyIncreasePercent = 0.01;
     private DateTime _appliedDate = DateTime.Now;
-    private double inv_one_hundred = 1 / 100.0;
 
     public SalaryEntry ( double startingSalary, 
                             double yearlyIncreasePercent, 

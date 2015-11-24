@@ -7,7 +7,7 @@
 		<ListView ItemsSource="{Binding Amortizations}" SelectedItem="{Binding SelectedAmortization, Mode=TwoWay}" >
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<TextCell Text="{Binding Summary, Mode=OneWay}" Detail="{Binding Date, Mode=OneWay}"></TextCell>
+					<TextCell Text="{Binding Summary, Mode=OneWay}" Detail="{Binding DetailSummary, Mode=OneWay}"></TextCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>

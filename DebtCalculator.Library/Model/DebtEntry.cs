@@ -10,7 +10,7 @@ namespace DebtCalculator.Library
     private string  _name               = "Debt Name";
     private double  _startingBalance    = 10000;
     private double  _currentBalance     = 5000;
-    private double  _yearlyInterestRate = 3.25;
+    private double  _yearlyInterestRate = 0.0325;
     private int     _loanTerm           = 36;
 
     private const double _yearly_to_monthly_interest_term_inverse = 1.0 / 12.0 / 100.0;
@@ -84,7 +84,7 @@ namespace DebtCalculator.Library
 
     private void InitializeMonthlyPayment()
     {
-      MonthlyInterest = YearlyInterestRate * _yearly_to_monthly_interest_term_inverse;
+      MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
       double monthlyInterest_Loan_Term = Math.Pow ((1 + MonthlyInterest), LoanTerm);
       MinimumMonthlyPayment = MonthlyInterest * StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
     }

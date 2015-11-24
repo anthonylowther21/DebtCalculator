@@ -48,7 +48,12 @@ namespace DebtCalculator.Library
 
     public string Summary
     {
-      get { return (DebtName + " - " + EndBalance).ToString(); }
+      get { return (DebtName + " - " + TotalPayment).ToString(); }
+    }
+
+    public string DetailSummary
+    {
+      get { return (EndBalance + " - " + Date).ToString(); }
     }
 
     public void Print(string message)
