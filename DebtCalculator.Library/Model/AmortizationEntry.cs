@@ -5,9 +5,9 @@ using PropertyChanged;
 namespace DebtCalculator.Library
 {
   [ImplementPropertyChanged]
-  public class PaymentPlanOutputEntry
+  public class AmortizationEntry
   {
-    public PaymentPlanOutputEntry ( string debtName,      
+    public AmortizationEntry ( string debtName,      
                                     DateTime date, 
                                     double startBalance,  
                                     double interest, 
@@ -34,7 +34,7 @@ namespace DebtCalculator.Library
     public double TotalPayment { get; private set; }
     public double EndBalance { get; private set; }
 
-    public void WriteToConsole(PaymentPlanOutputEntry output)
+    public void WriteToConsole(AmortizationEntry output)
     {
       string message = output.DebtName +
         ": " + DateTimeExtensions.ToShortMonthName(output.Date) + " " + output.Date.Year +

@@ -21,7 +21,7 @@ namespace DebtCalculator.PageModels
     private DateTime _originalPayoffDate = DateTime.Now;
     private DateTime _snowballPayoffDate = DateTime.Now;
 
-    ObservableCollection<PaymentPlanOutputEntry> amortization;
+    ObservableCollection<AmortizationEntry> amortization;
 
     public SummaryPageModel (IDatabaseService databaseService)
     {

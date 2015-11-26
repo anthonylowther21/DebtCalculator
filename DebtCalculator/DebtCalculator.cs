@@ -98,7 +98,7 @@ namespace DebtCalculator
       //paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 
       DebtSnowballCalculator solver = new DebtSnowballCalculator();
-      Collection<PaymentPlanOutputEntry> outputs =
+      Collection<AmortizationEntry> outputs =
         solver.CalculateDebtSnowball(debtManager, paymentManager, true);
           
 

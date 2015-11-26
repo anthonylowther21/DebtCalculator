@@ -33,7 +33,7 @@ namespace DebtCalculator
       return _debtSnowballCalculator;
     }
 
-    public ObservableCollection<PaymentPlanOutputEntry> Calculate(bool applySnowballs = true)
+    public ObservableCollection<AmortizationEntry> Calculate(bool applySnowballs = true)
     {
       return _debtSnowballCalculator.CalculateDebtSnowball(_debtManager, _paymentManager, applySnowballs);
     }

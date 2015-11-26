@@ -29,7 +29,7 @@ namespace DebtCalculator.Library
       }
     }
 
-    public ObservableCollection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManagerXX, PaymentManager paymentManagerXX, bool applySnowballs)
+    public ObservableCollection<AmortizationEntry> CalculateDebtSnowball(DebtManager debtManagerXX, PaymentManager paymentManagerXX, bool applySnowballs)
     {
       CreateLocalCopies(debtManagerXX, paymentManagerXX, applySnowballs);
 
@@ -37,7 +37,7 @@ namespace DebtCalculator.Library
 
       var watch = Stopwatch.StartNew();
 
-      ObservableCollection<PaymentPlanOutputEntry> col = new ObservableCollection<PaymentPlanOutputEntry>();
+      ObservableCollection<AmortizationEntry> col = new ObservableCollection<AmortizationEntry>();
 
       foreach (DebtEntry debt in _localDebtManager.Debts)
       {
@@ -56,7 +56,7 @@ namespace DebtCalculator.Library
       return col;
     }
 
-    private PaymentPlanOutputEntry ApplyMonthlyPayment(DateTime currentDate, DebtEntry debtEntry, 
+    private AmortizationEntry ApplyMonthlyPayment(DateTime currentDate, DebtEntry debtEntry, 
       PaymentManager paymentManager, double additionalPrincipal = 0)
     {
       double startingBalance = debtEntry.CurrentBalance;
@@ -78,7 +78,7 @@ namespace DebtCalculator.Library
         debtEntry.CurrentBalance = possibleBalance;
       }
 
-      PaymentPlanOutputEntry output = new PaymentPlanOutputEntry(
+      AmortizationEntry output = new AmortizationEntry(
         debtEntry.Name, currentDate, startingBalance, interestPortion, 
         minimumPrincipal, additionalPrincipal, debtEntry.CurrentBalance);
       return output;

@@ -13,12 +13,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\DebtManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\PaymentPlanOutputEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\SalaryEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\WindfallEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Business\DebtSnowballCalculator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\BaseClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\AmortizationEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Business\" />

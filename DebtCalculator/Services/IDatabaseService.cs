@@ -10,7 +10,7 @@ namespace DebtCalculator
     DebtManager GetDebtManager();
     PaymentManager GetPaymentManager();
     DebtSnowballCalculator GetDebtSnowballCalculator();
-    ObservableCollection<PaymentPlanOutputEntry> Calculate(bool applySnowballs);
+    ObservableCollection<AmortizationEntry> Calculate(bool applySnowballs);
 
   }
 }

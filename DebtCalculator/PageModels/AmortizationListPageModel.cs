@@ -18,7 +18,7 @@ namespace DebtCalculator.PageModels
       _databaseService = databaseService;
     }
 
-    public ObservableCollection<PaymentPlanOutputEntry> Amortizations { get; set; }
+    public ObservableCollection<AmortizationEntry> Amortizations { get; set; }
 
     public override void Init (object initData)
     {
@@ -40,9 +40,9 @@ namespace DebtCalculator.PageModels
     {
     }
 
-    PaymentPlanOutputEntry _selectedAmortization;
+    AmortizationEntry _selectedAmortization;
 
-    public PaymentPlanOutputEntry SelectedAmortization 
+    public AmortizationEntry SelectedAmortization 
     {
       get 
       {
@@ -58,11 +58,11 @@ namespace DebtCalculator.PageModels
       }
     }
 
-    public Command<PaymentPlanOutputEntry> AmortizationSelected 
+    public Command<AmortizationEntry> AmortizationSelected 
     {
       get 
       {
-        return new Command<PaymentPlanOutputEntry> ( (amortization) => 
+        return new Command<AmortizationEntry> ( (amortization) => 
           {
             CoreMethods.PushPageModel<AmortizationPageModel> (amortization);
           });

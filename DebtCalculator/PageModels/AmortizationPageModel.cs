@@ -17,16 +17,16 @@ namespace DebtCalculator.PageModels
       _dataService = dataService;
     }
 
-    public PaymentPlanOutputEntry AmortizationEntry { get; set; }
+    public AmortizationEntry AmortizationEntry { get; set; }
 
     public override void Init (object initData)
     {
-      AmortizationEntry = ((PaymentPlanOutputEntry)initData);
+      AmortizationEntry = ((AmortizationEntry)initData);
     }
 
     public override void ReverseInit(object returndData)
     {
-      AmortizationEntry = ((PaymentPlanOutputEntry)returndData);
+      AmortizationEntry = ((AmortizationEntry)returndData);
       base.ReverseInit(returndData);
     }
   }
