@@ -16,6 +16,7 @@ namespace DebtCalculator.Navigation
     Page _debtsPage;
     Page _paymentsPage;
     Page _amortizationPage;
+    Page _summaryPage;
 
     public CustomImplementedNav ()
     { 
@@ -30,6 +31,7 @@ namespace DebtCalculator.Navigation
       _debtsPage = _tabbedNavigationPage.AddTab<DebtListPageModel> ("Debts", "");
       _paymentsPage = _tabbedNavigationPage.AddTab<PaymentListPageModel>("Payments", "");
       _amortizationPage = _tabbedNavigationPage.AddTab<AmortizationListPageModel>("Amortization", "");
+      _summaryPage = _tabbedNavigationPage.AddTab<SummaryPageModel>("Summary", "");
       this.Detail = _tabbedNavigationPage;
     }
 
@@ -44,7 +46,7 @@ namespace DebtCalculator.Navigation
       _menuPage.Title = menuPageTitle;
       var listView = new ListView();
 
-      listView.ItemsSource = new string[] { "Debts", "Payments", "Amortizations", "Modal Demo" };
+      listView.ItemsSource = new string[] { "Debts", "Payments", "Amortizations", "Summary", "Modal Demo" };
 
       listView.ItemSelected += async (sender, args) =>
         {
@@ -58,6 +60,9 @@ namespace DebtCalculator.Navigation
               break;
             case "Amortizations":
               _tabbedNavigationPage.CurrentPage = _amortizationPage;
+              break;
+            case "Summary":
+              _tabbedNavigationPage.CurrentPage = _summaryPage;
               break;
             case "Modal Demo":
               var modalPage = FreshPageModelResolver.ResolvePageModel<ModalPageModel>();

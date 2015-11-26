@@ -1,17 +1,25 @@
 ﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Navigation/CustomImplementedNav.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Pages/SalaryPage.xaml">
     <Files>
-      <File FileName="DebtCalculator/Pages/SnowballPage.xaml" Line="8" Column="125" />
-      <File FileName="DebtCalculator/Navigation/CustomImplementedNav.cs" Line="29" Column="82" />
-      <File FileName="DebtCalculator/PageModels/DebtListPageModel.cs" Line="16" Column="64" />
-      <File FileName="DebtCalculator/PageModels/PaymentListPageModel.cs" Line="11" Column="5" />
+      <File FileName="DebtCalculator.Library/Business/DebtSnowballCalculator.cs" Line="43" Column="1" />
+      <File FileName="DebtCalculator/Pages/AmortizationListPage.cs" Line="9" Column="35" />
+      <File FileName="DebtCalculator/Pages/AmortizationListPage.xaml" Line="12" Column="28" />
+      <File FileName="DebtCalculator.Library/Model/PaymentPlanOutputEntry.cs" Line="56" Column="46" />
+      <File FileName="DebtCalculator/PageModels/AmortizationListPageModel.cs" Line="45" Column="52" />
+      <File FileName="DebtCalculator/Navigation/CustomImplementedNav.cs" Line="47" Column="98" />
+      <File FileName="DebtCalculator.Library/Model/DebtEntry.cs" Line="87" Column="93" />
+      <File FileName="DebtCalculator/Pages/MyBasePage.cs" Line="13" Column="72" />
+      <File FileName="DebtCalculator.Library/Model/DebtManager.cs" Line="18" Column="34" />
+      <File FileName="DebtCalculator.Library/Model/PaymentManager.cs" Line="76" Column="88" />
+      <File FileName="DebtCalculator/PageModels/DebtPageModel.cs" Line="40" Column="60" />
+      <File FileName="iOS/Main.cs" Line="16" Column="34" />
+      <File FileName="DebtCalculator.Library/Model/SalaryEntry.cs" Line="10" Column="50" />
+      <File FileName="DebtCalculator/Pages/SalaryPage.xaml" Line="7" Column="63" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/anthonylowther/Github/DebtCalculator/DebtCalculator/PageModels/SnowballPageModel.cs" line="40" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

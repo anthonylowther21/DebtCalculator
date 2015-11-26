@@ -15,20 +15,23 @@ namespace DebtCalculator.Library
     {
     }
 
-    private void CreateLocalCopies(DebtManager debtManager, PaymentManager paymentManager)
+    private void CreateLocalCopies(DebtManager debtManager, PaymentManager paymentManager, bool applySnowballs)
     {
       _localDebtManager = new DebtManager();
       _localDebtManager.Debts = debtManager.CloneDebts();
 
       _localPaymentManager = new PaymentManager();
-      _localPaymentManager.WindfallEntries = paymentManager.CloneWindfalls();
-      _localPaymentManager.SalaryEntries = paymentManager.CloneSalaries();
-      _localPaymentManager.SnowballAmount = paymentManager.SnowballAmount;
+      if (applySnowballs)
+      {
+        _localPaymentManager.WindfallEntries = paymentManager.CloneWindfalls();
+        _localPaymentManager.SalaryEntries = paymentManager.CloneSalaries();
+        _localPaymentManager.SnowballAmount = paymentManager.SnowballAmount;
+      }
     }
 
-    public ObservableCollection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManagerXX, PaymentManager paymentManagerXX)
+    public ObservableCollection<PaymentPlanOutputEntry> CalculateDebtSnowball(DebtManager debtManagerXX, PaymentManager paymentManagerXX, bool applySnowballs)
     {
-      CreateLocalCopies(debtManagerXX, paymentManagerXX);
+      CreateLocalCopies(debtManagerXX, paymentManagerXX, applySnowballs);
 
       DateTime simulatedDate = DateTime.Now;
 
@@ -54,13 +57,13 @@ namespace DebtCalculator.Library
     }
 
     private PaymentPlanOutputEntry ApplyMonthlyPayment(DateTime currentDate, DebtEntry debtEntry, 
-      PaymentManager paymentManager, double additionalPrinciple = 0)
+      PaymentManager paymentManager, double additionalPrincipal = 0)
     {
       double startingBalance = debtEntry.CurrentBalance;
 
       double interestPortion = debtEntry.MonthlyInterest * debtEntry.CurrentBalance;
-      double minimumPrinciple = debtEntry.MinimumMonthlyPayment - interestPortion;
-      double principalPortion = minimumPrinciple + additionalPrinciple;
+      double minimumPrincipal = debtEntry.MinimumMonthlyPayment - interestPortion;
+      double principalPortion = minimumPrincipal + additionalPrincipal;
 
       double possibleBalance = debtEntry.CurrentBalance -= principalPortion;
 
@@ -77,7 +80,7 @@ namespace DebtCalculator.Library
 
       PaymentPlanOutputEntry output = new PaymentPlanOutputEntry(
         debtEntry.Name, currentDate, startingBalance, interestPortion, 
-        minimumPrinciple, additionalPrinciple, debtEntry.CurrentBalance);
+        minimumPrincipal, additionalPrincipal, debtEntry.CurrentBalance);
       return output;
     }
   }

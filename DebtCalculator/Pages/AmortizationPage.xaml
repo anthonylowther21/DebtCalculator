@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.AmortizationPage"
+xmlns:d="clr-namespace:DebtCalculator.Pages">
+  <d:MyBasePage.Content>
+    <StackLayout Orientation="Vertical" Padding="15">
+      <Label Text="Debt Name" ></Label>
+      <Label Text="{Binding AmortizationEntry.DebtName, Mode=TwoWay}"> </Label>
+      <Label Text="Date" ></Label>
+      <Label Text="{Binding AmortizationEntry.StartBalance, Mode=TwoWay}"> </Label>
+      <Label Text="Minimum Interest" ></Label>
+      <Label Text="{Binding AmortizationEntry.MinimumInterest, Mode=TwoWay}"> </Label>   
+      <Label Text="Minimum Principal" ></Label>
+      <Label Text="{Binding AmortizationEntry.MinimumPrincipal, Mode=TwoWay}"> </Label>
+      <Label Text="Additional Principal" ></Label>
+      <Label Text="{Binding AmortizationEntry.AdditionalPrincipal, Mode=TwoWay}"> </Label>
+      <Label Text="Total Payment" ></Label>
+      <Label Text="{Binding AmortizationEntry.TotalPayment, Mode=TwoWay}"> </Label>
+      <Label Text="End Balance" ></Label>
+      <Label Text="{Binding AmortizationEntry.EndBalance, Mode=TwoWay}"> </Label>                          
+    </StackLayout>
+  </d:MyBasePage.Content>
+</d:MyBasePage> 

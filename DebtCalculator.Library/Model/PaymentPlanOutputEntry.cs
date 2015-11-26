@@ -1,8 +1,10 @@
 ﻿using System;
 using DebtCalculator.Utility;
+using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
+  [ImplementPropertyChanged]
   public class PaymentPlanOutputEntry
   {
     public PaymentPlanOutputEntry ( string debtName,      
@@ -10,7 +12,7 @@ namespace DebtCalculator.Library
                                     double startBalance,  
                                     double interest, 
                                     double minPrincipal,  
-                                    double addPrinciple, 
+                                    double addPrincipal, 
                                     double endBalance)
     {
       DebtName = debtName;
@@ -18,8 +20,8 @@ namespace DebtCalculator.Library
       StartBalance = startBalance;
       MinimumInterest = interest;
       MinimumPrincipal = minPrincipal;
-      AdditionalPrincipal = addPrinciple;
-      TotalPayment = interest + minPrincipal + addPrinciple;
+      AdditionalPrincipal = addPrincipal;
+      TotalPayment = interest + minPrincipal + addPrincipal;
       EndBalance = endBalance;
     }
 

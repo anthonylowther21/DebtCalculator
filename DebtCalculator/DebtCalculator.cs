@@ -99,7 +99,7 @@ namespace DebtCalculator
 
       DebtSnowballCalculator solver = new DebtSnowballCalculator();
       Collection<PaymentPlanOutputEntry> outputs =
-        solver.CalculateDebtSnowball(debtManager, paymentManager);
+        solver.CalculateDebtSnowball(debtManager, paymentManager, true);
           
 
       finishDate.Text = outputs[outputs.Count - 1].Date.ToShortDateString();

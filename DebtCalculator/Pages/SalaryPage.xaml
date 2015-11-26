@@ -8,7 +8,7 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
       <Label Text="Yearly Increase Percent" ></Label>
       <Entry Text="{Binding Salary.YearlySnowballIncreasePercent, Mode=TwoWay}"></Entry>
       <Label Text="Yearly Applied Date" ></Label>
-      <DatePicker Date="{Binding Salary.YearlyAppliedDate}, Mode=TwoWay}"></DatePicker>
+      <DatePicker Date="{Binding Salary.YearlyIncreaseAppliedDate}, Mode=TwoWay}"></DatePicker>
       <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
       <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
     </StackLayout>

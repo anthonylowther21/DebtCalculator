@@ -12,27 +12,21 @@ namespace DebtCalculator.PageModels
   public class AmortizationListPageModel : FreshBasePageModel
   {
     IDatabaseService _databaseService;
-    DebtSnowballCalculator _calculator;
 
     public AmortizationListPageModel (IDatabaseService databaseService)
     {
       _databaseService = databaseService;
-      _calculator = new DebtSnowballCalculator();
     }
 
     public ObservableCollection<PaymentPlanOutputEntry> Amortizations { get; set; }
 
     public override void Init (object initData)
     {
-      // Binding
-//      Amortizations = 
-//        _calculator.CalculateDebtSnowball(_databaseService.GetDebtManager(), _databaseService.GetPaymentManager());
     }
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
     {
-      Amortizations = 
-        _calculator.CalculateDebtSnowball(_databaseService.GetDebtManager(), _databaseService.GetPaymentManager());
+      Amortizations = _databaseService.Calculate(true);
       //You can do stuff here
     }
 
@@ -44,8 +38,6 @@ namespace DebtCalculator.PageModels
 
     public override void ReverseInit (object value)
     {
-//      Amortizations = 
-//        _calculator.CalculateDebtSnowball(_databaseService.GetDebtManager(), _databaseService.GetPaymentManager());
     }
 
     PaymentPlanOutputEntry _selectedAmortization;
@@ -61,21 +53,21 @@ namespace DebtCalculator.PageModels
         _selectedAmortization = value;
         if (value != null)
         {
-          //DebtSelected.Execute(value);
+          AmortizationSelected.Execute(value);
         }
       }
     }
 
-//    public Command<DebtEntry> DebtSelected 
-//    {
-//      get 
-//      {
-//        return new Command<DebtEntry> ( (debt) => 
-//          {
-//            CoreMethods.PushPageModel<DebtPageModel> (debt);
-//          });
-//      }
-//    }
+    public Command<PaymentPlanOutputEntry> AmortizationSelected 
+    {
+      get 
+      {
+        return new Command<PaymentPlanOutputEntry> ( (amortization) => 
+          {
+            CoreMethods.PushPageModel<AmortizationPageModel> (amortization);
+          });
+      }
+    }
   }
 }
 
