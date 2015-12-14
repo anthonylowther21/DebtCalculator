@@ -1,21 +1,13 @@
 ﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6s.9.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Pages/SalaryPage.xaml">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Pages/DebtPage.xaml.cs">
     <Files>
-      <File FileName="DebtCalculator.Library/Business/DebtSnowballCalculator.cs" Line="43" Column="1" />
-      <File FileName="DebtCalculator/Pages/AmortizationListPage.cs" Line="9" Column="35" />
-      <File FileName="DebtCalculator/Pages/AmortizationListPage.xaml" Line="12" Column="28" />
-      <File FileName="DebtCalculator.Library/Model/PaymentPlanOutputEntry.cs" Line="56" Column="46" />
-      <File FileName="DebtCalculator/PageModels/AmortizationListPageModel.cs" Line="45" Column="52" />
-      <File FileName="DebtCalculator/Navigation/CustomImplementedNav.cs" Line="47" Column="98" />
-      <File FileName="DebtCalculator.Library/Model/DebtEntry.cs" Line="87" Column="93" />
-      <File FileName="DebtCalculator/Pages/MyBasePage.cs" Line="13" Column="72" />
-      <File FileName="DebtCalculator.Library/Model/DebtManager.cs" Line="18" Column="34" />
-      <File FileName="DebtCalculator.Library/Model/PaymentManager.cs" Line="76" Column="88" />
-      <File FileName="DebtCalculator/PageModels/DebtPageModel.cs" Line="40" Column="60" />
-      <File FileName="iOS/Main.cs" Line="16" Column="34" />
-      <File FileName="DebtCalculator.Library/Model/SalaryEntry.cs" Line="10" Column="50" />
-      <File FileName="DebtCalculator/Pages/SalaryPage.xaml" Line="7" Column="63" />
+      <File FileName="DebtCalculator/Pages/SalaryPage.xaml" Line="1" Column="1" />
+      <File FileName="DebtCalculator.Library/Model/SalaryEntry.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/PageModels/SalaryPageModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/PageModels/ModalPageModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/PageModels/DebtPageModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Pages/DebtPage.xaml.cs" Line="16" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
