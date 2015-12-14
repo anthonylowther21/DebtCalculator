@@ -11,24 +11,75 @@ namespace DebtCalculator.PageModels
   public class WindfallPageModel : FreshBasePageModel
   {
     IDatabaseService _dataService;
+    WindfallEntry _windfall;
 
     public WindfallPageModel (IDatabaseService dataService)
     {
       _dataService = dataService;
+      _windfall = new WindfallEntry();
     }
-
-    public WindfallEntry Windfall { get; set; }
 
     public override void Init (object initData)
     {
       if (initData != null) 
       {
-        Windfall = ((WindfallEntry)initData).Clone();
+        _windfall = ((WindfallEntry)initData).Clone();
+        RaisePropertyChanged("");
       } 
-      else 
+    }
+
+    public double Amount
+    {
+      get
       {
-        Windfall = new WindfallEntry ();
+        return _windfall.Amount;
       }
+      set
+      {
+        _windfall.Amount = value;
+      }
+    }
+
+    public DateTime WindfallDate
+    {
+      get
+      {
+        return _windfall.WindfallDate;
+      }
+      set
+      {
+        _windfall.WindfallDate = value;
+      }
+    }
+
+    public bool IsRecurring
+    {
+      get
+      {
+        return _windfall.IsRecurring;
+      }
+      set
+      {
+        _windfall.IsRecurring = value;
+        //InvalidateRecurringFrequency();
+      }
+    }
+
+    public int RecurringFrequency
+    {
+      get
+      {
+        return _windfall.RecurringFrequency;
+      }
+      set
+      {
+        _windfall.RecurringFrequency = value;
+      }
+    }
+
+    private void InvalidateRecurringFrequency()
+    {
+      RaisePropertyChanged("RecurringFrequency");
     }
 
     public Command SaveCommand 
@@ -37,8 +88,8 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().UpdateWindfall(Windfall);
-            CoreMethods.PopPageModel (Windfall);
+            _dataService.GetPaymentManager().UpdateWindfall(_windfall);
+            CoreMethods.PopPageModel (_windfall);
           }
         );
       }
@@ -50,8 +101,8 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().DeleteWindfall(Windfall);
-            CoreMethods.PopPageModel (Windfall);
+            _dataService.GetPaymentManager().DeleteWindfall(_windfall);
+            CoreMethods.PopPageModel (_windfall);
           }
         );
       }

@@ -4,13 +4,13 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
   <d:MyBasePage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Amount"></Label>
-      <Entry Text="{Binding Windfall.Amount}"> </Entry>
+      <Entry Text="{Binding Amount}"> </Entry>
       <Label Text="Applied Date" ></Label>
-      <DatePicker Date="{Binding Windfall.WindfallDate}"> </DatePicker>
+      <DatePicker Date="{Binding WindfallDate}"> </DatePicker>
       <Label Text="Recurring?" ></Label>
-      <Switch IsToggled="{Binding Windfall.IsRecurring}"></Switch>
-      <Label Text="Recurring Frequency" IsVisible="{Binding Windfall.IsRecurring}"></Label>
-      <Entry Text="{Binding Windfall.RecurringFrequency}" IsVisible="{Binding Windfall.IsRecurring}"> </Entry>
+      <Switch IsToggled="{Binding IsRecurring}"></Switch>
+      <Label Text="Recurring Frequency" IsVisible="{Binding IsRecurring}"></Label>
+      <Entry Text="{Binding RecurringFrequency}" IsVisible="{Binding IsRecurring}"> </Entry>
       <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
       <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
     </StackLayout>

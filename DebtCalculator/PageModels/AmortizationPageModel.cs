@@ -11,23 +11,62 @@ namespace DebtCalculator.PageModels
   public class AmortizationPageModel : FreshBasePageModel
   {
     IDatabaseService _dataService;
+    AmortizationEntry _amortizationEntry;
 
     public AmortizationPageModel (IDatabaseService dataService)
     {
       _dataService = dataService;
+      _amortizationEntry = new AmortizationEntry();
     }
-
-    public AmortizationEntry AmortizationEntry { get; set; }
 
     public override void Init (object initData)
     {
-      AmortizationEntry = ((AmortizationEntry)initData);
+      _amortizationEntry = ((AmortizationEntry)initData);
     }
 
     public override void ReverseInit(object returndData)
     {
-      AmortizationEntry = ((AmortizationEntry)returndData);
-      base.ReverseInit(returndData);
+      _amortizationEntry = ((AmortizationEntry)returndData);
+    }
+
+    public string DebtName
+    { 
+      get { return _amortizationEntry.DebtName; }
+    }
+
+    public DateTime Date 
+    { 
+      get { return _amortizationEntry.Date; }
+    }
+
+    public double StartBalance 
+    { 
+      get { return _amortizationEntry.StartBalance; }
+    }
+
+    public double MinimumInterest 
+    { 
+      get { return _amortizationEntry.MinimumInterest; }
+    }
+
+    public double MinimumPrincipal 
+    { 
+      get { return _amortizationEntry.MinimumPrincipal; }
+    }
+
+    public double AdditionalPrincipal 
+    { 
+      get { return _amortizationEntry.AdditionalPrincipal; }
+    }
+
+    public double TotalPayment 
+    { 
+      get { return _amortizationEntry.TotalPayment; }
+    }
+
+    public double EndBalance 
+    { 
+      get { return _amortizationEntry.EndBalance; }
     }
   }
 }

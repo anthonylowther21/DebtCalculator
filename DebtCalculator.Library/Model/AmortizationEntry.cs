@@ -4,7 +4,6 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
-  [ImplementPropertyChanged]
   public class AmortizationEntry
   {
     public AmortizationEntry ( string debtName,      
@@ -23,6 +22,10 @@ namespace DebtCalculator.Library
       AdditionalPrincipal = addPrincipal;
       TotalPayment = interest + minPrincipal + addPrincipal;
       EndBalance = endBalance;
+    }
+
+    public AmortizationEntry()
+    {
     }
 
     public string DebtName { get; private set; }

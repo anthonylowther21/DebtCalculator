@@ -4,17 +4,17 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
   <d:MyBasePage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Debt Name" ></Label>
-      <Entry Text="{Binding Debt.Name}"> </Entry>
+      <Entry Text="{Binding Name}"> </Entry>
       <Label Text="Start Balance" ></Label>
-      <Entry Text="{Binding Debt.StartingBalance}"> </Entry>
+      <Entry Text="{Binding StartingBalance}"> </Entry>
       <Label Text="Current Balance" ></Label>
-      <Entry Text="{Binding Debt.CurrentBalance}"></Entry>
+      <Entry Text="{Binding CurrentBalance}"></Entry>
       <Label Text="Yearly Interest" ></Label>
-      <Entry Text="{Binding Debt.YearlyInterestRate}"></Entry>
+      <Entry Text="{Binding YearlyInterestRate}"></Entry>
       <Label Text="Loan Term" ></Label>
-      <Entry Text="{Binding Debt.LoanTerm, Mode=TwoWay}"></Entry>
+      <Entry Text="{Binding LoanTerm, Mode=TwoWay}"></Entry>
       <Label Text="Monthly Payment" ></Label>
-      <Label Text="{Binding Debt.MinimumMonthlyPayment, Mode=TwoWay}" ></Label>
+      <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay}" ></Label>
       <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
       <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
     </StackLayout>

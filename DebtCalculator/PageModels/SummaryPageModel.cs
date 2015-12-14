@@ -30,33 +30,36 @@ namespace DebtCalculator.PageModels
 
     public override void Init (object initData)
     {
-      
+
     }
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
     {
-      double interest = 0;
-      amortization = _databaseService.Calculate(false);
-      foreach (var entry in amortization)
+      if (_databaseService.GetDebtManager().Debts.Count > 0)
       {
-        interest += entry.MinimumInterest;
+        double interest = 0;
+        amortization = _databaseService.Calculate(false);
+        foreach (var entry in amortization)
+        {
+          interest += entry.MinimumInterest;
+        }
+        OriginalInterest = interest;
+        OriginalPayoffDate = amortization[amortization.Count - 1].Date;
+
+
+
+        interest = 0;
+        amortization = _databaseService.Calculate(true);
+        foreach (var entry in amortization)
+        {
+          interest += entry.MinimumInterest;
+        }
+        SnowballInterest = interest;
+        SnowballPayoffDate = amortization[amortization.Count - 1].Date;
+
+        SavedInterest = _originalInterest - _snowballInterest;
+        //You can do stuff here
       }
-      OriginalInterest = interest;
-      OriginalPayoffDate = amortization[amortization.Count - 1].Date;
-
-
-
-      interest = 0;
-      amortization = _databaseService.Calculate(true);
-      foreach (var entry in amortization)
-      {
-        interest += entry.MinimumInterest;
-      }
-      SnowballInterest = interest;
-      SnowballPayoffDate = amortization[amortization.Count - 1].Date;
-
-      SavedInterest = _originalInterest - _snowballInterest;
-      //You can do stuff here
     }
 
     public double OriginalInterest 

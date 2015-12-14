@@ -3,7 +3,6 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
-  [ImplementPropertyChanged]
   public class WindfallEntry : BaseClass
   {
     private double _amount = 100;

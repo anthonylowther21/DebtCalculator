@@ -63,7 +63,7 @@ namespace DebtCalculator.Library
       {
         int monthDifference = GetMonthDifference(simulatedDate, windfallEntry.WindfallDate);
 
-        if (monthDifference % windfallEntry.RecurringFrequency == 0)
+        if (monthDifference >= 0 && monthDifference % windfallEntry.RecurringFrequency == 0)
         {
           amount += windfallEntry.Amount;
         }

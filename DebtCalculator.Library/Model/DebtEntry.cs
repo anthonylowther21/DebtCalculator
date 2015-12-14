@@ -4,7 +4,6 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
-  [ImplementPropertyChanged]
   public class DebtEntry : BaseClass
   {
     private string  _name               = "Debt Name";
