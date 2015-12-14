@@ -3,7 +3,6 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
-  [ImplementPropertyChanged]
   public class SalaryEntry : BaseClass
   {
     private double _startingSalary = 40000;

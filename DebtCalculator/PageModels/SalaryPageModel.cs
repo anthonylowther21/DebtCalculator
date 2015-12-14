@@ -11,23 +11,57 @@ namespace DebtCalculator.PageModels
   public class SalaryPageModel : FreshBasePageModel
   {
     IDatabaseService _dataService;
+    SalaryEntry _salary;
 
     public SalaryPageModel (IDatabaseService dataService)
     {
       _dataService = dataService;
+      _salary = new SalaryEntry();
     }
-
-    public SalaryEntry Salary { get; set; }
 
     public override void Init (object initData)
     {
       if (initData != null) 
       {
-        Salary = ((SalaryEntry)initData).Clone();
+        _salary = ((SalaryEntry)initData).Clone();
+        // This raises property changed for all items in this viewmodel
+        RaisePropertyChanged("");
       } 
-      else 
+    }
+
+    public double StartingSalary 
+    { 
+      get
+      { 
+        return _salary.StartingSalary;
+      }
+      set
       {
-        Salary = new SalaryEntry ();
+        _salary.StartingSalary = value;
+      }
+    }
+
+    public double YearlySnowballIncreasePercent 
+    { 
+      get
+      { 
+        return (_salary.YearlySnowballIncreasePercent * 100);
+      }
+      set
+      {
+        _salary.YearlySnowballIncreasePercent = value * 0.01;
+      }
+    }
+
+    public DateTime YearlyIncreaseAppliedDate 
+    { 
+      get
+      { 
+        return _salary.YearlyIncreaseAppliedDate;
+      }
+      set
+      {
+        _salary.YearlyIncreaseAppliedDate = value;
       }
     }
 
@@ -37,8 +71,8 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().UpdateSalary(Salary);
-            CoreMethods.PopPageModel (Salary);
+            _dataService.GetPaymentManager().UpdateSalary(_salary);
+            CoreMethods.PopPageModel (_salary);
           }
         );
       }
@@ -50,8 +84,8 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().DeleteSalary(Salary);
-            CoreMethods.PopPageModel (Salary);
+            _dataService.GetPaymentManager().DeleteSalary(_salary);
+            CoreMethods.PopPageModel (_salary);
           }
         );
       }
