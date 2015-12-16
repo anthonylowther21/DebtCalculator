@@ -1,25 +1,24 @@
 ﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone6.9.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator.Library/Model/PaymentManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.alowther’s iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator.Library/Model/SalaryEntry.cs">
     <Files>
-      <File FileName="DebtCalculator.Library/Model/DebtEntry.cs" Line="15" Column="88" />
-      <File FileName="DebtCalculator/PageModels/DebtPageModel.cs" Line="99" Column="8" />
-      <File FileName="DebtCalculator/Pages/DebtPage.xaml" Line="17" Column="29" />
-      <File FileName="DebtCalculator.Library/Model/AmortizationEntry.cs" Line="9" Column="5" />
-      <File FileName="DebtCalculator/PageModels/AmortizationPageModel.cs" Line="29" Column="61" />
-      <File FileName="DebtCalculator/Pages/AmortizationPage.xaml" Line="19" Column="29" />
-      <File FileName="DebtCalculator/PageModels/WindfallPageModel.cs" Line="64" Column="11" />
-      <File FileName="DebtCalculator.Library/Model/WindfallEntry.cs" Line="69" Column="5" />
-      <File FileName="DebtCalculator/Pages/WindfallPage.xaml" Line="13" Column="29" />
-      <File FileName="DebtCalculator/PageModels/SummaryPageModel.cs" Line="38" Column="56" />
-      <File FileName="DebtCalculator.Library/Business/DebtSnowballCalculator.cs" Line="46" Column="64" />
-      <File FileName="DebtCalculator.Library/Model/PaymentManager.cs" Line="66" Column="36" />
+      <File FileName="DebtCalculator.Library/Model/DebtEntry.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/PageModels/DebtPageModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Pages/DebtPage.xaml" Line="1" Column="1" />
+      <File FileName="DebtCalculator.Library/Model/AmortizationEntry.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/PageModels/AmortizationPageModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Pages/AmortizationPage.xaml" Line="1" Column="1" />
+      <File FileName="DebtCalculator/PageModels/WindfallPageModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator.Library/Model/WindfallEntry.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Pages/WindfallPage.xaml" Line="1" Column="1" />
+      <File FileName="DebtCalculator/PageModels/SummaryPageModel.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator.Library/Business/DebtSnowballCalculator.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator.Library/Model/PaymentManager.cs" Line="70" Column="1" />
+      <File FileName="DebtCalculator.Library/Model/SalaryEntry.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/anthonylowther/Github/DebtCalculator/DebtCalculator.Library/Model/PaymentManager.cs" line="62" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

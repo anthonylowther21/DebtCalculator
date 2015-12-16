@@ -60,8 +60,9 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Anthony Lowther (VN9R6TAEX4)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignProvision>95aa9c89-043b-46fa-9766-57325be70eec</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
