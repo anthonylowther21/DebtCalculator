@@ -14,7 +14,7 @@ namespace DebtCalculator.Navigation
   /// </summary>
   public class CustomImplementedNav : Xamarin.Forms.MasterDetailPage, IFreshNavigationService
   {
-    FreshTabbedNavigationContainer _tabbedNavigationPage;
+    CustomTabbedPage _tabbedNavigationPage;
     Page _debtsPage;
     Page _paymentsPage;
     Page _amortizationPage;
@@ -29,24 +29,13 @@ namespace DebtCalculator.Navigation
 
     void SetupTabbedPage()
     {
-      _tabbedNavigationPage = new FreshTabbedNavigationContainer ();
+      _tabbedNavigationPage = new CustomTabbedPage ();
       _debtsPage = _tabbedNavigationPage.AddTab<DebtListPageModel> ("Debts", "");
       _paymentsPage = _tabbedNavigationPage.AddTab<PaymentListPageModel>("Payments", "");
       _amortizationPage = _tabbedNavigationPage.AddTab<AmortizationListPageModel>("Amortization", "");
       _summaryPage = _tabbedNavigationPage.AddTab<SummaryPageModel>("Summary", "");
       this.Detail = _tabbedNavigationPage;
 
-      SetupStyle();
-    }
-
-    private void SetupStyle()
-    {
-      foreach (var item in _tabbedNavigationPage.Children)
-      {
-        NavigationPage np = item as NavigationPage;
-        np.BarBackgroundColor = Colors.Primary;
-        np.BarTextColor = Colors.Text_Icons;
-      }
     }
 
     protected void RegisterNavigation()

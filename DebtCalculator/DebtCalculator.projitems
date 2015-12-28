@@ -63,6 +63,7 @@
       <DependentUpon>AmortizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Theme\Colors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
