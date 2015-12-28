@@ -10,6 +10,8 @@ namespace DebtCalculator.Pages
 		public DebtPage ()
 		{
 			InitializeComponent ();
+
+      NavigationPage navPage = ((this as Page) as NavigationPage);
 		}
 	}
 }

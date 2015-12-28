@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" 
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:theme="clr-namespace:DebtCalculator.Theme"
               x:Class="DebtCalculator.Pages.AmortizationListPage"
               xmlns:d="clr-namespace:DebtCalculator.Pages">
 	<d:MyBasePage.Content>
 		<ListView ItemsSource="{Binding Amortizations}" SelectedItem="{Binding SelectedAmortization, Mode=TwoWay}" >
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<TextCell Text="{Binding Summary, Mode=OneWay}" Detail="{Binding DetailSummary, Mode=OneWay}"></TextCell>
+					<TextCell Text="{Binding Summary, Mode=OneWay}" 
+                    Detail="{Binding DetailSummary, Mode=OneWay}" 
+                    TextColor="{x:Static theme:Colors.PrimaryText}">
+          </TextCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>

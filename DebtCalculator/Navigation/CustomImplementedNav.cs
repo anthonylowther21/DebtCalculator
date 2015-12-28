@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DebtCalculator.PageModels;
 using FreshMvvm;
+using DebtCalculator.Theme;
+using XLabs.Forms.Controls;
 
 namespace DebtCalculator.Navigation
 {
@@ -33,6 +35,18 @@ namespace DebtCalculator.Navigation
       _amortizationPage = _tabbedNavigationPage.AddTab<AmortizationListPageModel>("Amortization", "");
       _summaryPage = _tabbedNavigationPage.AddTab<SummaryPageModel>("Summary", "");
       this.Detail = _tabbedNavigationPage;
+
+      SetupStyle();
+    }
+
+    private void SetupStyle()
+    {
+      foreach (var item in _tabbedNavigationPage.Children)
+      {
+        NavigationPage np = item as NavigationPage;
+        np.BarBackgroundColor = Colors.Primary;
+        np.BarTextColor = Colors.Text_Icons;
+      }
     }
 
     protected void RegisterNavigation()

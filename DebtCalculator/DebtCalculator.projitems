@@ -54,7 +54,6 @@
       <DependentUpon>AmortizationListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\AmortizationListPageModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\PercentToDoubleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\SummaryPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SummaryPage.xaml.cs">
       <DependentUpon>SummaryPage.xaml</DependentUpon>
@@ -63,50 +62,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\AmortizationPage.xaml.cs">
       <DependentUpon>AmortizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Theme\Colors.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Views\MainTabbedPage.xaml.cs">
-      <DependentUpon>MainTabbedPage.xaml</DependentUpon>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\OverallSummaryPage.xaml.cs">
-      <DependentUpon>OverallSummaryPage.xaml</DependentUpon>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\DebtsPage.xaml.cs">
-      <DependentUpon>DebtsPage.xaml</DependentUpon>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\PaymentsPage.xaml.cs">
-      <DependentUpon>PaymentsPage.xaml</DependentUpon>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\AmortizationPage.xaml.cs">
-      <DependentUpon>AmortizationPage.xaml</DependentUpon>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\CreateDebtPage.xaml.cs">
-      <DependentUpon>CreateDebtPage.xaml</DependentUpon>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\MainTabbedPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\OverallSummaryPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\DebtsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\PaymentsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\AmortizationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </None>
-    <None Include="$(MSBuildThisFileDirectory)Views\CreateDebtPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </None>
+    <Folder Include="$(MSBuildThisFileDirectory)Theme\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
