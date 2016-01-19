@@ -83,9 +83,17 @@ namespace DebtCalculator.Library
 
     private void InitializeMonthlyPayment()
     {
-      MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
-      double monthlyInterest_Loan_Term = Math.Pow ((1 + MonthlyInterest), LoanTerm);
-      MinimumMonthlyPayment = MonthlyInterest * StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
+      if (_loanTerm > -1)
+      {
+        MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
+        double monthlyInterest_Loan_Term = Math.Pow((1 + MonthlyInterest), LoanTerm);
+        MinimumMonthlyPayment = MonthlyInterest * StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
+      }
+      else
+      {
+        MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
+        MinimumMonthlyPayment = 40;
+      }
     }
   }
 }

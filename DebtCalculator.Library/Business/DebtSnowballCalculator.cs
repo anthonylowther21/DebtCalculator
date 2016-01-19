@@ -39,15 +39,24 @@ namespace DebtCalculator.Library
 
       ObservableCollection<AmortizationEntry> col = new ObservableCollection<AmortizationEntry>();
 
-      foreach (DebtEntry debt in _localDebtManager.Debts)
+      bool allFinished = false;
+
+      simulatedDate = DateTime.Now;
+      while (!allFinished)
       {
-        while (debt.CurrentBalance > 0)
+        double salarySnowball = _localPaymentManager.GetTotalMonthlySnowball(simulatedDate);
+        allFinished = true;
+
+        foreach (DebtEntry debt in _localDebtManager.Debts)
         {
-          double salarySnowball = _localPaymentManager.GetTotalMonthlySnowball(simulatedDate);
-          col.Add(this.ApplyMonthlyPayment(simulatedDate, debt, _localPaymentManager, salarySnowball));
-          simulatedDate = simulatedDate.AddMonths(1);
+          if (debt.CurrentBalance > 0)
+          {
+            col.Add(this.ApplyMonthlyPayment(simulatedDate, debt, _localPaymentManager, ref salarySnowball));
+            allFinished = false;
+          }
         }
-      }  
+        simulatedDate = simulatedDate.AddMonths(1);
+      }
 
       watch.Stop();
       var elapsedMs = watch.ElapsedMilliseconds;
@@ -57,7 +66,7 @@ namespace DebtCalculator.Library
     }
 
     private AmortizationEntry ApplyMonthlyPayment(DateTime currentDate, DebtEntry debtEntry, 
-      PaymentManager paymentManager, double additionalPrincipal = 0)
+      PaymentManager paymentManager, ref double additionalPrincipal)
     {
       double startingBalance = debtEntry.CurrentBalance;
 
@@ -65,13 +74,18 @@ namespace DebtCalculator.Library
       double minimumPrincipal = debtEntry.MinimumMonthlyPayment - interestPortion;
       double principalPortion = minimumPrincipal + additionalPrincipal;
 
-      double possibleBalance = debtEntry.CurrentBalance -= principalPortion;
+      double possibleBalance = debtEntry.CurrentBalance - principalPortion;
 
       if (possibleBalance < 0)
       {
         debtEntry.CurrentBalance = 0;
         paymentManager.AddWindfallEntry(Math.Abs(possibleBalance), currentDate.AddMonths(1));
         paymentManager.SnowballAmount += debtEntry.MinimumMonthlyPayment;
+      }
+      else if (possibleBalance > debtEntry.CurrentBalance)
+      {
+        debtEntry.Name += " INVALID!";
+        debtEntry.CurrentBalance = -9999;
       }
       else
       {
@@ -81,6 +95,10 @@ namespace DebtCalculator.Library
       AmortizationEntry output = new AmortizationEntry(
         debtEntry.Name, currentDate, startingBalance, interestPortion, 
         minimumPrincipal, additionalPrincipal, debtEntry.CurrentBalance);
+
+      // We always use up all of the additional principle, otherwise it gets added as a windfall the 
+      // following month
+      additionalPrincipal = 0;
       return output;
     }
   }

@@ -39,12 +39,27 @@ namespace DebtCalculator.PageModels
       {
         double interest = 0;
         amortization = _databaseService.Calculate(false);
+        bool invalid = false;
         foreach (var entry in amortization)
         {
+          if (entry.EndBalance == -9999)
+          {
+            invalid = true;
+            break;
+          }
           interest += entry.MinimumInterest;
         }
-        OriginalInterest = interest;
-        OriginalPayoffDate = amortization[amortization.Count - 1].Date;
+
+        if (invalid)
+        {
+          OriginalInterest = double.MaxValue;
+          OriginalPayoffDate = DateTime.MaxValue;
+        }
+        else
+        {
+          OriginalInterest = interest;
+          OriginalPayoffDate = amortization[amortization.Count - 1].Date;
+        }
 
 
 
