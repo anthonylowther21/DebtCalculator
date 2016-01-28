@@ -91,11 +91,11 @@ namespace DebtCalculator.PageModels
       }
     }
 
-    public double MinimumMonthlyPayment
+    public string MinimumMonthlyPayment
     {
       get 
       { 
-        return _debtEntry.MinimumMonthlyPayment;
+        return string.Format("{0:C}", _debtEntry.MinimumMonthlyPayment);
       }
     }
 

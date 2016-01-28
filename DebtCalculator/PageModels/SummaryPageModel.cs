@@ -52,13 +52,13 @@ namespace DebtCalculator.PageModels
 
         if (invalid)
         {
-          OriginalInterest = double.MaxValue;
-          OriginalPayoffDate = DateTime.MaxValue;
+          _originalInterest = double.MaxValue;
+          _originalPayoffDate = DateTime.MaxValue;
         }
         else
         {
-          OriginalInterest = interest;
-          OriginalPayoffDate = amortization[amortization.Count - 1].Date;
+          _originalInterest = interest;
+          _originalPayoffDate = amortization[amortization.Count - 1].Date;
         }
 
 
@@ -69,53 +69,52 @@ namespace DebtCalculator.PageModels
         {
           interest += entry.MinimumInterest;
         }
-        SnowballInterest = interest;
-        SnowballPayoffDate = amortization[amortization.Count - 1].Date;
+        _snowballInterest = interest;
+        _snowballPayoffDate = amortization[amortization.Count - 1].Date;
 
-        SavedInterest = _originalInterest - _snowballInterest;
+        _savedInterest = _originalInterest - _snowballInterest;
+        RaisePropertyChanged("");
         //You can do stuff here
       }
     }
 
-    public double OriginalInterest 
+    public string OriginalInterest 
     {
-      get { return _originalInterest; }
-      set { _originalInterest = value; }
+      get 
+      { 
+        return string.Format("{0:C}", _originalInterest); 
+      }
     }
 
-    public double SnowballInterest 
+    public string SnowballInterest 
     {
-      get { return _snowballInterest; }
-      set { _snowballInterest = value; }
+      get 
+      { 
+        return string.Format("{0:C}", _snowballInterest); 
+      }
     }
 
-    public double SavedInterest 
+    public string SavedInterest 
     {
-      get { return _savedInterest; }
-      set { _savedInterest = value; }
+      get 
+      { 
+        return string.Format("{0:C}", _savedInterest); 
+      }
     }
 
-    public DateTime OriginalPayoffDate
+    public string OriginalPayoffDate
     {
       get
       {
-        return _originalPayoffDate;
-      }
-      set
-      {
-        _originalPayoffDate = value;
+        return string.Format("{0:MMMM yyyy}", _originalPayoffDate);
       }
     }
 
-    public DateTime SnowballPayoffDate
+    public string SnowballPayoffDate
     {
       get
       {
-        return _snowballPayoffDate;
-      }
-      set
-      {
-        _snowballPayoffDate = value;
+        return string.Format("{0:MMMM yyyy}", _snowballPayoffDate);
       }
     }
 

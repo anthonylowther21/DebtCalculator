@@ -22,6 +22,7 @@ namespace DebtCalculator.PageModels
     public override void Init (object initData)
     {
       _amortizationEntry = ((AmortizationEntry)initData);
+      RaisePropertyChanged("");
     }
 
     public override void ReverseInit(object returndData)
@@ -34,39 +35,39 @@ namespace DebtCalculator.PageModels
       get { return _amortizationEntry.DebtName; }
     }
 
-    public DateTime Date 
+    public string Date 
     { 
-      get { return _amortizationEntry.Date; }
+      get { return string.Format("{0:MMMM yyyy}", _amortizationEntry.Date); }
     }
 
-    public double StartBalance 
+    public string StartBalance 
     { 
-      get { return _amortizationEntry.StartBalance; }
+      get { return string.Format("{0:C}",_amortizationEntry.StartBalance); }
     }
 
-    public double MinimumInterest 
+    public string MinimumInterest 
     { 
-      get { return _amortizationEntry.MinimumInterest; }
+      get { return string.Format("{0:C}",_amortizationEntry.MinimumInterest); }
     }
 
-    public double MinimumPrincipal 
+    public string MinimumPrincipal 
     { 
-      get { return _amortizationEntry.MinimumPrincipal; }
+      get { return string.Format("{0:C}",_amortizationEntry.MinimumPrincipal); }
     }
 
-    public double AdditionalPrincipal 
+    public string AdditionalPrincipal 
     { 
-      get { return _amortizationEntry.AdditionalPrincipal; }
+      get { return string.Format("{0:C}",_amortizationEntry.AdditionalPrincipal); }
     }
 
-    public double TotalPayment 
+    public string TotalPayment 
     { 
-      get { return _amortizationEntry.TotalPayment; }
+      get { return string.Format("{0:C}",_amortizationEntry.TotalPayment); }
     }
 
-    public double EndBalance 
+    public string EndBalance 
     { 
-      get { return _amortizationEntry.EndBalance; }
+      get { return string.Format("{0:C}",_amortizationEntry.EndBalance); }
     }
   }
 }

@@ -51,7 +51,7 @@ namespace DebtCalculator.Library
         {
           if (debt.CurrentBalance > 0)
           {
-            col.Add(this.ApplyMonthlyPayment(simulatedDate, debt, _localPaymentManager, ref salarySnowball));
+            col.Add(ApplyMonthlyPayment(simulatedDate, debt, _localPaymentManager, ref salarySnowball, applySnowballs));
             allFinished = false;
           }
         }
@@ -66,7 +66,7 @@ namespace DebtCalculator.Library
     }
 
     private AmortizationEntry ApplyMonthlyPayment(DateTime currentDate, DebtEntry debtEntry, 
-      PaymentManager paymentManager, ref double additionalPrincipal)
+      PaymentManager paymentManager, ref double additionalPrincipal, bool applySnowball)
     {
       double startingBalance = debtEntry.CurrentBalance;
 
@@ -79,8 +79,11 @@ namespace DebtCalculator.Library
       if (possibleBalance < 0)
       {
         debtEntry.CurrentBalance = 0;
-        paymentManager.AddWindfallEntry(Math.Abs(possibleBalance), currentDate.AddMonths(1));
-        paymentManager.SnowballAmount += debtEntry.MinimumMonthlyPayment;
+        if (applySnowball)
+        {
+          paymentManager.AddWindfallEntry(Math.Abs(possibleBalance), currentDate.AddMonths(1));
+          paymentManager.SnowballAmount += debtEntry.MinimumMonthlyPayment;
+        }
       }
       else if (possibleBalance > debtEntry.CurrentBalance)
       {

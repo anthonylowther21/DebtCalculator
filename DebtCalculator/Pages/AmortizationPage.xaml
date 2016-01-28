@@ -3,20 +3,22 @@
 xmlns:d="clr-namespace:DebtCalculator.Pages">
   <d:MyBasePage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
-      <Label Text="Debt Name" ></Label>
-      <Label Text="{Binding DebtName, Mode=TwoWay}"> </Label>
+      <Label Text="Debt Name"></Label>
+      <Label Text="{Binding DebtName}"> </Label>
       <Label Text="Date" ></Label>
-      <Label Text="{Binding StartBalance, Mode=TwoWay}"> </Label>
+      <Label Text="{Binding Date}"> </Label>
+      <Label Text="Start Balance" ></Label>
+      <Label Text="{Binding StartBalance}"> </Label>
       <Label Text="Minimum Interest" ></Label>
-      <Label Text="{Binding MinimumInterest, Mode=TwoWay}"> </Label>   
+      <Label Text="{Binding MinimumInterest}"> </Label>   
       <Label Text="Minimum Principal" ></Label>
-      <Label Text="{Binding MinimumPrincipal, Mode=TwoWay}"> </Label>
+      <Label Text="{Binding MinimumPrincipal}"> </Label>
       <Label Text="Additional Principal" ></Label>
-      <Label Text="{Binding AdditionalPrincipal, Mode=TwoWay}"> </Label>
+      <Label Text="{Binding AdditionalPrincipal}"> </Label>
       <Label Text="Total Payment" ></Label>
-      <Label Text="{Binding TotalPayment, Mode=TwoWay}"> </Label>
+      <Label Text="{Binding TotalPayment}"> </Label>
       <Label Text="End Balance" ></Label>
-      <Label Text="{Binding EndBalance, Mode=TwoWay}"> </Label>                          
+      <Label Text="{Binding EndBalance}"> </Label>                          
     </StackLayout>
   </d:MyBasePage.Content>
 </d:MyBasePage> 
