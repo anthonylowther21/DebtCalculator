@@ -69,11 +69,11 @@ namespace DebtCalculator.PageModels
     {
       get 
       { 
-        return (_debtEntry.YearlyInterestRate * 100); 
+        return _debtEntry.YearlyInterestRate; 
       }
       set 
       { 
-        _debtEntry.YearlyInterestRate = (value * 0.01); 
+        _debtEntry.YearlyInterestRate = value; 
         InvalidateMinimumMonthlyPayment();
       }
     }
@@ -91,11 +91,11 @@ namespace DebtCalculator.PageModels
       }
     }
 
-    public string MinimumMonthlyPayment
+    public double MinimumMonthlyPayment
     {
       get 
       { 
-        return string.Format("{0:C}", _debtEntry.MinimumMonthlyPayment);
+        return _debtEntry.MinimumMonthlyPayment;
       }
     }
 

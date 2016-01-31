@@ -8,7 +8,8 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
 		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt, Mode=TwoWay}" >
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<TextCell Text="{Binding Name, Mode=OneWay}" Detail="{Binding CurrentBalance, Mode=OneWay}"></TextCell>
+					<TextCell Text="{Binding Name, Mode=OneWay}" 
+                    Detail="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}"></TextCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>

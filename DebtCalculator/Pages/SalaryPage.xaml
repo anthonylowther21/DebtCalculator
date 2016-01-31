@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.SalaryPage"
 xmlns:d="clr-namespace:DebtCalculator.Pages"
-xmlns:controls="clr-namespace:DebtCalculator.Controls">
+xmlns:controls="clr-namespace:DebtCalculator.Controls"
+xmlns:converters="clr-namespace:DebtCalculator.Converters">
   <d:MyBasePage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Starting Salary" ></Label>
       <Entry Text="{Binding StartingSalary, Mode=TwoWay}"> </Entry>
       <Label Text="Yearly Increase Percent" ></Label>
-      <Entry Text="{Binding YearlySnowballIncreasePercent, Mode=TwoWay}"></Entry>
+      <Entry Text="{Binding YearlySnowballIncreasePercent, Mode=TwoWay, Converter={StaticResource DoubleToPercentConverter}}"></Entry>
       <Label Text="Yearly Applied Date" ></Label>
       <DatePicker Date="{Binding YearlyIncreaseAppliedDate}, Mode=TwoWay}">
-        <DatePicker.Format>yyyy-MM</DatePicker.Format>
+        <DatePicker.Format>MMMM yyyy</DatePicker.Format>
       </DatePicker>
       <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
       <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>

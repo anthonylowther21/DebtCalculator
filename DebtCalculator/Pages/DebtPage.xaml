@@ -10,11 +10,11 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
       <Label Text="Current Balance" ></Label>
       <Entry Text="{Binding CurrentBalance}"></Entry>
       <Label Text="Yearly Interest" ></Label>
-      <Entry Text="{Binding YearlyInterestRate}"></Entry>
+      <Entry Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}"></Entry>
       <Label Text="Loan Term" ></Label>
       <Entry Text="{Binding LoanTerm, Mode=TwoWay}"></Entry>
       <Label Text="Monthly Payment" ></Label>
-      <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay}" ></Label>
+      <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay, StringFormat='{0:C}'}" ></Label>
       <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
       <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
     </StackLayout>

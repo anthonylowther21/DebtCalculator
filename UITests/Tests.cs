@@ -54,7 +54,7 @@ namespace DebtCalculator.UITests
       paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6); 
       paymentManager.AddWindfallEntry(500, new DateTime(2016, 1, 1), true, 6);
 
-      DebtSnowballCalculator.CalculateDebtSnowball(debtManager, paymentManager);  
+      new DebtSnowballCalculator().CalculateDebtSnowball(debtManager, paymentManager, true);  
 
     }
   }

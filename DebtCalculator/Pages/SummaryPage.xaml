@@ -4,15 +4,15 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
   <d:MyBasePage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Original Interest" ></Label>
-      <Label Text="{Binding OriginalInterest}"> </Label>
+      <Label Text="{Binding OriginalInterest, StringFormat='{0:C}'}"> </Label>
       <Label Text="Snowball Interest" ></Label>
-      <Label Text="{Binding SnowballInterest}"> </Label>
+      <Label Text="{Binding SnowballInterest, StringFormat='{0:C}'}"> </Label>
       <Label Text="Saved Interest" ></Label>
-      <Label Text="{Binding SavedInterest}"> </Label>
+      <Label Text="{Binding SavedInterest, StringFormat='{0:C}'}"> </Label>
       <Label Text="Original Payoff Date" ></Label>
-      <Label Text="{Binding OriginalPayoffDate}"> </Label>
+      <Label Text="{Binding OriginalPayoffDate, StringFormat='{0:MMMM yyyy}'}"> </Label>
       <Label Text="Snowball Payoff Date" ></Label>
-      <Label Text="{Binding SnowballPayoffDate}"> </Label>
+      <Label Text="{Binding SnowballPayoffDate, StringFormat='{0:MMMM yyyy}'}"> </Label>
     </StackLayout>
   </d:MyBasePage.Content>
 </d:MyBasePage> 

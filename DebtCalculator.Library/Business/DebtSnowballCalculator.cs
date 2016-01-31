@@ -78,6 +78,16 @@ namespace DebtCalculator.Library
 
       if (possibleBalance < 0)
       {
+        if (minimumPrincipal >= debtEntry.CurrentBalance)
+        {
+          minimumPrincipal = debtEntry.CurrentBalance - interestPortion;
+          additionalPrincipal = 0;
+        }
+        else
+        {
+          additionalPrincipal = debtEntry.CurrentBalance - minimumPrincipal - interestPortion;
+        }
+          
         debtEntry.CurrentBalance = 0;
         if (applySnowball)
         {

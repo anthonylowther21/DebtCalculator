@@ -65,12 +65,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Theme\Colors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToPercentConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
     <Folder Include="$(MSBuildThisFileDirectory)Theme\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

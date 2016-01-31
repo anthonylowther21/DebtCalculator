@@ -45,11 +45,23 @@ namespace DebtCalculator.PageModels
     { 
       get
       { 
-        return (_salary.YearlySnowballIncreasePercent * 100);
+        return _salary.YearlySnowballIncreasePercent;
+//        return (_salary.YearlySnowballIncreasePercent == -1) ? 
+//                string.Empty :
+//                (_salary.YearlySnowballIncreasePercent * 100).ToString();
       }
       set
       {
-        _salary.YearlySnowballIncreasePercent = value * 0.01;
+        _salary.YearlySnowballIncreasePercent = value;
+//        double result;
+//        if (value == string.Empty)
+//        {
+//          _salary.YearlySnowballIncreasePercent = -1;
+//        }
+//        else if (Double.TryParse(value, out result))
+//        {
+//          _salary.YearlySnowballIncreasePercent = result * 0.01;
+//        }
       }
     }
 
@@ -71,8 +83,11 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().UpdateSalary(_salary);
-            CoreMethods.PopPageModel (_salary);
+            if (_salary.YearlySnowballIncreasePercent >= 0)
+            {
+              _dataService.GetPaymentManager().UpdateSalary(_salary);
+              CoreMethods.PopPageModel (_salary);
+            }
           }
         );
       }

@@ -78,43 +78,43 @@ namespace DebtCalculator.PageModels
       }
     }
 
-    public string OriginalInterest 
+    public double OriginalInterest 
     {
       get 
       { 
-        return string.Format("{0:C}", _originalInterest); 
+        return _originalInterest; 
       }
     }
 
-    public string SnowballInterest 
+    public double SnowballInterest 
     {
       get 
       { 
-        return string.Format("{0:C}", _snowballInterest); 
+        return _snowballInterest; 
       }
     }
 
-    public string SavedInterest 
+    public double SavedInterest 
     {
       get 
       { 
-        return string.Format("{0:C}", _savedInterest); 
+        return _savedInterest; 
       }
     }
 
-    public string OriginalPayoffDate
+    public DateTime OriginalPayoffDate
     {
       get
       {
-        return string.Format("{0:MMMM yyyy}", _originalPayoffDate);
+        return _originalPayoffDate;
       }
     }
 
-    public string SnowballPayoffDate
+    public DateTime SnowballPayoffDate
     {
       get
       {
-        return string.Format("{0:MMMM yyyy}", _snowballPayoffDate);
+        return _snowballPayoffDate;
       }
     }
 

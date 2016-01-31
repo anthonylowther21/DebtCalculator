@@ -6,19 +6,19 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
       <Label Text="Debt Name"></Label>
       <Label Text="{Binding DebtName}"> </Label>
       <Label Text="Date" ></Label>
-      <Label Text="{Binding Date}"> </Label>
+      <Label Text="{Binding Date, StringFormat='{0:MMMM yyyy}'}"> </Label>
       <Label Text="Start Balance" ></Label>
-      <Label Text="{Binding StartBalance}"> </Label>
+      <Label Text="{Binding StartBalance, StringFormat='{0:C}'}"> </Label>
       <Label Text="Minimum Interest" ></Label>
-      <Label Text="{Binding MinimumInterest}"> </Label>   
+      <Label Text="{Binding MinimumInterest, StringFormat='{0:C}'}"> </Label>   
       <Label Text="Minimum Principal" ></Label>
-      <Label Text="{Binding MinimumPrincipal}"> </Label>
+      <Label Text="{Binding MinimumPrincipal, StringFormat='{0:C}'}"> </Label>
       <Label Text="Additional Principal" ></Label>
-      <Label Text="{Binding AdditionalPrincipal}"> </Label>
+      <Label Text="{Binding AdditionalPrincipal, StringFormat='{0:C}'}"> </Label>
       <Label Text="Total Payment" ></Label>
-      <Label Text="{Binding TotalPayment}"> </Label>
+      <Label Text="{Binding TotalPayment, StringFormat='{0:C}'}"> </Label>
       <Label Text="End Balance" ></Label>
-      <Label Text="{Binding EndBalance}"> </Label>                          
+      <Label Text="{Binding EndBalance, StringFormat='{0:C}'}"> </Label>                          
     </StackLayout>
   </d:MyBasePage.Content>
 </d:MyBasePage> 

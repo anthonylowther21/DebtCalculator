@@ -35,39 +35,39 @@ namespace DebtCalculator.PageModels
       get { return _amortizationEntry.DebtName; }
     }
 
-    public string Date 
+    public DateTime Date 
     { 
-      get { return string.Format("{0:MMMM yyyy}", _amortizationEntry.Date); }
+      get { return _amortizationEntry.Date; }
     }
 
-    public string StartBalance 
+    public double StartBalance 
     { 
-      get { return string.Format("{0:C}",_amortizationEntry.StartBalance); }
+      get { return _amortizationEntry.StartBalance; }
     }
 
-    public string MinimumInterest 
+    public double MinimumInterest 
     { 
-      get { return string.Format("{0:C}",_amortizationEntry.MinimumInterest); }
+      get { return _amortizationEntry.MinimumInterest; }
     }
 
-    public string MinimumPrincipal 
+    public double MinimumPrincipal 
     { 
-      get { return string.Format("{0:C}",_amortizationEntry.MinimumPrincipal); }
+      get { return _amortizationEntry.MinimumPrincipal; }
     }
 
-    public string AdditionalPrincipal 
+    public double AdditionalPrincipal 
     { 
-      get { return string.Format("{0:C}",_amortizationEntry.AdditionalPrincipal); }
+      get { return _amortizationEntry.AdditionalPrincipal; }
     }
 
-    public string TotalPayment 
+    public double TotalPayment 
     { 
-      get { return string.Format("{0:C}",_amortizationEntry.TotalPayment); }
+      get { return _amortizationEntry.TotalPayment; }
     }
 
-    public string EndBalance 
+    public double EndBalance 
     { 
-      get { return string.Format("{0:C}",_amortizationEntry.EndBalance); }
+      get { return _amortizationEntry.EndBalance; }
     }
   }
 }
