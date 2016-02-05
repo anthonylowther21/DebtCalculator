@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using DebtCalculator.Library;
 using System.Collections.ObjectModel;
 
-namespace DebtCalculator
+namespace DebtCalculatorLibrary.Services
 {
   public class DatabaseService : IDatabaseService
   {
     private DebtManager _debtManager;
     private PaymentManager _paymentManager;
     private DebtSnowballCalculator _debtSnowballCalculator;
+    public event EventHandler NeedsRefreshChanged;
 
     public DatabaseService ()
     {
@@ -36,6 +37,14 @@ namespace DebtCalculator
     public ObservableCollection<AmortizationEntry> Calculate(bool applySnowballs = true)
     {
       return _debtSnowballCalculator.CalculateDebtSnowball(_debtManager, _paymentManager, applySnowballs);
+    }
+
+    public void SetNeedsRefresh()
+    {
+      if (NeedsRefreshChanged != null)
+      {
+        NeedsRefreshChanged(this, new EventArgs());
+      }
     }
   }
 }

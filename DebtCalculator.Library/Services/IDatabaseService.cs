@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DebtCalculator.Library;
 using System.Collections.ObjectModel;
 
-namespace DebtCalculator
+namespace DebtCalculatorLibrary.Services
 {
   public interface IDatabaseService
   {
@@ -11,7 +11,8 @@ namespace DebtCalculator
     PaymentManager GetPaymentManager();
     DebtSnowballCalculator GetDebtSnowballCalculator();
     ObservableCollection<AmortizationEntry> Calculate(bool applySnowballs);
-
+    void SetNeedsRefresh();
+    event EventHandler NeedsRefreshChanged;
   }
 }
 

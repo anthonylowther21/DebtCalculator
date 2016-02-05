@@ -13,8 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Services\IDatabaseService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\DatabaseService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\ModalPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtListPageModel.cs" />
@@ -66,9 +64,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToPercentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\LeftSlideoutPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LeftSlideoutPage.xaml.cs">
+      <DependentUpon>LeftSlideoutPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
     <Folder Include="$(MSBuildThisFileDirectory)Theme\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
@@ -109,6 +110,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\AmortizationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LeftSlideoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

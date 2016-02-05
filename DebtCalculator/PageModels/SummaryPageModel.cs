@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
 using System.Collections.Generic;
+using DebtCalculatorLibrary.Services;
 
 namespace DebtCalculator.PageModels
 {

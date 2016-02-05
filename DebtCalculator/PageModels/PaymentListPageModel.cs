@@ -3,6 +3,7 @@ using DebtCalculator.Library;
 using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
+using DebtCalculatorLibrary.Services;
 
 
 namespace DebtCalculator.PageModels
@@ -10,11 +11,12 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class PaymentListPageModel : FreshBasePageModel
   {
-    IDatabaseService _dataService;
+    IDatabaseService _databaseService;
 
     public PaymentListPageModel (IDatabaseService dataService)
     {
-      _dataService = dataService;
+      _databaseService = dataService;
+      _databaseService.NeedsRefreshChanged += (sender, e) => Init(null);
     }
 
     public double Snowball { get; set; }
@@ -27,7 +29,7 @@ namespace DebtCalculator.PageModels
       } 
       else 
       {
-        Snowball = _dataService.GetPaymentManager().SnowballAmount;
+        Snowball = _databaseService.GetPaymentManager().SnowballAmount;
       }
     }
 
@@ -37,7 +39,7 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().SnowballAmount = Snowball;
+            _databaseService.GetPaymentManager().SnowballAmount = Snowball;
             CoreMethods.PopPageModel (Snowball);
           }
         );

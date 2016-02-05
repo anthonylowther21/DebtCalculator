@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
+using DebtCalculatorLibrary.Services;
 
 namespace DebtCalculator.PageModels
 {
@@ -16,6 +17,7 @@ namespace DebtCalculator.PageModels
     public DebtListPageModel (IDatabaseService databaseService)
     {
       _databaseService = databaseService;
+      _databaseService.NeedsRefreshChanged += (sender, e) => Init(null);
     }
 
     public ObservableCollection<DebtEntry> Debts { get; set; }

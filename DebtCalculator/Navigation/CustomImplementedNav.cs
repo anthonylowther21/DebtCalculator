@@ -20,6 +20,8 @@ namespace DebtCalculator.Navigation
     Page _amortizationPage;
     Page _summaryPage;
 
+    Page _slideoutPage;
+
     public CustomImplementedNav ()
     { 
       SetupTabbedPage ();
@@ -45,42 +47,44 @@ namespace DebtCalculator.Navigation
 
     protected void CreateMenuPage(string menuPageTitle)
     {
-      var _menuPage = new ContentPage ();
-      _menuPage.Title = menuPageTitle;
-      var listView = new ListView();
+      _slideoutPage = FreshPageModelResolver.ResolvePageModel<LeftSlideoutPageModel>();
 
-      listView.ItemsSource = new string[] { "Debts", "Payments", "Amortizations", "Summary", "Modal Demo" };
+//      var _menuPage = new ContentPage ();
+//      _menuPage.Title = menuPageTitle;
+//      var listView = new ListView();
+//
+//      listView.ItemsSource = new string[] { "Debts", "Payments", "Amortizations", "Summary", "Modal Demo" };
+//
+//      listView.ItemSelected += async (sender, args) =>
+//        {
+//
+//          switch ((string)args.SelectedItem) {
+//            case "Debts":
+//              _tabbedNavigationPage.CurrentPage = _debtsPage;
+//              break;
+//            case "Payments":
+//              _tabbedNavigationPage.CurrentPage = _paymentsPage;
+//              break;
+//            case "Amortizations":
+//              _tabbedNavigationPage.CurrentPage = _amortizationPage;
+//              break;
+//            case "Summary":
+//              _tabbedNavigationPage.CurrentPage = _summaryPage;
+//              break;
+//            case "Modal Demo":
+//              var modalPage = FreshPageModelResolver.ResolvePageModel<ModalPageModel>();
+//              await PushPage(modalPage, null, true);
+//              break;
+//            default:
+//              break;
+//          }
+//
+//          IsPresented = false;
+//        };
+//
+//      _menuPage.Content = listView;
 
-      listView.ItemSelected += async (sender, args) =>
-        {
-
-          switch ((string)args.SelectedItem) {
-            case "Debts":
-              _tabbedNavigationPage.CurrentPage = _debtsPage;
-              break;
-            case "Payments":
-              _tabbedNavigationPage.CurrentPage = _paymentsPage;
-              break;
-            case "Amortizations":
-              _tabbedNavigationPage.CurrentPage = _amortizationPage;
-              break;
-            case "Summary":
-              _tabbedNavigationPage.CurrentPage = _summaryPage;
-              break;
-            case "Modal Demo":
-              var modalPage = FreshPageModelResolver.ResolvePageModel<ModalPageModel>();
-              await PushPage(modalPage, null, true);
-              break;
-            default:
-              break;
-          }
-
-          IsPresented = false;
-        };
-
-      _menuPage.Content = listView;
-
-      Master = new NavigationPage(_menuPage) { Title = "Menu" };
+      Master = new NavigationPage(_slideoutPage) { Title = "Menu" };
     }
 
     public virtual async Task PushPage (Xamarin.Forms.Page page, FreshBasePageModel model, bool modal = false, bool animated = true)
