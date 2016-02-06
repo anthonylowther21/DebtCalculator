@@ -12,11 +12,8 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class AmortizationListPageModel : FreshBasePageModel
   {
-    IDatabaseService _databaseService;
-
-    public AmortizationListPageModel (IDatabaseService databaseService)
+    public AmortizationListPageModel ()
     {
-      _databaseService = databaseService;
     }
 
     public ObservableCollection<AmortizationEntry> Amortizations { get; set; }
@@ -27,8 +24,7 @@ namespace DebtCalculator.PageModels
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
     {
-      Amortizations = _databaseService.Calculate(true);
-      //You can do stuff here
+      Amortizations = DebtApp.Shared.Calculate(true);
     }
 
     protected override void ViewIsDisappearing(object sender, EventArgs e)

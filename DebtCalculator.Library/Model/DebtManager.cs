@@ -8,14 +8,13 @@ namespace DebtCalculator.Library
 {
   public class DebtManager
   {
-    private List<DebtEntry> _debtEntries;
+    private ObservableCollection<DebtEntry> _debtEntries = new ObservableCollection<DebtEntry>();
 
     public DebtManager ()
     {
-      _debtEntries = new List<DebtEntry>();
     }
 
-    public List<DebtEntry> Debts 
+    public ObservableCollection<DebtEntry> Debts 
     { 
       get { return _debtEntries; } 
       set { _debtEntries = value; }
@@ -23,7 +22,16 @@ namespace DebtCalculator.Library
 
     public void UpdateDebt (DebtEntry newItem)
     {
-      var oldItem = _debtEntries.Find(c => c.Id == newItem.Id);
+      DebtEntry oldItem = null;
+
+      foreach (var entry in _debtEntries)
+      {
+        if (entry.Id == newItem.Id)
+        {
+          oldItem = entry;
+          break;
+        }
+      }
 
       if (oldItem != null)
       {
@@ -35,7 +43,16 @@ namespace DebtCalculator.Library
 
     public void DeleteDebt (DebtEntry item)
     {
-      var oldItem = _debtEntries.Find(c => c.Id == item.Id);
+      DebtEntry oldItem = null;
+
+      foreach (var entry in _debtEntries)
+      {
+        if (entry.Id == item.Id)
+        {
+          oldItem = entry;
+          break;
+        }
+      }
 
       if (oldItem != null)
       {
@@ -43,9 +60,9 @@ namespace DebtCalculator.Library
       }
     }
 
-    public List<DebtEntry> CloneDebts()
+    public ObservableCollection<DebtEntry> CloneDebts()
     {
-      List<DebtEntry> clones = new List<DebtEntry>();
+      ObservableCollection<DebtEntry> clones = new ObservableCollection<DebtEntry>();
       foreach (var item in _debtEntries)
       {
         clones.Add(item.Clone());

@@ -11,39 +11,12 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class PaymentListPageModel : FreshBasePageModel
   {
-    IDatabaseService _databaseService;
-
-    public PaymentListPageModel (IDatabaseService dataService)
+    public PaymentListPageModel ()
     {
-      _databaseService = dataService;
-      _databaseService.NeedsRefreshChanged += (sender, e) => Init(null);
     }
-
-    public double Snowball { get; set; }
 
     public override void Init (object initData)
     {
-      if (initData != null) 
-      {
-        Snowball = (double)initData;
-      } 
-      else 
-      {
-        Snowball = _databaseService.GetPaymentManager().SnowballAmount;
-      }
-    }
-
-    public Command SaveCommand 
-    {
-      get 
-      { 
-        return new Command (() => 
-          {
-            _databaseService.GetPaymentManager().SnowballAmount = Snowball;
-            CoreMethods.PopPageModel (Snowball);
-          }
-        );
-      }
     }
 
     public Command ShowSnowball

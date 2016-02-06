@@ -19,10 +19,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\BaseClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AmortizationEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\IDatabaseService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\Paths.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataLayer\InputsFileDatabase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\DatabaseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DebtApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Business\" />

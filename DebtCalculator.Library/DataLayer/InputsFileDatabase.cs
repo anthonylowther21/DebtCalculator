@@ -11,15 +11,11 @@ namespace DebtCalculatorLibrary.DataLayer
 {
   public class InputsFileDatabase
   {
-    #region Members
-
-    private string _defaultInputsFile;
+    private string _previousInputsFile;
     private string _currentInputsFile;
 
     private const string FileVersionMajor = "1";
     private const string FileVersionMinor = "0";
-
-    #endregion
 
     public string CurrentInputsFile
     {
@@ -28,13 +24,12 @@ namespace DebtCalculatorLibrary.DataLayer
 
     public string UserDefaultInputsFile
     {
-      get { return _defaultInputsFile; }
+      get { return _previousInputsFile; }
     }
-
-    #region 'sters
+      
     public InputsFileDatabase()
     {
-      _defaultInputsFile = DebtCalculatorLibrary.Utility.Paths.DefaultInputsPath;
+      _previousInputsFile = DebtCalculatorLibrary.Utility.Paths.DefaultInputsPath;
       _currentInputsFile = string.Empty;
     }
 
@@ -43,25 +38,16 @@ namespace DebtCalculatorLibrary.DataLayer
     /// </summary>
     ~InputsFileDatabase()
     {
-      _defaultInputsFile = null;
+      _previousInputsFile = null;
       _currentInputsFile = null;
     }
-    #endregion
 
-    #region Methods
-
-    public void LoadOnAppLaunch(DatabaseService ao)
+    public void LoadOnAppLaunch(DebtApp data)
     {
-      if (File.Exists(_defaultInputsFile))
+      if (File.Exists(_previousInputsFile))
       {
-        //LoadDefaultInputsFile(ref ao);
+        LoadInputsFile(_previousInputsFile, data);
       }
-    }
-
-    public void LoadDefaultInputsFile(DatabaseService ao)
-    {
-      //LoadInputsFile(_defaultInputsFile, ref ao);
-      _currentInputsFile = string.Empty;
     }
 
     /// <summary>
@@ -69,18 +55,18 @@ namespace DebtCalculatorLibrary.DataLayer
     /// </summary>
     /// <param name="bFromInit">If we are getting inputs from application open</param>
     /// <param name="bUpdateAIUserDefault"></param>
-    public DatabaseService LoadInputsFile(string openFilePath, DatabaseService ao)
+    public bool LoadInputsFile(string openFilePath, DebtApp debtApp)
     {
-      ao.GetDebtManager().Debts.Clear();
-      ao.GetPaymentManager().WindfallEntries.Clear();
-      ao.GetPaymentManager().SalaryEntries.Clear();
-      ao.GetPaymentManager().SnowballAmount = 0;
+      debtApp.DebtManager.Debts.Clear();
+      debtApp.PaymentManager.WindfallEntries.Clear();
+      debtApp.PaymentManager.SalaryEntries.Clear();
+      debtApp.PaymentManager.SnowballAmount = 0;
 
       _currentInputsFile = openFilePath;
 
       foreach (var item in File.ReadAllLines(openFilePath))
       {
-        Console.WriteLine(item + "\n");
+        Console.WriteLine(item);
       }
 
       try
@@ -106,7 +92,7 @@ namespace DebtCalculatorLibrary.DataLayer
                 case "DebtEntry":
                   {
                     Console.WriteLine("Start <DebtEntry> element.");
-                    ao.GetDebtManager().Debts.Add(
+                    debtApp.DebtManager.Debts.Add(
                       new DebtEntry(
                         (string)readInputs["Name"],
                         Double.Parse(readInputs["StartingBalance"]),
@@ -118,7 +104,7 @@ namespace DebtCalculatorLibrary.DataLayer
                 case "SalaryEntry":
                   {
                     Console.WriteLine("Start <SalaryEntry> element.");
-                    ao.GetPaymentManager().SalaryEntries.Add(
+                    debtApp.PaymentManager.SalaryEntries.Add(
                       new SalaryEntry(
                         Double.Parse(readInputs["StartingSalary"]),
                         Double.Parse(readInputs["YearlySnowballIncreasePercent"]),
@@ -129,7 +115,7 @@ namespace DebtCalculatorLibrary.DataLayer
                 case "WindfallEntry":
                   {
                     Console.WriteLine("Start <SalaryEntry> element.");
-                    ao.GetPaymentManager().WindfallEntries.Add(
+                    debtApp.PaymentManager.WindfallEntries.Add(
                       new WindfallEntry(
                         Double.Parse(readInputs["WindfallAmount"]),
                         DateTime.Parse(readInputs["WindfallDate"]),
@@ -140,7 +126,7 @@ namespace DebtCalculatorLibrary.DataLayer
                 case "Snowball":
                   {
                     Console.WriteLine("Start <Snowball> element.");
-                    ao.GetPaymentManager().SnowballAmount = Double.Parse(readInputs["SnowballAmount"]);
+                    debtApp.PaymentManager.SnowballAmount = Double.Parse(readInputs["SnowballAmount"]);
                     break;
                   }
               }
@@ -151,211 +137,28 @@ namespace DebtCalculatorLibrary.DataLayer
       }
       catch (Exception ex)
       {
-        //if (false == bFromInit)
-        //{
-        //  // only tell the user if he did it himself
-        //  //MessageBox.Show(strFileName + " did not load correctly.  Please check the file.", "File Not Loaded", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
-        //  //Toast.MakeText(this, m_strOpenFileName + " did not load correctly.  Please check the file.", ToastLength.Long).Show();
-        //}
-
-        return ao;
+        return false;
       }
-      return ao;
-
-//      _currentInputsFile = openFilePath;
-//
-//      string fName = null, dName = null, dValue = null, name = null, value1 = null, sName = null, VersionMajor = null, VersionMinor = null, AircraftID = null;
-//      string modelVersion = null, modelDate = null, dataVersion = null, dataDate = null;
-//      AdditionalInputsObject ag = null;
-//
-//      try
-//      {
-//        using (XmlReader readInputs = XmlReader.Create(openFilePath)) 
-//        {
-//          while (readInputs.Read())
-//          {
-//            //only detect start elements.
-//            if (readInputs.IsStartElement())
-//            {
-//              //Get element name and switch on it
-//              switch (readInputs.Name)
-//              {
-//                case "InputInfo":
-//                  //Detect this element.
-//                  Console.WriteLine("Start <InputInfo> element.");
-//                  break;
-//
-//                case "Inputs":
-//                  //Detect this element.
-//                  Console.WriteLine("Start <Inputs> element.");
-//                  break;
-//
-//                case "FileInfo":
-//                  VersionMajor = readInputs["FileVersionMajor"];
-//                  VersionMinor = readInputs["FileVersionMinor"];
-//                  /* Need to determine the appropriate course of action if the major file version dos not equal....Will mean that the file format is not compatible */
-//                  if (VersionMajor != TOLDFileVersionMajor)
-//                  {
-//                    //!!! Need to let the user know and abort the file load
-//                  }
-//                  break;
-//
-//                case "AircraftInfo":
-//                  AircraftID = readInputs["AircraftID"];
-//                  modelVersion = readInputs["ModelVersion"];
-//                  modelDate = readInputs["ModelDate"];
-//                  dataVersion = readInputs["DataVersion"];
-//                  dataDate = readInputs["DataDate"];
-//
-//                  break;
-//
-//                case "Input":
-//                  //Detect this element.
-//                  Console.WriteLine("Start <Input> element.");
-//                  //Search for the name on this current node   
-//                  fName = readInputs["FieldName"];
-//
-//                  Console.WriteLine("The string is " + fName);
-//                  dName = readInputs["DisplayName"];
-//
-//                  dValue = readInputs["Value"];
-//
-//
-//                  //TBD need to know if input is enumerated, integer, string,....
-//                  if (ao.TheFields.ContainsKey(fName))          //doesn't like this
-//                  {
-//                    ao.TheFields[fName].Value = Convert.ToDouble(dValue);
-//                    if (true == ao.TheFields[fName].NonFPMInput)
-//                    {
-//                      ao.TheFields[fName].DisplayName = dName;
-//                    }
-//                  }
-//                  break;
-//
-//                case "AdditionalInputSection":
-//                  //Detect this element
-//                  Console.WriteLine("Start <AdditionalInputSection> element.");
-//                  sName = readInputs["SectionName"];
-//
-//                  ag = ao.AdditionalInputs[sName];
-//                  break;
-//
-//                case "AdditionalInputs":
-//                  //Detect this element
-//                  Console.WriteLine("Start <AdditionalInputs> element.");
-//                  name = readInputs["Name"];
-//                  value1 = readInputs["ValueSet"];
-//
-//                  foreach (AdditionalInputObject aio in ag.Inputs)
-//                  {
-//                    if (aio.Name == name)
-//                    {
-//                      aio.ValueSet = Convert.ToDouble(value1);
-//                      //if (true == bUpdateAIUserDefault)
-//                      //{
-//                      //  aio.UserDefaultValue = aio.ValueSet;
-//                      //}
-//                      int nIndex1 = ag.Inputs.IndexOf(aio);
-//                      ag.Inputs.RemoveAt(nIndex1);
-//                      ag.Inputs.Insert(nIndex1, aio);
-//                      break;
-//                    }
-//                  }
-//                  break;
-//              }
-//            }
-//          }
-//          readInputs.Close();
-//        }
-//      }
-//      catch
-//      {
-//        //if (false == bFromInit)
-//        //{
-//        //  // only tell the user if he did it himself
-//        //  //MessageBox.Show(strFileName + " did not load correctly.  Please check the file.", "File Not Loaded", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
-//        //  //Toast.MakeText(this, m_strOpenFileName + " did not load correctly.  Please check the file.", ToastLength.Long).Show();
-//        //}
-//      }
-
+      return true;
 
     }
 
-    public void LoadFpmDefaults(IDatabaseService ao)
+    public void SaveUserDefaults(DebtApp data)
     {
-//      _currentInputsFile = string.Empty;
-//
-//      foreach (FieldInfo fi in ao.TheFields.Values)
-//      {
-//        if (false == fi.AssignedFromPFPS)
-//        {
-//          // only reset the value if it is not locked by the mission planner
-//          fi.Value = (true == fi.ForceFPMDefault) ? fi.ForceFPMDefaultValue : fi.DefaultValue;
-//
-//          if ((true == fi.NonFPMInput) && (-1 == fi.Precision))
-//          {
-//            fi.DisplayName = string.Empty;
-//          }
-//        }
-//      }
-//
-//      foreach (AdditionalInputsObject aiso in ao.AdditionalInputs.Values)
-//      {
-//        if (null == aiso.WayPoint)
-//        {
-//          for (int ii = 0; ii < aiso.Inputs.Count; ii++)
-//          {
-//            AdditionalInputObject aio = aiso.Inputs[ii];
-//            aio.ValueSet = aio.DefaultValue;
-//          }
-//        }
-//      }
+      SaveInputsFileWorker(_previousInputsFile, data);
     }
 
-    public void RestoreUserOrFpmDefaults(DatabaseService ao)
+    public void SaveInputsFile(string filename, DebtApp data)
     {
-      _currentInputsFile = string.Empty;
-
-      if (File.Exists(_defaultInputsFile))
-      {
-        LoadDefaultInputsFile(ao);
-      }
-      else
-      {
-        LoadFpmDefaults(ao);
-      }
-    }
-
-    public void SaveUserDefaults(DatabaseService ao)
-    {
-      SaveInputsFileWorker(_defaultInputsFile, ao);
-    }
-
-    public void SaveInputsFile(string filename, DatabaseService ao)
-    {
-      SaveInputsFileWorker(filename, ao);
+      SaveInputsFileWorker(filename, data);
       _currentInputsFile = filename;
     }
 
-    private void SaveInputsFileWorker(string filename, DatabaseService data)
+    private void SaveInputsFileWorker(string filename, DebtApp data)
     {
-      //var x = new XmlSerializer(typeof(DatabaseService));
-      //var fs = new FileStream(filename, FileMode.OpenOrCreate);
-      //x.Serialize(fs, ao);
-      //fs.Close();
-
       if (!Directory.Exists(Paths.SavedFilesDirectory))
         Directory.CreateDirectory(Paths.SavedFilesDirectory);
-//      #if __IOS__
-//      if (!Directory.Exists(iosUtilities.iOSPaths.DocumentsDirectory.Path))
-//        Directory.CreateDirectory(iosUtilities.iOSPaths.DocumentsDirectory.Path);
-//      #endif
-//
-//      if (File.Exists(filename))
-//      {
-//        File.Delete(filename);
-//      }
-//
+
       XmlWriterSettings setting = new XmlWriterSettings();
       setting.Indent = true;
 
@@ -374,11 +177,10 @@ namespace DebtCalculatorLibrary.DataLayer
         input.WriteAttributeString("VersionMinor", FileVersionMinor);
         input.WriteEndElement(); // FileInfo
 
-
         input.WriteStartElement("Debts");
 
         //Iterate through Inputs to save their current values
-        foreach (DebtEntry entry in data.GetDebtManager().Debts)
+        foreach (DebtEntry entry in data.DebtManager.Debts)
         {
           input.WriteStartElement("DebtEntry");
           input.WriteAttributeString("Name", entry.Name);
@@ -393,7 +195,7 @@ namespace DebtCalculatorLibrary.DataLayer
 
         input.WriteStartElement("Payments");
 
-        foreach (SalaryEntry entry in data.GetPaymentManager().SalaryEntries)
+        foreach (SalaryEntry entry in data.PaymentManager.SalaryEntries)
         {
           input.WriteStartElement("SalaryEntry");
           input.WriteAttributeString("StartingSalary", entry.StartingSalary.ToString());
@@ -402,7 +204,7 @@ namespace DebtCalculatorLibrary.DataLayer
           input.WriteEndElement(); // SalaryEntry
         }
 
-        foreach (WindfallEntry entry in data.GetPaymentManager().WindfallEntries)
+        foreach (WindfallEntry entry in data.PaymentManager.WindfallEntries)
         {
           input.WriteStartElement("WindfallEntry");
           input.WriteAttributeString("WindfallAmount", entry.Amount.ToString());
@@ -413,7 +215,7 @@ namespace DebtCalculatorLibrary.DataLayer
         }
 
         input.WriteStartElement("Snowball");
-        input.WriteAttributeString("SnowballAmount", data.GetPaymentManager().SnowballAmount.ToString());
+        input.WriteAttributeString("SnowballAmount", data.PaymentManager.SnowballAmount.ToString());
         input.WriteEndElement(); // Snowball
 
         input.WriteEndElement(); // Payments
@@ -423,11 +225,6 @@ namespace DebtCalculatorLibrary.DataLayer
         input.Close();
       }
     }
-
-
-    #endregion
-
-
   }
 }
 

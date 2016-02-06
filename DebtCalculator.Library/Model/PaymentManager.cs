@@ -7,25 +7,22 @@ namespace DebtCalculator.Library
 {
   public class PaymentManager
   {
-    private List<SalaryEntry> _salaryEntries = null;
-    private List<WindfallEntry> _windfallEntries = null;
-    private double _snowballAmount = Double.NaN;
+    private ObservableCollection<SalaryEntry> _salaryEntries = new ObservableCollection<SalaryEntry>();
+    private ObservableCollection<WindfallEntry> _windfallEntries = new ObservableCollection<WindfallEntry>();
+    private double _snowballAmount = 0;
     private const double inv_twelve = 1 / 12.0;
 
     public PaymentManager ()
     {
-      _snowballAmount = 0;
-      _salaryEntries = new List<SalaryEntry> ();
-      _windfallEntries = new List<WindfallEntry> ();
     }
 
-    public List<SalaryEntry> SalaryEntries
+    public ObservableCollection<SalaryEntry> SalaryEntries
     { 
       get { return _salaryEntries; }
       set { _salaryEntries = value; }
     }
 
-    public List<WindfallEntry> WindfallEntries
+    public ObservableCollection<WindfallEntry> WindfallEntries
     { 
       get { return _windfallEntries; }
       set { _windfallEntries = value; }
@@ -35,24 +32,6 @@ namespace DebtCalculator.Library
     { 
       get { return _snowballAmount; }
       set { _snowballAmount = value; }
-    }
-
-    public List<object> GetAllPayments()
-    {
-      return new List<object>() { new object[] { SalaryEntries, WindfallEntries, SnowballAmount } };
-    }
-
-    public void AddSalaryEntry(double startingSalary, double yearlyIncreasePercent, DateTime appliedDate)
-    {
-      _salaryEntries.Add(new SalaryEntry(startingSalary, yearlyIncreasePercent, appliedDate));
-    }
-
-    public void AddWindfallEntry(double amount, 
-      DateTime windfallDate, 
-      bool isRecurring = false, 
-      int recurringFrequency = int.MinValue)
-    {
-      _windfallEntries.Add( new WindfallEntry(amount, windfallDate, isRecurring, recurringFrequency));
     }
 
     public double GetTotalMonthlySnowball (DateTime simulatedDate)
@@ -94,21 +73,38 @@ namespace DebtCalculator.Library
 
     }
 
-    public void UpdateSalary (SalaryEntry newItem)
+    public void UpdateSalary (SalaryEntry item)
     {
-      var oldItem = _salaryEntries.Find(c => c.Id == newItem.Id);
+      SalaryEntry oldItem = null;
+
+      foreach (var entry in _salaryEntries)
+      {
+        if (entry.Id == item.Id)
+        {
+          oldItem = entry;
+          break;
+        }
+      }
 
       if (oldItem != null)
       {
         _salaryEntries.Remove(oldItem);
       }
 
-      _salaryEntries.Add(newItem);
+      _salaryEntries.Add(item);
     }
 
     public void DeleteSalary (SalaryEntry item)
     {
-      var oldItem = _salaryEntries.Find(c => c.Id == item.Id);
+      SalaryEntry oldItem = null;
+
+      foreach (var entry in _salaryEntries)
+      {
+        if (entry.Id == item.Id)
+        {
+          oldItem = entry;
+        }
+      }
 
       if (oldItem != null)
       {
@@ -116,21 +112,37 @@ namespace DebtCalculator.Library
       }
     }
 
-    public void UpdateWindfall (WindfallEntry newItem)
+    public void UpdateWindfall (WindfallEntry item)
     {
-      var oldItem = _windfallEntries.Find(c => c.Id == newItem.Id);
+      WindfallEntry oldItem = null;
+
+      foreach (var entry in _windfallEntries)
+      {
+        if (entry.Id == item.Id)
+        {
+          oldItem = entry;
+        }
+      }
 
       if (oldItem != null)
       {
         _windfallEntries.Remove(oldItem);
       }
 
-      _windfallEntries.Add(newItem);
+      _windfallEntries.Add(item);
     }
 
     public void DeleteWindfall (WindfallEntry item)
     {
-      var oldItem = _windfallEntries.Find(c => c.Id == item.Id);
+      WindfallEntry oldItem = null;
+
+      foreach (var entry in _windfallEntries)
+      {
+        if (entry.Id == item.Id)
+        {
+          oldItem = entry;
+        }
+      }
 
       if (oldItem != null)
       {
@@ -143,9 +155,9 @@ namespace DebtCalculator.Library
       return (lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year);
     }
 
-    public List<SalaryEntry> CloneSalaries()
+    public ObservableCollection<SalaryEntry> CloneSalaries()
     {
-      List<SalaryEntry> clones = new List<SalaryEntry>();
+      ObservableCollection<SalaryEntry> clones = new ObservableCollection<SalaryEntry>();
       foreach (var item in _salaryEntries)
       {
         clones.Add(item.Clone());
@@ -153,9 +165,9 @@ namespace DebtCalculator.Library
       return clones;
     }
 
-    public List<WindfallEntry> CloneWindfalls()
+    public ObservableCollection<WindfallEntry> CloneWindfalls()
     {
-      List<WindfallEntry> clones = new List<WindfallEntry>();
+      ObservableCollection<WindfallEntry> clones = new ObservableCollection<WindfallEntry>();
       foreach (var item in _windfallEntries)
       {
         clones.Add(item.Clone());

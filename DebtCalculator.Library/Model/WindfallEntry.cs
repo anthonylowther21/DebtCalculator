@@ -12,8 +12,8 @@ namespace DebtCalculator.Library
 
     public WindfallEntry (double amount, 
                           DateTime windfallDate, 
-                          bool isRecurring, 
-                          int recurringFrequency)
+                          bool isRecurring = false, 
+                          int recurringFrequency = 0)
     {
       Amount = amount;
       WindfallDate = windfallDate;

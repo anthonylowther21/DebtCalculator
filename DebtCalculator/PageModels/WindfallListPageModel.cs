@@ -12,11 +12,8 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class WindfallListPageModel : FreshBasePageModel
   {
-    IDatabaseService _databaseService;
-
-    public WindfallListPageModel (IDatabaseService databaseService)
+    public WindfallListPageModel ()
     {
-      _databaseService = databaseService;
     }
 
     public ObservableCollection<WindfallEntry> Windfalls { get; set; }
@@ -24,7 +21,7 @@ namespace DebtCalculator.PageModels
     public override void Init (object initData)
     {
       // Binding
-      Windfalls = new ObservableCollection<WindfallEntry> (_databaseService.GetPaymentManager().WindfallEntries);
+      Windfalls = DebtApp.Shared.PaymentManager.WindfallEntries;
     }
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
@@ -40,7 +37,7 @@ namespace DebtCalculator.PageModels
 
     public override void ReverseInit (object value)
     {
-      Windfalls = new ObservableCollection<WindfallEntry> (_databaseService.GetPaymentManager().WindfallEntries);
+      Windfalls = DebtApp.Shared.PaymentManager.WindfallEntries;
     }
 
     WindfallEntry _selectedWindfall;

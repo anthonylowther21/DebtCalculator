@@ -12,11 +12,8 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class SalaryListPageModel : FreshBasePageModel
   {
-    IDatabaseService _databaseService;
-
-    public SalaryListPageModel (IDatabaseService databaseService)
+    public SalaryListPageModel ()
     {
-      _databaseService = databaseService;
     }
 
     public ObservableCollection<SalaryEntry> Salaries { get; set; }
@@ -24,7 +21,7 @@ namespace DebtCalculator.PageModels
     public override void Init (object initData)
     {
       // Binding
-      Salaries = new ObservableCollection<SalaryEntry> (_databaseService.GetPaymentManager().SalaryEntries);
+      Salaries = DebtApp.Shared.PaymentManager.SalaryEntries;
     }
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
@@ -40,7 +37,7 @@ namespace DebtCalculator.PageModels
 
     public override void ReverseInit (object value)
     {
-      Salaries = new ObservableCollection<SalaryEntry>(_databaseService.GetPaymentManager().SalaryEntries);
+      Salaries = DebtApp.Shared.PaymentManager.SalaryEntries;
     }
 
     SalaryEntry _selectedSalary;

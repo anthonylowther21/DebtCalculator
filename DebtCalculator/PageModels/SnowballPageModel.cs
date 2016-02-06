@@ -11,11 +11,8 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class SnowballPageModel : FreshBasePageModel
   {
-    IDatabaseService _dataService;
-
-    public SnowballPageModel (IDatabaseService dataService)
+    public SnowballPageModel ()
     {
-      _dataService = dataService;
     }
 
     public double Snowball { get; set; }
@@ -28,7 +25,7 @@ namespace DebtCalculator.PageModels
       } 
       else 
       {
-        Snowball = _dataService.GetPaymentManager().SnowballAmount;
+        Snowball = DebtApp.Shared.PaymentManager.SnowballAmount;
       }
     }
 
@@ -38,7 +35,7 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().SnowballAmount = Snowball;
+            DebtApp.Shared.PaymentManager.SnowballAmount = Snowball;
             CoreMethods.PopPageModel (Snowball);
           }
         );

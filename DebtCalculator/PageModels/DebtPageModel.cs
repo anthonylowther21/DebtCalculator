@@ -11,12 +11,10 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class DebtPageModel : FreshBasePageModel
   {
-    IDatabaseService _dataService;
     DebtEntry _debtEntry;
 
-    public DebtPageModel (IDatabaseService dataService)
+    public DebtPageModel ()
     {
-      _dataService = dataService;
       _debtEntry = new DebtEntry();
     }
 
@@ -27,6 +25,12 @@ namespace DebtCalculator.PageModels
         _debtEntry = ((DebtEntry)initData).Clone();
         RaisePropertyChanged("");
       } 
+    }
+
+    protected override void ViewIsDisappearing(object sender, EventArgs e)
+    {
+      _debtEntry.CancelEdit();
+      base.ViewIsDisappearing(sender, e);
     }
 
     public string Name 
@@ -111,7 +115,7 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetDebtManager().UpdateDebt(_debtEntry);
+            DebtApp.Shared.DebtManager.UpdateDebt(_debtEntry);
             CoreMethods.PopPageModel (_debtEntry);
           }
         );
@@ -124,7 +128,7 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetDebtManager().DeleteDebt(_debtEntry);
+            DebtApp.Shared.DebtManager.DeleteDebt(_debtEntry);
             CoreMethods.PopPageModel (_debtEntry);
           }
         );

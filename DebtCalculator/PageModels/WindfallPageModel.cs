@@ -11,12 +11,10 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class WindfallPageModel : FreshBasePageModel
   {
-    IDatabaseService _dataService;
     WindfallEntry _windfall;
 
-    public WindfallPageModel (IDatabaseService dataService)
+    public WindfallPageModel ()
     {
-      _dataService = dataService;
       _windfall = new WindfallEntry();
     }
 
@@ -62,7 +60,6 @@ namespace DebtCalculator.PageModels
       set
       {
         _windfall.IsRecurring = value;
-        //InvalidateRecurringFrequency();
       }
     }
 
@@ -78,18 +75,13 @@ namespace DebtCalculator.PageModels
       }
     }
 
-    private void InvalidateRecurringFrequency()
-    {
-      RaisePropertyChanged("RecurringFrequency");
-    }
-
     public Command SaveCommand 
     {
       get 
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().UpdateWindfall(_windfall);
+            DebtApp.Shared.PaymentManager.UpdateWindfall(_windfall);
             CoreMethods.PopPageModel (_windfall);
           }
         );
@@ -102,7 +94,7 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().DeleteWindfall(_windfall);
+            DebtApp.Shared.PaymentManager.DeleteWindfall(_windfall);
             CoreMethods.PopPageModel (_windfall);
           }
         );

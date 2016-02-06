@@ -13,8 +13,6 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class SummaryPageModel : FreshBasePageModel
   {
-    IDatabaseService _databaseService;
-
     private double _originalInterest = 0;
     private double _snowballInterest = 0;
     private double _savedInterest = 0;
@@ -24,9 +22,8 @@ namespace DebtCalculator.PageModels
 
     ObservableCollection<AmortizationEntry> amortization;
 
-    public SummaryPageModel (IDatabaseService databaseService)
+    public SummaryPageModel ()
     {
-      _databaseService = databaseService;
     }
 
     public override void Init (object initData)
@@ -36,10 +33,10 @@ namespace DebtCalculator.PageModels
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
     {
-      if (_databaseService.GetDebtManager().Debts.Count > 0)
+      if (DebtApp.Shared.DebtManager.Debts.Count > 0)
       {
         double interest = 0;
-        amortization = _databaseService.Calculate(false);
+        amortization = DebtApp.Shared.Calculate(false);
         bool invalid = false;
         foreach (var entry in amortization)
         {
@@ -65,7 +62,7 @@ namespace DebtCalculator.PageModels
 
 
         interest = 0;
-        amortization = _databaseService.Calculate(true);
+        amortization = DebtApp.Shared.Calculate(true);
         foreach (var entry in amortization)
         {
           interest += entry.MinimumInterest;

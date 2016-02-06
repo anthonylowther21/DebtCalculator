@@ -11,12 +11,10 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class AmortizationPageModel : FreshBasePageModel
   {
-    IDatabaseService _dataService;
     AmortizationEntry _amortizationEntry;
 
-    public AmortizationPageModel (IDatabaseService dataService)
+    public AmortizationPageModel ()
     {
-      _dataService = dataService;
       _amortizationEntry = new AmortizationEntry();
     }
 

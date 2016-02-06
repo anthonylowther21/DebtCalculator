@@ -16,11 +16,8 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class LeftSlideoutPageModel : FreshBasePageModel
   {
-    IDatabaseService _databaseService;
-
-    public LeftSlideoutPageModel (IDatabaseService databaseService)
+    public LeftSlideoutPageModel ()
     {
-      _databaseService = databaseService;
     }
 
     public ObservableCollection<string> Files { get; set; }
@@ -29,10 +26,9 @@ namespace DebtCalculator.PageModels
     {
       Files = new ObservableCollection<string>();
       // Binding
-
       if (Directory.Exists(Paths.SavedFilesDirectory))
-      foreach (string file in Directory.GetFiles(Paths.SavedFilesDirectory))
-          File.Delete(Path.GetFileName(file));
+        foreach (string file in Directory.GetFiles(Paths.SavedFilesDirectory))
+          Files.Add(Path.GetFileName(file));
     }
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
@@ -80,7 +76,7 @@ namespace DebtCalculator.PageModels
         return new Command<string> ((s) => 
           {
             InputsFileDatabase data = new InputsFileDatabase();
-            data.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, Guid.NewGuid().ToString()), (DatabaseService)_databaseService);
+            data.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, Guid.NewGuid().ToString()), DebtApp.Shared);
             CoreMethods.PopToRoot(true);
             Files.Add(Path.GetFileName(data.CurrentInputsFile));
           });
@@ -94,12 +90,10 @@ namespace DebtCalculator.PageModels
         return new Command<string> ( (file) => 
           {
             InputsFileDatabase data = new InputsFileDatabase();
-            DatabaseService db = _databaseService as DatabaseService;
-            _databaseService = data.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, file), db);
+            data.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, file), DebtApp.Shared);
             CoreMethods.PopToRoot(true);
 
             SelectedFile = null;
-            _databaseService.SetNeedsRefresh();
             //CoreMethods.PushPageModel<DebtListPageModel> (debt);
           });
       }

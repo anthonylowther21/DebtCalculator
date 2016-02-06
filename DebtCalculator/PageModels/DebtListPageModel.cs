@@ -12,25 +12,20 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class DebtListPageModel : FreshBasePageModel
   {
-    IDatabaseService _databaseService;
 
-    public DebtListPageModel (IDatabaseService databaseService)
+    public DebtListPageModel ()
     {
-      _databaseService = databaseService;
-      _databaseService.NeedsRefreshChanged += (sender, e) => Init(null);
     }
 
     public ObservableCollection<DebtEntry> Debts { get; set; }
 
     public override void Init (object initData)
     {
-      // Binding
-      Debts = new ObservableCollection<DebtEntry> (_databaseService.GetDebtManager().Debts);
     }
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
     {
-      //You can do stuff here
+      Debts = DebtApp.Shared.DebtManager.Debts;
     }
 
     protected override void ViewIsDisappearing(object sender, EventArgs e)
@@ -41,7 +36,7 @@ namespace DebtCalculator.PageModels
 
     public override void ReverseInit (object value)
     {
-      Debts = new ObservableCollection<DebtEntry>(_databaseService.GetDebtManager().Debts);
+      Debts = DebtApp.Shared.DebtManager.Debts;
     }
 
     DebtEntry _selectedDebt;

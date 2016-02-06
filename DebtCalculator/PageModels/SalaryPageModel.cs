@@ -11,12 +11,10 @@ namespace DebtCalculator.PageModels
   [ImplementPropertyChanged]
   public class SalaryPageModel : FreshBasePageModel
   {
-    IDatabaseService _dataService;
     SalaryEntry _salary;
 
-    public SalaryPageModel (IDatabaseService dataService)
+    public SalaryPageModel ()
     {
-      _dataService = dataService;
       _salary = new SalaryEntry();
     }
 
@@ -47,22 +45,10 @@ namespace DebtCalculator.PageModels
       get
       { 
         return _salary.YearlySnowballIncreasePercent;
-//        return (_salary.YearlySnowballIncreasePercent == -1) ? 
-//                string.Empty :
-//                (_salary.YearlySnowballIncreasePercent * 100).ToString();
       }
       set
       {
         _salary.YearlySnowballIncreasePercent = value;
-//        double result;
-//        if (value == string.Empty)
-//        {
-//          _salary.YearlySnowballIncreasePercent = -1;
-//        }
-//        else if (Double.TryParse(value, out result))
-//        {
-//          _salary.YearlySnowballIncreasePercent = result * 0.01;
-//        }
       }
     }
 
@@ -84,11 +70,8 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            if (_salary.YearlySnowballIncreasePercent >= 0)
-            {
-              _dataService.GetPaymentManager().UpdateSalary(_salary);
-              CoreMethods.PopPageModel (_salary);
-            }
+            DebtApp.Shared.PaymentManager.UpdateSalary(_salary);
+            CoreMethods.PopPageModel (_salary);
           }
         );
       }
@@ -100,7 +83,7 @@ namespace DebtCalculator.PageModels
       { 
         return new Command (() => 
           {
-            _dataService.GetPaymentManager().DeleteSalary(_salary);
+            DebtApp.Shared.PaymentManager.DeleteSalary(_salary);
             CoreMethods.PopPageModel (_salary);
           }
         );
