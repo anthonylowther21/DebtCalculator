@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\ModalPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtListPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtListPage.xaml.cs">
@@ -67,6 +66,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeftSlideoutPage.xaml.cs">
       <DependentUpon>LeftSlideoutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml.cs">
+      <DependentUpon>SaveModalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\SaveModalPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\FreshNavigationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -112,6 +116,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LeftSlideoutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

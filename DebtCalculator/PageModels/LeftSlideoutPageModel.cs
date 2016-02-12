@@ -10,6 +10,7 @@ using DebtCalculatorLibrary.Utility;
 using System.IO;
 using XLabs.Platform.Services.IO;
 using DebtCalculatorLibrary.DataLayer;
+using Acr.UserDialogs;
 
 namespace DebtCalculator.PageModels
 {
@@ -75,12 +76,34 @@ namespace DebtCalculator.PageModels
       {
         return new Command<string> ((s) => 
           {
-            InputsFileDatabase data = new InputsFileDatabase();
-            data.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, Guid.NewGuid().ToString()), DebtApp.Shared);
-            CoreMethods.PopToRoot(true);
-            Files.Add(Path.GetFileName(data.CurrentInputsFile));
+            this.PromptWithTextCancel();
+            //CoreMethods.DisplayAlert("Scenario Name", "Enter Scenario Name", "OK");
+            //CoreMethods.PushPageModel<SaveModalPageModel>(null, true);
+//            InputsFileDatabase data = new InputsFileDatabase();
+//            data.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, Guid.NewGuid().ToString()), DebtApp.Shared);
+//            CoreMethods.PopToRoot(true);
+//            Files.Add(Path.GetFileName(data.CurrentInputsFile));
           });
       }
+    }
+
+    async void PromptWithTextCancel() 
+    {
+      var result = await UserDialogs.Instance.PromptAsync(new PromptConfig 
+        {
+          Title = "Scenario Name",
+          Text = "Existing Text",
+          IsCancellable = true
+        });
+
+      if (result.Ok == true)
+      {
+        InputsFileDatabase data = new InputsFileDatabase();
+        data.SaveInputsFile(Path.Combine(Path.Combine(Paths.SavedFilesDirectory, result.Text)), DebtApp.Shared);
+        Files.Add(Path.GetFileName(data.CurrentInputsFile));
+      }
+
+      bool dance = true;
     }
 
     public Command<string> FileSelected 

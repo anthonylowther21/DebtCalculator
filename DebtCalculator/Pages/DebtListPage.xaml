@@ -5,13 +5,35 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
         <ToolbarItem Name="Add" Command="{Binding AddDebt}" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
 	<d:MyBasePage.Content>
-		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt, Mode=TwoWay}" >
-			<ListView.ItemTemplate>
+		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt, Mode=TwoWay}" SeparatorVisibility="None">
+<!--			<ListView.ItemTemplate>
 				<DataTemplate>
 					<TextCell Text="{Binding Name, Mode=OneWay}" 
                     Detail="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}"></TextCell>
+          <ViewCell>
+           <ViewCell.ContextActions>
+              <MenuItem
+                 Text="More" />
+              <MenuItem
+                 Text="Delete" IsDestructive="True" />
+           </ViewCell.ContextActions>
+          </ViewCell>
 				</DataTemplate>
-			</ListView.ItemTemplate>
+			</ListView.ItemTemplate>-->
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell Height="20">
+             <ViewCell.ContextActions>
+                <MenuItem Text="More" />
+                <MenuItem Text="Delete" IsDestructive="True" />
+             </ViewCell.ContextActions>
+             <StackLayout Padding="15,0,0,0" Orientation="Horizontal" BackgroundColor='Aqua'>
+                 <Label Text="{Binding Name}" FontSize="20"/>
+                 <Label Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" />
+             </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
 		</ListView>
 	</d:MyBasePage.Content>
 </d:MyBasePage>

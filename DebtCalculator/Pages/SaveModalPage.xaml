@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.SaveModalPage"
+xmlns:d="clr-namespace:DebtCalculator.Pages">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Save" Command="{Binding SaveFile}" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+	<d:MyBasePage.Content>
+		<Entry Text="File Name"></Entry>
+	</d:MyBasePage.Content>
+</d:MyBasePage>

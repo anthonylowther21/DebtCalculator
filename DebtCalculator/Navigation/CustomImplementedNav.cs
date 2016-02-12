@@ -6,6 +6,7 @@ using DebtCalculator.PageModels;
 using FreshMvvm;
 using DebtCalculator.Theme;
 using XLabs.Forms.Controls;
+using Acr.UserDialogs;
 
 namespace DebtCalculator.Navigation
 {
