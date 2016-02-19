@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.DebtListPage"
-xmlns:d="clr-namespace:DebtCalculator.Pages">
+xmlns:d="clr-namespace:DebtCalculator.Pages" Title="Debts">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Add" Command="{Binding AddDebt}" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
@@ -23,10 +23,6 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell Height="20">
-             <ViewCell.ContextActions>
-                <MenuItem Text="More" />
-                <MenuItem Text="Delete" IsDestructive="True" />
-             </ViewCell.ContextActions>
              <StackLayout Padding="15,0,0,0" Orientation="Horizontal" BackgroundColor='Aqua'>
                  <Label Text="{Binding Name}" FontSize="20"/>
                  <Label Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" />

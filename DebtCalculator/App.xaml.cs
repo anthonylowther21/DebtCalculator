@@ -4,20 +4,33 @@ using Xamarin.Forms;
 using FreshMvvm;
 using DebtCalculator.Navigation;
 using DebtCalculatorLibrary.Services;
+using DebtCalculator.PageModels;
+using DebtCalculator.Theme;
+using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator
 {
   public partial class App : Application
   {
+    private CustomTabbedPage _tabbedPage = new CustomTabbedPage();
+
     public App()
     {
       InitializeComponent();
 
-      MainPage = new CustomImplementedNav ();
-      //NavigationPage np = new NavigationPage (new MainTabbedPage ());
-      //np.BarBackgroundColor = Color.Gray;
-      //MainPage = np;
+      var page = FreshPageModelResolver.ResolvePageModel<HomePageModel>(this);
+      var basicNavContainer = new FreshNavigationContainer (page);
 
+      basicNavContainer.BarBackgroundColor = Colors.Primary;
+      basicNavContainer.BarTextColor = Colors.Text_Icons;
+      MainPage = basicNavContainer;
+
+      FreshIOC.Container.Register<IFreshNavigationService>(basicNavContainer);
+    }
+
+    public void LoadScenario()
+    {
+      MainPage.Navigation.PushAsync(_tabbedPage);
     }
 
     protected override void OnStart ()

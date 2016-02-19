@@ -10,10 +10,10 @@ namespace DebtCalculator.Pages
   {
     public MyBasePage ()
     {
-      ToolbarItems.Add (new ToolbarItem ("Files", null, () => 
-        {
-          Navigation.PushAsync(FreshPageModelResolver.ResolvePageModel<LeftSlideoutPageModel>());
-        }));
+//      ToolbarItems.Add (new ToolbarItem ("Files", null, () => 
+//        {
+//          Navigation.PushAsync(FreshPageModelResolver.ResolvePageModel<HomePageModel>());
+//        }));
     }
   }
 }

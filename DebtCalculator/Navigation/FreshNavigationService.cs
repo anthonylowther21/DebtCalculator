@@ -21,6 +21,8 @@ namespace DebtCalculator.Navigation
       _navPage = navPage;
     }
 
+    public string NavigationServiceName { get; private set; }
+
     public virtual async Task PushPage (Xamarin.Forms.Page page, FreshBasePageModel model, bool modal = false, bool animated = true)
     {
       if (modal)

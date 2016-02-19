@@ -3,6 +3,7 @@ using FreshMvvm;
 using XLabs.Forms.Controls;
 using DebtCalculator.Theme;
 using System.Threading.Tasks;
+using DebtCalculator.PageModels;
 
 public class CustomTabbedPage : ExtendedTabbedPage, IFreshNavigationService
 {
@@ -11,7 +12,14 @@ public class CustomTabbedPage : ExtendedTabbedPage, IFreshNavigationService
     RegisterNavigation ();
 
     SetupTabBarStyle();
+
+    this.AddTab<DebtListPageModel> ("Debts", "");
+    this.AddTab<PaymentListPageModel>("Payments", "");
+    this.AddTab<AmortizationListPageModel>("Amortization", "");
+    this.AddTab<SummaryPageModel>("Summary", "");
   }
+
+  public string NavigationServiceName { get; private set; }
 
   private void SetupTabBarStyle()
   {
@@ -38,14 +46,14 @@ public class CustomTabbedPage : ExtendedTabbedPage, IFreshNavigationService
     if (!string.IsNullOrWhiteSpace(icon))
       navigationContainer.Icon = icon;
     Children.Add (navigationContainer);
-    return navigationContainer;
+    return page;
   }
 
   protected virtual Page CreateContainerPage (Page page)
   {
     NavigationPage np = new NavigationPage(page);
     SetupPageStyle(np);
-    return np;
+    return page;
   }
 
   public async System.Threading.Tasks.Task PushPage (Xamarin.Forms.Page page, FreshBasePageModel model, bool modal = false, bool animate = true)

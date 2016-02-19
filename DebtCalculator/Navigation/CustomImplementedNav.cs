@@ -43,12 +43,12 @@ namespace DebtCalculator.Navigation
 
     protected void RegisterNavigation()
     {
-      FreshIOC.Container.Register<IFreshNavigationService> (this);
+      //FreshIOC.Container.Register<IFreshNavigationService> (this);
     }
 
     protected void CreateMenuPage(string menuPageTitle)
     {
-      _slideoutPage = FreshPageModelResolver.ResolvePageModel<LeftSlideoutPageModel>();
+      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>();
 
 //      var _menuPage = new ContentPage ();
 //      _menuPage.Title = menuPageTitle;
@@ -108,6 +108,8 @@ namespace DebtCalculator.Navigation
     {
       await ((NavigationPage)_tabbedNavigationPage.CurrentPage).PopToRootAsync (animate);
     }
+
+    public string NavigationServiceName { get; private set; }
   }
 }
 
