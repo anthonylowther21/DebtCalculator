@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using DebtCalculator.Navigation;
+using FreshMvvm;
+using DebtCalculator.PageModels;
 
 namespace DebtCalculator.Pages
 {
@@ -8,10 +10,10 @@ namespace DebtCalculator.Pages
   {
     public MyBasePage ()
     {
-//      ToolbarItems.Add (new ToolbarItem ("Run", null, () => 
-//        {
-//          Application.Current.MainPage = new CustomImplementedNav ();
-//        }));
+      ToolbarItems.Add (new ToolbarItem ("Files", null, () => 
+        {
+          Navigation.PushAsync(FreshPageModelResolver.ResolvePageModel<LeftSlideoutPageModel>());
+        }));
     }
   }
 }

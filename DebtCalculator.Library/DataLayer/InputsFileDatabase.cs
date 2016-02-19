@@ -225,6 +225,15 @@ namespace DebtCalculatorLibrary.DataLayer
         input.Close();
       }
     }
+
+    public Collection<string> GetSavedFiles()
+    {
+      Collection<string> files = new Collection<string>();
+      if (Directory.Exists(Paths.SavedFilesDirectory))
+        foreach (string file in Directory.GetFiles(Paths.SavedFilesDirectory))
+          files.Add(Path.GetFileName(file));
+      return files;
+    }
   }
 }
 

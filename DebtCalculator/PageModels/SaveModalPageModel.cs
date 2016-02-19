@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace DebtCalculator.PageModels
 {
-    public class SaveModalPageModel : FreshBasePageModel
+  public class SaveModalPageModel : FreshBasePageModel
     {
         public SaveModalPageModel ()
         {

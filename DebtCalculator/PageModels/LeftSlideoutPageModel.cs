@@ -11,6 +11,7 @@ using System.IO;
 using XLabs.Platform.Services.IO;
 using DebtCalculatorLibrary.DataLayer;
 using Acr.UserDialogs;
+using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator.PageModels
 {
@@ -27,9 +28,8 @@ namespace DebtCalculator.PageModels
     {
       Files = new ObservableCollection<string>();
       // Binding
-      if (Directory.Exists(Paths.SavedFilesDirectory))
-        foreach (string file in Directory.GetFiles(Paths.SavedFilesDirectory))
-          Files.Add(Path.GetFileName(file));
+      foreach (string file in InputsFileManager.GetSavedFiles())
+        Files.Add(Path.GetFileName(file));
     }
 
     protected override void ViewIsAppearing (object sender, EventArgs e)
@@ -47,8 +47,7 @@ namespace DebtCalculator.PageModels
     {
       Files = new ObservableCollection<string>();
       // Binding
-      if (Directory.Exists(Paths.SavedFilesDirectory))
-      foreach (string file in Directory.GetFiles(Paths.SavedFilesDirectory))
+      foreach (string file in InputsFileManager.GetSavedFiles())
         Files.Add(Path.GetFileName(file));
     }
 
@@ -77,12 +76,6 @@ namespace DebtCalculator.PageModels
         return new Command<string> ((s) => 
           {
             this.PromptWithTextCancel();
-            //CoreMethods.DisplayAlert("Scenario Name", "Enter Scenario Name", "OK");
-            //CoreMethods.PushPageModel<SaveModalPageModel>(null, true);
-//            InputsFileDatabase data = new InputsFileDatabase();
-//            data.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, Guid.NewGuid().ToString()), DebtApp.Shared);
-//            CoreMethods.PopToRoot(true);
-//            Files.Add(Path.GetFileName(data.CurrentInputsFile));
           });
       }
     }
@@ -98,12 +91,9 @@ namespace DebtCalculator.PageModels
 
       if (result.Ok == true)
       {
-        InputsFileDatabase data = new InputsFileDatabase();
-        data.SaveInputsFile(Path.Combine(Path.Combine(Paths.SavedFilesDirectory, result.Text)), DebtApp.Shared);
-        Files.Add(Path.GetFileName(data.CurrentInputsFile));
+        InputsFileManager.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, result.Text), DebtApp.Shared);
+        Files.Add(Path.GetFileName(result.Text));
       }
-
-      bool dance = true;
     }
 
     public Command<string> FileSelected 
@@ -112,12 +102,12 @@ namespace DebtCalculator.PageModels
       {
         return new Command<string> ( (file) => 
           {
-            InputsFileDatabase data = new InputsFileDatabase();
-            data.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, file), DebtApp.Shared);
+            InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, file), DebtApp.Shared);
             CoreMethods.PopToRoot(true);
 
+            (this.CurrentPage as NavigationPage).PushAsync(new CustomTabbedPage());
+
             SelectedFile = null;
-            //CoreMethods.PushPageModel<DebtListPageModel> (debt);
           });
       }
     }

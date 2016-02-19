@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtListPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtListPage.xaml.cs">
       <DependentUpon>DebtListPage.xaml</DependentUpon>
@@ -60,7 +59,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Theme\Colors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToPercentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\LeftSlideoutPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LeftSlideoutPage.xaml.cs">
@@ -71,6 +69,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\SaveModalPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\FreshNavigationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PickerCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
