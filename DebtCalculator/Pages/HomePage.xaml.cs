@@ -4,6 +4,7 @@ using DebtCalculator.PageModels;
 using Xamarin.Forms;
 using System.IO;
 using DebtCalculatorLibrary.Utility;
+using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator.Pages
 {
@@ -17,8 +18,12 @@ namespace DebtCalculator.Pages
     public void OnDelete (object sender, EventArgs e) 
     {
       var mi = ((MenuItem)sender);
-      File.Delete(Path.Combine(Paths.SavedFilesDirectory, mi.CommandParameter.ToString()));
-      (this.BindingContext as HomePageModel).Files.Remove(mi.CommandParameter.ToString());
+      string filename = Path.Combine(Paths.SavedFilesDirectory, mi.CommandParameter.ToString());
+      if (InputsFileManager.CurrentInputsFile != filename)
+      {
+        File.Delete(filename);
+        (this.BindingContext as HomePageModel).Files.Remove(mi.CommandParameter.ToString());
+      }
     }
 	}
 }

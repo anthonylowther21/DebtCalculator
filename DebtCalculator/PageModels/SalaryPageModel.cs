@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
 using DebtCalculatorLibrary.Services;
+using DebtCalculatorLibrary.Business;
 
 
 namespace DebtCalculator.PageModels
@@ -71,6 +72,7 @@ namespace DebtCalculator.PageModels
         return new Command (() => 
           {
             DebtApp.Shared.PaymentManager.UpdateSalary(_salary);
+            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
             CoreMethods.PopPageModel (_salary);
           }
         );
@@ -84,6 +86,7 @@ namespace DebtCalculator.PageModels
         return new Command (() => 
           {
             DebtApp.Shared.PaymentManager.DeleteSalary(_salary);
+            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
             CoreMethods.PopPageModel (_salary);
           }
         );

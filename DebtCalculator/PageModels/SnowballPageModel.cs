@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
 using DebtCalculatorLibrary.Services;
+using DebtCalculatorLibrary.Business;
 
 
 namespace DebtCalculator.PageModels
@@ -36,6 +37,7 @@ namespace DebtCalculator.PageModels
         return new Command (() => 
           {
             DebtApp.Shared.PaymentManager.SnowballAmount = Snowball;
+            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
             CoreMethods.PopPageModel (Snowball);
           }
         );

@@ -5,7 +5,7 @@ xmlns:d="clr-namespace:DebtCalculator.Pages" Title="Debts">
         <ToolbarItem Name="Add" Command="{Binding AddDebt}" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
 	<d:MyBasePage.Content>
-		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt, Mode=TwoWay}" SeparatorVisibility="None">
+		<ListView ItemsSource="{Binding Debts}" SelectedItem="{Binding SelectedDebt, Mode=TwoWay}">
 <!--			<ListView.ItemTemplate>
 				<DataTemplate>
 					<TextCell Text="{Binding Name, Mode=OneWay}" 
@@ -23,7 +23,7 @@ xmlns:d="clr-namespace:DebtCalculator.Pages" Title="Debts">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell Height="20">
-             <StackLayout Padding="15,0,0,0" Orientation="Horizontal" BackgroundColor='Aqua'>
+             <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
                  <Label Text="{Binding Name}" FontSize="20"/>
                  <Label Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" />
              </StackLayout>

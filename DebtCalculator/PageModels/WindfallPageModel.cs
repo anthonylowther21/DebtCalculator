@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
 using DebtCalculatorLibrary.Services;
+using DebtCalculatorLibrary.Business;
 
 
 namespace DebtCalculator.PageModels
@@ -82,6 +83,7 @@ namespace DebtCalculator.PageModels
         return new Command (() => 
           {
             DebtApp.Shared.PaymentManager.UpdateWindfall(_windfall);
+            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
             CoreMethods.PopPageModel (_windfall);
           }
         );
@@ -95,6 +97,7 @@ namespace DebtCalculator.PageModels
         return new Command (() => 
           {
             DebtApp.Shared.PaymentManager.DeleteWindfall(_windfall);
+            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
             CoreMethods.PopPageModel (_windfall);
           }
         );

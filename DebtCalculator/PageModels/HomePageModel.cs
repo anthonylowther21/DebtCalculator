@@ -109,6 +109,7 @@ namespace DebtCalculator.PageModels
       if (result.Ok == true)
       {
         InputsFileManager.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, result.Text), DebtApp.Shared);
+        InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, result.Text), DebtApp.Shared);
         Files.Add(Path.GetFileName(result.Text));
         _mainApp.LoadScenario();
       }

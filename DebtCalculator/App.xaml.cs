@@ -41,6 +41,10 @@ namespace DebtCalculator
     protected override void OnSleep ()
     {
       // Handle when your app sleeps
+      if (InputsFileManager.CurrentInputsFile != string.Empty)
+      {
+        InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+      }
     }
 
     protected override void OnResume ()

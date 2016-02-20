@@ -159,6 +159,14 @@ namespace DebtCalculatorLibrary.DataLayer
       if (!Directory.Exists(Paths.SavedFilesDirectory))
         Directory.CreateDirectory(Paths.SavedFilesDirectory);
 
+      if (File.Exists(filename) == false)
+      {
+        data.DebtManager.Debts.Clear();
+        data.PaymentManager.WindfallEntries.Clear();
+        data.PaymentManager.SalaryEntries.Clear();
+        data.PaymentManager.SnowballAmount = 0;
+      }
+
       XmlWriterSettings setting = new XmlWriterSettings();
       setting.Indent = true;
 
