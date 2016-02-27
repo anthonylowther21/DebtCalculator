@@ -1,79 +1,118 @@
-﻿using Xamarin.Forms;
-using FreshMvvm;
-using XLabs.Forms.Controls;
-using DebtCalculator.Theme;
+﻿using System;
+using Xamarin.Forms;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DebtCalculator.PageModels;
+using FreshMvvm;
+using DebtCalculator.Theme;
+using XLabs.Forms.Controls;
 
-public class CustomTabbedPage : ExtendedTabbedPage, IFreshNavigationService
+namespace DebtCalculator.Navigation
 {
-  public CustomTabbedPage ()
-  {       
-    RegisterNavigation ();
-
-    SetupTabBarStyle();
-
-    this.AddTab<DebtListPageModel> ("Debts", "");
-    this.AddTab<PaymentListPageModel>("Payments", "");
-    this.AddTab<AmortizationListPageModel>("Amortization", "");
-    this.AddTab<SummaryPageModel>("Summary", "");
-  }
-
-  public string NavigationServiceName { get; private set; }
-
-  private void SetupTabBarStyle()
+  /// <summary>
+  /// This is a sample custom implemented Navigation. It combines a MasterDetail and a TabbedPage.
+  /// </summary>
+  public class CustomTabbedPage : FreshTabbedNavigationContainer
   {
-    this.BarTintColor = Colors.LightPrimary;
-    this.TintColor = Colors.LightPrimary;
-  }
+    //FreshTabbedNavigationContainer _tabbedNavigationPage;
+    Page _debtsPage;
+    Page _paymentsPage;
+    Page _amortizationPage;
+    Page _summaryPage;
 
-  private void SetupPageStyle(NavigationPage np)
-  {
-    np.BarBackgroundColor = Colors.Primary;
-    np.BarTextColor = Colors.Text_Icons;
-  }
+    Page _slideoutPage;
 
-  protected void RegisterNavigation ()
-  {
-    FreshIOC.Container.Register<IFreshNavigationService> (this);
-  }
+    public CustomTabbedPage ()
+    { 
+      SetupTabbedPage ();
+      CreateMenuPage ("Menu");
+      RegisterNavigation ();
+    }
 
-  public virtual Page AddTab<T> (string title, string icon, object data = null) where T : FreshBasePageModel
-  {
-    var page = FreshPageModelResolver.ResolvePageModel<T> (data);
-    var navigationContainer = CreateContainerPage (page);
-    navigationContainer.Title = title;
-    if (!string.IsNullOrWhiteSpace(icon))
-      navigationContainer.Icon = icon;
-    Children.Add (navigationContainer);
-    return page;
-  }
+    void SetupTabbedPage()
+    {
+      //_tabbedNavigationPage = new FreshTabbedNavigationContainer ();
+      _debtsPage = this.AddTab<DebtListPageModel> ("Debts", "");
+      _paymentsPage = this.AddTab<PaymentListPageModel>("Payments", "");
+      _amortizationPage = this.AddTab<AmortizationListPageModel>("Amortization", "");
+      _summaryPage = this.AddTab<SummaryPageModel>("Summary", "");
+//
+//      this.Children.Add(FreshPageModelResolver.ResolvePageModel<DebtListPageModel>());
+//      this.Children.Add(FreshPageModelResolver.ResolvePageModel<PaymentListPageModel>());
+//      this.Children.Add(FreshPageModelResolver.ResolvePageModel<AmortizationListPageModel>());
+//      this.Children.Add(FreshPageModelResolver.ResolvePageModel<SummaryPageModel>());
+//
+    }
 
-  protected virtual Page CreateContainerPage (Page page)
-  {
-    NavigationPage np = new NavigationPage(page);
-    SetupPageStyle(np);
-    return page;
-  }
+    protected void RegisterNavigation()
+    {
+      //FreshIOC.Container.Register<IFreshNavigationService> (this);
+    }
 
-  public async System.Threading.Tasks.Task PushPage (Xamarin.Forms.Page page, FreshBasePageModel model, bool modal = false, bool animate = true)
-  {
-    if (modal)
-      await this.CurrentPage.Navigation.PushModalAsync (CreateContainerPage (page));
-    else
-      await this.CurrentPage.Navigation.PushAsync (page);
-  }
+    protected void CreateMenuPage(string menuPageTitle)
+    {
+      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>();
 
-  public async System.Threading.Tasks.Task PopPage (bool modal = false, bool animate = true)
-  {
-    if (modal)
-      await this.CurrentPage.Navigation.PopModalAsync (animate);
-    else
-      await this.CurrentPage.Navigation.PopAsync (animate);
-  }
+      //      var _menuPage = new ContentPage ();
+      //      _menuPage.Title = menuPageTitle;
+      //      var listView = new ListView();
+      //
+      //      listView.ItemsSource = new string[] { "Debts", "Payments", "Amortizations", "Summary", "Modal Demo" };
+      //
+      //      listView.ItemSelected += async (sender, args) =>
+      //        {
+      //
+      //          switch ((string)args.SelectedItem) {
+      //            case "Debts":
+      //              _tabbedNavigationPage.CurrentPage = _debtsPage;
+      //              break;
+      //            case "Payments":
+      //              _tabbedNavigationPage.CurrentPage = _paymentsPage;
+      //              break;
+      //            case "Amortizations":
+      //              _tabbedNavigationPage.CurrentPage = _amortizationPage;
+      //              break;
+      //            case "Summary":
+      //              _tabbedNavigationPage.CurrentPage = _summaryPage;
+      //              break;
+      //            case "Modal Demo":
+      //              var modalPage = FreshPageModelResolver.ResolvePageModel<ModalPageModel>();
+      //              await PushPage(modalPage, null, true);
+      //              break;
+      //            default:
+      //              break;
+      //          }
+      //
+      //          IsPresented = false;
+      //        };
+      //
+      //      _menuPage.Content = listView;
 
-  public async Task PopToRoot (bool animate = true)
-  {
-    await this.CurrentPage.Navigation.PopToRootAsync (animate);
+      //Master = new NavigationPage(_slideoutPage) { Title = "Menu" };
+    }
+
+    public virtual async Task PushPage (Xamarin.Forms.Page page, FreshBasePageModel model, bool modal = false, bool animated = true)
+    {
+      if (modal)
+        await Navigation.PushModalAsync (new NavigationPage(page), animated);
+      else
+        await ((NavigationPage)this.CurrentPage).PushAsync (page, animated); 
+    }
+
+    public virtual async Task PopPage (bool modal = false, bool animate = true)
+    {
+      if (modal)
+        await Navigation.PopModalAsync ();
+      else
+        await ((NavigationPage)this.CurrentPage).PopAsync (); 
+    }
+
+    public virtual async Task PopToRoot (bool animate = true)
+    {
+      await ((NavigationPage)this.CurrentPage).PopToRootAsync (animate);
+    }
+
+    public string NavigationServiceName { get; private set; }
   }
 }
+

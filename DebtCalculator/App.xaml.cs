@@ -12,25 +12,24 @@ namespace DebtCalculator
 {
   public partial class App : Application
   {
-    private CustomTabbedPage _tabbedPage = new CustomTabbedPage();
-
+    CustomImplementedNav _customImplementedNav;
     public App()
     {
       InitializeComponent();
 
-      var page = FreshPageModelResolver.ResolvePageModel<HomePageModel>(this);
-      var basicNavContainer = new FreshNavigationContainer (page);
-
-      basicNavContainer.BarBackgroundColor = Colors.Primary;
-      basicNavContainer.BarTextColor = Colors.Text_Icons;
-      MainPage = basicNavContainer;
-
-      FreshIOC.Container.Register<IFreshNavigationService>(basicNavContainer);
+      _customImplementedNav = new CustomImplementedNav(this);
+      MainPage = _customImplementedNav;
+      //Page page = FreshPageModelResolver.ResolvePageModel<HomePageModel>(this);
+      //MainPage = new FreshNavigationContainer(page);
+      //FreshIOC.Container.Register<IFreshNavigationService> (this);
+      //NavigationPage np = new NavigationPage (new MainTabbedPage ());
+      //np.BarBackgroundColor = Color.Gray;
+      //MainPage = np;
     }
 
-    public void LoadScenario()
+    public void SetSideMenuVisibility(bool shown)
     {
-      MainPage.Navigation.PushAsync(_tabbedPage);
+      _customImplementedNav.IsPresented = shown;
     }
 
     protected override void OnStart ()

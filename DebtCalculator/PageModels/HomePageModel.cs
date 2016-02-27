@@ -111,7 +111,7 @@ namespace DebtCalculator.PageModels
         InputsFileManager.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, result.Text), DebtApp.Shared);
         InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, result.Text), DebtApp.Shared);
         Files.Add(Path.GetFileName(result.Text));
-        _mainApp.LoadScenario();
+        _mainApp.SetSideMenuVisibility(false);
       }
     }
 
@@ -124,7 +124,11 @@ namespace DebtCalculator.PageModels
             InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, file), DebtApp.Shared);
             //CoreMethods.PopToRoot(true);
 
-            _mainApp.LoadScenario();
+            _mainApp.SetSideMenuVisibility(false);
+            //_mainApp.MainPage.Navigation.PushAsync(new CustomTabbedPage());
+            //NavigationPage np = this.CurrentPage as NavigationPage;
+            //(this.CurrentPage as NavigationPage).PushAsync(new CustomTabbedPage());
+            //CoreMethods.PushNewNavigationServiceModal(new CustomTabbedPage());
 
             SelectedFile = null;
           });

@@ -6,25 +6,26 @@ using DebtCalculator.PageModels;
 using FreshMvvm;
 using DebtCalculator.Theme;
 using XLabs.Forms.Controls;
-using Acr.UserDialogs;
 
 namespace DebtCalculator.Navigation
 {
   /// <summary>
   /// This is a sample custom implemented Navigation. It combines a MasterDetail and a TabbedPage.
   /// </summary>
-  public class CustomImplementedNav : Xamarin.Forms.MasterDetailPage, IFreshNavigationService
+  public class CustomImplementedNav : Xamarin.Forms.MasterDetailPage
   {
-    CustomTabbedPage _tabbedNavigationPage;
+    FreshTabbedNavigationContainer _tabbedNavigationPage;
     Page _debtsPage;
     Page _paymentsPage;
     Page _amortizationPage;
     Page _summaryPage;
 
     Page _slideoutPage;
+    App _app;
 
-    public CustomImplementedNav ()
+    public CustomImplementedNav (App app)
     { 
+      _app = app;
       SetupTabbedPage ();
       CreateMenuPage ("Menu");
       RegisterNavigation ();
@@ -32,7 +33,7 @@ namespace DebtCalculator.Navigation
 
     void SetupTabbedPage()
     {
-      _tabbedNavigationPage = new CustomTabbedPage ();
+      _tabbedNavigationPage = new FreshTabbedNavigationContainer ();
       _debtsPage = _tabbedNavigationPage.AddTab<DebtListPageModel> ("Debts", "");
       _paymentsPage = _tabbedNavigationPage.AddTab<PaymentListPageModel>("Payments", "");
       _amortizationPage = _tabbedNavigationPage.AddTab<AmortizationListPageModel>("Amortization", "");
@@ -48,7 +49,7 @@ namespace DebtCalculator.Navigation
 
     protected void CreateMenuPage(string menuPageTitle)
     {
-      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>();
+      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>(_app);
 
 //      var _menuPage = new ContentPage ();
 //      _menuPage.Title = menuPageTitle;
