@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace DebtCalculator.Pages
+namespace DebtCalculator.Shared
 {
   public partial class SalaryPage : MyBasePage
 	{

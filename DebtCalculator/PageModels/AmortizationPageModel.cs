@@ -3,10 +3,9 @@ using DebtCalculator.Library;
 using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
-using DebtCalculatorLibrary.Services;
 
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
   [ImplementPropertyChanged]
   public class AmortizationPageModel : FreshBasePageModel

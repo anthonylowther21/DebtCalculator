@@ -8,7 +8,7 @@ using PropertyChanged;
 using System.Collections.Generic;
 using DebtCalculatorLibrary.Services;
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
   [ImplementPropertyChanged]
   public class SummaryPageModel : FreshBasePageModel

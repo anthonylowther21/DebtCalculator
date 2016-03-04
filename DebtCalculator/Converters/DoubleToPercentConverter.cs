@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using System;
 
-namespace DebtCalculator.Converters
+namespace DebtCalculator.Shared
 { 
   class DoubleToPercentConverter : IValueConverter
   {

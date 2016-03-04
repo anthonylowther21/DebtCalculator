@@ -2,7 +2,7 @@
 using FreshMvvm;
 using Xamarin.Forms;
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
   public class SaveModalPageModel : FreshBasePageModel
     {

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.SummaryPage"
-xmlns:d="clr-namespace:DebtCalculator.Pages">
+<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.SummaryPage"
+xmlns:d="clr-namespace:DebtCalculator.Shared">
   <d:MyBasePage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Original Interest" ></Label>

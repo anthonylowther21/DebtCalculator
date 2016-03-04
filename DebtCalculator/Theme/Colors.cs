@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace DebtCalculator.Theme
+namespace DebtCalculator.Shared
 {
   public static class Colors
   {

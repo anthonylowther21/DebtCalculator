@@ -7,7 +7,7 @@ using DebtCalculatorLibrary.Services;
 using DebtCalculatorLibrary.Business;
 
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
   [ImplementPropertyChanged]
   public class SnowballPageModel : FreshBasePageModel

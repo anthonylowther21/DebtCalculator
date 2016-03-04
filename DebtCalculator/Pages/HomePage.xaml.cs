@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using DebtCalculator.PageModels;
+using DebtCalculator.Shared;
 using Xamarin.Forms;
 using System.IO;
 using DebtCalculatorLibrary.Utility;
 using DebtCalculatorLibrary.Business;
 
-namespace DebtCalculator.Pages
+namespace DebtCalculator.Shared
 {
   public partial class HomePage : MyBasePage
 	{

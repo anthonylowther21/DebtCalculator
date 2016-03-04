@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" 
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-              xmlns:theme="clr-namespace:DebtCalculator.Theme"
-              x:Class="DebtCalculator.Pages.AmortizationListPage"
-              xmlns:d="clr-namespace:DebtCalculator.Pages">
+              xmlns:theme="clr-namespace:DebtCalculator.Shared"
+              x:Class="DebtCalculator.Shared.AmortizationListPage"
+              xmlns:d="clr-namespace:DebtCalculator.Shared">
 	<d:MyBasePage.Content>
 		<ListView ItemsSource="{Binding Amortizations}" SelectedItem="{Binding SelectedAmortization, Mode=TwoWay}" >
 			<ListView.ItemTemplate>

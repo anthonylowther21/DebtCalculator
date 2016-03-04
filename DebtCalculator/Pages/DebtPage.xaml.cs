@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace DebtCalculator.Pages
+namespace DebtCalculator.Shared
 {
 	public partial class DebtPage : MyBasePage
 	{
 		public DebtPage ()
 		{
-			InitializeComponent ();
+      this.BindingContext = new DebtPageModel();
 
-      NavigationPage navPage = ((this as Page) as NavigationPage);
+			InitializeComponent ();
 		}
 	}
 }

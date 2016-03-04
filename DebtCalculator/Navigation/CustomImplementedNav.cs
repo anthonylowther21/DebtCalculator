@@ -2,12 +2,12 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DebtCalculator.PageModels;
+using DebtCalculator.Shared;
 using FreshMvvm;
-using DebtCalculator.Theme;
+using DebtCalculator.Shared;
 using XLabs.Forms.Controls;
 
-namespace DebtCalculator.Navigation
+namespace DebtCalculator.Shared
 {
   /// <summary>
   /// This is a sample custom implemented Navigation. It combines a MasterDetail and a TabbedPage.
@@ -34,7 +34,10 @@ namespace DebtCalculator.Navigation
     void SetupTabbedPage()
     {
       _tabbedNavigationPage = new FreshTabbedNavigationContainer ();
-      _debtsPage = _tabbedNavigationPage.AddTab<DebtListPageModel> ("Debts", "");
+      _debtsPage = new NavigationPage(new DebtListPage());
+      _debtsPage.Title = "Debts";
+      _tabbedNavigationPage.Children.Add(_debtsPage);
+      //_debtsPage = _tabbedNavigationPage.AddTab<DebtListPageModel> ("Debts", "");
       _paymentsPage = _tabbedNavigationPage.AddTab<PaymentListPageModel>("Payments", "");
       _amortizationPage = _tabbedNavigationPage.AddTab<AmortizationListPageModel>("Amortization", "");
       _summaryPage = _tabbedNavigationPage.AddTab<SummaryPageModel>("Summary", "");

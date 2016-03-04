@@ -12,9 +12,8 @@ using XLabs.Platform.Services.IO;
 using DebtCalculatorLibrary.DataLayer;
 using Acr.UserDialogs;
 using DebtCalculatorLibrary.Business;
-using DebtCalculator.Navigation;
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
   [ImplementPropertyChanged]
   public class HomePageModel : FreshBasePageModel
