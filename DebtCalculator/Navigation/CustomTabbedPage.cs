@@ -33,9 +33,13 @@ namespace DebtCalculator.Shared
     {
       //_tabbedNavigationPage = new FreshTabbedNavigationContainer ();
       _debtsPage = new DebtListPage();
-      this.Children.Add(_debtsPage);
-      //_debtsPage = this.AddTab<DebtListPageModel> ("Debts", "");
-      _paymentsPage = this.AddTab<PaymentListPageModel>("Payments", "");
+      _debtsPage.Title = "Debts";
+     // this.Children.Add(_debtsPage);
+
+      _paymentsPage = new PaymentListPage(); 
+      _paymentsPage.Title = "Payments";
+      //this.Children.Add(_paymentsPage);
+
       _amortizationPage = this.AddTab<AmortizationListPageModel>("Amortization", "");
       _summaryPage = this.AddTab<SummaryPageModel>("Summary", "");
 //

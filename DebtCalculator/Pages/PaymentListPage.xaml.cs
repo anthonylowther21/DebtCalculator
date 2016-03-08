@@ -10,6 +10,21 @@ namespace DebtCalculator.Shared
 		{
 			InitializeComponent ();
 		}
+
+    public void Salary_Button_Clicked(object sender, EventArgs e)
+    {
+      Navigation.PushAsync(new SalaryListPage());
+    }
+
+    public void Windfall_Button_Clicked(object sender, EventArgs e)
+    {
+      Navigation.PushAsync(new WindfallListPage());
+    }
+
+    public void Snowball_Button_Clicked(object sender, EventArgs e)
+    {
+      Navigation.PushAsync(new SnowballPage());
+    }
 	}
 }
 

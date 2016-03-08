@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.DebtPage"
-xmlns:d="clr-namespace:DebtCalculator.Shared"
+<local:DebtPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.DebtPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared"
 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
-  <d:MyBasePage.Content>
-  <StackLayout>
-    <TableView Intent="Settings">
+  <local:DebtPageXaml.Content>
+    <StackLayout>
+      <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="">
                 <EntryCell Label="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
@@ -24,9 +25,9 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
                 </ViewCell>
             </TableSection>
         </TableRoot>
-    </TableView>
-    <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
-    <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
+      </TableView>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
     </StackLayout>
-  </d:MyBasePage.Content>
-</d:MyBasePage> 
+  </local:DebtPageXaml.Content>
+</local:DebtPageXaml> 

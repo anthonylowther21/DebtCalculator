@@ -1,21 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.SalaryPage"
-xmlns:d="clr-namespace:DebtCalculator.Shared"
+<local:SalaryPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.SalaryPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared"
 xmlns:controls="clr-namespace:DebtCalculator.Controls"
 xmlns:converters="clr-namespace:DebtCalculator.Shared">
-  <d:MyBasePage.Content>
-<!--    <StackLayout Orientation="Vertical" Padding="15">
-      <Label Text="Starting Salary" ></Label>
-      <Entry Text="{Binding StartingSalary, Mode=TwoWay}"> </Entry>
-      <Label Text="Yearly Increase Percent" ></Label>
-      <Entry Text="{Binding YearlySnowballIncreasePercent, Mode=TwoWay, Converter={StaticResource DoubleToPercentConverter}}"></Entry>
-      <Label Text="Yearly Applied Date" ></Label>
-      <DatePicker Date="{Binding YearlyIncreaseAppliedDate}, Mode=TwoWay}">
-        <DatePicker.Format>MMMM yyyy</DatePicker.Format>
-      </DatePicker>
-      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
-      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
-    </StackLayout>-->
+  <local:SalaryPage.Content>
+    <StackLayout>
       <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="">
@@ -32,6 +21,9 @@ xmlns:converters="clr-namespace:DebtCalculator.Shared">
                 </ViewCell>
              </TableSection>
         </TableRoot>
-    </TableView>
-  </d:MyBasePage.Content>
-</d:MyBasePage> 
+      </TableView>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+    </StackLayout>
+  </local:SalaryPage.Content>
+</local:SalaryPageXaml> 

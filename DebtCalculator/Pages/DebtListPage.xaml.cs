@@ -18,16 +18,16 @@ namespace DebtCalculator.Shared
       this.PushDebtPage();
     }
 
-    private void PushDebtPage(DebtEntry debtEntry = null)
-    {
-      Navigation.PushAsync(new DebtPage());
-    }
-
     public void Item_Selected(object sender, ItemTappedEventArgs e)
     {
       var listView = sender as ListView;
       listView.SelectedItem = null;
       this.PushDebtPage(e.Item as DebtEntry);
+    }
+
+    private void PushDebtPage(DebtEntry debtEntry = null)
+    {
+      Navigation.PushAsync(new DebtPage(debtEntry));
     }
 	}
 

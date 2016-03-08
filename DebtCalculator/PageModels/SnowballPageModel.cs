@@ -9,39 +9,26 @@ using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
-  public class SnowballPageModel : FreshBasePageModel
+  public class SnowballPageModel : BaseViewModel
   {
     public SnowballPageModel ()
     {
     }
 
-    public double Snowball { get; set; }
-
-    public override void Init (object initData)
-    {
-      if (initData != null) 
+    public double Snowball 
+    { 
+      get { return DebtApp.Shared.PaymentManager.SnowballAmount; }
+      set
       {
-        Snowball = (double)initData;
-      } 
-      else 
-      {
-        Snowball = DebtApp.Shared.PaymentManager.SnowballAmount;
+        DebtApp.Shared.PaymentManager.SnowballAmount = value;
+        SetPropertyChanged("Snowball");
       }
     }
 
-    public Command SaveCommand 
+    public void SaveSnowball()
     {
-      get 
-      { 
-        return new Command (() => 
-          {
-            DebtApp.Shared.PaymentManager.SnowballAmount = Snowball;
-            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
-            CoreMethods.PopPageModel (Snowball);
-          }
-        );
-      }
+      DebtApp.Shared.PaymentManager.SnowballAmount = Snowball;
+      InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
     }
   }
 }

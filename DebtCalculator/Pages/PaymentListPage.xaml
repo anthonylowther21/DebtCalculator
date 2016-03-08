@@ -3,9 +3,9 @@
 xmlns:d="clr-namespace:DebtCalculator.Shared">
   <d:MyBasePage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
-      <Button BorderWidth="1" Text="Snowball" Command="{Binding ShowSnowball}"></Button>
-      <Button BorderWidth="1" Text="Salaries" Command="{Binding ShowSalary}"></Button>
-      <Button BorderWidth="1" Text="Windfalls" Command="{Binding ShowWindfall}"></Button>
+      <Button BorderWidth="1" Text="Snowball" Clicked="Snowball_Button_Clicked"></Button>
+      <Button BorderWidth="1" Text="Salaries" Clicked="Salary_Button_Clicked"></Button>
+      <Button BorderWidth="1" Text="Windfalls" Clicked="Windfall_Button_Clicked"></Button>
     </StackLayout>
   </d:MyBasePage.Content>
 </d:MyBasePage> 
