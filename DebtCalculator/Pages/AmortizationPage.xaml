@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.AmortizationPage"
-xmlns:d="clr-namespace:DebtCalculator.Shared">
-  <d:MyBasePage.Content>
+<local:AmortizationPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+  x:Class="DebtCalculator.Shared.AmortizationPage"
+  xmlns:local="clr-namespace:DebtCalculator.Shared">
+  <local:AmortizationPage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Debt Name"></Label>
       <Label Text="{Binding DebtName}"> </Label>
@@ -20,5 +22,5 @@ xmlns:d="clr-namespace:DebtCalculator.Shared">
       <Label Text="End Balance" ></Label>
       <Label Text="{Binding EndBalance, StringFormat='{0:C}'}"> </Label>                          
     </StackLayout>
-  </d:MyBasePage.Content>
-</d:MyBasePage> 
+  </local:AmortizationPage.Content>
+</local:AmortizationPageXaml> 

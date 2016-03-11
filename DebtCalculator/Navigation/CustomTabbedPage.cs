@@ -40,8 +40,10 @@ namespace DebtCalculator.Shared
       _paymentsPage.Title = "Payments";
       //this.Children.Add(_paymentsPage);
 
-      _amortizationPage = this.AddTab<AmortizationListPageModel>("Amortization", "");
-      _summaryPage = this.AddTab<SummaryPageModel>("Summary", "");
+      _amortizationPage = new AmortizationListPage();
+      _amortizationPage.Title = "Amortization";
+      //_amortizationPage = this.AddTab<AmortizationListPageModel>("Amortization", "");
+      //_summaryPage = this.AddTab<SummaryPageModel>("Summary", "");
 //
 //      this.Children.Add(FreshPageModelResolver.ResolvePageModel<DebtListPageModel>());
 //      this.Children.Add(FreshPageModelResolver.ResolvePageModel<PaymentListPageModel>());
@@ -57,7 +59,7 @@ namespace DebtCalculator.Shared
 
     protected void CreateMenuPage(string menuPageTitle)
     {
-      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>();
+      //_slideoutPage = FreshPageModelResolver.ResolvePageModel<MenuPageModel>();
 
       //      var _menuPage = new ContentPage ();
       //      _menuPage.Title = menuPageTitle;

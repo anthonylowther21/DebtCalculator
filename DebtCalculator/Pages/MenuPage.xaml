@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:MenuPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.MenuPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="New" Clicked="Save_Button_Clicked" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+  <local:MenuPage.Content>
+    <ListView ItemsSource="{Binding Files}" ItemTapped="File_Selected" >
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+           <ViewCell.ContextActions>
+              <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="true" CommandParameter="{Binding}"/>
+           </ViewCell.ContextActions>
+           <StackLayout Padding="15,0">
+               <Label Text="{Binding}" />
+           </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    </ListView>
+  </local:MenuPage.Content>
+</local:MenuPageXaml>

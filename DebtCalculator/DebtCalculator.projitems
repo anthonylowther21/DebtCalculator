@@ -68,13 +68,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PickerCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\HomePageModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseContentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseNotify.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\MenuPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -123,7 +123,7 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\HomePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

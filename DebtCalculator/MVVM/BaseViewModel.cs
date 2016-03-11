@@ -70,7 +70,7 @@ namespace DebtCalculator.Shared
 			{
 				await Task.Run(() =>
 				{
-            if(!_cancellationTokenSource.IsCancellationRequested)
+          if(!_cancellationTokenSource.IsCancellationRequested)
 					{
 						task.Start();
 						task.Wait();

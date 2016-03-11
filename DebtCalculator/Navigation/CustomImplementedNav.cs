@@ -42,8 +42,14 @@ namespace DebtCalculator.Shared
       _paymentsPage.Title = "Payments";
       _tabbedNavigationPage.Children.Add(_paymentsPage);
 
-      _amortizationPage = _tabbedNavigationPage.AddTab<AmortizationListPageModel>("Amortization", "");
-      _summaryPage = _tabbedNavigationPage.AddTab<SummaryPageModel>("Summary", "");
+      _amortizationPage = new NavigationPage(new AmortizationListPage());
+      _amortizationPage.Title = "Amortization";
+      _tabbedNavigationPage.Children.Add(_amortizationPage);
+
+      _summaryPage = new NavigationPage(new SummaryPage());
+      _summaryPage.Title = "Summary";
+      _tabbedNavigationPage.Children.Add(_summaryPage);
+
       this.Detail = _tabbedNavigationPage;
 
     }
@@ -53,10 +59,8 @@ namespace DebtCalculator.Shared
       //FreshIOC.Container.Register<IFreshNavigationService> (this);
     }
 
-    protected void CreateMenuPage(string menuPageTitle)
+    protected void CreateMenuPage(string menuPageTitle = "Menu")
     {
-      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>(_app);
-
 //      var _menuPage = new ContentPage ();
 //      _menuPage.Title = menuPageTitle;
 //      var listView = new ListView();
@@ -92,7 +96,7 @@ namespace DebtCalculator.Shared
 //
 //      _menuPage.Content = listView;
 
-      Master = new NavigationPage(_slideoutPage) { Title = "Menu" };
+      Master = new NavigationPage(new MenuPage(this)) { Title = menuPageTitle };
     }
 
     public virtual async Task PushPage (Xamarin.Forms.Page page, FreshBasePageModel model, bool modal = false, bool animated = true)
