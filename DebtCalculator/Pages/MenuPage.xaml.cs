@@ -28,7 +28,7 @@ namespace DebtCalculator.Shared
       if (InputsFileManager.CurrentInputsFile != filename)
       {
         File.Delete(filename);
-        (this.BindingContext as MenuPageModel).Files.Remove(mi.CommandParameter.ToString());
+        this.ViewModel.Files.Remove(mi.CommandParameter.ToString());
       }
     }
 
