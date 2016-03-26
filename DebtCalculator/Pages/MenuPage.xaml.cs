@@ -25,42 +25,29 @@ namespace DebtCalculator.Shared
     {
       var mi = ((MenuItem)sender);
       string filename = Path.Combine(Paths.SavedFilesDirectory, mi.CommandParameter.ToString());
-      if (InputsFileManager.CurrentInputsFile != filename)
-      {
-        File.Delete(filename);
-        this.ViewModel.Files.Remove(mi.CommandParameter.ToString());
-      }
+//      if (InputsFileManager.CurrentInputsFile != filename)
+//      {
+      InputsFileManager.Delete(filename);
+//      }
     }
 
     public void File_Selected (object sender, ItemTappedEventArgs e)
     {
-      ListView list = sender as ListView;
-      list.SelectedItem = null;
-      InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, e.Item.ToString()), DebtApp.Shared);
-      _masterDetailPage.IsPresented = false;
+      InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, e.Item.ToString()), DebtApp.Shared, 
+        () =>  
+        {
+          _masterDetailPage.IsPresented = false;
+        });
     }
 
     public void Save_Button_Clicked(object sender, EventArgs e)
     {
-      PromptWithTextCancel();
-    }
-
-    async void PromptWithTextCancel() 
-    {
-      var result = await UserDialogs.Instance.PromptAsync(new PromptConfig 
+      InputsFileManager.SaveNewInputsFile(DebtApp.Shared, 
+        () => 
         {
-          Title = "Scenario Name",
-          Text = "Existing Text",
-          IsCancellable = true
+          _masterDetailPage.IsPresented = false;
         });
-
-      if (result.Ok == true)
-      {
-        InputsFileManager.SaveInputsFile(Path.Combine(Paths.SavedFilesDirectory, result.Text), DebtApp.Shared);
-        InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, result.Text), DebtApp.Shared);
-        this.ViewModel.Files.Add(Path.GetFileName(result.Text));
-        _masterDetailPage.IsPresented = false;
-      }
+        
     }
 	}
 

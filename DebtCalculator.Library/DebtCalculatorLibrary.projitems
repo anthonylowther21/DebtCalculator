@@ -22,7 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utility\Paths.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataLayer\InputsFileDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\DebtApp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DataAccessLayer\InputsFileDataAccess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Business\InputsFileManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +29,5 @@
     <Folder Include="$(MSBuildThisFileDirectory)Utility\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)DataLayer\" />
-    <Folder Include="$(MSBuildThisFileDirectory)DataAccessLayer\" />
   </ItemGroup>
 </Project>

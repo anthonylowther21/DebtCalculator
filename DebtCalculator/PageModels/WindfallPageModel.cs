@@ -78,16 +78,16 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public void SaveWindfall()
+    public void SaveWindfall(Action callback)
     {
       DebtApp.Shared.PaymentManager.UpdateWindfall(_windfall);
-      InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callback);
     }
 
-    public void DeleteWindfall()
+    public void DeleteWindfall(Action callBack)
     {
       DebtApp.Shared.PaymentManager.DeleteWindfall(_windfall);
-      InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
   }
 }

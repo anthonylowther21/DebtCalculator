@@ -63,7 +63,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml.cs">
       <DependentUpon>SaveModalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\SaveModalPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\FreshNavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PickerCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputsFileHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -82,6 +82,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)MVVM\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

@@ -42,7 +42,7 @@ namespace DebtCalculator
       // Handle when your app sleeps
       if (InputsFileManager.CurrentInputsFile != string.Empty)
       {
-        InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+        InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared , () => {});
       }
     }
 

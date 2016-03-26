@@ -106,16 +106,16 @@ namespace DebtCalculator.Shared
       SetPropertyChanged("MinimumMonthlyPayment");
     }
 
-    public void SaveDebt()
+    public void SaveDebt(Action callBack)
     {
       DebtApp.Shared.DebtManager.UpdateDebt(_debtEntry);
-      InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
-    public void DeleteDebt()
+    public void DeleteDebt(Action callBack)
     {
       DebtApp.Shared.DebtManager.DeleteDebt(_debtEntry);
-      InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
 //    public Command TestModal 

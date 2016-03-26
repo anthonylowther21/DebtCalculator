@@ -14,8 +14,7 @@ namespace DebtCalculator.Shared
 
     public void Save_Button_Clicked(object sender, EventArgs e)
     {
-      ViewModel.SaveSnowball();
-      Navigation.PopAsync(true);
+      ViewModel.SaveSnowball(() => Navigation.PopAsync(true));
     }
 	}
 

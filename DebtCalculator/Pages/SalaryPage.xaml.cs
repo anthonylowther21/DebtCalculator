@@ -17,14 +17,12 @@ namespace DebtCalculator.Shared
 
     public void Save_Button_Clicked(object sender, EventArgs e)
     {
-      this.ViewModel.SaveSalary();
-      this.Navigation.PopAsync(true);
+      this.ViewModel.SaveSalary(() => Navigation.PopAsync(true));
     }
 
     public void Delete_Button_Clicked(object sender, EventArgs e)
     {
-      this.ViewModel.DeleteSalary();
-      this.Navigation.PopAsync(true);
+      this.ViewModel.DeleteSalary(() => Navigation.PopAsync(true));
     }
 	}
 

@@ -64,16 +64,16 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public void SaveSalary()
+    public void SaveSalary(Action callBack)
     {
       DebtApp.Shared.PaymentManager.UpdateSalary(_salary);
-      InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
-    public void DeleteSalary()
+    public void DeleteSalary(Action callBack)
     {
       DebtApp.Shared.PaymentManager.DeleteSalary(_salary);
-      InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
   }
 }
