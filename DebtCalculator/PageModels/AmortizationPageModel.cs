@@ -3,30 +3,24 @@ using DebtCalculator.Library;
 using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
-using DebtCalculatorLibrary.Services;
 
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
-  public class AmortizationPageModel : FreshBasePageModel
+  public class AmortizationPageModel : BaseViewModel
   {
-    AmortizationEntry _amortizationEntry;
+    AmortizationEntry _amortizationEntry = new AmortizationEntry();
 
     public AmortizationPageModel ()
     {
-      _amortizationEntry = new AmortizationEntry();
     }
 
-    public override void Init (object initData)
+    public void AssignAmortization(AmortizationEntry item)
     {
-      _amortizationEntry = ((AmortizationEntry)initData);
-      RaisePropertyChanged("");
-    }
-
-    public override void ReverseInit(object returndData)
-    {
-      _amortizationEntry = ((AmortizationEntry)returndData);
+      if (item != null)
+      {
+        _amortizationEntry = item;
+      }
     }
 
     public string DebtName

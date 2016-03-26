@@ -1,49 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.DebtPage"
-xmlns:d="clr-namespace:DebtCalculator.Pages">
-  <d:MyBasePage.Content>
-        <TableView Intent="Settings">
-            <TableRoot>
-                <TableSection Title="">
-<!--                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Debt Name" VerticalTextAlignment="Center" />
-                            <Entry Text="{Binding Name}" 
-                                   HorizontalOptions="EndAndExpand" Keyboard="Text"/>
-                        </StackLayout>
-                    </ViewCell>-->
-                    <EntryCell Label="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
-                    <EntryCell Label="Starting Balance" Text="{Binding StartingBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                    <EntryCell Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                    <EntryCell Label="APY" Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                    <EntryCell Label="Loan Term (mon)" Text="{Binding LoanTerm}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                 </TableSection>
-                 <TableSection Title="">
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
-                            <Label Text="Minimum Monthly Payment" VerticalTextAlignment="Center" />
-                            <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay, StringFormat='{0:C}'}"
-                                   HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center"/>
-                        </StackLayout>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
-<!--    <StackLayout Orientation="Vertical" Padding="15">
-      <Label Text="Debt Name" ></Label>
-      <Entry Text="{Binding Name}"> </Entry>
-      <Label Text="Start Balance" ></Label>
-      <Entry Text="{Binding StartingBalance}"> </Entry>
-      <Label Text="Current Balance" ></Label>
-      <Entry Text="{Binding CurrentBalance}"></Entry>
-      <Label Text="Yearly Interest" ></Label>
-      <Entry Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}"></Entry>
-      <Label Text="Loan Term" ></Label>
-      <Entry Text="{Binding LoanTerm, Mode=TwoWay}"></Entry>
-      <Label Text="Monthly Payment" ></Label>
-      <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay, StringFormat='{0:C}'}" ></Label>
-      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
-      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
-    </StackLayout>-->
-  </d:MyBasePage.Content>
-</d:MyBasePage> 
+<local:DebtPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.DebtPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared"
+xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
+  <local:DebtPageXaml.Content>
+    <StackLayout>
+      <TableView Intent="Settings">
+        <TableRoot>
+            <TableSection Title="">
+                <EntryCell Label="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
+                <EntryCell Label="Starting Balance" Text="{Binding StartingBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <EntryCell Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <EntryCell Label="APY (%)" Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <EntryCell Label="Loan Term (months)" Text="{Binding LoanTerm}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+             </TableSection>
+             <TableSection Title="">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
+                       <Label Text="Minimum Monthly Payment" VerticalTextAlignment="Center" />
+                       <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay, StringFormat='{0:C}'}"
+                              HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                              HorizontalTextAlignment="End"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+      </TableView>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+    </StackLayout>
+  </local:DebtPageXaml.Content>
+</local:DebtPageXaml> 

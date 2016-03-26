@@ -8,10 +8,9 @@ using PropertyChanged;
 using System.Collections.Generic;
 using DebtCalculatorLibrary.Services;
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
-  public class SummaryPageModel : FreshBasePageModel
+  public class SummaryPageModel : BaseViewModel
   {
     private double _originalInterest = 0;
     private double _snowballInterest = 0;
@@ -26,12 +25,7 @@ namespace DebtCalculator.PageModels
     {
     }
 
-    public override void Init (object initData)
-    {
-
-    }
-
-    protected override void ViewIsAppearing (object sender, EventArgs e)
+    public void LoadData()
     {
       if (DebtApp.Shared.DebtManager.Debts.Count > 0)
       {
@@ -59,8 +53,6 @@ namespace DebtCalculator.PageModels
           _originalPayoffDate = amortization[amortization.Count - 1].Date;
         }
 
-
-
         interest = 0;
         amortization = DebtApp.Shared.Calculate(true);
         foreach (var entry in amortization)
@@ -71,7 +63,7 @@ namespace DebtCalculator.PageModels
         _snowballPayoffDate = amortization[amortization.Count - 1].Date;
 
         _savedInterest = _originalInterest - _snowballInterest;
-        RaisePropertyChanged("");
+        SetPropertyChanged("");
         //You can do stuff here
       }
     }
@@ -114,15 +106,6 @@ namespace DebtCalculator.PageModels
       {
         return _snowballPayoffDate;
       }
-    }
-
-    protected override void ViewIsDisappearing(object sender, EventArgs e)
-    {
-      base.ViewIsDisappearing(sender, e);
-    }
-
-    public override void ReverseInit (object value)
-    {
     }
   }
 }

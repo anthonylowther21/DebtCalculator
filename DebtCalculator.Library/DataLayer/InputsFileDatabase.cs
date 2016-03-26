@@ -17,6 +17,14 @@ namespace DebtCalculatorLibrary.DataLayer
     private const string FileVersionMajor = "1";
     private const string FileVersionMinor = "0";
 
+    public event EventHandler FileListChanged;
+    static public InputsFileDatabase Shared;
+
+    static InputsFileDatabase()
+    {
+      Shared = new InputsFileDatabase();
+    }
+
     public string CurrentInputsFile
     {
       get { return _currentInputsFile; }
@@ -154,17 +162,25 @@ namespace DebtCalculatorLibrary.DataLayer
       _currentInputsFile = filename;
     }
 
+    public void OnFileListChanged()
+    {
+      var handler = FileListChanged;
+      if (handler != null)
+      {
+        handler(this, new EventArgs());
+      }
+    }
+
     private void SaveInputsFileWorker(string filename, DebtApp data)
     {
       if (!Directory.Exists(Paths.SavedFilesDirectory))
         Directory.CreateDirectory(Paths.SavedFilesDirectory);
 
+      bool fileAdded = false;
+
       if (File.Exists(filename) == false)
       {
-        data.DebtManager.Debts.Clear();
-        data.PaymentManager.WindfallEntries.Clear();
-        data.PaymentManager.SalaryEntries.Clear();
-        data.PaymentManager.SnowballAmount = 0;
+        fileAdded = true;
       }
 
       XmlWriterSettings setting = new XmlWriterSettings();
@@ -232,6 +248,20 @@ namespace DebtCalculatorLibrary.DataLayer
         input.Flush();
         input.Close();
       }
+
+      if (fileAdded)
+        OnFileListChanged();
+    }
+
+    public void Delete(string filename)
+    {
+      if (filename == _currentInputsFile)
+      {
+        _currentInputsFile = string.Empty;
+      }
+
+      File.Delete(filename);
+      OnFileListChanged();
     }
 
     public Collection<string> GetSavedFiles()

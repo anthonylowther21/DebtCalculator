@@ -1,10 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
-using DebtCalculator.Navigation;
 using FreshMvvm;
-using DebtCalculator.PageModels;
+using DebtCalculator.Shared;
 
-namespace DebtCalculator.Pages
+namespace DebtCalculator.Shared
 {
   public class MyBasePage : ContentPage
   {

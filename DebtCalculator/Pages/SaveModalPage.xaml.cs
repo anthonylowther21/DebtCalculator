@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using DebtCalculator.PageModels;
+using DebtCalculator.Shared;
 using Xamarin.Forms;
 
-namespace DebtCalculator.Pages
+namespace DebtCalculator.Shared
 {
   public partial class SaveModalPage : MyBasePage
 	{

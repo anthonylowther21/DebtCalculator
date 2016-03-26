@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Version.Plugin</name>
+    </assembly>
+    <members>
+        <member name="T:Version.Plugin.CrossVersion">
+            <summary>
+            Cross platform Version implemenations
+            </summary>
+        </member>
+        <member name="T:Version.Plugin.VersionImplementation">
+            <summary>
+            Implementation for Version
+            </summary>
+        </member>
+        <member name="M:Version.Plugin.VersionImplementation.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Version.Plugin.VersionImplementation.Version">
+            <summary>
+            Returns the app version with build number appended
+            </summary>
+        </member>
+    </members>
+</doc>

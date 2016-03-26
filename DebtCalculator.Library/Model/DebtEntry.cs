@@ -6,7 +6,7 @@ namespace DebtCalculator.Library
 {
   public class DebtEntry : BaseClass
   {
-    private string  _name               = "Debt Name";
+    private string  _name               = "New Debt";
     private double  _startingBalance    = 10000;
     private double  _currentBalance     = 5000;
     private double  _yearlyInterestRate = 0.0325;

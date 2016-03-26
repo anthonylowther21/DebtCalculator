@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.WindfallPage"
-xmlns:d="clr-namespace:DebtCalculator.Pages">
-  <d:MyBasePage.Content>
+<local:WindfallPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.WindfallPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared">
+  <local:WindfallPage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Amount"></Label>
       <Entry Text="{Binding Amount}"> </Entry>
@@ -12,8 +14,8 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
       <Switch IsToggled="{Binding IsRecurring}"></Switch>
       <Label Text="Recurring Frequency" IsVisible="{Binding IsRecurring}"></Label>
       <Entry Text="{Binding RecurringFrequency}" IsVisible="{Binding IsRecurring}"> </Entry>
-      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Command="{Binding SaveCommand}"></Button>
-      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Command="{Binding DeleteCommand}"></Button>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
     </StackLayout>
-  </d:MyBasePage.Content>
-</d:MyBasePage> 
+  </local:WindfallPage.Content>
+</local:WindfallPageXaml> 

@@ -2,12 +2,12 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DebtCalculator.PageModels;
+using DebtCalculator.Shared;
 using FreshMvvm;
-using DebtCalculator.Theme;
+using DebtCalculator.Shared;
 using XLabs.Forms.Controls;
 
-namespace DebtCalculator.Navigation
+namespace DebtCalculator.Shared
 {
   /// <summary>
   /// This is a sample custom implemented Navigation. It combines a MasterDetail and a TabbedPage.
@@ -32,10 +32,18 @@ namespace DebtCalculator.Navigation
     void SetupTabbedPage()
     {
       //_tabbedNavigationPage = new FreshTabbedNavigationContainer ();
-      _debtsPage = this.AddTab<DebtListPageModel> ("Debts", "");
-      _paymentsPage = this.AddTab<PaymentListPageModel>("Payments", "");
-      _amortizationPage = this.AddTab<AmortizationListPageModel>("Amortization", "");
-      _summaryPage = this.AddTab<SummaryPageModel>("Summary", "");
+      _debtsPage = new DebtListPage();
+      _debtsPage.Title = "Debts";
+     // this.Children.Add(_debtsPage);
+
+      _paymentsPage = new PaymentListPage(); 
+      _paymentsPage.Title = "Payments";
+      //this.Children.Add(_paymentsPage);
+
+      _amortizationPage = new AmortizationListPage();
+      _amortizationPage.Title = "Amortization";
+      //_amortizationPage = this.AddTab<AmortizationListPageModel>("Amortization", "");
+      //_summaryPage = this.AddTab<SummaryPageModel>("Summary", "");
 //
 //      this.Children.Add(FreshPageModelResolver.ResolvePageModel<DebtListPageModel>());
 //      this.Children.Add(FreshPageModelResolver.ResolvePageModel<PaymentListPageModel>());
@@ -51,7 +59,7 @@ namespace DebtCalculator.Navigation
 
     protected void CreateMenuPage(string menuPageTitle)
     {
-      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>();
+      //_slideoutPage = FreshPageModelResolver.ResolvePageModel<MenuPageModel>();
 
       //      var _menuPage = new ContentPage ();
       //      _menuPage.Title = menuPageTitle;

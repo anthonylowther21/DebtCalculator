@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace DebtCalculator.Controls
+namespace DebtCalculator.Shared
 {
   public enum PickerType
   {

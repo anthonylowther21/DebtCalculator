@@ -7,31 +7,22 @@ using DebtCalculatorLibrary.Services;
 using DebtCalculatorLibrary.Business;
 
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
-  public class DebtPageModel : FreshBasePageModel
+  public class DebtPageModel : BaseViewModel
   {
-    DebtEntry _debtEntry;
+    private DebtEntry _debtEntry = new DebtEntry();
 
     public DebtPageModel ()
     {
-      _debtEntry = new DebtEntry();
     }
 
-    public override void Init (object initData)
+    public void AssignDebt(DebtEntry debt)
     {
-      if (initData != null) 
+      if (debt != null)
       {
-        _debtEntry = ((DebtEntry)initData).Clone();
-        RaisePropertyChanged("");
-      } 
-    }
-
-    protected override void ViewIsDisappearing(object sender, EventArgs e)
-    {
-      _debtEntry.CancelEdit();
-      base.ViewIsDisappearing(sender, e);
+        _debtEntry = debt;
+      }
     }
 
     public string Name 
@@ -43,6 +34,7 @@ namespace DebtCalculator.PageModels
       set 
       { 
         _debtEntry.Name = value; 
+        SetPropertyChanged("Name");
       }
     }
 
@@ -55,6 +47,7 @@ namespace DebtCalculator.PageModels
       set 
       { 
         _debtEntry.StartingBalance = value; 
+        SetPropertyChanged("StartingBalance");
         InvalidateMinimumMonthlyPayment();
       }
     }
@@ -68,6 +61,7 @@ namespace DebtCalculator.PageModels
       set 
       { 
         _debtEntry.CurrentBalance = value; 
+        SetPropertyChanged("CurrentBalance");
       }
     }
 
@@ -80,6 +74,7 @@ namespace DebtCalculator.PageModels
       set 
       { 
         _debtEntry.YearlyInterestRate = value; 
+        SetPropertyChanged("YearlyInterestRate");
         InvalidateMinimumMonthlyPayment();
       }
     }
@@ -93,6 +88,7 @@ namespace DebtCalculator.PageModels
       set 
       { 
         _debtEntry.LoanTerm = value; 
+        SetPropertyChanged("LoanTerm");
         InvalidateMinimumMonthlyPayment();
       }
     }
@@ -107,35 +103,19 @@ namespace DebtCalculator.PageModels
 
     public void InvalidateMinimumMonthlyPayment()
     {
-      RaisePropertyChanged("MinimumMonthlyPayment");
+      SetPropertyChanged("MinimumMonthlyPayment");
     }
 
-    public Command SaveCommand 
+    public void SaveDebt(Action callBack)
     {
-      get 
-      { 
-        return new Command (() => 
-          {
-            DebtApp.Shared.DebtManager.UpdateDebt(_debtEntry);
-            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
-            CoreMethods.PopPageModel (_debtEntry);
-          }
-        );
-      }
+      DebtApp.Shared.DebtManager.UpdateDebt(_debtEntry);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
-    public Command DeleteCommand 
+    public void DeleteDebt(Action callBack)
     {
-      get 
-      { 
-        return new Command (() => 
-          {
-            DebtApp.Shared.DebtManager.DeleteDebt(_debtEntry);
-            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
-            CoreMethods.PopPageModel (_debtEntry);
-          }
-        );
-      }
+      DebtApp.Shared.DebtManager.DeleteDebt(_debtEntry);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
 //    public Command TestModal 

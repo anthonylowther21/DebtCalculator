@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Pages.WindfallListPage"
-xmlns:d="clr-namespace:DebtCalculator.Pages">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Add" Command="{Binding AddWindfall}" Order="Primary" Priority="0" />
-    </ContentPage.ToolbarItems>
-	<d:MyBasePage.Content>
-		<ListView ItemsSource="{Binding Windfalls}" SelectedItem="{Binding SelectedWindfall, Mode=TwoWay}" >
+<local:WindfallListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.WindfallListPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared">
+  <ContentPage.ToolbarItems>
+      <ToolbarItem Name="Add" Order="Primary" Clicked="Add_Button_Clicked" Priority="0" />
+  </ContentPage.ToolbarItems>
+	<local:WindfallListPage.Content>
+		<ListView ItemsSource="{Binding Windfalls}" ItemTapped="Item_Selected">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<TextCell Text="{Binding Amount, Mode=OneWay, StringFormat='{0:C}'}" 
@@ -13,5 +15,5 @@ xmlns:d="clr-namespace:DebtCalculator.Pages">
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-	</d:MyBasePage.Content>
-</d:MyBasePage>
+	</local:WindfallListPage.Content>
+</local:WindfallListPageXaml>

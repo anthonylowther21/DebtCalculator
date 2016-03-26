@@ -7,25 +7,23 @@ using DebtCalculatorLibrary.Services;
 using DebtCalculatorLibrary.Business;
 
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
   [ImplementPropertyChanged]
-  public class WindfallPageModel : FreshBasePageModel
+  public class WindfallPageModel : BaseViewModel
   {
-    WindfallEntry _windfall;
+    WindfallEntry _windfall = new WindfallEntry();
 
     public WindfallPageModel ()
     {
-      _windfall = new WindfallEntry();
     }
 
-    public override void Init (object initData)
+    public void AssignWindfall(WindfallEntry windfall)
     {
-      if (initData != null) 
+      if (windfall != null)
       {
-        _windfall = ((WindfallEntry)initData).Clone();
-        RaisePropertyChanged("");
-      } 
+        _windfall = windfall;
+      }
     }
 
     public double Amount
@@ -37,6 +35,7 @@ namespace DebtCalculator.PageModels
       set
       {
         _windfall.Amount = value;
+        SetPropertyChanged("Amount");
       }
     }
 
@@ -49,6 +48,7 @@ namespace DebtCalculator.PageModels
       set
       {
         _windfall.WindfallDate = value;
+        SetPropertyChanged("WindfallDate");
       }
     }
 
@@ -61,6 +61,7 @@ namespace DebtCalculator.PageModels
       set
       {
         _windfall.IsRecurring = value;
+        SetPropertyChanged("IsRecurring");
       }
     }
 
@@ -73,35 +74,20 @@ namespace DebtCalculator.PageModels
       set
       {
         _windfall.RecurringFrequency = value;
+        SetPropertyChanged("RecurringFrequency");
       }
     }
 
-    public Command SaveCommand 
+    public void SaveWindfall(Action callback)
     {
-      get 
-      { 
-        return new Command (() => 
-          {
-            DebtApp.Shared.PaymentManager.UpdateWindfall(_windfall);
-            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
-            CoreMethods.PopPageModel (_windfall);
-          }
-        );
-      }
+      DebtApp.Shared.PaymentManager.UpdateWindfall(_windfall);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callback);
     }
 
-    public Command DeleteCommand 
+    public void DeleteWindfall(Action callBack)
     {
-      get 
-      { 
-        return new Command (() => 
-          {
-            DebtApp.Shared.PaymentManager.DeleteWindfall(_windfall);
-            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
-            CoreMethods.PopPageModel (_windfall);
-          }
-        );
-      }
+      DebtApp.Shared.PaymentManager.DeleteWindfall(_windfall);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
   }
 }

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using FreshMvvm;
-using DebtCalculator.Navigation;
 using DebtCalculatorLibrary.Services;
-using DebtCalculator.PageModels;
-using DebtCalculator.Theme;
+using DebtCalculator.Shared;
 using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator
@@ -19,17 +17,19 @@ namespace DebtCalculator
 
       _customImplementedNav = new CustomImplementedNav(this);
       MainPage = _customImplementedNav;
-      //Page page = FreshPageModelResolver.ResolvePageModel<HomePageModel>(this);
-      //MainPage = new FreshNavigationContainer(page);
-      //FreshIOC.Container.Register<IFreshNavigationService> (this);
-      //NavigationPage np = new NavigationPage (new MainTabbedPage ());
-      //np.BarBackgroundColor = Color.Gray;
-      //MainPage = np;
     }
 
     public void SetSideMenuVisibility(bool shown)
     {
       _customImplementedNav.IsPresented = shown;
+    }
+
+    public new static App Current
+    {
+      get
+      {
+        return (App)Application.Current;
+      }
     }
 
     protected override void OnStart ()
@@ -42,7 +42,7 @@ namespace DebtCalculator
       // Handle when your app sleeps
       if (InputsFileManager.CurrentInputsFile != string.Empty)
       {
-        InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
+        InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared , () => {});
       }
     }
 

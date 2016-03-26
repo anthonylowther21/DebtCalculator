@@ -7,26 +7,22 @@ using DebtCalculatorLibrary.Services;
 using DebtCalculatorLibrary.Business;
 
 
-namespace DebtCalculator.PageModels
+namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
-  public class SalaryPageModel : FreshBasePageModel
+  public class SalaryPageModel : BaseViewModel
   {
-    SalaryEntry _salary;
+    SalaryEntry _salary = new SalaryEntry();
 
     public SalaryPageModel ()
     {
-      _salary = new SalaryEntry();
     }
 
-    public override void Init (object initData)
+    public void AssignSalary(SalaryEntry salary)
     {
-      if (initData != null) 
+      if (salary != null)
       {
-        _salary = ((SalaryEntry)initData).Clone();
-        // This raises property changed for all items in this viewmodel
-        RaisePropertyChanged("");
-      } 
+        _salary = salary;
+      }
     }
 
     public double StartingSalary 
@@ -38,6 +34,7 @@ namespace DebtCalculator.PageModels
       set
       {
         _salary.StartingSalary = value;
+        SetPropertyChanged("StartingSalary");
       }
     }
 
@@ -50,6 +47,7 @@ namespace DebtCalculator.PageModels
       set
       {
         _salary.YearlySnowballIncreasePercent = value;
+        SetPropertyChanged("YearlySnowballIncreasePercent");
       }
     }
 
@@ -62,35 +60,20 @@ namespace DebtCalculator.PageModels
       set
       {
         _salary.YearlyIncreaseAppliedDate = value;
+        SetPropertyChanged("YearlyIncreaseAppliedDate");
       }
     }
 
-    public Command SaveCommand 
+    public void SaveSalary(Action callBack)
     {
-      get 
-      { 
-        return new Command (() => 
-          {
-            DebtApp.Shared.PaymentManager.UpdateSalary(_salary);
-            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
-            CoreMethods.PopPageModel (_salary);
-          }
-        );
-      }
+      DebtApp.Shared.PaymentManager.UpdateSalary(_salary);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
-    public Command DeleteCommand 
+    public void DeleteSalary(Action callBack)
     {
-      get 
-      { 
-        return new Command (() => 
-          {
-            DebtApp.Shared.PaymentManager.DeleteSalary(_salary);
-            InputsFileManager.SaveInputsFile(InputsFileManager.CurrentInputsFile, DebtApp.Shared);
-            CoreMethods.PopPageModel (_salary);
-          }
-        );
-      }
+      DebtApp.Shared.PaymentManager.DeleteSalary(_salary);
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
   }
 }

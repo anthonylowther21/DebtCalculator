@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Version.Plugin.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Version.Plugin.Abstractions.IVersion">
+            <summary>
+            Interface for Version
+            </summary>
+        </member>
+        <member name="P:Version.Plugin.Abstractions.IVersion.Version">
+            <summary>
+            Current App Version
+            </summary>
+        </member>
+    </members>
+</doc>

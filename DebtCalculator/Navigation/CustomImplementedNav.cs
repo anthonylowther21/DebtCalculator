@@ -2,12 +2,12 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DebtCalculator.PageModels;
+using DebtCalculator.Shared;
 using FreshMvvm;
-using DebtCalculator.Theme;
+using DebtCalculator.Shared;
 using XLabs.Forms.Controls;
 
-namespace DebtCalculator.Navigation
+namespace DebtCalculator.Shared
 {
   /// <summary>
   /// This is a sample custom implemented Navigation. It combines a MasterDetail and a TabbedPage.
@@ -34,10 +34,22 @@ namespace DebtCalculator.Navigation
     void SetupTabbedPage()
     {
       _tabbedNavigationPage = new FreshTabbedNavigationContainer ();
-      _debtsPage = _tabbedNavigationPage.AddTab<DebtListPageModel> ("Debts", "");
-      _paymentsPage = _tabbedNavigationPage.AddTab<PaymentListPageModel>("Payments", "");
-      _amortizationPage = _tabbedNavigationPage.AddTab<AmortizationListPageModel>("Amortization", "");
-      _summaryPage = _tabbedNavigationPage.AddTab<SummaryPageModel>("Summary", "");
+      _debtsPage = new NavigationPage(new DebtListPage());
+      _debtsPage.Title = "Debts";
+      _tabbedNavigationPage.Children.Add(_debtsPage);
+
+      _paymentsPage = new NavigationPage(new PaymentListPage()); 
+      _paymentsPage.Title = "Payments";
+      _tabbedNavigationPage.Children.Add(_paymentsPage);
+
+      _amortizationPage = new NavigationPage(new AmortizationListPage());
+      _amortizationPage.Title = "Amortization";
+      _tabbedNavigationPage.Children.Add(_amortizationPage);
+
+      _summaryPage = new NavigationPage(new SummaryPage());
+      _summaryPage.Title = "Summary";
+      _tabbedNavigationPage.Children.Add(_summaryPage);
+
       this.Detail = _tabbedNavigationPage;
 
     }
@@ -47,10 +59,8 @@ namespace DebtCalculator.Navigation
       //FreshIOC.Container.Register<IFreshNavigationService> (this);
     }
 
-    protected void CreateMenuPage(string menuPageTitle)
+    protected void CreateMenuPage(string menuPageTitle = "Menu")
     {
-      _slideoutPage = FreshPageModelResolver.ResolvePageModel<HomePageModel>(_app);
-
 //      var _menuPage = new ContentPage ();
 //      _menuPage.Title = menuPageTitle;
 //      var listView = new ListView();
@@ -86,7 +96,7 @@ namespace DebtCalculator.Navigation
 //
 //      _menuPage.Content = listView;
 
-      Master = new NavigationPage(_slideoutPage) { Title = "Menu" };
+      Master = new NavigationPage(new MenuPage(this)) { Title = menuPageTitle };
     }
 
     public virtual async Task PushPage (Xamarin.Forms.Page page, FreshBasePageModel model, bool modal = false, bool animated = true)

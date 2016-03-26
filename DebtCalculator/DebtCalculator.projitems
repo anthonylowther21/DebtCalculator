@@ -63,21 +63,26 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml.cs">
       <DependentUpon>SaveModalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\SaveModalPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\FreshNavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PickerCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\HomePageModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseContentPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseNotify.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\MenuPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputsFileHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
     <Folder Include="$(MSBuildThisFileDirectory)Theme\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MVVM\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
@@ -119,7 +124,7 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\HomePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
