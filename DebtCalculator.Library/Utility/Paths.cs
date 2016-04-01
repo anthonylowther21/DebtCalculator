@@ -9,17 +9,17 @@ namespace DebtCalculatorLibrary.Utility
     {
     }
 
-    public static string ApplicationDirectory
-    {
-      get 
-      { 
-        #if __IOS__
-        return Foundation.NSBundle.MainBundle.ResourcePath; 
-        #elif __ANDROID__
-
-        #endif
-      }
-    }
+//    public static string ApplicationDirectory
+//    {
+//      get 
+//      { 
+//        #if __IOS__
+//        return Foundation.NSBundle.MainBundle.ResourcePath; 
+//        #elif __ANDROID__
+//
+//        #endif
+//      }
+//    }
 
     public static string DefaultsDirectory
     {

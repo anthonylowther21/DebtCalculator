@@ -4,53 +4,39 @@ using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
 using DebtCalculatorLibrary.Services;
+using System.Collections.ObjectModel;
+using DebtCalculatorLibrary.Business;
 
 
 namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
   public class PaymentListPageModel : BaseViewModel
   {
+    private double _snowball = DebtApp.Shared.PaymentManager.SnowballAmount;
+
     public PaymentListPageModel ()
     {
     }
 
-//    public override void Init (object initData)
-//    {
-//    }
+    public double Snowball 
+    { 
+      get { return DebtApp.Shared.PaymentManager.SnowballAmount; }
+      set
+      {
+        DebtApp.Shared.PaymentManager.SnowballAmount = value;
+        SetPropertyChanged("Snowball");
+      }
+    }
 
-//    public Command ShowSnowball
-//    {
-//      get
-//      {
-//        return new Command(async () =>
-//          {
-//            await CoreMethods.PushPageModel<SnowballPageModel>();
-//          });
-//      }
-//    }
-//
-//    public Command ShowSalary
-//    {
-//      get
-//      {
-//        return new Command(async () =>
-//          {
-//            await CoreMethods.PushPageModel<SalaryListPageModel>();
-//          });
-//      }
-//    }
-//
-//    public Command ShowWindfall
-//    {
-//      get
-//      {
-//        return new Command(async () =>
-//          {
-//            await CoreMethods.PushPageModel<WindfallListPageModel>();
-//          });
-//      }
-//    }
+    public void SaveSnowball()
+    {
+      DebtApp.Shared.PaymentManager.SnowballAmount = Snowball;
+      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, null);
+    }
+
+    public ObservableCollection<SalaryEntry> Salaries { get; set; } = DebtApp.Shared.PaymentManager.SalaryEntries;
+
+    public ObservableCollection<WindfallEntry> Windfalls { get; set; } = DebtApp.Shared.PaymentManager.WindfallEntries;
   }
 }
 

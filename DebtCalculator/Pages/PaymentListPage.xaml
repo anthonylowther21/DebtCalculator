@@ -1,11 +1,39 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.PaymentListPage"
-xmlns:d="clr-namespace:DebtCalculator.Shared">
-  <d:MyBasePage.Content>
-    <StackLayout Orientation="Vertical" Padding="15">
-      <Button BorderWidth="1" Text="Snowball" Clicked="Snowball_Button_Clicked"></Button>
-      <Button BorderWidth="1" Text="Salaries" Clicked="Salary_Button_Clicked"></Button>
-      <Button BorderWidth="1" Text="Windfalls" Clicked="Windfall_Button_Clicked"></Button>
+<local:PaymentListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.PaymentListPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared" Title="Payments">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Add" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+  <local:PaymentListPage.Content>
+    <StackLayout Spacing="10">
+      <ContentView>
+       <StackLayout Padding="15,0,0,0" Orientation="Vertical">
+         <Label Text="Snowball" FontSize="17" VerticalTextAlignment="Center"/>
+         <Entry Text="{Binding Snowball}" FontSize="17"/>
+       </StackLayout>
+      </ContentView>
+      <ContentView Padding="15,0,0,0">
+        <Label Text="Salaries" FontSize="17"/>
+      </ContentView>
+      <ListView ItemsSource="{Binding Salaries}" ItemTapped="Salary_Selected" >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell Text="{Binding StartingSalary, Mode=OneWay, StringFormat='{0:C}'}" 
+                      Detail="{Binding YearlySnowballIncreasePercent, Mode=OneWay, StringFormat='{0:P}'}"></TextCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <ContentView Padding="15,0,0,0">
+        <Label Text="Windfalls" FontSize="17"/>
+      </ContentView>
+      <ListView ItemsSource="{Binding Windfalls}" ItemTapped="Windfall_Selected">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell Text="{Binding Amount, Mode=OneWay, StringFormat='{0:C}'}" 
+                      Detail="{Binding WindfallDate, Mode=OneWay, StringFormat='{0:MMMM yyyy}'}"></TextCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
     </StackLayout>
-  </d:MyBasePage.Content>
-</d:MyBasePage> 
+  </local:PaymentListPage.Content>
+</local:PaymentListPageXaml> 

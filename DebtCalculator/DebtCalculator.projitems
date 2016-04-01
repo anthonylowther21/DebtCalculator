@@ -63,7 +63,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml.cs">
       <DependentUpon>SaveModalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Navigation\FreshNavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PickerCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
