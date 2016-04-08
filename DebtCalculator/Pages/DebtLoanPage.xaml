@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<local:DebtPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-x:Class="DebtCalculator.Shared.DebtPage"
+<local:DebtLoanPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.DebtLoanPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared"
 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
-  <local:DebtPageXaml.Content>
+  <local:DebtLoanPageXaml.Content>
     <StackLayout>
       <TableView Intent="Settings">
         <TableRoot>
@@ -29,5 +29,5 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
       <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
       <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
     </StackLayout>
-  </local:DebtPageXaml.Content>
-</local:DebtPageXaml> 
+  </local:DebtLoanPageXaml.Content>
+</local:DebtLoanPageXaml> 

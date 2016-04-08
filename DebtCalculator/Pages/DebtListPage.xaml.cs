@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DebtCalculator.Shared;
 using Xamarin.Forms;
 using DebtCalculator.Library;
+using Acr.UserDialogs;
 
 namespace DebtCalculator.Shared
 {
@@ -15,7 +16,23 @@ namespace DebtCalculator.Shared
       
     public void Add_Button_Clicked(object sender, EventArgs e)
     {
-      this.PushDebtPage();
+      this.ActionSheetAsync();
+    }
+
+    public async void ActionSheetAsync()
+    {
+      var result = await UserDialogs.Instance.ActionSheetAsync("New Payment", "Cancel", null, "Loan Debt", "Credit Card");
+      switch (result)
+      {
+        case "Loan Debt":
+          this.Navigation.PushAsync(new DebtLoanPage(new DebtEntry(DebtType.Loan)));
+          break;
+        case "Credit Card":
+          this.Navigation.PushAsync(new DebtCreditCardPage(new DebtEntry(DebtType.CreditCard)));
+          break;
+        default:
+          break;
+      }
     }
 
     public void Item_Selected(object sender, ItemTappedEventArgs e)
@@ -25,9 +42,16 @@ namespace DebtCalculator.Shared
       this.PushDebtPage(e.Item as DebtEntry);
     }
 
-    private void PushDebtPage(DebtEntry debtEntry = null)
+    private void PushDebtPage(DebtEntry debtEntry)
     {
-      Navigation.PushAsync(new DebtPage(debtEntry));
+      if (debtEntry.DebtType == DebtType.Loan)
+      {
+        this.Navigation.PushAsync(new DebtLoanPage(debtEntry));
+      }
+      else if (debtEntry.DebtType == DebtType.CreditCard)
+      {
+        this.Navigation.PushAsync(new DebtCreditCardPage(debtEntry));
+      }
     }
 	}
 

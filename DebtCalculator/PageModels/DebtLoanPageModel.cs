@@ -9,11 +9,11 @@ using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator.Shared
 {
-  public class DebtPageModel : BaseViewModel
+  public class DebtLoanPageModel : BaseViewModel
   {
     private DebtEntry _debtEntry = new DebtEntry();
 
-    public DebtPageModel ()
+    public DebtLoanPageModel ()
     {
     }
 

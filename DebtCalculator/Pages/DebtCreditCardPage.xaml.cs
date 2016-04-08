@@ -8,9 +8,9 @@ using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator.Shared
 {
-  public partial class DebtPage : DebtPageXaml
+  public partial class DebtCreditCardPage : DebtCreditCardPageXaml
 	{
-    public DebtPage (DebtEntry debtEntry)
+    public DebtCreditCardPage (DebtEntry debtEntry)
 		{
       this.ViewModel.AssignDebt(debtEntry);
 
@@ -28,7 +28,7 @@ namespace DebtCalculator.Shared
     }
 	}
 
-  public partial class DebtPageXaml : BaseContentPage<DebtPageModel>
+  public partial class DebtCreditCardPageXaml : BaseContentPage<DebtPageCreditCardModel>
   {
   }
 }

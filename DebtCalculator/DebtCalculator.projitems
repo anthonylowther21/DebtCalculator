@@ -17,10 +17,6 @@
       <DependentUpon>DebtListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\MyBasePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtPageModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml.cs">
-      <DependentUpon>DebtPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\SnowballPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SnowballPage.xaml.cs">
       <DependentUpon>SnowballPage.xaml</DependentUpon>
@@ -74,6 +70,14 @@
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputsFileHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtPageCreditCardModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtCreditCardPage.xaml.cs">
+      <DependentUpon>DebtCreditCardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtLoanPage.xaml.cs">
+      <DependentUpon>DebtLoanPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtLoanPageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -88,9 +92,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SnowballPage.xaml">
@@ -124,6 +125,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtCreditCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtLoanPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
