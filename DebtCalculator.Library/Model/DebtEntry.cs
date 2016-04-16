@@ -11,10 +11,11 @@ namespace DebtCalculator.Library
     private double  _currentBalance     = 5000;
     private double  _yearlyInterestRate = 0.0325;
     private int     _loanTerm           = 36;
+    private DebtType _debtType = DebtType.Loan;
 
     private const double _yearly_to_monthly_interest_term_inverse = 1.0 / 12.0 / 100.0;
 
-    public DebtEntry(string name, double startBalance, double currentBalance, double yearlyInterest, int loanTerm)
+    public DebtEntry(string name, double startBalance, double currentBalance, double yearlyInterest, int loanTerm, DebtType debtType)
     {
       Name = name;
       StartingBalance = startBalance;
@@ -25,8 +26,9 @@ namespace DebtCalculator.Library
       InitializeMonthlyPayment();
     }
 
-    public DebtEntry() : base()
+    public DebtEntry(DebtType debtType = DebtType.Loan) : base()
     {
+      _debtType = debtType;
       InitializeMonthlyPayment();
     }
 
@@ -77,19 +79,25 @@ namespace DebtCalculator.Library
         InitializeMonthlyPayment();
       }
     }
+
+    public DebtType DebtType
+    {
+      get { return _debtType; }
+      set { _debtType = value; }
+    }
       
     public double MinimumMonthlyPayment { get; private set; }
     public double MonthlyInterest { get; private set; }
 
     private void InitializeMonthlyPayment()
     {
-      if (_loanTerm > -1)
+      if (_debtType == DebtType.Loan)
       {
         MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
         double monthlyInterest_Loan_Term = Math.Pow((1 + MonthlyInterest), LoanTerm);
         MinimumMonthlyPayment = MonthlyInterest * StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
       }
-      else
+      else if (_debtType == DebtType.CreditCard)
       {
         MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
         MinimumMonthlyPayment = 40;

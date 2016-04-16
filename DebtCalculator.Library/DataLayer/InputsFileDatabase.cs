@@ -106,7 +106,8 @@ namespace DebtCalculatorLibrary.DataLayer
                         Double.Parse(readInputs["StartingBalance"]),
                         Double.Parse(readInputs["CurrentBalance"]),
                         Double.Parse(readInputs["YearlyInterestRate"]),
-                        Int32.Parse(readInputs["LoanTerm"])));
+                        Int32.Parse(readInputs["LoanTerm"]),
+                        (DebtType)Enum.Parse(typeof(DebtType), readInputs["DebtType"])));
                       break;
                   }
                 case "SalaryEntry":
@@ -212,6 +213,7 @@ namespace DebtCalculatorLibrary.DataLayer
           input.WriteAttributeString("CurrentBalance", entry.CurrentBalance.ToString());
           input.WriteAttributeString("YearlyInterestRate", entry.YearlyInterestRate.ToString());
           input.WriteAttributeString("LoanTerm", entry.LoanTerm.ToString());
+          input.WriteAttributeString("DebtType", entry.DebtType.ToString());
           input.WriteEndElement(); // DebtEntry
         }
 

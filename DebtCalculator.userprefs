@@ -1,22 +1,17 @@
 ﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.alowther’s iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator.Library/Business/InputsFileManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.57.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator/Pages/PaymentListPage.xaml">
     <Files>
-      <File FileName="DebtCalculator/Pages/MenuPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="iOS/Main.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator.Library/Business/InputsFileManager.cs" Line="4" Column="39" />
-      <File FileName="DebtCalculator/PageModels/SnowballPageModel.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/SnowballPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/SnowballPage.xaml" Line="1" Column="1" />
-      <File FileName="DebtCalculator.Library/Model/PaymentManager.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator.Library/DataLayer/InputsFileDatabase.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/App.xaml.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/PageModels/MenuPageModel.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/MenuPage.xaml" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/AmortizationPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/AmortizationListPage.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/DebtListPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="DebtCalculator/Pages/DebtPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="DebtCalculator/Pages/PaymentListPage.xaml.cs" Line="22" Column="32" />
+      <File FileName="DebtCalculator/Pages/PaymentListPage.xaml" Line="9" Column="77" />
+      <File FileName="DebtCalculator/Pages/SalaryListPage.xaml" Line="6" Column="1" />
+      <File FileName="DebtCalculator/Pages/SalaryListPage.xaml.cs" Line="16" Column="1" />
+      <File FileName="DebtCalculator/PageModels/PaymentListPageModel.cs" Line="31" Column="30" />
+      <File FileName="DebtCalculator/PageModels/MenuPageModel.cs" Line="13" Column="7" />
+      <File FileName="Droid/MainActivity.cs" Line="22" Column="46" />
+      <File FileName="DebtCalculator/App.xaml.cs" Line="16" Column="7" />
+      <File FileName="DebtCalculator/App.xaml" Line="1" Column="1" />
+      <File FileName="DebtCalculator.Library/Utility/Paths.cs" Line="19" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

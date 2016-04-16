@@ -1,30 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using DebtCalculator.Library;
+using Acr.UserDialogs;
 
 namespace DebtCalculator.Shared
 {
-	public partial class PaymentListPage : MyBasePage
+  public partial class PaymentListPage : PaymentListPageXaml
 	{
     public PaymentListPage ()
 		{
 			InitializeComponent ();
 		}
 
-    public void Salary_Button_Clicked(object sender, EventArgs e)
+    public void Add_Button_Clicked(object sender, EventArgs e)
     {
-      Navigation.PushAsync(new SalaryListPage());
+      ActionSheetAsync();
     }
 
-    public void Windfall_Button_Clicked(object sender, EventArgs e)
+    public async void ActionSheetAsync()
     {
-      Navigation.PushAsync(new WindfallListPage());
+      var result = await UserDialogs.Instance.ActionSheetAsync("New Payment", "Cancel", null, "New Salary", "New Windfall");
+      switch (result)
+      {
+        case "New Salary":
+          this.PushSalaryPage();
+          break;
+        case "New Windfall":
+          this.PushWindfallPage();
+          break;
+        default:
+          break;
+      }
     }
 
-    public void Snowball_Button_Clicked(object sender, EventArgs e)
+    void Snowball_Unfocused (object sender, FocusEventArgs e)
     {
-      Navigation.PushAsync(new SnowballPage());
+      ViewModel.SaveSnowball();
+    }
+
+    public void Add_Salary_Clicked(object sender, EventArgs e)
+    {
+      this.PushSalaryPage();
+    }
+
+    public void Salary_Selected(object sender, ItemTappedEventArgs e)
+    {
+      var listView = sender as ListView;
+      listView.SelectedItem = null;
+      this.PushSalaryPage(e.Item as SalaryEntry);
+    }
+
+    private void PushSalaryPage(SalaryEntry salaryEntry = null)
+    {
+      Navigation.PushAsync(new SalaryPage(salaryEntry));
+    }
+
+    public void Add_Windfall_Clicked(object sender, EventArgs e)
+    {
+      this.PushWindfallPage();
+    }
+
+    public void Windfall_Selected(object sender, ItemTappedEventArgs e)
+    {
+      var listView = sender as ListView;
+      listView.SelectedItem = null;
+      this.PushWindfallPage(e.Item as WindfallEntry);
+    }
+
+    private void PushWindfallPage(WindfallEntry windfallEntry = null)
+    {
+      Navigation.PushAsync(new WindfallPage(windfallEntry));
     }
 	}
+
+  public partial class PaymentListPageXaml : BaseContentPage<PaymentListPageModel>
+  {
+  }
 }
 

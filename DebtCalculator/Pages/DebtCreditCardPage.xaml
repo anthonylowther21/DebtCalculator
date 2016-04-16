@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<local:DebtCreditCardPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.DebtCreditCardPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared"
+xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
+  <local:DebtCreditCardPage.Content>
+    <StackLayout>
+      <TableView Intent="Settings">
+        <TableRoot>
+            <TableSection Title="">
+                <EntryCell Label="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
+                <EntryCell Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <EntryCell Label="APY (%)" Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+             </TableSection>
+             <TableSection Title="">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
+                       <Label Text="Minimum Monthly Payment" VerticalTextAlignment="Center" />
+                       <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay, StringFormat='{0:C}'}"
+                              HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                              HorizontalTextAlignment="End"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+      </TableView>
+      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
+      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+    </StackLayout>
+  </local:DebtCreditCardPage.Content>
+</local:DebtCreditCardPageXaml> 
