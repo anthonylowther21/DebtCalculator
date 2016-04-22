@@ -42,6 +42,7 @@ namespace DebtCalculator.Library
       bool allFinished = false;
 
       simulatedDate = DateTime.Now;
+      // Simulate the months and apply the snowball to debts each month
       while (!allFinished)
       {
         double salarySnowball = _localPaymentManager.GetTotalMonthlySnowball(simulatedDate);
