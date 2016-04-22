@@ -54,7 +54,6 @@
       <DependentUpon>AmortizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Theme\Colors.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToPercentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml.cs">
       <DependentUpon>SaveModalPage.xaml</DependentUpon>
@@ -69,7 +68,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputsFileHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtPageCreditCardModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtCreditCardPage.xaml.cs">
       <DependentUpon>DebtCreditCardPage.xaml</DependentUpon>
@@ -78,6 +76,7 @@
       <DependentUpon>DebtLoanPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtLoanPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomNavigationPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -85,7 +84,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)MVVM\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

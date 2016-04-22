@@ -5,7 +5,7 @@
   xmlns:local="clr-namespace:DebtCalculator.Shared" 
   Title="Debts">
   <local:DebtListPageXaml.ToolbarItems>
-      <ToolbarItem Name="Add" Order="Primary" Priority="0" Clicked="Add_Button_Clicked"/>
+      <ToolbarItem Name="&#xf067;" Order="Primary" Priority="0" Clicked="Add_Button_Clicked"/>
   </local:DebtListPageXaml.ToolbarItems>
 	<local:DebtListPageXaml.Content>
 		<ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}">

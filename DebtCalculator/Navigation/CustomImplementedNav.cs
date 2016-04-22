@@ -14,18 +14,14 @@ namespace DebtCalculator.Shared
   /// </summary>
   public class CustomImplementedNav : Xamarin.Forms.MasterDetailPage
   {
-    FreshTabbedNavigationContainer _tabbedNavigationPage;
+    TabbedPage _tabbedNavigationPage;
     Page _debtsPage;
     Page _paymentsPage;
     Page _amortizationPage;
     Page _summaryPage;
 
-    Page _slideoutPage;
-    App _app;
-
-    public CustomImplementedNav (App app)
+    public CustomImplementedNav ()
     { 
-      _app = app;
       SetupTabbedPage ();
       CreateMenuPage ("Menu");
       RegisterNavigation ();
@@ -33,8 +29,8 @@ namespace DebtCalculator.Shared
 
     void SetupTabbedPage()
     {
-      _tabbedNavigationPage = new FreshTabbedNavigationContainer ();
-      _debtsPage = new NavigationPage(new DebtListPage());
+      _tabbedNavigationPage = new TabbedPage ();
+      _debtsPage = new CustomNavigationPage(new DebtListPage());
       _debtsPage.Title = "Debts";
       _tabbedNavigationPage.Children.Add(_debtsPage);
 

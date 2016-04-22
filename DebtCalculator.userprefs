@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="Droid/DebtCalculator.Droid.csproj" RefactoringSettings.EnableRefactorings="True">
+﻿<Properties StartupItem="iOS/DebtCalculator.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.MonoForAndroid_API_15" />
   <MonoDevelop.Ide.Workbench ActiveDocument="DebtCalculator.Library/Model/PaymentManager.cs">
     <Files>

@@ -15,13 +15,8 @@ namespace DebtCalculator
     {
       InitializeComponent();
 
-      _customImplementedNav = new CustomImplementedNav(this);
+      _customImplementedNav = new CustomImplementedNav();
       MainPage = _customImplementedNav;
-    }
-
-    public void SetSideMenuVisibility(bool shown)
-    {
-      _customImplementedNav.IsPresented = shown;
     }
 
     public new static App Current

@@ -25,10 +25,10 @@ namespace DebtCalculator.Shared
       switch (result)
       {
         case "Loan Debt":
-          this.Navigation.PushAsync(new DebtLoanPage(new DebtEntry(DebtType.Loan)));
+          await this.Navigation.PushAsync(new DebtLoanPage(new DebtEntry(DebtType.Loan)));
           break;
         case "Credit Card":
-          this.Navigation.PushAsync(new DebtCreditCardPage(new DebtEntry(DebtType.CreditCard)));
+          await this.Navigation.PushAsync(new DebtCreditCardPage(new DebtEntry(DebtType.CreditCard)));
           break;
         default:
           break;

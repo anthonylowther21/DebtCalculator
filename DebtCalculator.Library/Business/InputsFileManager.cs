@@ -44,7 +44,7 @@ namespace DebtCalculatorLibrary.Business
       }
     }
 
-    async public static void SaveInputsFileAsync(string filename, DebtApp debtApp, Action callBack = null)
+    public static void SaveInputsFileAsync(string filename, DebtApp debtApp, Action callBack = null)
     {
       if (String.IsNullOrEmpty(InputsFileDatabase.Shared.CurrentInputsFile))
       {
