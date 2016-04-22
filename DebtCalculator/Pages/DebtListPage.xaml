@@ -7,11 +7,11 @@
   <local:DebtListPageXaml.ToolbarItems>
       <ToolbarItem Name="&#xf067;" Order="Primary" Priority="0" Clicked="Add_Button_Clicked"/>
   </local:DebtListPageXaml.ToolbarItems>
-	<local:DebtListPageXaml.Content>
-		<ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}">
-<!--			<ListView.ItemTemplate>
-				<DataTemplate>
-					<TextCell Text="{Binding Name, Mode=OneWay}" 
+  <local:DebtListPageXaml.Content>
+    <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}">
+<!--      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Name, Mode=OneWay}" 
                     Detail="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}"></TextCell>
           <ViewCell>
            <ViewCell.ContextActions>
@@ -21,18 +21,19 @@
                  Text="Delete" IsDestructive="True" />
            </ViewCell.ContextActions>
           </ViewCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>-->
+        </DataTemplate>
+      </ListView.ItemTemplate>-->
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell Height="20">
-             <StackLayout Padding="15,0,0,0" Orientation="Horizontal">
-                 <Label Text="{Binding Name}" FontSize="20"/>
-                 <Label Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" />
+             <StackLayout Padding="15,5,0,0" Orientation="Horizontal" VerticalOptions="Center">
+                 <Label Text="&#xf015;" Font="FontAwesome" FontSize="25" WidthRequest="25" TextColor="Green"/>
+                 <Label Text="{Binding Name}" FontSize="22"/>
+                 <Label Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="22" />
              </StackLayout>
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
-		</ListView>
-	</local:DebtListPageXaml.Content>
+    </ListView>
+  </local:DebtListPageXaml.Content>
 </local:DebtListPageXaml>

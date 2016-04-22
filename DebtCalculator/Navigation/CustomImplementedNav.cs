@@ -34,15 +34,15 @@ namespace DebtCalculator.Shared
       _debtsPage.Title = "Debts";
       _tabbedNavigationPage.Children.Add(_debtsPage);
 
-      _paymentsPage = new NavigationPage(new PaymentListPage()); 
+      _paymentsPage = new CustomNavigationPage(new PaymentListPage()); 
       _paymentsPage.Title = "Payments";
       _tabbedNavigationPage.Children.Add(_paymentsPage);
 
-      _amortizationPage = new NavigationPage(new AmortizationListPage());
+      _amortizationPage = new CustomNavigationPage(new AmortizationListPage());
       _amortizationPage.Title = "Amortization";
       _tabbedNavigationPage.Children.Add(_amortizationPage);
 
-      _summaryPage = new NavigationPage(new SummaryPage());
+      _summaryPage = new CustomNavigationPage(new SummaryPage());
       _summaryPage.Title = "Summary";
       _tabbedNavigationPage.Children.Add(_summaryPage);
 

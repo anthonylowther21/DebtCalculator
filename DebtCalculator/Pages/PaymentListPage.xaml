@@ -2,7 +2,7 @@
 <local:PaymentListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.PaymentListPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared" Title="Payments">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Add" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
+        <ToolbarItem Name="&#xf067;" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
   <local:PaymentListPage.Content>
     <StackLayout Spacing="10">
