@@ -8,7 +8,8 @@
       <ToolbarItem Name="&#xf067;" Order="Primary" Priority="0" Clicked="Add_Button_Clicked"/>
   </local:DebtListPageXaml.ToolbarItems>
   <local:DebtListPageXaml.Content>
-    <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}" BackgroundColor="{StaticResource grayLight}" SeparatorVisibility="None">
+    <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}" BackgroundColor="{StaticResource grayLight}" 
+    SeparatorVisibility="None" HasUnevenRows="true">
 <!--      <ListView.ItemTemplate>
         <DataTemplate>
           <TextCell Text="{Binding Name, Mode=OneWay}" 
@@ -36,27 +37,26 @@
         <DataTemplate>
           <ViewCell>
             <ViewCell.View>
-            <AbsoluteLayout Padding="14" MinimumHeightRequest="150" HeightRequest="150" HorizontalOptions="CenterAndExpand" BackgroundColor="{StaticResource grayLight}">
+            <AbsoluteLayout Padding="12" BackgroundColor="{StaticResource grayLight}">
 <!--                <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="Fill"
                   AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="30"
                     IsVisible="{Binding League, Converter={x:Static local:IsNullToBoolConverter.Instance}}">
 
                   <Label Text="{Binding EmptyMessage}" FontSize="Large" Style="{StaticResource header}" XAlign="Center" />
                 </StackLayout>-->
-
-                <Grid HeightRequest="200" BackgroundColor="White" Padding="10"
-                  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,3">
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="44" />
-                      <ColumnDefinition Width="*" />
-                      <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                      <Label Grid.Column="0" Text="&#xf015;" Font="FontAwesome" FontSize="32" 
-                        WidthRequest="40" HeightRequest="150" TextColor="Green" HorizontalTextAlignment="Center"/>
-                      <Label Grid.Column="1" Text="{Binding Name}" FontSize="24"/>
-                      <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="24" 
-                        HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" /> 
-                  </Grid>
+                  <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="&#xf015;" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
+                         TextColor="Green" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
+                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                   </Grid>
               </AbsoluteLayout>
             </ViewCell.View>
           </ViewCell>
