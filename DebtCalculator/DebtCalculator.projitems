@@ -77,6 +77,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtLoanPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomNavigationPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DebtTypeToIconConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FontAwesome\FontAwesome.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -84,6 +86,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)MVVM\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FontAwesome\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

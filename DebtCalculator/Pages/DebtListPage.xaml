@@ -51,7 +51,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                       </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="&#xf015;" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
+                        <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
                          TextColor="Green" HorizontalTextAlignment="Center"/>
                         <Label Grid.Column="1" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
                         <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
