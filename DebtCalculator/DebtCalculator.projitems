@@ -79,6 +79,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomNavigationPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DebtTypeToIconConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FontAwesome\FontAwesome.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ListPaddingConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

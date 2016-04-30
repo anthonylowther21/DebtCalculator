@@ -11,7 +11,7 @@ namespace DebtCalculator.Library
     private double  _currentBalance     = 5000;
     private double  _yearlyInterestRate = 0.0325;
     private int     _loanTerm           = 36;
-    private DebtType _debtType = DebtType.Loan;
+    private DebtType _debtType = DebtType.OtherLoan;
 
     private const double _yearly_to_monthly_interest_term_inverse = 1.0 / 12.0 / 100.0;
 
@@ -26,7 +26,7 @@ namespace DebtCalculator.Library
       InitializeMonthlyPayment();
     }
 
-    public DebtEntry(DebtType debtType = DebtType.Loan) : base()
+    public DebtEntry(DebtType debtType = DebtType.OtherLoan) : base()
     {
       _debtType = debtType;
       InitializeMonthlyPayment();
@@ -91,7 +91,8 @@ namespace DebtCalculator.Library
 
     private void InitializeMonthlyPayment()
     {
-      if (_debtType == DebtType.Loan)
+      if (_debtType == DebtType.HouseLoan || _debtType == DebtType.CarLoan || 
+          _debtType == DebtType.StudentLoan || _debtType == DebtType.OtherLoan)
       {
         MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
         double monthlyInterest_Loan_Term = Math.Pow((1 + MonthlyInterest), LoanTerm);

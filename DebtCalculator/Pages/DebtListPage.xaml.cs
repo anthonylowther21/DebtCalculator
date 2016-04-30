@@ -21,11 +21,21 @@ namespace DebtCalculator.Shared
 
     public async void ActionSheetAsync()
     {
-      var result = await UserDialogs.Instance.ActionSheetAsync("New Payment", "Cancel", null, "Loan Debt", "Credit Card");
+      var result = await UserDialogs.Instance.ActionSheetAsync("New Debt", "Cancel", null, "House Loan", 
+                                                               "Car Loan", "Student Loan", "Other Loan", "Credit Card");
       switch (result)
       {
-        case "Loan Debt":
-          await this.Navigation.PushAsync(new DebtLoanPage(new DebtEntry(DebtType.Loan)));
+        case "House Loan":
+          await this.Navigation.PushAsync(new DebtLoanPage(new DebtEntry(DebtType.HouseLoan)));
+          break;
+        case "Car Loan":
+          await this.Navigation.PushAsync (new DebtLoanPage (new DebtEntry (DebtType.CarLoan)));
+          break;
+        case "Student Loan":
+          await this.Navigation.PushAsync (new DebtLoanPage (new DebtEntry (DebtType.StudentLoan)));
+          break;
+        case "Other Loan":
+          await this.Navigation.PushAsync (new DebtLoanPage (new DebtEntry (DebtType.OtherLoan)));
           break;
         case "Credit Card":
           await this.Navigation.PushAsync(new DebtCreditCardPage(new DebtEntry(DebtType.CreditCard)));
@@ -44,7 +54,8 @@ namespace DebtCalculator.Shared
 
     private void PushDebtPage(DebtEntry debtEntry)
     {
-      if (debtEntry.DebtType == DebtType.Loan)
+      if (debtEntry.DebtType == DebtType.HouseLoan || debtEntry.DebtType == DebtType.CarLoan || 
+          debtEntry.DebtType == DebtType.StudentLoan || debtEntry.DebtType == DebtType.OtherLoan)
       {
         this.Navigation.PushAsync(new DebtLoanPage(debtEntry));
       }

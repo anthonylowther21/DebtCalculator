@@ -21,6 +21,8 @@ namespace DebtCalculator
     public static string FAHouse = "\uf015";
     public static string FACard = "\uf09d";
     public static string FABank = "\uf19c";
+    public static string FACar = "\uf1b9";
+    public static string FACap = "\uf19d";
   }
 }
 

@@ -37,7 +37,8 @@
         <DataTemplate>
           <ViewCell>
             <ViewCell.View>
-            <AbsoluteLayout Padding="12" BackgroundColor="{StaticResource grayLight}">
+            <AbsoluteLayout Padding="{Binding IsLast, Converter={x:Static local:ListPaddingConverter.Instance}}" 
+									BackgroundColor="{StaticResource grayLight}">
 <!--                <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="Fill"
                   AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="30"
                     IsVisible="{Binding League, Converter={x:Static local:IsNullToBoolConverter.Instance}}">
