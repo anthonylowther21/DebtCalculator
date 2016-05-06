@@ -10,54 +10,25 @@
   <local:DebtListPageXaml.Content>
     <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}" BackgroundColor="{StaticResource grayLight}" 
     SeparatorVisibility="None" HasUnevenRows="true">
-<!--      <ListView.ItemTemplate>
-        <DataTemplate>
-          <TextCell Text="{Binding Name, Mode=OneWay}" 
-                    Detail="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}"></TextCell>
-          <ViewCell>
-           <ViewCell.ContextActions>
-              <MenuItem
-                 Text="More" />
-              <MenuItem
-                 Text="Delete" IsDestructive="True" />
-           </ViewCell.ContextActions>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>-->
-<!--        <DataTemplate>
-          <ViewCell Height="20">
-             <StackLayout Padding="15,5,15,5" Orientation="Horizontal" VerticalOptions="Center" BackgroundColor="Gray">
-                 <Label BackgroundColor="White" Text="&#xf015;" Font="FontAwesome" FontSize="25" WidthRequest="25" TextColor="Green"/>
-                 <Label BackgroundColor="White" Text="{Binding Name}" FontSize="22"/>
-                 <Label BackgroundColor="White" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="22" />
-             </StackLayout>
-          </ViewCell>
-        </DataTemplate>-->
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
             <ViewCell.View>
-            <AbsoluteLayout Padding="{Binding IsLast, Converter={x:Static local:ListPaddingConverter.Instance}}" 
-									BackgroundColor="{StaticResource grayLight}">
-<!--                <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="Fill"
-                  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Padding="30"
-                    IsVisible="{Binding League, Converter={x:Static local:IsNullToBoolConverter.Instance}}">
-
-                  <Label Text="{Binding EmptyMessage}" FontSize="Large" Style="{StaticResource header}" XAlign="Center" />
-                </StackLayout>-->
-                  <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                      </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
-                         TextColor="Green" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="1" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
-                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-                   </Grid>
+              <AbsoluteLayout Padding="14"
+  							BackgroundColor="{StaticResource grayLight}">
+                <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+                  AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="40" />
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                      <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
+                       TextColor="Green" HorizontalTextAlignment="Center"/>
+                      <Label Grid.Column="1" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
+                      <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
+                        HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                 </Grid>
               </AbsoluteLayout>
             </ViewCell.View>
           </ViewCell>

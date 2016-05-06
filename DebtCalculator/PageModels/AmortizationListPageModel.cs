@@ -16,7 +16,7 @@ namespace DebtCalculator.Shared
     {
     }
 
-    public ObservableCollection<AmortizationEntry> Amortizations { get; set; }
+    public ObservableCollection<Grouping<DateTime, AmortizationEntry>> Amortizations { get; set; }
   }
 }
 

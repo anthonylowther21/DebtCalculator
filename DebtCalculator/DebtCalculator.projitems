@@ -80,6 +80,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DebtTypeToIconConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FontAwesome\FontAwesome.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ListPaddingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM\Grouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\AmortizationGroupSumConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

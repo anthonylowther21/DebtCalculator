@@ -8,6 +8,7 @@
            <converters:DoubleToPercentConverter x:Key="DoubleToPercentConverter"/>
            <converters:DebtTypeToIconConverter x:Key="DebtTypeToIconConverter"/>
 			     <converters:ListPaddingConverter x:Key="ListPaddingConverter"/>
+			     <converters:AmortizationGroupSumConverter x:Key="AmortizationGroupSumConverter"/>
           <Color x:Key="grayPrimary">#ADB7BE</Color>
           <Color x:Key="grayLight">#ECF0F1</Color>
           <Color x:Key="grayDark">#76828A</Color>
