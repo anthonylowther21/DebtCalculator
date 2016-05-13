@@ -23,7 +23,7 @@ namespace DebtCalculator.Shared
     public CustomImplementedNav ()
     { 
       SetupTabbedPage ();
-      CreateMenuPage ("Menu");
+      CreateMenuPage (FontAwesome.FABars);
       RegisterNavigation ();
     }
 

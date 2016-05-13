@@ -12,10 +12,11 @@ namespace DebtCalculator.Shared
 {
   public class PaymentListPageModel : BaseViewModel
   {
-    private double _snowball = DebtApp.Shared.PaymentManager.SnowballAmount;
-
     public PaymentListPageModel ()
     {
+      DebtApp.Shared.PaymentManager.SnowballChanged += (sender, e) => {
+        SetPropertyChanged ("Snowball");
+      };
     }
 
     public double Snowball 
@@ -24,13 +25,12 @@ namespace DebtCalculator.Shared
       set
       {
         DebtApp.Shared.PaymentManager.SnowballAmount = value;
-        SetPropertyChanged("Snowball");
+        SaveSnowball ();
       }
     }
 
     public void SaveSnowball()
     {
-      DebtApp.Shared.PaymentManager.SnowballAmount = Snowball;
       InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, null);
     }
 

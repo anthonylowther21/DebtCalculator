@@ -6,97 +6,23 @@
               xmlns:local="clr-namespace:DebtCalculator.Shared"
               Title="Amortization">
 	<local:AmortizationListPage.Content>
-<!--	<ListView ItemsSource="{Binding Amortizations}">
-   <ListView.ItemTemplate>
-      <DataTemplate>
-					<StackLayout>
-					  <Label Text="{Binding Date, Mode=OneWay}" 
-                    TextColor="{x:Static theme:Colors.PrimaryText}"/>
-   						<Label Text="{Binding TotalMonthlyPayment, Mode=OneWay}" 
-                    TextColor="{x:Static theme:Colors.PrimaryText}"/>
-            <ListView ItemsSource="{Binding AmortizationEntries}">
-               <ListView.ItemTemplate>
-                   <DataTemplate>
-                        <Label Text="{Binding DebtName, Mode=OneWay}" 
-                          TextColor="{x:Static theme:Colors.PrimaryText}"/>
-         									<Label Text="{Binding TotalPayment, Mode=OneWay}" 
-                          TextColor="{x:Static theme:Colors.PrimaryText}"/>
-                   </DataTemplate>
-               </ListView.ItemTemplate>
-            </ListView>
-					</StackLayout>
-      </DataTemplate>
-   </ListView.ItemTemplate>
-  </ListView>-->
-
-
-	<!--<ListView ItemTapped="Item_Selected" ItemsSource="{Binding Amortizations}" BackgroundColor="{StaticResource grayLight}" 
-    SeparatorVisibility="None" HasUnevenRows="true" IsGroupingEnabled="true" GroupDisplayBinding="{Binding Date}">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <ViewCell.View>
-            <AbsoluteLayout Padding="14"
-                  BackgroundColor="{StaticResource grayLight}">
-                  <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                      </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
-                         TextColor="Green" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="1" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
-                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-                   </Grid>
-              </AbsoluteLayout>
-            </ViewCell.View>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>	-->
-
 		<ListView x:Name="list" ItemsSource="{Binding Amortizations}"
+      ItemTapped="Item_Selected"
 			IsGroupingEnabled="True" 
 			GroupDisplayBinding="{Binding Date}" 
       SeparatorVisibility="None"
 			HasUnevenRows="True"> 
 		  <ListView.GroupHeaderTemplate> 
 		    <DataTemplate> 
-					<ViewCell Height="50"> 
-		        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="0, 15, 0, 0" BackgroundColor="#3498DB"> 
-		          <Label Text="{Binding Key, StringFormat='{0:MMMM yyyy}'}" TextColor="White" VerticalOptions="Center"/> 
-              <Label Text="{Binding MyItems, Converter={StaticResource AmortizationGroupSumConverter}, Mode=TwoWay }" FontSize="20"
+					<ViewCell Height="40"> 
+		        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="#3498DB"> 
+		          <Label Text="{Binding Key, StringFormat='{0:MMMM yyyy}'}" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
+              <Label Text="{Binding MyItems, Converter={StaticResource AmortizationGroupSumConverter}, Mode=TwoWay }" FontSize="18"
 									TextColor="White" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
 		        </StackLayout> 
 		      </ViewCell> 
 		    </DataTemplate> 
 		  </ListView.GroupHeaderTemplate> 
-			<!--<ListView.FooterTemplate>
-				<DataTemplate> 
-					<ViewCell Height="25"> 
-            <StackLayout VerticalOptions="FillAndExpand" Padding="14, 14, 14, 14" BackgroundColor="Red"> 
-              <Label Text="IM A FOOTER" TextColor="White" VerticalOptions="Center"/> 
-            </StackLayout> 
-          </ViewCell> 
-         <AbsoluteLayout Padding="14"  
-                  BackgroundColor="{StaticResource grayLight}">
-                  <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                      </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Total Payment" FontSize="20" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" Text="{Binding Path=Items, Converter={StaticResource AmortizationGroupSumConverter}}
-									        Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
-                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-                   </Grid>
-              </AbsoluteLayout>
-        </DataTemplate> 
-			</ListView.FooterTemplate>-->
 		  <ListView.ItemTemplate> 
 		    <DataTemplate> 
           <ViewCell>

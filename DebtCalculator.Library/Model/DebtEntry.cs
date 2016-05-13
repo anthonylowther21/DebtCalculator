@@ -22,6 +22,7 @@ namespace DebtCalculator.Library
       CurrentBalance = currentBalance;
       YearlyInterestRate = yearlyInterest;
       LoanTerm = loanTerm;
+      DebtType = debtType;
 
       InitializeMonthlyPayment();
     }
