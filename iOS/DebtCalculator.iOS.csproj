@@ -164,6 +164,9 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\NavigationPageRenderer.cs" />
+    <Compile Include="Renderers\TabbedPageRenderer.cs" />
+    <Compile Include="Renderers\FontAwesomeImageHelper.cs" />
+    <Compile Include="Renderers\UIColorHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="ITunesArtwork" />

@@ -3,14 +3,24 @@ using Xamarin.Forms;
 
 namespace DebtCalculator.Shared
 {
-  public class CustomNavigationPage : NavigationPage
+  public class CustomNavigationPage : NavigationPage, ITabPage
   {
-    string _barItemFontFamily = "FontAwesome";
-    int _barItemFontSize = 16;
+    string _barItemFontFamily = FontAwesome.FontName;
+    int _barItemFontSize = 18;
 
     public CustomNavigationPage(Page page) : base(page)
     {
+      NavigationBarBackground = Colors.TabBarSelected;
+      BackgroundColor = Color.Blue;
     }
+
+    #region ITabPage implementation
+
+    public string TabIcon { get; set; }
+    public string SelectedTabIcon { get; set; }
+    public Color NavigationBarBackground { get; set; }
+
+    #endregion
       
     public string BarItemFontFamily 
     {

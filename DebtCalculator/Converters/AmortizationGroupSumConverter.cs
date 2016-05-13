@@ -22,7 +22,7 @@ namespace DebtCalculator.Shared
       foreach (AmortizationEntry item in myList)
         sum += item.TotalPayment;
 
-      return string.Format ("Total Payment: {0:C}", sum);
+      return string.Format ("Total: {0:C}", sum);
     }
 
     public object ConvertBack (object value, System.Type targetType,

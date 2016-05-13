@@ -4,11 +4,11 @@ using DebtCalculator.Shared;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 
-[assembly: ExportRenderer(typeof (NavigationPage), typeof (DebtCalculator.iOS.NavigationPageRenderer))]
+[assembly: ExportRenderer(typeof (CustomNavigationPage), typeof (DebtCalculator.iOS.CustomNavigationPageRenderer))]
 
 namespace DebtCalculator.iOS
 {
-  public class NavigationPageRenderer : NavigationRenderer
+  public class CustomNavigationPageRenderer : NavigationRenderer
   {
     public override void ViewWillAppear(bool animated)
     {
@@ -27,6 +27,7 @@ namespace DebtCalculator.iOS
       NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
       UINavigationBar.Appearance.ShadowImage = new UIImage();
       UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+      UINavigationBar.Appearance.BarTintColor = UIColorHelper.GetUIColor((Element as CustomNavigationPage).NavigationBarBackground);
     }
 
     private void SetNavBarItems()
@@ -37,12 +38,13 @@ namespace DebtCalculator.iOS
 
       var textAttributes = new UITextAttributes()
         {
+          TextColor = Colors.TabBarNormal.ToUIColor(),
           Font = UIFont.FromName(navPage.BarItemFontFamily, navPage.BarItemFontSize)
         };
 
       var textAttributesHighlighted = new UITextAttributes()
         {
-          TextColor = Color.Black.ToUIColor(),
+          TextColor = Colors.TabBarSelected.ToUIColor(),
           Font = UIFont.FromName(navPage.BarItemFontFamily, navPage.BarItemFontSize)
         };
 
@@ -57,11 +59,11 @@ namespace DebtCalculator.iOS
       var navPage = this.Element as CustomNavigationPage;
 
       if (navPage == null) return;
-
-      this.NavigationBar.TitleTextAttributes = new UIStringAttributes
+      UINavigationBar.Appearance.SetTitleTextAttributes( new UITextAttributes()
         {
-          Font = UIFont.FromName(navPage.BarTitleFontFamily, navPage.BarTitleFontSize),
-        };
+          TextColor = Colors.TabBarNormal.ToUIColor(),
+          Font = UIFont.BoldSystemFontOfSize(navPage.BarItemFontSize + 2)
+        });
     }
   }
 }
