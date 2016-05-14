@@ -7,7 +7,7 @@
               Title="Amortization"
               BackgroundColor="{Static local:Colors.PageBackground}">
 	<local:AmortizationListPage.Content>
-		<ListView x:Name="list" ItemsSource="{Binding Amortizations}" BackgroundColor="Transparent"
+		<ListView ItemsSource="{Binding Amortizations}" BackgroundColor="Transparent"
       ItemTapped="Item_Selected"
 			IsGroupingEnabled="True" 
 			GroupDisplayBinding="{Binding Date}" 

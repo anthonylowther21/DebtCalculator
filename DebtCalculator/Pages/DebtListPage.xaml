@@ -3,13 +3,12 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
   x:Class="DebtCalculator.Shared.DebtListPage"
   xmlns:local="clr-namespace:DebtCalculator.Shared"
-  Title="Debts"
-  BackgroundColor="{Static local:Colors.PageBackground}">
+  Title="Debts">
   <local:DebtListPageXaml.ToolbarItems>
       <ToolbarItem Name="&#xf067;" Order="Primary" Priority="0" Clicked="Add_Button_Clicked"/>
   </local:DebtListPageXaml.ToolbarItems>
   <local:DebtListPageXaml.Content>
-    <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}"
+    <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}" BackgroundColor="{Static local:Colors.PageBackground}"
      HasUnevenRows="true" SeparatorVisibility="None">
       <ListView.ItemTemplate>
         <DataTemplate>

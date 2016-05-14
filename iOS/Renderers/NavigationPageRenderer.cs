@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using DebtCalculator.Shared;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
+using System.Collections.Generic;
 
 [assembly: ExportRenderer(typeof (CustomNavigationPage), typeof (DebtCalculator.iOS.CustomNavigationPageRenderer))]
 
@@ -33,6 +34,37 @@ namespace DebtCalculator.iOS
     private void SetNavBarItems()
     {
       var navPage = this.Element as CustomNavigationPage;
+      if (navPage == null)
+        return;
+
+      var LeftNavList = new List<UIBarButtonItem> ();
+      var rightNavList = new List<UIBarButtonItem> ();
+
+      var navigationItem = this.ViewController.NavigationItem;
+
+
+      Page currentPage = navPage.CurrentPage;
+      for (var i = 0; i < currentPage.ToolbarItems.Count; i++) 
+      {
+
+        var reorder = (currentPage.ToolbarItems.Count - 1);
+        var ItemPriority = currentPage.ToolbarItems [reorder - i].Priority;
+
+        if (ItemPriority == 1) 
+        {
+          UIBarButtonItem LeftNavItems = navigationItem.RightBarButtonItems [i];
+          LeftNavList.Add (LeftNavItems);
+        } 
+        else if (ItemPriority == 0) 
+        {
+          UIBarButtonItem RightNavItems = navigationItem.RightBarButtonItems [i];
+          rightNavList.Add (RightNavItems);
+        }
+      }
+
+
+      navigationItem.SetLeftBarButtonItems (LeftNavList.ToArray (), false);
+      navigationItem.SetRightBarButtonItems (rightNavList.ToArray (), false);
 
       if (navPage == null) return;
 

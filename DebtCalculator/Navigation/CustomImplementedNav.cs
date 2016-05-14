@@ -14,7 +14,7 @@ namespace DebtCalculator.Shared
   /// </summary>
   public class CustomImplementedNav : Xamarin.Forms.MasterDetailPage
   {
-    TabbedPage _tabbedNavigationPage;
+    CustomTabbedPage _tabbedNavigationPage;
     CustomNavigationPage _debtsPage;
     CustomNavigationPage _paymentsPage;
     CustomNavigationPage _amortizationPage;
@@ -24,7 +24,6 @@ namespace DebtCalculator.Shared
     { 
       SetupTabbedPage ();
       CreateMenuPage (FontAwesome.FALoad);
-      RegisterNavigation ();
     }
 
     void SetupTabbedPage()
@@ -57,11 +56,6 @@ namespace DebtCalculator.Shared
 
       this.Detail = _tabbedNavigationPage;
 
-    }
-
-    protected void RegisterNavigation()
-    {
-      //FreshIOC.Container.Register<IFreshNavigationService> (this);
     }
 
     protected void CreateMenuPage(string menuPageTitle = "Menu")

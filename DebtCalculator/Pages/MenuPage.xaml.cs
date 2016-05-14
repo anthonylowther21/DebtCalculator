@@ -33,7 +33,7 @@ namespace DebtCalculator.Shared
 
     public void File_Selected (object sender, ItemTappedEventArgs e)
     {
-      InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, e.Item.ToString()), DebtApp.Shared, 
+      InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, (e.Item as ScenarioItemViewModel).Name), DebtApp.Shared, 
         () =>  
         {
           _masterDetailPage.IsPresented = false;

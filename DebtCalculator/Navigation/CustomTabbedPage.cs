@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using DebtCalculator.Shared;
+using System.Collections.Generic;
 
 namespace DebtCalculator
 {
@@ -10,6 +11,8 @@ namespace DebtCalculator
     {
       BarBackgroundColor = Colors.TabBarBackground;
     }
+
+
   }
 }
 

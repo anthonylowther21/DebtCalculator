@@ -17,7 +17,7 @@ namespace DebtCalculator.Shared
     public static Color TabBarBackground = Color.FromHex ("#444444");
     public static Color TabBarNormal = Color.FromHex("#FFFFFF");
     public static Color TabBarSelected = Color.FromHex("#39C40B");
-    public static Color PageBackground = Color.FromHex("#DADADA");
+    public static Color PageBackground = Color.FromHex("#ECF0F1");
     public static Color GroupHeader = Color.FromHex("727272");
   }
 }
