@@ -5,6 +5,9 @@
   xmlns:local="clr-namespace:DebtCalculator.Shared"
   BackgroundColor="{Static local:Colors.PageBackground}"
   Title="Summary">
+  <local:SummaryPageXaml.ToolbarItems>
+      <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
+  </local:SummaryPageXaml.ToolbarItems>
   <local:SummaryPage.Content>
     <StackLayout Orientation="Vertical" Padding="0">
       <AbsoluteLayout Padding="10, 10, 10, 0"  

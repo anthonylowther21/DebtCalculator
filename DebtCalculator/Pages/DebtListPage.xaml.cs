@@ -19,6 +19,11 @@ namespace DebtCalculator.Shared
       this.ActionSheetAsync();
     }
 
+    public void Menu_Button_Clicked(object sender, EventArgs e)
+    {
+      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage ()));
+    }
+
     public async void ActionSheetAsync()
     {
       var result = await UserDialogs.Instance.ActionSheetAsync("New Debt", "Cancel", null, "House Loan", 

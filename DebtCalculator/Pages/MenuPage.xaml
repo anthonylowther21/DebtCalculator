@@ -5,6 +5,7 @@ x:Class="DebtCalculator.Shared.MenuPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Save New" Clicked="Save_Button_Clicked" Order="Primary" Priority="0" />
+        <ToolbarItem Name="&#xf078;" Clicked="Close_Button_Clicked" Order="Primary" Priority="1" />
     </ContentPage.ToolbarItems>
   <local:MenuPage.Content>
     <ListView ItemsSource="{Binding Files}" ItemTapped="File_Selected"
@@ -25,7 +26,7 @@ xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local
                       <ColumnDefinition Width="*" />
                       <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                      <Label Grid.Column="0" Text="{Binding Name}" FontSize="18" VerticalOptions="StartAndExpand"/>
+                      <Label Grid.Column="0" Text="{Binding Name}" FontSize="18" VerticalOptions="CenterAndExpand"/>
                  </Grid>
             </AbsoluteLayout>
           </ViewCell.View>

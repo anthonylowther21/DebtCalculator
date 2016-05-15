@@ -6,6 +6,9 @@
               xmlns:local="clr-namespace:DebtCalculator.Shared"
               Title="Amortization"
               BackgroundColor="{Static local:Colors.PageBackground}">
+  <local:AmortizationListPageXaml.ToolbarItems>
+      <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
+  </local:AmortizationListPageXaml.ToolbarItems>
 	<local:AmortizationListPage.Content>
 		<ListView ItemsSource="{Binding Amortizations}" BackgroundColor="Transparent"
       ItemTapped="Item_Selected"

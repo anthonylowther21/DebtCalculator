@@ -18,6 +18,11 @@ namespace DebtCalculator.Shared
       ActionSheetAsync();
     }
 
+    public void Menu_Button_Clicked(object sender, EventArgs e)
+    {
+      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage ()));
+    }
+
     public async void ActionSheetAsync()
     {
       var result = await UserDialogs.Instance.ActionSheetAsync("New Payment", "Cancel", null, "New Salary", "New Windfall");

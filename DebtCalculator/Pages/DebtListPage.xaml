@@ -6,6 +6,7 @@
   Title="Debts">
   <local:DebtListPageXaml.ToolbarItems>
       <ToolbarItem Name="&#xf067;" Order="Primary" Priority="0" Clicked="Add_Button_Clicked"/>
+      <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
   </local:DebtListPageXaml.ToolbarItems>
   <local:DebtListPageXaml.Content>
     <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}" BackgroundColor="{Static local:Colors.PageBackground}"

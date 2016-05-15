@@ -29,6 +29,8 @@ namespace DebtCalculator.iOS
       UIColor normalColor = UIColorHelper.GetUIColor (Colors.TabBarNormal);     
       UIColor selectedColor = UIColorHelper.GetUIColor (Colors.TabBarSelected);
 
+      TabBar.BarTintColor = (Element as CustomTabbedPage).BarBackgroundColor.ToUIColor();
+
       for (var i = 0; i < pages.Length; i++)
       {
         var tabItem = this.TabBar.Items[i];

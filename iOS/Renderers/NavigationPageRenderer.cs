@@ -33,17 +33,34 @@ namespace DebtCalculator.iOS
 
     private void SetNavBarItems()
     {
+      // If we can't get the xamarin forms implementation, then we don't know which
+      // toolbar items we are adding.
       var navPage = this.Element as CustomNavigationPage;
       if (navPage == null)
         return;
 
-      var LeftNavList = new List<UIBarButtonItem> ();
+      UINavigationItem navigationItem = null;
+
+      foreach (UIView view in this.NativeView.Subviews) 
+      {
+        UINavigationBar bar = view as UINavigationBar;
+        if (bar != null) {
+          navigationItem = bar.Items [0];
+        }
+      }
+
+      // If we don't have a context, we can't proceed
+      if (navigationItem == null)
+        return;
+
+      // This means we have already added the items
+      if (navigationItem.LeftBarButtonItems != null && navigationItem.LeftBarButtonItems.Length > 0)
+        return;
+
+      var leftNavList = new List<UIBarButtonItem> ();
       var rightNavList = new List<UIBarButtonItem> ();
-
-      var navigationItem = this.ViewController.NavigationItem;
-
-
       Page currentPage = navPage.CurrentPage;
+
       for (var i = 0; i < currentPage.ToolbarItems.Count; i++) 
       {
 
@@ -53,7 +70,7 @@ namespace DebtCalculator.iOS
         if (ItemPriority == 1) 
         {
           UIBarButtonItem LeftNavItems = navigationItem.RightBarButtonItems [i];
-          LeftNavList.Add (LeftNavItems);
+          leftNavList.Add (LeftNavItems);
         } 
         else if (ItemPriority == 0) 
         {
@@ -63,7 +80,7 @@ namespace DebtCalculator.iOS
       }
 
 
-      navigationItem.SetLeftBarButtonItems (LeftNavList.ToArray (), false);
+      navigationItem.SetLeftBarButtonItems (leftNavList.ToArray (), false);
       navigationItem.SetRightBarButtonItems (rightNavList.ToArray (), false);
 
       if (navPage == null) return;

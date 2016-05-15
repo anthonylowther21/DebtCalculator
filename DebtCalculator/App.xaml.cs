@@ -10,13 +10,13 @@ namespace DebtCalculator
 {
   public partial class App : Application
   {
-    CustomImplementedNav _customImplementedNav;
+    CustomTabbedPage _customTabbedPage;
     public App()
     {
       InitializeComponent();
 
-      _customImplementedNav = new CustomImplementedNav();
-      MainPage = _customImplementedNav;
+      _customTabbedPage = new CustomTabbedPage();
+      MainPage = _customTabbedPage;
     }
 
     public new static App Current

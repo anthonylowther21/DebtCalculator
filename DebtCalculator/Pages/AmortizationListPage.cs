@@ -23,6 +23,11 @@ namespace DebtCalculator.Shared
       this.PushAmortizationPage(e.Item as AmortizationEntry);
     }
 
+    public void Menu_Button_Clicked(object sender, EventArgs e)
+    {
+      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage ()));
+    }
+
     private void PushAmortizationPage(AmortizationEntry item = null)
     {
       Navigation.PushAsync(new AmortizationPage(item));
