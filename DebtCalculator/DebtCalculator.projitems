@@ -85,6 +85,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\ITabPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScenarioItemPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomDatePicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

@@ -167,6 +167,10 @@
     <Compile Include="Renderers\TabbedPageRenderer.cs" />
     <Compile Include="Renderers\FontAwesomeImageHelper.cs" />
     <Compile Include="Renderers\UIColorHelper.cs" />
+    <Compile Include="Renderers\DatePickerRenderer.cs" />
+    <Compile Include="Renderers\KeyboardInputAccessoryHelper.cs" />
+    <Compile Include="Renderers\NumericEntryCell.cs" />
+    <Compile Include="Controls\NumericTableCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="ITunesArtwork" />
@@ -191,5 +195,7 @@
   </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Renderers\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>
