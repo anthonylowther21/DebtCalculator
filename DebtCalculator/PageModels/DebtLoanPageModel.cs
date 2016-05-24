@@ -52,15 +52,15 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double CurrentBalance
+    public string CurrentBalance
     {
       get 
       { 
-        return _debtEntry.CurrentBalance; 
+        return DoubleToCurrencyHelper.Convert (_debtEntry.CurrentBalance);
       }
       set 
       { 
-        _debtEntry.CurrentBalance = value; 
+        _debtEntry.CurrentBalance = DoubleToCurrencyHelper.ConvertBack (value, CurrentBalance.Length);
         SetPropertyChanged("CurrentBalance");
       }
     }
