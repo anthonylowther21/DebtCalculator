@@ -38,15 +38,15 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double StartingBalance
+    public string StartingBalance
     {
       get 
-      { 
-        return _debtEntry.StartingBalance; 
+      {
+        return DoubleToCurrencyHelper.Convert (_debtEntry.StartingBalance);
       }
       set 
-      { 
-        _debtEntry.StartingBalance = value; 
+      {         
+        _debtEntry.StartingBalance = DoubleToCurrencyHelper.ConvertBack (value, StartingBalance.Length);
         SetPropertyChanged("StartingBalance");
         InvalidateMinimumMonthlyPayment();
       }

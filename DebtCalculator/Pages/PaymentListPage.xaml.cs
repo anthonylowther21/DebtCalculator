@@ -39,9 +39,9 @@ namespace DebtCalculator.Shared
       }
     }
 
-    void Snowball_Unfocused (object sender, FocusEventArgs e)
+    public void Snowball_Clicked(object sender, EventArgs e)
     {
-      ViewModel.SaveSnowball();
+      this.Navigation.PushAsync (new SnowballPage ());
     }
 
     public void Add_Salary_Clicked(object sender, EventArgs e)

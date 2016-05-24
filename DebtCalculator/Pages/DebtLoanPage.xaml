@@ -9,10 +9,10 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
         <TableRoot>
             <TableSection Title="">
                 <EntryCell Label="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
-                <EntryCell Label="Starting Balance" Text="{Binding StartingBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <EntryCell Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <EntryCell Label="APY (%)" Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <EntryCell Label="Loan Term (months)" Text="{Binding LoanTerm}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="Starting Balance" Text="{Binding StartingBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="Current Balance" Text="{Binding CurrentBalance, Converter={StaticResource DoubleToCurrencyConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="APY (%)" Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="Loan Term (months)" Text="{Binding LoanTerm}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
              </TableSection>
              <TableSection Title="">
                 <ViewCell>

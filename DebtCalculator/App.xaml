@@ -5,6 +5,7 @@
        xmlns:converters="clr-namespace:DebtCalculator.Shared">
        <Application.Resources>
          <ResourceDictionary>
+           <converters:DoubleToCurrencyConverter x:Key="DoubleToCurrencyConverter"/>
            <converters:DoubleToPercentConverter x:Key="DoubleToPercentConverter"/>
            <converters:DebtTypeToIconConverter x:Key="DebtTypeToIconConverter"/>
 			     <converters:ListPaddingConverter x:Key="ListPaddingConverter"/>

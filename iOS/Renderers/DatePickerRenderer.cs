@@ -77,7 +77,7 @@ namespace DebtCalculator.iOS
       UpdateMinimumDate ();
       _picker.ValueChanged += new EventHandler (HandleValueChanged);
 
-      var view = (DatePicker)Element;
+      var view = (CustomDatePicker)Element;
 
       SetBorder(view);
     }

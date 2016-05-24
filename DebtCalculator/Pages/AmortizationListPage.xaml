@@ -19,10 +19,10 @@
 		  <ListView.GroupHeaderTemplate> 
 		    <DataTemplate> 
 					<ViewCell Height="40"> 
-		        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
+		        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="5, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
 		          <Label Text="{Binding Key, StringFormat='{0:MMMM yyyy}'}" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
-              <Label Text="{Binding MyItems, Converter={StaticResource AmortizationGroupSumConverter}, Mode=TwoWay }" FontSize="18"
-									TextColor="White" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+<!--              <Label Text="{Binding MyItems, Converter={StaticResource AmortizationGroupSumConverter}, Mode=TwoWay }" FontSize="18"
+									TextColor="White" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> -->
 		        </StackLayout> 
 		      </ViewCell> 
 		    </DataTemplate> 
@@ -39,12 +39,23 @@
                         <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="125" />
                       </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
-                         TextColor="Green" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="1" Text="{Binding DebtName}" FontSize="20" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" Text="{Binding TotalPayment, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
-                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                        <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" 
+                          Font="FontAwesome" FontSize="30" VerticalOptions="Center" TextColor="Green" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="{Binding DebtName}" FontSize="18" VerticalOptions="Center"/>
+                        <StackLayout Grid.Column="2">
+                          <Label Text="Payment" FontSize="16" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                          <Label Text="Balance" FontSize="16" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="3">
+                          <Label Text="{Binding TotalPayment, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                          <Label Text="{Binding EndBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" />
+                        </StackLayout>
                    </Grid>
               </AbsoluteLayout>
             </ViewCell.View>
