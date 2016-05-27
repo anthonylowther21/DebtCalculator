@@ -6,7 +6,8 @@ namespace DebtCalculator.Library
 {
   public class AmortizationEntry
   {
-    public AmortizationEntry ( string debtName,      
+    public AmortizationEntry ( string debtName,  
+                              DebtType debtType,
                                     DateTime date, 
                                     double startBalance,  
                                     double interest, 
@@ -15,6 +16,7 @@ namespace DebtCalculator.Library
                                     double endBalance)
     {
       DebtName = debtName;
+      DebtType = debtType;
       Date = date;
       StartBalance = startBalance;
       MinimumInterest = interest;
@@ -29,6 +31,7 @@ namespace DebtCalculator.Library
     }
 
     public string DebtName { get; private set; }
+    public DebtType DebtType { get; private set; }
     public DateTime Date { get; private set; }
     public double StartBalance { get; private set; }
     public double MinimumInterest { get; private set; }

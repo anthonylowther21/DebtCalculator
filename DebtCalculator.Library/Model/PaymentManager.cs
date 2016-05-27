@@ -12,6 +12,8 @@ namespace DebtCalculator.Library
     private double _snowballAmount = 0;
     private const double inv_twelve = 1 / 12.0;
 
+    public event EventHandler SnowballChanged;
+
     public PaymentManager ()
     {
     }
@@ -31,7 +33,12 @@ namespace DebtCalculator.Library
     public double SnowballAmount 
     { 
       get { return _snowballAmount; }
-      set { _snowballAmount = value; }
+      set 
+      { 
+        _snowballAmount = value; 
+        if (SnowballChanged != null)
+          SnowballChanged (this, new EventArgs ());
+      }
     }
 
     public double GetTotalMonthlySnowball (DateTime simulatedDate)

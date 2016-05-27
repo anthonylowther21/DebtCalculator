@@ -47,6 +47,8 @@ namespace DebtCalculatorLibrary.Services
     {
       return _debtSnowballCalculator.CalculateDebtSnowball(_debtManager, _paymentManager, applySnowballs);
     }
+
+    public DateTime ModifiedDate { get; set; }
   }
 }
 

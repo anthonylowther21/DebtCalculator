@@ -5,18 +5,19 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using FreshMvvm;
 using PropertyChanged;
+using System.Collections.Generic;
 using DebtCalculatorLibrary.Services;
 
 namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
-  public class AmortizationListPageModel : BaseViewModel
+  public class ScenarioItemViewModel : BaseViewModel
   {
-    public AmortizationListPageModel ()
+    public ScenarioItemViewModel ()
     {
     }
 
-    public ObservableCollection<Grouping<DateTime, AmortizationEntry>> Amortizations { get; set; }
+    public string Name { get ; set; }
+    public string ModifiedDate { get; set; }
   }
 }
 

@@ -22,14 +22,14 @@ namespace DebtCalculator.Shared
       InputsFileManager.FileListChanged += (object sender, EventArgs e) => LoadData();
     }
 
-    public ObservableCollection<string> Files { get; set; } = new ObservableCollection<string>();
+    public ObservableCollection<ScenarioItemViewModel> Files { get; set; } = new ObservableCollection<ScenarioItemViewModel>();
 
     public void LoadData()
     {
       // Binding
       Files.Clear();
       foreach (string file in InputsFileManager.GetSavedFiles())
-        Files.Add(Path.GetFileName(file));
+        Files.Add(new ScenarioItemViewModel() { Name = file });
     }
   }
 }

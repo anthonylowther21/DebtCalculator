@@ -107,7 +107,7 @@ namespace DebtCalculator.Library
       }
 
       AmortizationEntry output = new AmortizationEntry(
-        debtEntry.Name, currentDate, startingBalance, interestPortion, 
+        debtEntry.Name, debtEntry.DebtType, currentDate, startingBalance, interestPortion, 
         minimumPrincipal, additionalPrincipal, debtEntry.CurrentBalance);
 
       // We always use up all of the additional principle, otherwise it gets added as a windfall the 

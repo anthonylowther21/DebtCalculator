@@ -38,29 +38,29 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double StartingBalance
+    public string StartingBalance
     {
       get 
-      { 
-        return _debtEntry.StartingBalance; 
+      {
+        return DoubleToCurrencyHelper.Convert (_debtEntry.StartingBalance);
       }
       set 
-      { 
-        _debtEntry.StartingBalance = value; 
+      {         
+        _debtEntry.StartingBalance = DoubleToCurrencyHelper.ConvertBack (value, StartingBalance.Length);
         SetPropertyChanged("StartingBalance");
         InvalidateMinimumMonthlyPayment();
       }
     }
 
-    public double CurrentBalance
+    public string CurrentBalance
     {
       get 
       { 
-        return _debtEntry.CurrentBalance; 
+        return DoubleToCurrencyHelper.Convert (_debtEntry.CurrentBalance);
       }
       set 
       { 
-        _debtEntry.CurrentBalance = value; 
+        _debtEntry.CurrentBalance = DoubleToCurrencyHelper.ConvertBack (value, CurrentBalance.Length);
         SetPropertyChanged("CurrentBalance");
       }
     }

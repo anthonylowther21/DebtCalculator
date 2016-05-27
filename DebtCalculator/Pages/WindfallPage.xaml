@@ -8,8 +8,9 @@ xmlns:local="clr-namespace:DebtCalculator.Shared">
       <Label Text="Amount"></Label>
       <Entry Text="{Binding Amount}"> </Entry>
       <Label Text="Applied Date" ></Label>
-      <DatePicker Date="{Binding WindfallDate}">
-        <DatePicker.Format>MMMM yyyy</DatePicker.Format> </DatePicker>
+      <local:YearMonthPicker>
+<!--        <DatePicker.Format>MMMM yyyy</DatePicker.Format> -->
+      </local:YearMonthPicker>
       <Label Text="Recurring?" ></Label>
       <Switch IsToggled="{Binding IsRecurring}"></Switch>
       <Label Text="Recurring Frequency" IsVisible="{Binding IsRecurring}"></Label>

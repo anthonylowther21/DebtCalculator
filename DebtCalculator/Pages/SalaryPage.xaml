@@ -8,15 +8,15 @@ xmlns:converters="clr-namespace:DebtCalculator.Shared">
       <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="">
-                <EntryCell Label="Starting Salary" Text="{Binding StartingSalary}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <EntryCell Label="Yearly Increase (%)" Text="{Binding YearlySnowballIncreasePercent, Mode=TwoWay, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="Starting Salary" Text="{Binding StartingSalary}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="Yearly Increase (%)" Text="{Binding YearlySnowballIncreasePercent, Mode=TwoWay, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
                         <Label Text="Yearly Applied Date" VerticalTextAlignment="Center" />
-                        <DatePicker Date="{Binding YearlyIncreaseAppliedDate}, Mode=TwoWay}" 
+                        <local:CustomDatePicker Date="{Binding YearlyIncreaseAppliedDate}, Mode=TwoWay}" 
                                     HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                             <DatePicker.Format>MMMM yyyy</DatePicker.Format>-->
-                        </DatePicker>
+                        </local:CustomDatePicker>
                     </StackLayout>
                 </ViewCell>
              </TableSection>

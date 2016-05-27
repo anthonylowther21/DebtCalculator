@@ -89,6 +89,11 @@ namespace DebtCalculatorLibrary.DataLayer
               //Get element name and switch on it
               switch (readInputs.Name)
               {
+                case "FileInfo":
+                DateTime temp = DateTime.Now;
+                DateTime.TryParse(readInputs["Date"], out temp);
+                debtApp.ModifiedDate = temp;
+                  break;
                 case "Debts":
                   //Detect this element.
                   Console.WriteLine("Start <Debts> element.");
@@ -203,7 +208,6 @@ namespace DebtCalculatorLibrary.DataLayer
         input.WriteEndElement(); // FileInfo
 
         input.WriteStartElement("Debts");
-
         //Iterate through Inputs to save their current values
         foreach (DebtEntry entry in data.DebtManager.Debts)
         {

@@ -4,6 +4,8 @@ using DebtCalculator.Shared;
 using Xamarin.Forms;
 using DebtCalculator.Library;
 using DebtCalculatorLibrary.Services;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace DebtCalculator.Shared
 {
@@ -21,6 +23,11 @@ namespace DebtCalculator.Shared
       this.PushAmortizationPage(e.Item as AmortizationEntry);
     }
 
+    public void Menu_Button_Clicked(object sender, EventArgs e)
+    {
+      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage ()));
+    }
+
     private void PushAmortizationPage(AmortizationEntry item = null)
     {
       Navigation.PushAsync(new AmortizationPage(item));
@@ -28,7 +35,12 @@ namespace DebtCalculator.Shared
 
     protected override void OnAppearing()
     {
-      this.ViewModel.Amortizations = DebtApp.Shared.Calculate(true);
+      //Use linq to sorty our monkeys by name and then group them by the new name sort property
+      var grouped = from item in DebtApp.Shared.Calculate(true)
+                                       group item by item.Date into itemGroup
+                                       select new Grouping<DateTime, AmortizationEntry> (itemGroup.Key, itemGroup);
+
+      this.ViewModel.Amortizations = new ObservableCollection<Grouping<DateTime, AmortizationEntry>> (grouped);
 
       base.OnAppearing();
     }

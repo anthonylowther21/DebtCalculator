@@ -4,17 +4,64 @@
               xmlns:theme="clr-namespace:DebtCalculator.Shared"
               x:Class="DebtCalculator.Shared.AmortizationListPage"
               xmlns:local="clr-namespace:DebtCalculator.Shared"
-              Title="Amortization">
+              Title="Amortization"
+              BackgroundColor="{Static local:Colors.PageBackground}">
+  <local:AmortizationListPageXaml.ToolbarItems>
+      <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
+  </local:AmortizationListPageXaml.ToolbarItems>
 	<local:AmortizationListPage.Content>
-		<ListView ItemsSource="{Binding Amortizations}" ItemTapped="Item_Selected">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<TextCell Text="{Binding Summary, Mode=OneWay}" 
-                    Detail="{Binding DetailSummary, Mode=OneWay}" 
-                    TextColor="{x:Static theme:Colors.PrimaryText}">
-          </TextCell>
-				</DataTemplate>
-			</ListView.ItemTemplate>
+		<ListView ItemsSource="{Binding Amortizations}" BackgroundColor="Transparent"
+      ItemTapped="Item_Selected"
+			IsGroupingEnabled="True" 
+			GroupDisplayBinding="{Binding Date}" 
+      SeparatorVisibility="None"
+			HasUnevenRows="True"> 
+		  <ListView.GroupHeaderTemplate> 
+		    <DataTemplate> 
+					<ViewCell Height="40"> 
+		        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="5, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
+		          <Label Text="{Binding Key, StringFormat='{0:MMMM yyyy}'}" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
+<!--              <Label Text="{Binding MyItems, Converter={StaticResource AmortizationGroupSumConverter}, Mode=TwoWay }" FontSize="18"
+									TextColor="White" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> -->
+		        </StackLayout> 
+		      </ViewCell> 
+		    </DataTemplate> 
+		  </ListView.GroupHeaderTemplate> 
+		  <ListView.ItemTemplate> 
+		    <DataTemplate> 
+          <ViewCell>
+            <ViewCell.View>
+              <AbsoluteLayout Padding="0"  
+                  BackgroundColor="Transparent">
+                  <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="50" VerticalOptions="Center"
+                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="125" />
+                      </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" 
+                          Font="FontAwesome" FontSize="30" VerticalOptions="Center" TextColor="Green" HorizontalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="{Binding DebtName}" FontSize="18" VerticalOptions="Center"/>
+                        <StackLayout Grid.Column="2">
+                          <Label Text="Payment" FontSize="16" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                          <Label Text="Balance" FontSize="16" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Grid.Column="3">
+                          <Label Text="{Binding TotalPayment, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                          <Label Text="{Binding EndBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" />
+                        </StackLayout>
+                   </Grid>
+              </AbsoluteLayout>
+            </ViewCell.View>
+          </ViewCell>
+		    </DataTemplate> 
+		  </ListView.ItemTemplate> 
 		</ListView>
 	</local:AmortizationListPage.Content>
 </local:AmortizationListPageXaml>

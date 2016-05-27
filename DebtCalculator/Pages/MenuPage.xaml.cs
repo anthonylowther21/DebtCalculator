@@ -12,12 +12,9 @@ namespace DebtCalculator.Shared
 {
   public partial class MenuPage : MenuPageXaml
 	{
-    MasterDetailPage _masterDetailPage;
-
-    public MenuPage (MasterDetailPage masterDetailPage)
+    public MenuPage ()
 		{
       this.ViewModel.LoadData();
-      _masterDetailPage = masterDetailPage;
 			InitializeComponent ();
 		}
 
@@ -25,18 +22,15 @@ namespace DebtCalculator.Shared
     {
       var mi = ((MenuItem)sender);
       string filename = Path.Combine(Paths.SavedFilesDirectory, mi.CommandParameter.ToString());
-//      if (InputsFileManager.CurrentInputsFile != filename)
-//      {
       InputsFileManager.Delete(filename);
-//      }
     }
 
     public void File_Selected (object sender, ItemTappedEventArgs e)
     {
-      InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, e.Item.ToString()), DebtApp.Shared, 
+      InputsFileManager.LoadInputsFile(Path.Combine(Paths.SavedFilesDirectory, (e.Item as ScenarioItemViewModel).Name), DebtApp.Shared, 
         () =>  
         {
-          _masterDetailPage.IsPresented = false;
+          this.Navigation.PopModalAsync();
         });
     }
 
@@ -45,9 +39,14 @@ namespace DebtCalculator.Shared
       InputsFileManager.SaveNewInputsFile(DebtApp.Shared, 
         () => 
         {
-          _masterDetailPage.IsPresented = false;
+          this.Navigation.PopModalAsync();
         });
         
+    }
+
+    public void Close_Button_Clicked(object sender, EventArgs e)
+    {
+      this.Navigation.PopModalAsync ();
     }
 	}
 

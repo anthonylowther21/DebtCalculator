@@ -1,38 +1,93 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<local:PaymentListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.PaymentListPage"
-xmlns:local="clr-namespace:DebtCalculator.Shared" Title="Payments">
+<local:PaymentListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.PaymentListPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared" Title="Payments"
+xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Add" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
+        <ToolbarItem Name="&#xf067;" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
+        <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
     </ContentPage.ToolbarItems>
   <local:PaymentListPage.Content>
-    <StackLayout Spacing="10">
-      <ContentView>
-       <StackLayout Padding="15,0,0,0" Orientation="Vertical">
-         <Label Text="Snowball" FontSize="17" VerticalTextAlignment="Center"/>
-         <Entry Text="{Binding Snowball}" FontSize="17"/>
-       </StackLayout>
-      </ContentView>
-      <ContentView Padding="15,0,0,0">
-        <Label Text="Salaries" FontSize="17"/>
-      </ContentView>
-      <ListView ItemsSource="{Binding Salaries}" ItemTapped="Salary_Selected" >
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <TextCell Text="{Binding StartingSalary, Mode=OneWay, StringFormat='{0:C}'}" 
-                      Detail="{Binding YearlySnowballIncreasePercent, Mode=OneWay, StringFormat='{0:P}'}"></TextCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
+    <StackLayout>
+      <StackLayout HeightRequest="40" Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
+        <Label Text="Snowball" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
+      </StackLayout>       
+      <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="80" VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+          <Label Grid.Column="0" Text="Snowball Amount" FontSize="20" VerticalOptions="Center"/>
+          <Button Grid.Column="1" Text="{Binding Snowball}" FontSize="20" MinimumHeightRequest="40" Clicked="Snowball_Clicked"
+           VerticalOptions="Center" HorizontalOptions="EndAndExpand" WidthRequest="100" /> 
+      </Grid>
+<!--      <AbsoluteLayout Padding="0"  
+        BackgroundColor="Transparent">
+        <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="50" VerticalOptions="Center"
+          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+              <Label Grid.Column="0" Text="Snowball Amount" FontSize="20" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding Snowball}" FontSize="20" 
+                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+         </Grid>
+      </AbsoluteLayout>-->
+
+      <StackLayout HeightRequest="40" Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
+        <Label Text="Salaries" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
+      </StackLayout> 
+      <ListView ItemsSource="{Binding Salaries}" ItemTapped="Salary_Selected" SeparatorVisibility="None">
+        <ListView.ItemTemplate> 
+          <DataTemplate> 
+            <ViewCell>
+              <ViewCell.View>
+                <AbsoluteLayout Padding="0"  
+                  BackgroundColor="Transparent">
+                  <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="50" VerticalOptions="Center"
+                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding StartingSalary, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding YearlySnowballIncreasePercent, Mode=OneWay, StringFormat='{0:P}'}" FontSize="20" 
+                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                   </Grid>
+                  </AbsoluteLayout>
+                </ViewCell.View>
+              </ViewCell>
+            </DataTemplate> 
+          </ListView.ItemTemplate> 
       </ListView>
-      <ContentView Padding="15,0,0,0">
-        <Label Text="Windfalls" FontSize="17"/>
-      </ContentView>
-      <ListView ItemsSource="{Binding Windfalls}" ItemTapped="Windfall_Selected">
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <TextCell Text="{Binding Amount, Mode=OneWay, StringFormat='{0:C}'}" 
-                      Detail="{Binding WindfallDate, Mode=OneWay, StringFormat='{0:MMMM yyyy}'}"></TextCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
+
+      <StackLayout HeightRequest="40" Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
+        <Label Text="Windfalls" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
+      </StackLayout> 
+      <ListView ItemsSource="{Binding Windfalls}" ItemTapped="Windfall_Selected" SeparatorVisibility="None">
+        <ListView.ItemTemplate> 
+          <DataTemplate> 
+            <ViewCell>
+              <ViewCell.View>
+                <AbsoluteLayout Padding="0"  
+                  BackgroundColor="Transparent">
+                  <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="50" VerticalOptions="Center"
+                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Amount, Mode=OneWay, StringFormat='{0:C}'}"  FontSize="20" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding WindfallDate, Mode=OneWay, StringFormat='{0:MMMM yyyy}'}" FontSize="20" 
+                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                   </Grid>
+                  </AbsoluteLayout>
+                </ViewCell.View>
+              </ViewCell>
+            </DataTemplate> 
+          </ListView.ItemTemplate> 
       </ListView>
     </StackLayout>
   </local:PaymentListPage.Content>
