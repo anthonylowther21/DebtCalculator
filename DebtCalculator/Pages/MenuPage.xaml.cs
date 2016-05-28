@@ -12,11 +12,19 @@ namespace DebtCalculator.Shared
 {
   public partial class MenuPage : MenuPageXaml
 	{
-    public MenuPage ()
+    public MenuPage (Action disappearHandler = null)
 		{
       this.ViewModel.LoadData();
+
 			InitializeComponent ();
+
+      this.Disappearing += (object sender, EventArgs e) =>
+      {
+        if (disappearHandler != null)
+          disappearHandler();
+      };
 		}
+      
 
     public void OnDelete (object sender, EventArgs e) 
     {

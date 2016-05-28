@@ -29,37 +29,37 @@ namespace DebtCalculator.Shared
     { 
       get 
       { 
-        return _debtEntry.Name; 
+        return ShortStringHelper.Convert(_debtEntry.Name);
       }
       set 
       { 
-        _debtEntry.Name = value; 
+        _debtEntry.Name = ShortStringHelper.ConvertBack (value);
         SetPropertyChanged("Name");
       }
     }
 
-    public double CurrentBalance
+    public string CurrentBalance
     {
       get 
       { 
-        return _debtEntry.CurrentBalance; 
+        return DoubleToCurrencyHelper.Convert (_debtEntry.CurrentBalance);
       }
       set 
       { 
-        _debtEntry.CurrentBalance = value; 
+        _debtEntry.CurrentBalance = DoubleToCurrencyHelper.ConvertBack (value, CurrentBalance.Length);
         SetPropertyChanged("CurrentBalance");
       }
     }
 
-    public double YearlyInterestRate
+    public string YearlyInterestRate
     {
       get 
       { 
-        return _debtEntry.YearlyInterestRate; 
+        return DoubleToPercentHelper.Convert (_debtEntry.YearlyInterestRate);
       }
       set 
       { 
-        _debtEntry.YearlyInterestRate = value; 
+        _debtEntry.YearlyInterestRate = DoubleToPercentHelper.ConvertBack (value, YearlyInterestRate.Length);
         SetPropertyChanged("YearlyInterestRate");
         InvalidateMinimumMonthlyPayment();
       }

@@ -30,26 +30,15 @@ namespace DebtCalculator.iOS
           UITextField field = subview as UITextField;
           if (field != null) 
           {
-            field.InputAccessoryView = KeyboardInputAccessoryHelper.CreateAccessoryToolbar (() => field.ResignFirstResponder ());
-            field.ShouldChangeCharacters += (textField, range, replacementString) => 
-            {
-              return true;
-//              if (replacementString == string.Empty)
-//              {
-//                double result = double.Parse(textField.Text, System.Globalization.NumberStyles.Currency);
-//                result /= 10;
-//                textField.Text = result.ToString();
-//                return false;
-//              }
-//              else
-//              {
-//                double result = double.Parse(textField.Text, System.Globalization.NumberStyles.Currency);
-//                result *= 10;
-//                textField.Text = result.ToString();
-//                return false;
-//              }
-            };
-             
+            field.TintColor = Color.Transparent.ToUIColor ();
+            field.InputAccessoryView = KeyboardInputAccessoryHelper.CreateAccessoryToolbar (() => {
+              NumericEntryCell nec = item as NumericEntryCell;
+              if (nec != null)
+              {
+                nec.OnCompleted();
+              }
+              field.ResignFirstResponder ();
+            });
           }
         }
       }

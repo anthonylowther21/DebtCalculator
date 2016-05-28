@@ -2,7 +2,7 @@
 <local:AmortizationPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
   x:Class="DebtCalculator.Shared.AmortizationPage"
-  xmlns:local="clr-namespace:DebtCalculator.Shared">
+  xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:AmortizationPage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Debt Name"></Label>

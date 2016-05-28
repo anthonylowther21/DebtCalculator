@@ -25,28 +25,28 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double StartingSalary 
+    public string StartingSalary 
     { 
       get
       { 
-        return _salary.StartingSalary;
+        return DoubleToCurrencyHelper.Convert(_salary.StartingSalary);
       }
       set
       {
-        _salary.StartingSalary = value;
+        _salary.StartingSalary = DoubleToCurrencyHelper.ConvertBack (value, StartingSalary.Length);
         SetPropertyChanged("StartingSalary");
       }
     }
 
-    public double YearlySnowballIncreasePercent 
+    public string YearlySnowballIncreasePercent 
     { 
       get
       { 
-        return _salary.YearlySnowballIncreasePercent;
+        return DoubleToPercentHelper.Convert (_salary.YearlySnowballIncreasePercent);
       }
       set
       {
-        _salary.YearlySnowballIncreasePercent = value;
+        _salary.YearlySnowballIncreasePercent = DoubleToPercentHelper.ConvertBack (value, YearlySnowballIncreasePercent.Length);
         SetPropertyChanged("YearlySnowballIncreasePercent");
       }
     }

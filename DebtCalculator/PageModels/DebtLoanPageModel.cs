@@ -29,11 +29,11 @@ namespace DebtCalculator.Shared
     { 
       get 
       { 
-        return _debtEntry.Name; 
+        return ShortStringHelper.Convert(_debtEntry.Name);
       }
       set 
       { 
-        _debtEntry.Name = value; 
+        _debtEntry.Name = ShortStringHelper.ConvertBack (value);
         SetPropertyChanged("Name");
       }
     }
@@ -65,29 +65,29 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double YearlyInterestRate
+    public string YearlyInterestRate
     {
       get 
       { 
-        return _debtEntry.YearlyInterestRate; 
+        return DoubleToPercentHelper.Convert (_debtEntry.YearlyInterestRate);
       }
       set 
       { 
-        _debtEntry.YearlyInterestRate = value; 
+        _debtEntry.YearlyInterestRate = DoubleToPercentHelper.ConvertBack (value, YearlyInterestRate.Length);
         SetPropertyChanged("YearlyInterestRate");
         InvalidateMinimumMonthlyPayment();
       }
     }
 
-    public int LoanTerm
+    public string LoanTerm
     {
       get 
       { 
-        return _debtEntry.LoanTerm; 
+        return DoubleToMonthHelper.Convert (_debtEntry.LoanTerm);
       }
       set 
       { 
-        _debtEntry.LoanTerm = value; 
+        _debtEntry.LoanTerm = DoubleToMonthHelper.ConvertBack (value);
         SetPropertyChanged("LoanTerm");
         InvalidateMinimumMonthlyPayment();
       }
@@ -117,17 +117,6 @@ namespace DebtCalculator.Shared
       DebtApp.Shared.DebtManager.DeleteDebt(_debtEntry);
       InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
-
-//    public Command TestModal 
-//    {
-//      get 
-//      {
-//        return new Command (async () => 
-//          {
-//            await CoreMethods.PushPageModel<ModalPageModel> (null, true);
-//          });
-//      }
-//    }
   }
 }
 

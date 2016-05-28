@@ -18,8 +18,8 @@
               <ColumnDefinition Width="*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Original Interest" FontSize="20" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding OriginalInterest, StringFormat='{0:C}'}" FontSize="20" 
+              <Label Grid.Column="0" Text="Original Interest" FontSize="18" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding OriginalInterest, StringFormat='{0:C}'}" FontSize="18" 
                 HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
          </Grid>
       </AbsoluteLayout>
@@ -28,11 +28,11 @@
         <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="2*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Snowball Interest" FontSize="20" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding SnowballInterest, StringFormat='{0:C}'}" FontSize="20" 
+              <Label Grid.Column="0" Text="Snowball Interest" FontSize="18" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding SnowballInterest, StringFormat='{0:C}'}" FontSize="18" 
                 HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
          </Grid>
       </AbsoluteLayout>
@@ -41,11 +41,11 @@
         <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="2*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Saved Interest" FontSize="20" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding SavedInterest, StringFormat='{0:C}'}" FontSize="20" 
+              <Label Grid.Column="0" Text="Saved Interest" FontSize="18" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding SavedInterest, StringFormat='{0:C}'}" FontSize="18" 
                 HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
          </Grid>
       </AbsoluteLayout>
@@ -54,11 +54,11 @@
         <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="2*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Original Payoff Date" FontSize="20" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding OriginalPayoffDate, StringFormat='{0:MMMM yyyy}'}" FontSize="20" 
+              <Label Grid.Column="0" Text="Original Payoff Date" FontSize="18" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding OriginalPayoffDate, StringFormat='{0:MMMM yyyy}'}" FontSize="18" 
                 HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
          </Grid>
       </AbsoluteLayout>
@@ -67,11 +67,11 @@
         <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="2*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Snowball Payoff Date" FontSize="20" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding SnowballPayoffDate, StringFormat='{0:MMMM yyyy}'}" FontSize="20" 
+              <Label Grid.Column="0" Text="Snowball Payoff Date" FontSize="18" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding SnowballPayoffDate, StringFormat='{0:MMMM yyyy}'}" FontSize="18" 
                 HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
          </Grid>
       </AbsoluteLayout>

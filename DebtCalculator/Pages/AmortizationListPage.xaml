@@ -19,10 +19,9 @@
 		  <ListView.GroupHeaderTemplate> 
 		    <DataTemplate> 
 					<ViewCell Height="40"> 
-		        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="5, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
-		          <Label Text="{Binding Key, StringFormat='{0:MMMM yyyy}'}" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
-<!--              <Label Text="{Binding MyItems, Converter={StaticResource AmortizationGroupSumConverter}, Mode=TwoWay }" FontSize="18"
-									TextColor="White" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> -->
+		        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="10, 8, 0, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
+		          <Label Text="{Binding Key, StringFormat='{0:MMMM yyyy}'}" TextColor="White" FontSize="20" VerticalOptions="Center" 
+              VerticalTextAlignment="Center"/> 
 		        </StackLayout> 
 		      </ViewCell> 
 		    </DataTemplate> 

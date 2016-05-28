@@ -88,6 +88,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomDatePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericEntryCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToCurrencyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToMonthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ShortStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToDoubleConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

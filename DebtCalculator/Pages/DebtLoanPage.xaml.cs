@@ -26,6 +26,18 @@ namespace DebtCalculator.Shared
     {
       this.ViewModel.DeleteDebt(() => Navigation.PopAsync(true));
     }
+
+    public void Loan_Completed(object sender, EventArgs e)
+    {
+      NumericEntryCell cell = sender as NumericEntryCell;
+      if (cell != null) 
+      {
+        if (cell.Text == "0" || cell.Text == string.Empty) 
+        {
+          this.ViewModel.LoanTerm = "1";
+        }
+      }
+    }
 	}
 
   public partial class DebtLoanPageXaml : BaseContentPage<DebtLoanPageModel>

@@ -2,14 +2,14 @@
 <local:SalaryPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.SalaryPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared"
 xmlns:controls="clr-namespace:DebtCalculator.Controls"
-xmlns:converters="clr-namespace:DebtCalculator.Shared">
+xmlns:converters="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:SalaryPage.Content>
     <StackLayout>
       <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="">
                 <local:NumericEntryCell Label="Starting Salary" Text="{Binding StartingSalary}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <local:NumericEntryCell Label="Yearly Increase (%)" Text="{Binding YearlySnowballIncreasePercent, Mode=TwoWay, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="Yearly Increase (%)" Text="{Binding YearlySnowballIncreasePercent}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
                         <Label Text="Yearly Applied Date" VerticalTextAlignment="Center" />

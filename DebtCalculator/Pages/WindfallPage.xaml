@@ -2,7 +2,7 @@
 <local:WindfallPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 x:Class="DebtCalculator.Shared.WindfallPage"
-xmlns:local="clr-namespace:DebtCalculator.Shared">
+xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:WindfallPage.Content>
     <StackLayout Orientation="Vertical" Padding="15">
       <Label Text="Amount"></Label>

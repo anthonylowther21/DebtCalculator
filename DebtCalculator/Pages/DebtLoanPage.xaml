@@ -2,7 +2,7 @@
 <local:DebtLoanPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 x:Class="DebtCalculator.Shared.DebtLoanPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared"
-xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
+xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:DebtLoanPageXaml.Content>
     <StackLayout>
       <TableView Intent="Settings">
@@ -11,8 +11,8 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms">
                 <EntryCell Label="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
                 <local:NumericEntryCell Label="Starting Balance" Text="{Binding StartingBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
                 <local:NumericEntryCell Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <local:NumericEntryCell Label="APY (%)" Text="{Binding YearlyInterestRate, Converter={StaticResource DoubleToPercentConverter}}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <local:NumericEntryCell Label="Loan Term (months)" Text="{Binding LoanTerm}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="APY" Text="{Binding YearlyInterestRate}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Label="Loan Term (months)" Text="{Binding LoanTerm}" Keyboard="Numeric" HorizontalTextAlignment="End" Completed="Loan_Completed"/>
              </TableSection>
              <TableSection Title="">
                 <ViewCell>

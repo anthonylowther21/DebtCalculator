@@ -59,10 +59,11 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>iPhone Developer: Anthony Lowther (VN9R6TAEX4)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Craft Designs, Inc.</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>95aa9c89-043b-46fa-9766-57325be70eec</CodesignProvision>
+    <BuildIpa>true</BuildIpa>
+    <IpaPackageName>com.CDI.Demo</IpaPackageName>
+    <CodesignProvision>dba384c6-ca9a-4951-866b-49d8c6a85bf5</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -195,5 +196,6 @@
   <ItemGroup>
     <Folder Include="Renderers\" />
     <Folder Include="Converters\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
 </Project>

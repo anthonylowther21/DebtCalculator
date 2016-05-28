@@ -6,28 +6,19 @@ namespace DebtCalculator.Shared
 {
   public class NumericEntryCell : EntryCell
   {
-    int _previousLength = 0;
+    public event EventHandler Completed;
 
     public NumericEntryCell()
     {
-      this.PropertyChanged += (object sender, PropertyChangedEventArgs e) => 
+    }
+
+    public void OnCompleted()
+    {
+      var handler = Completed as EventHandler;
+      if (handler != null) 
       {
-        if (e.PropertyName == TextProperty.PropertyName)
-        {
-//          int newLength = this.Text.Length;
-//          string text = this.Text;
-//          double result = double.Parse(text, System.Globalization.NumberStyles.Currency);
-//          if (newLength > _previousLength)
-//          {
-//            result *= 10;
-//          }
-//          else
-//          {
-//            result /= 10;
-//          }
-//          this.Text = string.Format("{0:C}", result);
-        }
-      };
+        Completed (this, new EventArgs ());
+      }
     }
   }
 }

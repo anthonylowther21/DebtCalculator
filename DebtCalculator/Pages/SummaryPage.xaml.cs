@@ -14,7 +14,7 @@ namespace DebtCalculator.Shared
 
     public void Menu_Button_Clicked(object sender, EventArgs e)
     {
-      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage ()));
+      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage (() => OnAppearing())));
     }
 
     protected override void OnAppearing()

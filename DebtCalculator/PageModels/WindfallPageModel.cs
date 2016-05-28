@@ -26,15 +26,15 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double Amount
+    public string Amount
     {
       get
       {
-        return _windfall.Amount;
+        return StringToDoubleConverter.Convert (_windfall.Amount);
       }
       set
       {
-        _windfall.Amount = value;
+        _windfall.Amount = StringToDoubleConverter.ConvertBack (value);
         SetPropertyChanged("Amount");
       }
     }
