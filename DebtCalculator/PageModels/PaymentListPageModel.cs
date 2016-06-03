@@ -19,19 +19,9 @@ namespace DebtCalculator.Shared
       };
     }
 
-    public double Snowball 
+    public string Snowball 
     { 
-      get { return DebtApp.Shared.PaymentManager.SnowballAmount; }
-      set
-      {
-        DebtApp.Shared.PaymentManager.SnowballAmount = value;
-        SaveSnowball ();
-      }
-    }
-
-    public void SaveSnowball()
-    {
-      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, null);
+      get { return DoubleToCurrencyHelper.Convert(DebtApp.Shared.PaymentManager.SnowballAmount); }
     }
 
     public ObservableCollection<SalaryEntry> Salaries { get; set; } = DebtApp.Shared.PaymentManager.SalaryEntries;

@@ -19,7 +19,7 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" Backgro
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
           <Label Grid.Column="0" Text="Snowball Amount" FontSize="20" VerticalOptions="Center"/>
-          <Button Grid.Column="1" Text="{Binding Snowball}" FontSize="20" MinimumHeightRequest="40" Clicked="Snowball_Clicked"
+          <Button Grid.Column="1" Text="{Binding Snowball}" FontSize="20" TextColor="Black" MinimumHeightRequest="40" Clicked="Snowball_Clicked"
            VerticalOptions="Center" HorizontalOptions="EndAndExpand" WidthRequest="100" /> 
       </Grid>
       <StackLayout HeightRequest="40" Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 

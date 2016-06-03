@@ -17,19 +17,27 @@ namespace DebtCalculator.Shared
     {
     }
 
-    public double Snowball 
+    public string Snowball 
     { 
-      get { return _snowball; }
+      get 
+      { 
+        return DoubleToCurrencyHelper.Convert (_snowball); 
+      }
       set
       {
-        _snowball = value;
+        _snowball = DoubleToCurrencyHelper.ConvertBack (value, Snowball.Length);
         SetPropertyChanged("Snowball");
       }
     }
 
+    public void ClearSnowball()
+    {
+      _snowball = 0;
+    }
+
     public void SaveSnowball(Action callBack)
     {
-      DebtApp.Shared.PaymentManager.SnowballAmount = Snowball;
+      DebtApp.Shared.PaymentManager.SnowballAmount = _snowball;
       InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
   }

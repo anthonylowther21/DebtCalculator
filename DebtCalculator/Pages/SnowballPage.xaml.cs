@@ -19,7 +19,7 @@ namespace DebtCalculator.Shared
 
     public void Delete_Button_Clicked(object sender, EventArgs e)
     {
-      ViewModel.Snowball = 0;
+      ViewModel.ClearSnowball ();
       ViewModel.SaveSnowball (() => Navigation.PopAsync (true));
     }
 	}
