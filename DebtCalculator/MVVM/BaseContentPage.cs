@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Acr.UserDialogs;
 
 namespace DebtCalculator.Shared
 {
@@ -47,6 +48,15 @@ namespace DebtCalculator.Shared
 			get;
 			set;
 		}
+
+    async public void ShowModalMessage(string title, string text)
+    {
+      await UserDialogs.Instance.AlertAsync(new AlertConfig
+        {
+          Title = title,
+          Message = text
+        });
+    }
 
 		public MainBaseContentPage()
 		{

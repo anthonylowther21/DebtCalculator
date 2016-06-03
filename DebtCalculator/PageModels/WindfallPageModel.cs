@@ -30,24 +30,24 @@ namespace DebtCalculator.Shared
     {
       get
       {
-        return StringToDoubleConverter.Convert (_windfall.Amount);
+        return DoubleToCurrencyHelper.Convert (_windfall.Amount);
       }
       set
       {
-        _windfall.Amount = StringToDoubleConverter.ConvertBack (value);
+        _windfall.Amount = DoubleToCurrencyHelper.ConvertBack (value, Amount.Length);
         SetPropertyChanged("Amount");
       }
     }
 
-    public DateTime WindfallDate
+    public string WindfallDate
     {
       get
       {
-        return _windfall.WindfallDate;
+        return  DateToStringHelper.Convert(_windfall.WindfallDate);
       }
       set
       {
-        _windfall.WindfallDate = value;
+        _windfall.WindfallDate = DateToStringHelper.ConvertBack (value);
         SetPropertyChanged("WindfallDate");
       }
     }
@@ -65,17 +65,45 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public int RecurringFrequency
+    public string RecurringFrequency
     {
       get
       {
-        return _windfall.RecurringFrequency;
+        return DoubleToMonthHelper.Convert(_windfall.RecurringFrequency);
       }
       set
       {
-        _windfall.RecurringFrequency = value;
+        _windfall.RecurringFrequency = DoubleToMonthHelper.ConvertBack (value);
         SetPropertyChanged("RecurringFrequency");
       }
+    }
+
+    public bool Validate(Action<string, string> callBack)
+    {
+      bool result = false;
+      if (_windfall.Amount <= 0) 
+      {
+        callBack ("Loan Debt", "Windfall amount must be greater than $0.00");
+      }
+      else if (_windfall.IsRecurring && _windfall.RecurringFrequency <= 0) 
+      {
+        callBack ("Loan Debt", "Windfall recurring frequency must be greater than 0");
+      }
+      else if (_windfall.WindfallDate == DateTime.MinValue) 
+      {
+        callBack ("Loan Debt", "Windfall date has not been entered");
+      }
+      else 
+      {
+        result = true;
+      }
+      return result;
+    }
+
+    public void Save(Action callBack)
+    {
+      DebtApp.Shared.PaymentManager.UpdateWindfall (_windfall);
+      InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
     public void SaveWindfall(Action callback)

@@ -13,7 +13,14 @@ namespace DebtCalculator
   {
     static public string Convert(double value)
     {
-      return value.ToString ();
+      if (value < 0) 
+      {
+        return string.Empty;
+      } 
+      else 
+      {
+        return value.ToString ();
+      }
     }
 
     static public int ConvertBack(string value)

@@ -19,24 +19,15 @@ namespace DebtCalculator.Shared
 
     public void Save_Button_Clicked(object sender, EventArgs e)
     {
-      this.ViewModel.SaveDebt(() => Navigation.PopAsync(true));
+      if (ViewModel.Validate((title, text) => ShowModalMessage(title, text)) == true) 
+      {
+        ViewModel.Save(() => Navigation.PopAsync (true));
+      }
     }
 
     public void Delete_Button_Clicked(object sender, EventArgs e)
     {
       this.ViewModel.DeleteDebt(() => Navigation.PopAsync(true));
-    }
-
-    public void Loan_Completed(object sender, EventArgs e)
-    {
-      NumericEntryCell cell = sender as NumericEntryCell;
-      if (cell != null) 
-      {
-        if (cell.Text == "0" || cell.Text == string.Empty) 
-        {
-          this.ViewModel.LoanTerm = "1";
-        }
-      }
     }
 	}
 

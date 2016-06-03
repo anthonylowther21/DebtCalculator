@@ -16,6 +16,12 @@ namespace DebtCalculator.Shared
     {
       ViewModel.SaveSnowball(() => Navigation.PopAsync(true));
     }
+
+    public void Delete_Button_Clicked(object sender, EventArgs e)
+    {
+      ViewModel.Snowball = 0;
+      ViewModel.SaveSnowball (() => Navigation.PopAsync (true));
+    }
 	}
 
   public partial class SnowballPageXaml : BaseContentPage<SnowballPageModel>

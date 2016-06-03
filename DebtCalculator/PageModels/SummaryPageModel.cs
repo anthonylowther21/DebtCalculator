@@ -15,6 +15,9 @@ namespace DebtCalculator.Shared
     private double _originalInterest = 0;
     private double _snowballInterest = 0;
     private double _savedInterest = 0;
+    private double _remainingBalance = 0;
+    private int _monthsSaved = 0;
+    private double _totalDebt = 0;
 
     private DateTime _originalPayoffDate = DateTime.Now;
     private DateTime _snowballPayoffDate = DateTime.Now;
@@ -29,6 +32,12 @@ namespace DebtCalculator.Shared
     {
       if (DebtApp.Shared.DebtManager.Debts.Count > 0)
       {
+        _totalDebt = 0;
+        foreach (var item in DebtApp.Shared.DebtManager.Debts) 
+        {
+          _totalDebt += item.CurrentBalance;
+        }
+
         double interest = 0;
         amortization = DebtApp.Shared.Calculate(false);
         bool invalid = false;
@@ -63,48 +72,46 @@ namespace DebtCalculator.Shared
         _snowballPayoffDate = amortization[amortization.Count - 1].Date;
 
         _savedInterest = _originalInterest - _snowballInterest;
+
+
+        _monthsSaved = DateTimeHelpers.GetMonthDifference (_originalPayoffDate, _snowballPayoffDate);
+
         SetPropertyChanged("");
         //You can do stuff here
       }
     }
 
-    public double OriginalInterest 
+    public string TotalDebt
     {
       get 
-      { 
-        return _originalInterest; 
+      {
+        return DoubleToCurrencyHelper.Convert(_totalDebt); 
       }
     }
 
-    public double SnowballInterest 
+    public string SavedInterest 
     {
       get 
       { 
-        return _snowballInterest; 
+        return DoubleToCurrencyHelper.Convert(_savedInterest); 
       }
     }
 
-    public double SavedInterest 
-    {
-      get 
-      { 
-        return _savedInterest; 
-      }
-    }
-
-    public DateTime OriginalPayoffDate
+    public string SnowballPayoffDate
     {
       get
       {
-        return _originalPayoffDate;
+        return string.Format ("{0:MMMM yyyy}", _snowballPayoffDate);
       }
     }
 
-    public DateTime SnowballPayoffDate
+    public string MonthsSaved
     {
-      get
+      get 
       {
-        return _snowballPayoffDate;
+        int years = _monthsSaved / 12;
+        int months = _monthsSaved % 12;
+        return string.Format ("{0} years\n {1} months", years, months);
       }
     }
   }

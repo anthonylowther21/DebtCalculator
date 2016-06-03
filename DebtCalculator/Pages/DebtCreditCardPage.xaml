@@ -8,9 +8,9 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" Backgro
       <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="">
-                <EntryCell Label="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
-                <local:NumericEntryCell Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
-                <local:NumericEntryCell Label="APY (%)" Text="{Binding YearlyInterestRate}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <EntryCell Label="Debt Name" Placeholder="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Placeholder="$5,000.00" Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Placeholder="2.990 %" Label="APY (%)" Text="{Binding YearlyInterestRate}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
              </TableSection>
              <TableSection Title="">
                 <ViewCell>
@@ -24,8 +24,19 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" Backgro
             </TableSection>
         </TableRoot>
       </TableView>
-      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
-      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+      <AbsoluteLayout Padding="15, 10, 15, 20"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="Transparent" Padding="0" HeightRequest="80" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+              </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" BackgroundColor="Red" FontSize="20" TextColor="Black" BorderWidth="0" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+                <Button Grid.Column="2" BackgroundColor="{Static local:Colors.TabBarSelected}" FontSize="20" TextColor="White" BorderWidth="0" Text="Save" Clicked="Save_Button_Clicked"></Button>
+           </Grid>
+      </AbsoluteLayout>
     </StackLayout>
   </local:DebtCreditCardPage.Content>
 </local:DebtCreditCardPageXaml> 

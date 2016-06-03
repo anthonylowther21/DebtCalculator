@@ -5,10 +5,10 @@ namespace DebtCalculator.Library
 {
   public class WindfallEntry : BaseClass
   {
-    private double _amount = 100;
-    private DateTime _windfallDate = DateTime.Now;
+    private double _amount = -1;
+    private DateTime _windfallDate = DateTime.MinValue;
     private bool _isRecurring = false;
-    private int _recurringFrequency = 6;
+    private int _recurringFrequency = -1;
 
     public WindfallEntry (double amount, 
                           DateTime windfallDate, 

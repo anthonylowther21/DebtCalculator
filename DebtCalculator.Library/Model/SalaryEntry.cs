@@ -5,9 +5,9 @@ namespace DebtCalculator.Library
 {
   public class SalaryEntry : BaseClass
   {
-    private double _startingSalary = 40000;
-    private double _yearlyIncreasePercent = 0.01;
-    private DateTime _appliedDate = DateTime.Now;
+    private double _startingSalary = -1;
+    private double _yearlyIncreasePercent = -1;
+    private DateTime _appliedDate = DateTime.MinValue;
 
     public SalaryEntry ( double startingSalary, 
                             double yearlyIncreasePercent, 

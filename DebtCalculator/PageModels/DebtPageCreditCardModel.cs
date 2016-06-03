@@ -78,10 +78,32 @@ namespace DebtCalculator.Shared
       SetPropertyChanged("MinimumMonthlyPayment");
     }
 
-    public void SaveDebt(Action callBack)
+    public bool Validate(Action<string, string> callBack)
     {
-      DebtApp.Shared.DebtManager.UpdateDebt(_debtEntry);
-      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
+      bool result = false;
+      if (_debtEntry.CurrentBalance <= 0) 
+      {
+        callBack ("Loan Debt", "Current Balance must be greater than $0.00");
+      }
+      else if (_debtEntry.Name == string.Empty) 
+      {
+        callBack ("Loan Debt", "Debt Name cannot be empty");
+      }
+      else if (_debtEntry.YearlyInterestRate <= 0) 
+      {
+        callBack ("Loan Debt", "Yearly Interest Rate must be greater than 0.000 %");
+      }
+      else 
+      {
+        result = true;
+      }
+      return result;
+    }
+
+    public void Save(Action callBack)
+    {
+      DebtApp.Shared.DebtManager.UpdateDebt (_debtEntry);
+      InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
     public void DeleteDebt(Action callBack)

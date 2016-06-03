@@ -16,13 +16,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Model\SalaryEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\WindfallEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Business\DebtSnowballCalculator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTime.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\BaseClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\AmortizationEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\Paths.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataLayer\InputsFileDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\DebtApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Business\InputsFileManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTimeHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Business\" />

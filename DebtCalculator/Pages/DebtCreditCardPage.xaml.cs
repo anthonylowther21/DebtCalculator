@@ -19,7 +19,10 @@ namespace DebtCalculator.Shared
 
     public void Save_Button_Clicked(object sender, EventArgs e)
     {
-      this.ViewModel.SaveDebt(() => Navigation.PopAsync(true));
+      if (ViewModel.Validate((title, text) => ShowModalMessage(title, text)) == true) 
+      {
+        ViewModel.Save(() => Navigation.PopAsync (true));
+      }
     }
 
     public void Delete_Button_Clicked(object sender, EventArgs e)

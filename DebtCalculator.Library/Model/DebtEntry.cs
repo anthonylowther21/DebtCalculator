@@ -6,11 +6,11 @@ namespace DebtCalculator.Library
 {
   public class DebtEntry : BaseClass
   {
-    private string  _name               = "New Debt";
-    private double  _startingBalance    = 10000;
-    private double  _currentBalance     = 5000;
-    private double  _yearlyInterestRate = 0.0325;
-    private int     _loanTerm           = 36;
+    private string  _name               = string.Empty;
+    private double  _startingBalance    = -1;
+    private double  _currentBalance     = -1;
+    private double  _yearlyInterestRate = -1;
+    private int     _loanTerm           = -1;
     private DebtType _debtType = DebtType.OtherLoan;
 
     private const double _yearly_to_monthly_interest_term_inverse = 1.0 / 12.0 / 100.0;
@@ -87,11 +87,17 @@ namespace DebtCalculator.Library
       set { _debtType = value; }
     }
       
-    public double MinimumMonthlyPayment { get; private set; }
+    public double MinimumMonthlyPayment { get; private set; } = -1;
     public double MonthlyInterest { get; private set; }
 
     private void InitializeMonthlyPayment()
     {
+      // If we aren't initialized, then don't proceed
+      if (_currentBalance < 0 || _loanTerm < 0 ||
+          _startingBalance < 0 || _yearlyInterestRate < 0) {
+        return;
+      }
+
       if (_debtType == DebtType.HouseLoan || _debtType == DebtType.CarLoan || 
           _debtType == DebtType.StudentLoan || _debtType == DebtType.OtherLoan)
       {

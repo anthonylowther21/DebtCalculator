@@ -27,8 +27,14 @@ namespace DebtCalculator.Shared
   {
     static public string Convert(double value)
     {
-      string test = string.Format ("{0:0.000} %", value * 100);
-      return string.Format ("{0:0.000} %", value * 100);
+      if (value < 0) 
+      {
+        return string.Empty;
+      } 
+      else 
+      {
+        return string.Format ("{0:0.000} %", value * 100);
+      }
     }
 
     static public double ConvertBack(string value, int _previousLength)
@@ -45,6 +51,10 @@ namespace DebtCalculator.Shared
       if (result > 100) 
       {
         result = 0.0;
+      }
+      else if (newLength == 1)
+      {
+        result /= 1000;
       }
       else if (newLength <= 5) 
       {

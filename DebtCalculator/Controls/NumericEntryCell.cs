@@ -8,8 +8,25 @@ namespace DebtCalculator.Shared
   {
     public event EventHandler Completed;
 
+
+
     public NumericEntryCell()
     {
+    }
+
+    public static readonly BindableProperty EditingBackgroundColorProperty=
+      BindableProperty.Create<NumericEntryCell, Color>( p => p.EditingBackgroundColor, Color.Default );
+
+    public Color EditingBackgroundColor
+    {
+      get 
+      { 
+        return (Color)GetValue(EditingBackgroundColorProperty); 
+      }
+      set 
+      {
+        SetValue(EditingBackgroundColorProperty, value); 
+      }
     }
 
     public void OnCompleted()

@@ -91,6 +91,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToMonthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ShortStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToDoubleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateToStringConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

@@ -47,7 +47,7 @@ namespace DebtCalculator.Library
 
       foreach (WindfallEntry windfallEntry in this.WindfallEntries)
       {
-        int monthDifference = GetMonthDifference(simulatedDate, windfallEntry.WindfallDate);
+        int monthDifference = DateTimeHelpers.GetMonthDifference(simulatedDate, windfallEntry.WindfallDate);
 
         if (monthDifference == 0)
         {
@@ -64,7 +64,7 @@ namespace DebtCalculator.Library
       {
         double finalSalary = salaryEntry.StartingSalary;
 
-        int monthDifference = GetMonthDifference(simulatedDate, salaryEntry.YearlyIncreaseAppliedDate);
+        int monthDifference = DateTimeHelpers.GetMonthDifference(simulatedDate, salaryEntry.YearlyIncreaseAppliedDate);
 
         if (monthDifference >= 0)
         {
@@ -155,11 +155,6 @@ namespace DebtCalculator.Library
       {
         _windfallEntries.Remove(oldItem);
       }
-    }
-
-    private int GetMonthDifference(DateTime lValue, DateTime rValue)
-    {
-      return (lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year);
     }
 
     public ObservableCollection<SalaryEntry> CloneSalaries()

@@ -4,19 +4,39 @@ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 x:Class="DebtCalculator.Shared.WindfallPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:WindfallPage.Content>
-    <StackLayout Orientation="Vertical" Padding="15">
-      <Label Text="Amount"></Label>
-      <Entry Text="{Binding Amount}"> </Entry>
-      <Label Text="Applied Date" ></Label>
-      <local:YearMonthPicker>
-<!--        <DatePicker.Format>MMMM yyyy</DatePicker.Format> -->
-      </local:YearMonthPicker>
-      <Label Text="Recurring?" ></Label>
-      <Switch IsToggled="{Binding IsRecurring}"></Switch>
-      <Label Text="Recurring Frequency" IsVisible="{Binding IsRecurring}"></Label>
-      <Entry Text="{Binding RecurringFrequency}" IsVisible="{Binding IsRecurring}"> </Entry>
-      <Button BackgroundColor="Blue" TextColor="White" BorderWidth="1" Text="Save" Clicked="Save_Button_Clicked"></Button>
-      <Button BackgroundColor="Red" TextColor="Black" BorderWidth="1" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+     <StackLayout>
+      <TableView Intent="Settings">
+        <TableRoot>
+            <TableSection Title="">
+                <local:NumericEntryCell Placeholder="$40,000.00" Label="Amount" Text="{Binding Amount}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
+                        <Label Text="Windfall Applied Date" VerticalTextAlignment="Center" />
+                        <DatePicker Date="{Binding WindfallDate}, Mode=TwoWay}" 
+                                    HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                            <DatePicker.Format>MMMM yyyy</DatePicker.Format>
+                        </DatePicker>
+                    </StackLayout>
+                </ViewCell>
+                <SwitchCell Text="Recurring?" On="{Binding IsRecurring}"></SwitchCell>
+                <local:NumericEntryCell Label="Recurring Frequency" Placeholder="6" Text="{Binding RecurringFrequency}" 
+                Keyboard="Numeric" IsEnabled="{Binding IsRecurring}" HorizontalTextAlignment="End"> </local:NumericEntryCell>
+             </TableSection>
+        </TableRoot>
+      </TableView>
+      <AbsoluteLayout Padding="15, 10, 15, 20"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="Transparent" Padding="0" HeightRequest="80" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+              </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" BackgroundColor="Red" FontSize="20" TextColor="Black" BorderWidth="0" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+                <Button Grid.Column="2" BackgroundColor="{Static local:Colors.TabBarSelected}" FontSize="20" TextColor="White" BorderWidth="0" Text="Save" Clicked="Save_Button_Clicked"></Button>
+           </Grid>
+      </AbsoluteLayout>
     </StackLayout>
   </local:WindfallPage.Content>
 </local:WindfallPageXaml> 

@@ -51,23 +51,45 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public DateTime YearlyIncreaseAppliedDate 
+    public string YearlyIncreaseAppliedDate 
     { 
       get
       { 
-        return _salary.YearlyIncreaseAppliedDate;
+        return DateToStringHelper.Convert(_salary.YearlyIncreaseAppliedDate);
       }
       set
       {
-        _salary.YearlyIncreaseAppliedDate = value;
+        _salary.YearlyIncreaseAppliedDate = DateToStringHelper.ConvertBack (value);
         SetPropertyChanged("YearlyIncreaseAppliedDate");
       }
     }
 
-    public void SaveSalary(Action callBack)
+    public bool Validate(Action<string, string> callBack)
     {
-      DebtApp.Shared.PaymentManager.UpdateSalary(_salary);
-      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
+      bool result = false;
+      if (_salary.StartingSalary <= 0) 
+      {
+        callBack ("Loan Debt", "Starting Salary must be greater than $0.00");
+      }
+      else if (_salary.YearlyIncreaseAppliedDate == DateTime.MinValue) 
+      {
+        callBack ("Loan Debt", "Yearly Increase Applied Date has not been entered");
+      }
+      else if (_salary.YearlySnowballIncreasePercent <= 0) 
+      {
+        callBack ("Loan Debt", "Yearly Increase Percent must be greater than 0.000 %");
+      }
+      else 
+      {
+        result = true;
+      }
+      return result;
+    }
+
+    public void Save(Action callBack)
+    {
+      DebtApp.Shared.PaymentManager.UpdateSalary (_salary);
+      InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
     public void DeleteSalary(Action callBack)

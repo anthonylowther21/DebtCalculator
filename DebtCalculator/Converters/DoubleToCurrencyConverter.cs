@@ -43,9 +43,18 @@ namespace DebtCalculator.Shared
 
   static class DoubleToCurrencyHelper
   {
+    static int MAX_CURRENCY = 1000000000;
+
     static public string Convert(double value)
     {
-      return string.Format ("{0:C}", (double)value);
+      if (value < 0) 
+      {
+        return string.Empty;
+      } 
+      else 
+      {
+        return string.Format ("{0:C}", (double)value);
+      }
     }
 
     static public double ConvertBack(string value, int _previousLength)
@@ -53,7 +62,15 @@ namespace DebtCalculator.Shared
       double result = double.Parse (value.ToString (), NumberStyles.Currency);
 
       int newLength = value.ToString ().Length;
-      if (newLength <= 4) 
+      if (result > MAX_CURRENCY) 
+      {
+        result = MAX_CURRENCY;
+      }
+      else if (newLength == 1) 
+      {
+        result /= 100.0;
+      }
+      else if (newLength <= 4) 
       {
         result = 0.00;
       }
