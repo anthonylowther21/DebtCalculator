@@ -119,7 +119,7 @@ namespace DebtCalculator.Shared
       }
       else if (_debtEntry.Name == string.Empty) 
       {
-        callBack ("Loan Debt", "Debt Name cannot be empty");
+        callBack ("Loan Debt", "Name cannot be empty");
       }
       else if (_debtEntry.StartingBalance <= 0) 
       {
@@ -128,6 +128,10 @@ namespace DebtCalculator.Shared
       else if (_debtEntry.YearlyInterestRate <= 0) 
       {
         callBack ("Loan Debt", "Yearly Interest Rate must be greater than 0.000 %");
+      }
+      else if (_debtEntry.CurrentBalance > _debtEntry.StartingBalance)
+      {
+        callBack ("Loan Debt", "Current Balance cannot be greater than start balance");
       }
       else 
       {

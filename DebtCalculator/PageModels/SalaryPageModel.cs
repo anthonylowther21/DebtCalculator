@@ -25,6 +25,19 @@ namespace DebtCalculator.Shared
       }
     }
 
+    public string Name 
+    { 
+      get 
+      { 
+        return ShortStringHelper.Convert(_salary.Name);
+      }
+      set 
+      { 
+        _salary.Name = ShortStringHelper.ConvertBack (value);
+        SetPropertyChanged("Name");
+      }
+    }
+
     public string StartingSalary 
     { 
       get
@@ -67,17 +80,21 @@ namespace DebtCalculator.Shared
     public bool Validate(Action<string, string> callBack)
     {
       bool result = false;
-      if (_salary.StartingSalary <= 0) 
+      if (_salary.Name == string.Empty) 
       {
-        callBack ("Loan Debt", "Starting Salary must be greater than $0.00");
+        callBack ("Salary", "Name cannot be empty");
+      }
+      else if (_salary.StartingSalary <= 0) 
+      {
+        callBack ("Salary", "Starting Salary must be greater than $0.00");
       }
       else if (_salary.YearlyIncreaseAppliedDate == DateTime.MinValue) 
       {
-        callBack ("Loan Debt", "Yearly Increase Applied Date has not been entered");
+        callBack ("Salary", "Yearly Increase Applied Date has not been entered");
       }
       else if (_salary.YearlySnowballIncreasePercent <= 0) 
       {
-        callBack ("Loan Debt", "Yearly Increase Percent must be greater than 0.000 %");
+        callBack ("Salary", "Yearly Increase Percent must be greater than 0.000 %");
       }
       else 
       {

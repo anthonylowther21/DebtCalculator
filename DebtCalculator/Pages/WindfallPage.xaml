@@ -8,6 +8,7 @@ xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local
       <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="">
+                <EntryCell Label="Name" Placeholder="Windfall Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
                 <local:NumericEntryCell Placeholder="$40,000.00" Label="Amount" Text="{Binding Amount}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">

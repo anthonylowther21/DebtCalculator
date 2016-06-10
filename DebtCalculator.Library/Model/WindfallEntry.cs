@@ -10,11 +10,13 @@ namespace DebtCalculator.Library
     private bool _isRecurring = false;
     private int _recurringFrequency = -1;
 
-    public WindfallEntry (double amount, 
+    public WindfallEntry (string name, 
+                          double amount, 
                           DateTime windfallDate, 
                           bool isRecurring = false, 
                           int recurringFrequency = 0)
     {
+      Name = name;
       Amount = amount;
       WindfallDate = windfallDate;
       IsRecurring = isRecurring;

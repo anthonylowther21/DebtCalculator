@@ -31,7 +31,7 @@ namespace DebtCalculator
       this.Children.Add(_debtsPage);
 
       _paymentsPage = new CustomNavigationPage(new PaymentListPage()); 
-      _paymentsPage.Title = "Income";
+      _paymentsPage.Title = "Strategy";
       _paymentsPage.TabIcon = FontAwesome.FAMoney;
       _paymentsPage.SelectedTabIcon = FontAwesome.FAMoney;
       this.Children.Add(_paymentsPage);

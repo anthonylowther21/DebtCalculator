@@ -120,6 +120,7 @@ namespace DebtCalculatorLibrary.DataLayer
                     Console.WriteLine("Start <SalaryEntry> element.");
                     debtApp.PaymentManager.SalaryEntries.Add(
                       new SalaryEntry(
+                        (string)readInputs["Name"],
                         Double.Parse(readInputs["StartingSalary"]),
                         Double.Parse(readInputs["YearlySnowballIncreasePercent"]),
                         DateTime.Parse(readInputs["YearlyIncreaseAppliedDate"])));
@@ -131,6 +132,7 @@ namespace DebtCalculatorLibrary.DataLayer
                     Console.WriteLine("Start <SalaryEntry> element.");
                     debtApp.PaymentManager.WindfallEntries.Add(
                       new WindfallEntry(
+                        (string)readInputs["Name"],
                         Double.Parse(readInputs["WindfallAmount"]),
                         DateTime.Parse(readInputs["WindfallDate"]),
                         Boolean.Parse(readInputs["IsRecurring"]),
@@ -228,6 +230,7 @@ namespace DebtCalculatorLibrary.DataLayer
         foreach (SalaryEntry entry in data.PaymentManager.SalaryEntries)
         {
           input.WriteStartElement("SalaryEntry");
+          input.WriteAttributeString("Name", entry.Name);
           input.WriteAttributeString("StartingSalary", entry.StartingSalary.ToString());
           input.WriteAttributeString("YearlyIncreaseAppliedDate", entry.YearlyIncreaseAppliedDate.ToString());
           input.WriteAttributeString("YearlySnowballIncreasePercent", entry.YearlySnowballIncreasePercent.ToString());
@@ -237,6 +240,7 @@ namespace DebtCalculatorLibrary.DataLayer
         foreach (WindfallEntry entry in data.PaymentManager.WindfallEntries)
         {
           input.WriteStartElement("WindfallEntry");
+          input.WriteAttributeString("Name", entry.Name);
           input.WriteAttributeString("WindfallAmount", entry.Amount.ToString());
           input.WriteAttributeString("IsRecurring", entry.IsRecurring.ToString());
           input.WriteAttributeString("RecurringFrequency", entry.RecurringFrequency.ToString());

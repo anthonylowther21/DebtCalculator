@@ -6,7 +6,6 @@ namespace DebtCalculator.Library
 {
   public class DebtEntry : BaseClass
   {
-    private string  _name               = string.Empty;
     private double  _startingBalance    = -1;
     private double  _currentBalance     = -1;
     private double  _yearlyInterestRate = -1;
@@ -37,12 +36,6 @@ namespace DebtCalculator.Library
     {
       DebtEntry debt = (DebtEntry)base.Clone();
       return debt;
-    }
-
-    public string Name 
-    { 
-      get { return _name; }
-      set { _name = value; }
     }
 
     public double StartingBalance

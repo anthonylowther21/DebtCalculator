@@ -15,7 +15,7 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" Backgro
              <TableSection Title="">
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
-                       <Label Text="Minimum Monthly Payment" VerticalTextAlignment="Center" />
+                       <Label Text="Monthly Payment" VerticalTextAlignment="Center" />
                        <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay, StringFormat='{0:C}'}"
                               HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
                               HorizontalTextAlignment="End"/>

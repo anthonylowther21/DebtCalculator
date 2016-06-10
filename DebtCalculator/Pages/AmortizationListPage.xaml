@@ -34,26 +34,30 @@
                   BackgroundColor="Transparent">
                   <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="50" VerticalOptions="Center"
                     AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+									    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
                       <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="125" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
                       </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" 
                           Font="FontAwesome" FontSize="30" VerticalOptions="Center" TextColor="Green" HorizontalTextAlignment="Center"/>
                         <Label Grid.Column="1" Text="{Binding DebtName}" FontSize="18" VerticalOptions="Center"/>
-                        <StackLayout Grid.Column="2">
+                        <StackLayout Grid.Column="2" HorizontalOptions="CenterAndExpand">
                           <Label Text="Payment" FontSize="16" 
-                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
                           <Label Text="Balance" FontSize="16" 
-                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" />
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
                         </StackLayout>
-                        <StackLayout Grid.Column="3">
+                        <StackLayout Grid.Column="3" HorizontalOptions="CenterAndExpand">
                           <Label Text="{Binding TotalPayment, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
-                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
                           <Label Text="{Binding EndBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
-                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" />
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
                         </StackLayout>
                    </Grid>
               </AbsoluteLayout>

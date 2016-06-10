@@ -26,6 +26,19 @@ namespace DebtCalculator.Shared
       }
     }
 
+    public string Name 
+    { 
+      get 
+      { 
+        return ShortStringHelper.Convert(_windfall.Name);
+      }
+      set 
+      { 
+        _windfall.Name = ShortStringHelper.ConvertBack (value);
+        SetPropertyChanged("Name");
+      }
+    }
+
     public string Amount
     {
       get
@@ -81,17 +94,21 @@ namespace DebtCalculator.Shared
     public bool Validate(Action<string, string> callBack)
     {
       bool result = false;
-      if (_windfall.Amount <= 0) 
+      if (_windfall.Name == string.Empty) 
       {
-        callBack ("Loan Debt", "Windfall amount must be greater than $0.00");
+        callBack ("Windfall", "Name cannot be empty");
+      }
+      else if (_windfall.Amount <= 0) 
+      {
+        callBack ("Windfall", "Windfall amount must be greater than $0.00");
       }
       else if (_windfall.IsRecurring && _windfall.RecurringFrequency <= 0) 
       {
-        callBack ("Loan Debt", "Windfall recurring frequency must be greater than 0");
+        callBack ("Windfall", "Windfall recurring frequency must be greater than 0");
       }
       else if (_windfall.WindfallDate == DateTime.MinValue) 
       {
-        callBack ("Loan Debt", "Windfall date has not been entered");
+        callBack ("Windfall", "Windfall date has not been entered");
       }
       else 
       {
