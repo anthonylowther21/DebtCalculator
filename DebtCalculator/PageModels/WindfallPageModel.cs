@@ -9,7 +9,6 @@ using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
   public class WindfallPageModel : BaseViewModel
   {
     WindfallEntry _windfall = new WindfallEntry();
@@ -117,16 +116,10 @@ namespace DebtCalculator.Shared
       return result;
     }
 
-    public void Save(Action callBack)
+    public void Save (Action callBack)
     {
       DebtApp.Shared.PaymentManager.UpdateWindfall (_windfall);
       InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
-    }
-
-    public void SaveWindfall(Action callback)
-    {
-      DebtApp.Shared.PaymentManager.UpdateWindfall(_windfall);
-      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callback);
     }
 
     public void DeleteWindfall(Action callBack)

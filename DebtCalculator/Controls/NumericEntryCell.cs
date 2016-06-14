@@ -6,12 +6,13 @@ namespace DebtCalculator.Shared
 {
   public class NumericEntryCell : EntryCell
   {
-    public event EventHandler Completed;
+    public new event EventHandler Completed;
 
 
 
     public NumericEntryCell()
     {
+      //this.Effects.Add (Effect.Resolve ("MyCompany.FocusEffect"));
     }
 
     public static readonly BindableProperty EditingBackgroundColorProperty=

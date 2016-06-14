@@ -25,9 +25,12 @@ namespace DebtCalculator.Shared
 
     public async void ActionSheetAsync()
     {
-      var result = await UserDialogs.Instance.ActionSheetAsync("New Payment", "Cancel", null, "New Salary", "New Windfall");
+      var result = await UserDialogs.Instance.ActionSheetAsync("Strategy", "Cancel", null, "New Snowball", "New Salary", "New Windfall");
       switch (result)
       {
+        case "New Snowball":
+          this.PushSnowballPage ();
+          break;
         case "New Salary":
           this.PushSalaryPage();
           break;
@@ -39,14 +42,16 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public void Snowball_Clicked(object sender, EventArgs e)
+    public void Snowball_Selected (object sender, ItemTappedEventArgs e)
     {
-      this.Navigation.PushAsync (new SnowballPage ());
+      var listView = sender as ListView;
+      listView.SelectedItem = null;
+      this.PushSnowballPage (e.Item as SnowballEntry);
     }
 
-    public void Add_Salary_Clicked(object sender, EventArgs e)
+    private void PushSnowballPage (SnowballEntry snowballEntry = null)
     {
-      this.PushSalaryPage();
+      Navigation.PushAsync (new SnowballPage (snowballEntry));
     }
 
     public void Salary_Selected(object sender, ItemTappedEventArgs e)
@@ -61,10 +66,6 @@ namespace DebtCalculator.Shared
       Navigation.PushAsync(new SalaryPage(salaryEntry));
     }
 
-    public void Add_Windfall_Clicked(object sender, EventArgs e)
-    {
-      this.PushWindfallPage();
-    }
 
     public void Windfall_Selected(object sender, ItemTappedEventArgs e)
     {

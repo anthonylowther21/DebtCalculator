@@ -68,7 +68,7 @@ namespace DebtCalculatorLibrary.DataLayer
       debtApp.DebtManager.Debts.Clear();
       debtApp.PaymentManager.WindfallEntries.Clear();
       debtApp.PaymentManager.SalaryEntries.Clear();
-      debtApp.PaymentManager.SnowballAmount = 0;
+      debtApp.PaymentManager.SnowballEntries.Clear ();
 
       _currentInputsFile = openFilePath;
 
@@ -115,6 +115,16 @@ namespace DebtCalculatorLibrary.DataLayer
                         (DebtType)Enum.Parse(typeof(DebtType), readInputs["DebtType"])));
                       break;
                   }
+                case "SnowballEntry": 
+                  {
+                    //Detect this element.
+                    Console.WriteLine ("Start <SnowballEntry> element.");
+                    debtApp.PaymentManager.SnowballEntries.Add (
+                      new SnowballEntry (
+                        (string)readInputs ["Name"],
+                        Double.Parse (readInputs ["Amount"])));
+                    break;
+                  }
                 case "SalaryEntry":
                   {
                     Console.WriteLine("Start <SalaryEntry> element.");
@@ -137,12 +147,6 @@ namespace DebtCalculatorLibrary.DataLayer
                         DateTime.Parse(readInputs["WindfallDate"]),
                         Boolean.Parse(readInputs["IsRecurring"]),
                         Int32.Parse(readInputs["RecurringFrequency"])));
-                    break;
-                  }
-                case "Snowball":
-                  {
-                    Console.WriteLine("Start <Snowball> element.");
-                    debtApp.PaymentManager.SnowballAmount = Double.Parse(readInputs["SnowballAmount"]);
                     break;
                   }
               }
@@ -248,9 +252,13 @@ namespace DebtCalculatorLibrary.DataLayer
           input.WriteEndElement(); // WindfallEntry
         }
 
-        input.WriteStartElement("Snowball");
-        input.WriteAttributeString("SnowballAmount", data.PaymentManager.SnowballAmount.ToString());
-        input.WriteEndElement(); // Snowball
+        foreach (SnowballEntry entry in data.PaymentManager.SnowballEntries) 
+        {
+          input.WriteStartElement ("SnowballEntry");
+          input.WriteAttributeString ("Name", entry.Name);
+          input.WriteAttributeString ("Amount", entry.Amount.ToString ());
+          input.WriteEndElement (); // WindfallEntry
+        }
 
         input.WriteEndElement(); // Payments
         input.WriteEndElement(); // Root

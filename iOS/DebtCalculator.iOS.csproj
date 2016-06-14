@@ -171,6 +171,8 @@
     <Compile Include="Renderers\DatePickerRenderer.cs" />
     <Compile Include="Renderers\KeyboardInputAccessoryHelper.cs" />
     <Compile Include="Renderers\NumericEntryCell.cs" />
+    <Compile Include="Effects\FocusEffect.cs" />
+    <Compile Include="Renderers\TextCellRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="ITunesArtwork" />
@@ -195,7 +197,6 @@
   </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Renderers\" />
-    <Folder Include="Converters\" />
-    <Folder Include="Controls\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
 </Project>

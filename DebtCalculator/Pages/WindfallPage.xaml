@@ -5,9 +5,11 @@ x:Class="DebtCalculator.Shared.WindfallPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:WindfallPage.Content>
      <StackLayout>
-      <TableView Intent="Settings">
+			<Label Margin="10,10,10,0" BackgroundColor="Transparent" LineBreakMode="WordWrap" 
+				Text="Windfalls are surges of money put towards debt, such as a tax return, paycheck bonus, or if you just want to see how much a one time payment will reduce your debt."/>
+      <TableView Intent="Menu">
         <TableRoot>
-            <TableSection Title="">
+            <TableSection>		    
                 <EntryCell Label="Name" Placeholder="Windfall Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
                 <local:NumericEntryCell Placeholder="$40,000.00" Label="Amount" Text="{Binding Amount}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
                 <ViewCell>

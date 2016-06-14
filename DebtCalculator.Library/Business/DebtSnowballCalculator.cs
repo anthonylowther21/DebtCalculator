@@ -25,7 +25,7 @@ namespace DebtCalculator.Library
       {
         _localPaymentManager.WindfallEntries = paymentManager.CloneWindfalls();
         _localPaymentManager.SalaryEntries = paymentManager.CloneSalaries();
-        _localPaymentManager.SnowballAmount = paymentManager.SnowballAmount;
+        _localPaymentManager.SnowballEntries = paymentManager.CloneSnowballs ();
       }
     }
 
@@ -93,7 +93,7 @@ namespace DebtCalculator.Library
         if (applySnowball)
         {
           paymentManager.WindfallEntries.Add(new WindfallEntry(string.Empty, Math.Abs(possibleBalance), currentDate.AddMonths(1)));
-          paymentManager.SnowballAmount += debtEntry.MinimumMonthlyPayment;
+          paymentManager.SnowballEntries[0].Amount += debtEntry.MinimumMonthlyPayment;
         }
       }
       else if (possibleBalance > debtEntry.CurrentBalance)

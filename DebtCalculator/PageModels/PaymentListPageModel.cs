@@ -14,19 +14,31 @@ namespace DebtCalculator.Shared
   {
     public PaymentListPageModel ()
     {
-      DebtApp.Shared.PaymentManager.SnowballChanged += (sender, e) => {
-        SetPropertyChanged ("Snowball");
-      };
+      this.Snowballs.CollectionChanged += (sender, e) => UpdateStrategyEntries();
+      this.Salaries.CollectionChanged += (sender, e) => UpdateStrategyEntries();
+      this.Windfalls.CollectionChanged += (sender, e) => UpdateStrategyEntries();
     }
 
-    public string Snowball 
-    { 
-      get { return DoubleToCurrencyHelper.Convert(DebtApp.Shared.PaymentManager.SnowballAmount); }
-    }
+    public ObservableCollection<SnowballEntry> Snowballs { get; set; } = DebtApp.Shared.PaymentManager.SnowballEntries;
 
     public ObservableCollection<SalaryEntry> Salaries { get; set; } = DebtApp.Shared.PaymentManager.SalaryEntries;
 
     public ObservableCollection<WindfallEntry> Windfalls { get; set; } = DebtApp.Shared.PaymentManager.WindfallEntries;
+
+    public ObservableCollection<object> StrategyEntries { get; private set; }
+
+    public void UpdateStrategyEntries ()
+    {
+      StrategyEntries = new ObservableCollection<object> ();
+      foreach (var item in Snowballs)
+        StrategyEntries.Add (item);
+
+      foreach (var item in Salaries)
+        StrategyEntries.Add (item);
+
+      foreach (var item in Windfalls)
+        StrategyEntries.Add (item);
+    }
   }
 }
 

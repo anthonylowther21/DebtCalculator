@@ -11,34 +11,73 @@ namespace DebtCalculator.Shared
 {
   public class SnowballPageModel : BaseViewModel
   {
-    private double _snowball = DebtApp.Shared.PaymentManager.SnowballAmount;
+    SnowballEntry _snowballEntry = new SnowballEntry ();
 
     public SnowballPageModel ()
     {
     }
 
-    public string Snowball 
-    { 
+    public void AssignSnowball (SnowballEntry snowball)
+    {
+      if (snowball != null) {
+        _snowballEntry = snowball;
+      }
+    }
+
+    public string Name 
+    {
       get 
-      { 
-        return DoubleToCurrencyHelper.Convert (_snowball); 
-      }
-      set
       {
-        _snowball = DoubleToCurrencyHelper.ConvertBack (value, Snowball.Length);
-        SetPropertyChanged("Snowball");
+        return ShortStringHelper.Convert (_snowballEntry.Name);
+      }
+      set 
+      {
+        _snowballEntry.Name = ShortStringHelper.ConvertBack (value);
+        SetPropertyChanged ("Name");
       }
     }
 
-    public void ClearSnowball()
+    public string Amount 
     {
-      _snowball = 0;
+      get 
+      {
+        return DoubleToCurrencyHelper.Convert (_snowballEntry.Amount);
+      }
+      set 
+      {
+        _snowballEntry.Amount = DoubleToCurrencyHelper.ConvertBack (value, Amount.Length);
+        SetPropertyChanged ("Amount");
+      }
     }
 
-    public void SaveSnowball(Action callBack)
+    public bool Validate (Action<string, string> callBack)
     {
-      DebtApp.Shared.PaymentManager.SnowballAmount = _snowball;
-      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
+      bool result = false;
+      if (_snowballEntry.Name == string.Empty) 
+      {
+        callBack ("Snowball", "Name cannot be empty");
+      } 
+      else if (_snowballEntry.Amount <= 0) 
+      {
+        callBack ("Snowball", "Snowball amount must be greater than $0.00");
+      } 
+      else 
+      {
+        result = true;
+      }
+      return result;
+    }
+
+    public void Save (Action callback)
+    {
+      DebtApp.Shared.PaymentManager.UpdateSnowball (_snowballEntry);
+      InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callback);
+    }
+
+    public void Delete (Action callBack)
+    {
+      DebtApp.Shared.PaymentManager.DeleteSnowball (_snowballEntry);
+      InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
   }
 }

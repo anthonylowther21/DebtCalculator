@@ -92,6 +92,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ShortStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToDoubleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\FocusEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TableSectionHeader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -102,6 +104,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)FontAwesome\" />
     <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Effects\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

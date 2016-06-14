@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\DebtApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Business\InputsFileManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTimeHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\SnowballEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Business\" />
