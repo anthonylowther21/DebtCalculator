@@ -94,6 +94,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\FocusEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TableSectionHeader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SnowballItemView.xaml.cs">
+      <DependentUpon>SnowballItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SalaryItemView.xaml.cs">
+      <DependentUpon>SalaryItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\WindfallItemView.xaml.cs">
+      <DependentUpon>WindfallItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentListDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\EntryTypeToStringConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -105,6 +116,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Effects\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
@@ -150,6 +162,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtLoanPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SnowballItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SalaryItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\WindfallItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

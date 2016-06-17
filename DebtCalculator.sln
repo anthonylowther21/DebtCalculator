@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtCalculator.UITests", "U
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DebtCalculator.Library", "DebtCalculator.Library\DebtCalculator.Library.shproj", "{9CB4C11E-A15A-452F-9C29-819F3A0B2DE6}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Sport.Shared", "..\..\Github\Sport\Sport.Shared\Sport.Shared.shproj", "{B2889C9F-D3F9-4DCC-AA61-D1548DA57BEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -63,7 +65,7 @@ Global
 		$0.TextStylePolicy = $1
 		$1.inheritsSet = VisualStudio
 		$1.inheritsScope = text/plain
-		$1.scope = application/xaml+xml
+		$1.scope = text/plain
 		$1.FileWidth = 120
 		$1.TabsToSpaces = False
 		$1.TabWidth = 2

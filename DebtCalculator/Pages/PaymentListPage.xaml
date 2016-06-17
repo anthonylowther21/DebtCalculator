@@ -3,120 +3,33 @@
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 x:Class="DebtCalculator.Shared.PaymentListPage"
 xmlns:local="clr-namespace:DebtCalculator.Shared" Title="Strategy"
-xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" BackgroundColor="{Static local:Colors.PageBackground}">
+xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" 
+		BackgroundColor="{Static local:Colors.PageBackground}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="&#xf067;" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
         <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
     </ContentPage.ToolbarItems>
   <local:PaymentListPage.Content>
     <StackLayout>
-      <StackLayout HeightRequest="40" Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
-        <Label Text="Snowball" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
-      </StackLayout>   
-			<ListView ItemsSource="{Binding Snowballs}" ItemTapped="Snowball_Selected" SeparatorVisibility="None" HasUnevenRows="true" VerticalOptions="FillAndExpand"
-          HorizontalOptions="FillAndExpand">
-        <ListView.ItemTemplate> 
+			<ListView ItemTapped="Item_Selected"
+            ItemTemplate="{StaticResource PaymentTemplateSelector}" 
+            ItemsSource="{Binding GroupedItems}"
+					  IsGroupingEnabled="True"
+					  GroupDisplayBinding="{Binding Mode=OneWay, Converter={StaticResource EntryTypeToStringConverter}}"
+            HasUnevenRows="True"
+            SeparatorVisibility="None" BackgroundColor="Transparent">
+  			<ListView.GroupHeaderTemplate> 
           <DataTemplate> 
-            <ViewCell>
-              <ViewCell.View>
-                <AbsoluteLayout Padding="0"  
-                  BackgroundColor="Transparent">
-                  <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="50" VerticalOptions="Center"
-                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                      </Grid.ColumnDefinitions>
-										  <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-											  <RowDefinition Height="*" />
-										  </Grid.RowDefinitions>
-                        <Label Grid.ColumnSpan="2" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="Amount" FontSize="16" 
-                          HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Amount, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
-                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                   </Grid>
-                  </AbsoluteLayout>
-                </ViewCell.View>
-              </ViewCell>
-            </DataTemplate> 
-          </ListView.ItemTemplate> 
-      </ListView>
-      <StackLayout HeightRequest="40" Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
-        <Label Text="Salaries" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
-      </StackLayout> 
-      <ListView ItemsSource="{Binding Salaries}" ItemTapped="Salary_Selected" SeparatorVisibility="None" HasUnevenRows="true" VerticalOptions="FillAndExpand"
-					HorizontalOptions="FillAndExpand">
-        <ListView.ItemTemplate> 
-          <DataTemplate> 
-            <ViewCell>
-              <ViewCell.View>
-                <AbsoluteLayout Padding="0"  
-                  BackgroundColor="Transparent">
-                  <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="60" VerticalOptions="Center"
-                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                      </Grid.ColumnDefinitions>
-										  <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-											  <RowDefinition Height="*" />
-                      </Grid.RowDefinitions>
-                        <Label Grid.ColumnSpan="2" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Text="Salary" FontSize="16" 
-                            HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                        <Label Grid.Row="2" Text="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-										    <Label Grid.Row="1" Grid.Column="1" Text="{Binding StartingSalary, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
-                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding YearlySnowballIncreasePercent, Mode=OneWay, StringFormat='{0:P}'}" FontSize="18" 
-                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                   </Grid>
-                  </AbsoluteLayout>
-                </ViewCell.View>
-              </ViewCell>
-            </DataTemplate> 
-          </ListView.ItemTemplate> 
-      </ListView>
-      <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="2, 10, 2, 0" BackgroundColor="{Static local:Colors.GroupHeader}"> 
-        <Label Text="Windfalls" TextColor="White" FontSize="20" VerticalOptions="Center" VerticalTextAlignment="Center"/> 
-      </StackLayout> 
-      <ListView ItemsSource="{Binding Windfalls}" ItemTapped="Windfall_Selected" SeparatorVisibility="Default" HasUnevenRows="true"
-					BackgroundColor="{Static local:Colors.PageBackground}">
-        <ListView.ItemTemplate> 
-          <DataTemplate> 
-            <ViewCell>
-              <ViewCell.View>
-                <AbsoluteLayout Padding="0"  
-                  BackgroundColor="Transparent">
-                   <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="60" VerticalOptions="Center"
-                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-										  <Grid.RowDefinitions>
-											  <RowDefinition Height="*" />
-											  <RowDefinition Height="*" />
-											  <RowDefinition Height="*" />
-										  </Grid.RowDefinitions>
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                      </Grid.ColumnDefinitions>
-                      <Label Grid.ColumnSpan="2" Text="{Binding Name}" FontSize="22" VerticalOptions="Center"/>
-                      <Label Grid.Row="1" Text="Applied Date" FontSize="16" 
-                            HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                      <Label Grid.Row="2" Text="Amount" FontSize="16" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                      <Label Grid.Row="1" Grid.Column="1" Text="{Binding WindfallDate, Mode=OneWay, StringFormat='{0:MMMM yyyy}'}" FontSize="18" 
-                        VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End"/> 
-										  <Label Grid.Row="2" Grid.Column="1" Text="{Binding Amount, Mode=OneWay, StringFormat='{0:C}'}"  FontSize="18" 
-                        HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-                   </Grid>
-                  </AbsoluteLayout>
-                </ViewCell.View>
-              </ViewCell>
-            </DataTemplate> 
-          </ListView.ItemTemplate> 
-      </ListView>
+            <ViewCell Height="40"> 
+              <StackLayout BackgroundColor="{Static local:Colors.GroupHeader}" 
+									Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="10, 8, 0, 0"> 
+                <Label Text="{Binding Key, Converter={StaticResource EntryTypeToStringConverter}}" TextColor="White" FontSize="20" VerticalOptions="Center" 
+                VerticalTextAlignment="Center" BackgroundColor="Transparent"/> 
+              </StackLayout> 
+            </ViewCell> 
+          </DataTemplate> 
+        </ListView.GroupHeaderTemplate> 
+     </ListView>
     </StackLayout>
   </local:PaymentListPage.Content>
 </local:PaymentListPageXaml> 

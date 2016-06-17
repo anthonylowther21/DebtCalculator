@@ -6,7 +6,7 @@ using PropertyChanged;
 using DebtCalculatorLibrary.Services;
 using System.Collections.ObjectModel;
 using DebtCalculatorLibrary.Business;
-
+using System.Linq;
 
 namespace DebtCalculator.Shared
 {
@@ -25,19 +25,27 @@ namespace DebtCalculator.Shared
 
     public ObservableCollection<WindfallEntry> Windfalls { get; set; } = DebtApp.Shared.PaymentManager.WindfallEntries;
 
-    public ObservableCollection<object> StrategyEntries { get; private set; }
+    public ObservableCollection<BaseClass> AllEntries { get; private set; }
+
+    public ObservableCollection<Grouping<Type, BaseClass>> GroupedItems { get; set; }
 
     public void UpdateStrategyEntries ()
     {
-      StrategyEntries = new ObservableCollection<object> ();
+      AllEntries = new ObservableCollection<BaseClass> ();
       foreach (var item in Snowballs)
-        StrategyEntries.Add (item);
+        AllEntries.Add (item);
 
       foreach (var item in Salaries)
-        StrategyEntries.Add (item);
+        AllEntries.Add (item);
 
       foreach (var item in Windfalls)
-        StrategyEntries.Add (item);
+        AllEntries.Add (item);
+
+      var grouped = from item in AllEntries
+        group item by item.GetType() into itemGroup
+                          select new Grouping<Type, BaseClass> (itemGroup.Key, itemGroup);
+
+      GroupedItems = new ObservableCollection<Grouping<Type, BaseClass>> (grouped);
     }
   }
 }

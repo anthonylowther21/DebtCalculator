@@ -1,0 +1,30 @@
+﻿<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DebtCalculator.Shared.WindfallItemView"
+             xmlns:local="clr-namespace:DebtCalculator.Shared">
+  <ViewCell.View>
+    <AbsoluteLayout Padding="0, 0, 0, 1"  
+      BackgroundColor="Transparent">
+       <Grid BackgroundColor="{Static local:Colors.TabBarNormal}" Padding="10" HeightRequest="60" VerticalOptions="Center"
+        AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Label Grid.ColumnSpan="2" Text="{Binding Name}" FontSize="18" VerticalOptions="Start"/>
+          <Label Grid.Row="1" Text="Applied Date" FontSize="16" 
+                HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
+          <Label Grid.Row="2" Text="Amount" FontSize="16" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
+          <Label Grid.Row="1" Grid.Column="1" Text="{Binding WindfallDate, Mode=OneWay, StringFormat='{0:MMMM yyyy}'}" FontSize="18" 
+            VerticalOptions="Center" HorizontalOptions="End" HorizontalTextAlignment="End"/> 
+          <Label Grid.Row="2" Grid.Column="1" Text="{Binding Amount, Mode=OneWay, StringFormat='{0:C}'}"  FontSize="18" 
+            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+       </Grid>
+      </AbsoluteLayout>
+    </ViewCell.View>
+</ViewCell>

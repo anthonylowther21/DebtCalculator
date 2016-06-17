@@ -28,7 +28,7 @@
         <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="2*" />
+              <ColumnDefinition Width="*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
               <Label Grid.Column="0" Text="Payoff Date" FontSize="18" VerticalOptions="Center"/>
@@ -41,11 +41,24 @@
         <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="2*" />
+              <ColumnDefinition Width="*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
               <Label Grid.Column="0" Text="Saved Interest" FontSize="18" VerticalOptions="Center"/>
               <Label Grid.Column="1" Text="{Binding SavedInterest}" FontSize="18" 
+                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+         </Grid>
+      </AbsoluteLayout>
+			     <AbsoluteLayout Padding="10, 10, 10, 0"  
+        BackgroundColor="Transparent">
+        <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+              <Label Grid.Column="0" Text="Interest Paid" FontSize="18" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding InterestPaid}" FontSize="18" 
                 HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
          </Grid>
       </AbsoluteLayout>
@@ -54,7 +67,7 @@
         <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
           AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
             <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="2*" />
+              <ColumnDefinition Width="*" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
               <Label Grid.Column="0" Text="Years Saved" FontSize="18" VerticalOptions="Center"/>

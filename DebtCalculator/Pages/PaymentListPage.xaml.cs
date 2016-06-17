@@ -42,11 +42,17 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public void Snowball_Selected (object sender, ItemTappedEventArgs e)
+    public void Item_Selected (object sender, ItemTappedEventArgs e)
     {
       var listView = sender as ListView;
       listView.SelectedItem = null;
-      this.PushSnowballPage (e.Item as SnowballEntry);
+
+      if (e.Item is SnowballEntry)
+        this.PushSnowballPage (e.Item as SnowballEntry);
+      else if (e.Item is SalaryEntry)
+        this.PushSalaryPage (e.Item as SalaryEntry);
+      else if (e.Item is WindfallEntry)
+        this.PushWindfallPage (e.Item as WindfallEntry);
     }
 
     private void PushSnowballPage (SnowballEntry snowballEntry = null)
@@ -54,24 +60,9 @@ namespace DebtCalculator.Shared
       Navigation.PushAsync (new SnowballPage (snowballEntry));
     }
 
-    public void Salary_Selected(object sender, ItemTappedEventArgs e)
-    {
-      var listView = sender as ListView;
-      listView.SelectedItem = null;
-      this.PushSalaryPage(e.Item as SalaryEntry);
-    }
-
     private void PushSalaryPage(SalaryEntry salaryEntry = null)
     {
       Navigation.PushAsync(new SalaryPage(salaryEntry));
-    }
-
-
-    public void Windfall_Selected(object sender, ItemTappedEventArgs e)
-    {
-      var listView = sender as ListView;
-      listView.SelectedItem = null;
-      this.PushWindfallPage(e.Item as WindfallEntry);
     }
 
     private void PushWindfallPage(WindfallEntry windfallEntry = null)

@@ -89,6 +89,14 @@ namespace DebtCalculator.Shared
       }
     }
 
+    public string InterestPaid 
+    {
+      get 
+      {
+        return DoubleToCurrencyHelper.Convert (_snowballInterest);
+      }
+    }
+
     public string SavedInterest 
     {
       get 
