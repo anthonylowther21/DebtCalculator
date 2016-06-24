@@ -9,72 +9,74 @@
       <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
   </local:SummaryPageXaml.ToolbarItems>
   <local:SummaryPage.Content>
-    <StackLayout Orientation="Vertical" Padding="0">
-      <AbsoluteLayout Padding="10, 10, 10, 0"  
-        BackgroundColor="Transparent">
-        <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Current Balance" FontSize="18" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding TotalDebt}" FontSize="18" 
-                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-         </Grid>
-      </AbsoluteLayout>
-      <AbsoluteLayout Padding="10, 10, 10, 0"  
-        BackgroundColor="Transparent">
-        <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Payoff Date" FontSize="18" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding SnowballPayoffDate}" FontSize="18" 
-                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-         </Grid>
-      </AbsoluteLayout>
-      <AbsoluteLayout Padding="10, 10, 10, 0"  
-        BackgroundColor="Transparent">
-        <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Saved Interest" FontSize="18" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding SavedInterest}" FontSize="18" 
-                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-         </Grid>
-      </AbsoluteLayout>
-			     <AbsoluteLayout Padding="10, 10, 10, 0"  
-        BackgroundColor="Transparent">
-        <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Interest Paid" FontSize="18" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding InterestPaid}" FontSize="18" 
-                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-         </Grid>
-      </AbsoluteLayout>
-      <AbsoluteLayout Padding="10, 10, 10, 0"  
-        BackgroundColor="Transparent">
-        <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-              <Label Grid.Column="0" Text="Years Saved" FontSize="18" VerticalOptions="Center"/>
-              <Label Grid.Column="1" Text="{Binding MonthsSaved}" FontSize="18" 
-                HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-         </Grid>
-      </AbsoluteLayout>
-    </StackLayout>
+		<ScrollView>
+      <StackLayout Orientation="Vertical" Padding="0">
+        <AbsoluteLayout Padding="10, 10, 10, 0"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Current Balance" FontSize="18" VerticalOptions="Center"/>
+                <Label Grid.Column="1" Text="{Binding TotalDebt}" FontSize="18" 
+                  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+           </Grid>
+        </AbsoluteLayout>
+        <AbsoluteLayout Padding="10, 10, 10, 0"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Payoff Date" FontSize="18" VerticalOptions="Center"/>
+                <Label Grid.Column="1" Text="{Binding SnowballPayoffDate}" FontSize="18" 
+                  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+           </Grid>
+        </AbsoluteLayout>
+        <AbsoluteLayout Padding="10, 10, 10, 0"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Saved Interest" FontSize="18" VerticalOptions="Center"/>
+                <Label Grid.Column="1" Text="{Binding SavedInterest}" FontSize="18" 
+                  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+           </Grid>
+        </AbsoluteLayout>
+  			<AbsoluteLayout Padding="10, 10, 10, 0"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Interest Paid" FontSize="18" VerticalOptions="Center"/>
+                <Label Grid.Column="1" Text="{Binding InterestPaid}" FontSize="18" 
+                  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+           </Grid>
+        </AbsoluteLayout>
+        <AbsoluteLayout Padding="10, 10, 10, 0"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Years Saved" FontSize="18" VerticalOptions="Center"/>
+                <Label Grid.Column="1" Text="{Binding MonthsSaved}" FontSize="18" 
+                  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+           </Grid>
+        </AbsoluteLayout>
+      </StackLayout>
+	  </ScrollView>
   </local:SummaryPage.Content>
 </local:SummaryPageXaml> 

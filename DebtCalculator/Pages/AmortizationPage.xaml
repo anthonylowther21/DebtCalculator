@@ -4,23 +4,113 @@
   x:Class="DebtCalculator.Shared.AmortizationPage"
   xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:AmortizationPage.Content>
-    <StackLayout Orientation="Vertical" Padding="15">
-      <Label Text="Debt Name"></Label>
-      <Label Text="{Binding DebtName}"> </Label>
-      <Label Text="Date" ></Label>
-      <Label Text="{Binding Date, StringFormat='{0:MMMM yyyy}'}"> </Label>
-      <Label Text="Start Balance" ></Label>
-      <Label Text="{Binding StartBalance, StringFormat='{0:C}'}"> </Label>
-      <Label Text="Minimum Interest" ></Label>
-      <Label Text="{Binding MinimumInterest, StringFormat='{0:C}'}"> </Label>   
-      <Label Text="Minimum Principal" ></Label>
-      <Label Text="{Binding MinimumPrincipal, StringFormat='{0:C}'}"> </Label>
-      <Label Text="Additional Principal" ></Label>
-      <Label Text="{Binding AdditionalPrincipal, StringFormat='{0:C}'}"> </Label>
-      <Label Text="Total Payment" ></Label>
-      <Label Text="{Binding TotalPayment, StringFormat='{0:C}'}"> </Label>
-      <Label Text="End Balance" ></Label>
-      <Label Text="{Binding EndBalance, StringFormat='{0:C}'}"> </Label>                          
-    </StackLayout>
+    <ScrollView>
+    		<StackLayout Orientation="Vertical" Padding="0">
+          <AbsoluteLayout Padding="10, 5, 10, 0"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="Debt Name" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding DebtName}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+          <AbsoluteLayout Padding="10, 5, 10, 0"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="Date" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding Date, StringFormat='{0:MMMM yyyy}'}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+          <AbsoluteLayout Padding="10, 5, 10, 0"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="Start Balance" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding StartBalance, StringFormat='{0:C}'}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+               <AbsoluteLayout Padding="10, 5, 10, 0"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="Min Interest" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding MinimumInterest, StringFormat='{0:C}'}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+          <AbsoluteLayout Padding="10, 5, 10, 0"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="Min Principal" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding MinimumPrincipal, StringFormat='{0:C}'}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+    			<AbsoluteLayout Padding="10, 5, 10, 0"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="Extra Principal" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding AdditionalPrincipal, StringFormat='{0:C}'}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+    			<AbsoluteLayout Padding="10, 5, 10, 0"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="Total Payment" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding TotalPayment, StringFormat='{0:C}'}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+    			     <AbsoluteLayout Padding="10, 5, 10, 5"  
+            BackgroundColor="Transparent">
+            <Grid BackgroundColor="White" Padding="10" HeightRequest="35" VerticalOptions="Center"
+              AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="End Balance" FontSize="18" VerticalOptions="Center"/>
+                  <Label Grid.Column="1" Text="{Binding EndBalance, StringFormat='{0:C}'}" FontSize="18" 
+                    HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+             </Grid>
+          </AbsoluteLayout>
+        </StackLayout>
+	  </ScrollView>
   </local:AmortizationPage.Content>
 </local:AmortizationPageXaml> 

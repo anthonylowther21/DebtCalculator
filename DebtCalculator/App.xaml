@@ -10,6 +10,8 @@
            <local:DebtTypeToIconConverter x:Key="DebtTypeToIconConverter"/>
 			     <local:ListPaddingConverter x:Key="ListPaddingConverter"/>
 			     <local:AmortizationGroupSumConverter x:Key="AmortizationGroupSumConverter"/>
+			     <local:IsNullToBoolConverter x:Key="IsNullToBoolConverter"/>
+			     <local:IsNotNullToBoolConverter x:Key="IsNotNullToBoolConverter"/>
           <Color x:Key="grayPrimary">#ADB7BE</Color>
           <Color x:Key="grayLight">#ECF0F1</Color>
           <Color x:Key="grayDark">#76828A</Color>

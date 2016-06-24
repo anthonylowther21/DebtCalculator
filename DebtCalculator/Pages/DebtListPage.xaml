@@ -9,32 +9,43 @@
       <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
   </local:DebtListPageXaml.ToolbarItems>
   <local:DebtListPageXaml.Content>
-    <ListView ItemTapped="Item_Selected" ItemsSource="{Binding Debts}" BackgroundColor="{Static local:Colors.PageBackground}"
-     HasUnevenRows="true" SeparatorVisibility="None">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <ViewCell.View>
-              <AbsoluteLayout Padding="{StaticResource ListViewItemMargin}"  
-                  BackgroundColor="Transparent">
-                  <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
-                    AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="4*" />
-                      </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
-                         TextColor="Green" HorizontalTextAlignment="Center"/>
-                        <Label Grid.Column="1" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
-                        <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
-                          HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
-                   </Grid>
-              </AbsoluteLayout>
-            </ViewCell.View>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+			<AbsoluteLayout IsVisible="{Binding EmptyMessage, Converter={StaticResource IsNotNullToBoolConverter}}" 
+					HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+					AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+					BackgroundColor="{Static local:Colors.PageBackground}">
+      <Label AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+					VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="{Binding EmptyMessage}" HorizontalTextAlignment="Center"/>
+			</AbsoluteLayout>
+      <ListView IsVisible="{Binding EmptyMessage, Converter={StaticResource IsNullToBoolConverter}}"
+  				      ItemTapped="Item_Selected" 
+  				      ItemsSource="{Binding Debts}" BackgroundColor="{Static local:Colors.PageBackground}"
+                HasUnevenRows="true" SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <AbsoluteLayout Padding="{StaticResource ListViewItemMargin}"  
+                    BackgroundColor="Transparent">
+                    <Grid BackgroundColor="White" Padding="10" HeightRequest="50" VerticalOptions="Center"
+                      AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="*" />
+                          <ColumnDefinition Width="3*" />
+                          <ColumnDefinition Width="4*" />
+                        </Grid.ColumnDefinitions>
+                          <Label Grid.Column="0" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" Font="FontAwesome" FontSize="30" VerticalOptions="Center"
+                           TextColor="Green" HorizontalTextAlignment="Center"/>
+                          <Label Grid.Column="1" Text="{Binding Name}" FontSize="20" VerticalOptions="Center"/>
+                          <Label Grid.Column="2" Text="{Binding CurrentBalance, Mode=OneWay, StringFormat='{0:C}'}" FontSize="20" 
+                            HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" /> 
+                     </Grid>
+                </AbsoluteLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </AbsoluteLayout>
   </local:DebtListPageXaml.Content>
 </local:DebtListPageXaml>
