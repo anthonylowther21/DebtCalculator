@@ -10,18 +10,27 @@ namespace DebtCalculator.Shared
   public partial class DebtListPage : DebtListPageXaml
 	{
     public DebtListPage ()
-		{
-			InitializeComponent ();
-		}
-      
+    {
+      InitializeComponent ();
+      this.Appearing += Handle_Appearing;
+    }
+
+    void Handle_Appearing (object sender, EventArgs e)
+    {
+      if (this.ViewModel.EmptyMessage == null)
+        this.Content = _listView;
+      else
+        this.Content = _emptyMessageLayout;
+    }
+
     public void Add_Button_Clicked(object sender, EventArgs e)
     {
       this.ActionSheetAsync();
     }
 
-    public void Menu_Button_Clicked(object sender, EventArgs e)
+    public void Menu_Button_Clicked (object sender, EventArgs e)
     {
-      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage ()));
+      this.Navigation.PushModalAsync (new CustomNavigationPage (new MenuPage ()));
     }
 
     public async void ActionSheetAsync()

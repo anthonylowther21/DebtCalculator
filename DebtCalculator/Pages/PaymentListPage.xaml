@@ -10,8 +10,9 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
         <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
     </ContentPage.ToolbarItems>
   <local:PaymentListPage.Content>
-    <StackLayout>
-			<ListView ItemTapped="Item_Selected"
+    <AbsoluteLayout>
+			<ListView x:Name="_listView"
+					ItemTapped="Item_Selected"
             ItemTemplate="{StaticResource PaymentTemplateSelector}" 
             ItemsSource="{Binding GroupedItems}"
 					  IsGroupingEnabled="True"
@@ -29,7 +30,14 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
             </ViewCell> 
           </DataTemplate> 
         </ListView.GroupHeaderTemplate> 
-     </ListView>
-    </StackLayout>
+      </ListView>
+  		<local:MyAbsoluteLayout x:Name="_emptyMessageLayout"
+          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+          BackgroundColor="{Static local:Colors.PageBackground}">
+        <Label AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+            VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="{Binding EmptyMessage}" HorizontalTextAlignment="Center"/>
+      </local:MyAbsoluteLayout>
+    </AbsoluteLayout>
   </local:PaymentListPage.Content>
 </local:PaymentListPageXaml> 

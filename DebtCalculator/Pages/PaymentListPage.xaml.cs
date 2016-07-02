@@ -11,7 +11,16 @@ namespace DebtCalculator.Shared
     public PaymentListPage ()
 		{
 			InitializeComponent ();
+      this.Appearing += Handle_Appearing;
 		}
+
+    void Handle_Appearing (object sender, EventArgs e)
+    {
+      if (this.ViewModel.EmptyMessage == null)
+        this.Content = _listView;
+      else
+        this.Content = _emptyMessageLayout;
+    }
 
     public void Add_Button_Clicked(object sender, EventArgs e)
     {

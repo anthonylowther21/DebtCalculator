@@ -106,6 +106,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentListDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EntryTypeToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MyListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MyAbsoluteLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

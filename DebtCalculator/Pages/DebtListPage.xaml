@@ -2,6 +2,7 @@
 <local:DebtListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
   x:Class="DebtCalculator.Shared.DebtListPage"
+  xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" 
   xmlns:local="clr-namespace:DebtCalculator.Shared"
   Title="Debts" >
   <local:DebtListPageXaml.ToolbarItems>
@@ -10,14 +11,8 @@
   </local:DebtListPageXaml.ToolbarItems>
   <local:DebtListPageXaml.Content>
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-			<AbsoluteLayout IsVisible="{Binding EmptyMessage, Converter={StaticResource IsNotNullToBoolConverter}}" 
-					HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-					AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
-					BackgroundColor="{Static local:Colors.PageBackground}">
-      <Label AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
-					VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="{Binding EmptyMessage}" HorizontalTextAlignment="Center"/>
-			</AbsoluteLayout>
-      <ListView IsVisible="{Binding EmptyMessage, Converter={StaticResource IsNullToBoolConverter}}"
+			<!--IsVisible="{Binding EmptyMessage, Converter={StaticResource IsNullToBoolConverter}}"-->
+      <local:MyListView x:Name="_listView"
   				      ItemTapped="Item_Selected" 
   				      ItemsSource="{Binding Debts}" BackgroundColor="{Static local:Colors.PageBackground}"
                 HasUnevenRows="true" SeparatorVisibility="None">
@@ -45,7 +40,15 @@
             </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
-      </ListView>
+      </local:MyListView>
+			<!--IsVisible="{Binding EmptyMessage, Converter={StaticResource IsNotNullToBoolConverter}}"-->
+			<local:MyAbsoluteLayout x:Name="_emptyMessageLayout"
+          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+          BackgroundColor="{Static local:Colors.PageBackground}">
+        <Label AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+            VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="{Binding EmptyMessage}" HorizontalTextAlignment="Center"/>
+      </local:MyAbsoluteLayout>
     </AbsoluteLayout>
   </local:DebtListPageXaml.Content>
 </local:DebtListPageXaml>

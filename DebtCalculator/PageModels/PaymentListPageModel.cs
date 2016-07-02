@@ -12,11 +12,15 @@ namespace DebtCalculator.Shared
 {
   public class PaymentListPageModel : BaseViewModel
   {
+    private string _emptyMessage = null;
+
     public PaymentListPageModel ()
     {
       this.Snowballs.CollectionChanged += (sender, e) => UpdateStrategyEntries();
       this.Salaries.CollectionChanged += (sender, e) => UpdateStrategyEntries();
       this.Windfalls.CollectionChanged += (sender, e) => UpdateStrategyEntries();
+
+      UpdateEmptyMessage ();
     }
 
     public ObservableCollection<SnowballEntry> Snowballs { get; set; } = DebtApp.Shared.PaymentManager.SnowballEntries;
@@ -29,6 +33,24 @@ namespace DebtCalculator.Shared
 
     public ObservableCollection<Grouping<Type, BaseClass>> GroupedItems { get; set; }
 
+    private void UpdateEmptyMessage ()
+    {
+      if (this.AllEntries != null && this.AllEntries.Count > 0)
+        EmptyMessage = null;
+      else
+        EmptyMessage = "Click the add button in the top-right of the screen to get started!";
+    }
+
+    public string EmptyMessage {
+      get {
+        return _emptyMessage;
+      }
+      set {
+        _emptyMessage = value;
+        SetPropertyChanged ("EmptyMessage");
+      }
+    }
+
     public void UpdateStrategyEntries ()
     {
       AllEntries = new ObservableCollection<BaseClass> ();
@@ -40,6 +62,9 @@ namespace DebtCalculator.Shared
 
       foreach (var item in Windfalls)
         AllEntries.Add (item);
+
+      // This must get called after all entries have been updated
+      UpdateEmptyMessage ();
 
       var grouped = from item in AllEntries
         group item by item.GetType() into itemGroup
