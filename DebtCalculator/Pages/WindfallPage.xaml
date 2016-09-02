@@ -22,7 +22,7 @@ xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local
                     </StackLayout>
                 </ViewCell>
                 <SwitchCell Text="Recurring?" On="{Binding IsRecurring}"></SwitchCell>
-                <local:NumericEntryCell Label="Recurring Frequency" Placeholder="6" Text="{Binding RecurringFrequency}" 
+                <local:NumericEntryCell Label="Recurring Frequency (months)" Placeholder="6" Text="{Binding RecurringFrequency}" 
                 Keyboard="Numeric" IsEnabled="{Binding IsRecurring}" HorizontalTextAlignment="End"> </local:NumericEntryCell>
              </TableSection>
         </TableRoot>

@@ -6,7 +6,7 @@ namespace DebtCalculator.Shared
 { 
   static class ShortStringHelper
   {
-    static int MAX_LENGTH = 16;
+    static int MAX_LENGTH = 14;
 
     static public string Convert(string value)
     {

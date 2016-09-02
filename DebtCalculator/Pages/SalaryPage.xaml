@@ -16,10 +16,10 @@ xmlns:converters="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static 
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
                         <Label Text="Yearly Applied Date" VerticalTextAlignment="Center" />
-                        <DatePicker Date="{Binding YearlyIncreaseAppliedDate}, Mode=TwoWay}" 
+                        <local:CustomDatePicker Date="{Binding YearlyIncreaseAppliedDate}, Mode=TwoWay}" 
                                     HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                             <DatePicker.Format>MMMM yyyy</DatePicker.Format>
-                        </DatePicker>
+                        </local:CustomDatePicker>
                     </StackLayout>
                 </ViewCell>
              </TableSection>

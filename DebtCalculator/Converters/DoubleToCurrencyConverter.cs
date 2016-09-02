@@ -59,29 +59,30 @@ namespace DebtCalculator.Shared
 
     static public double ConvertBack(string value, int _previousLength)
     {
-      double result = double.Parse (value.ToString (), NumberStyles.Currency);
+      double result = 0;
+      try 
+      {
+        result = double.Parse (value.ToString (), NumberStyles.Currency);
 
-      int newLength = value.ToString ().Length;
-      if (result > MAX_CURRENCY) 
-      {
-        result = MAX_CURRENCY;
-      }
-      else if (newLength == 1) 
-      {
-        result /= 100.0;
-      }
-      else if (newLength <= 4) 
-      {
-        result = 0.00;
-      }
-      else if (newLength > _previousLength) 
-      {
-        result *= 10.0;
+        int newLength = value.ToString ().Length;
+        if (result != 0) {
+          if (result > MAX_CURRENCY) {
+            result = MAX_CURRENCY;
+          } else if (newLength == 1) {
+            result /= 100.0;
+          } else if (newLength <= 1) {
+            result = 0.00;
+          } else if (newLength > _previousLength) {
+            result *= 10.0;
+          } else if (newLength < _previousLength) {
+            result /= 10.0;
+          }
+        }
       } 
-      else if (newLength < _previousLength) 
+      catch 
       {
-        result /= 10.0;
-      } 
+        result = 0;
+      }
 
       return result;
     }

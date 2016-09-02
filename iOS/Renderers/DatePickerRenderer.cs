@@ -67,12 +67,11 @@ namespace DebtCalculator.iOS
       _picker = new UIDatePicker {
         Mode = UIDatePickerMode.Date,
         TimeZone = new NSTimeZone ("UTC"),
-        HorizontalAlignment = UIControlContentHorizontalAlignment.Right
       };
 
       entry.InputView = _picker;
       entry.InputAccessoryView = KeyboardInputAccessoryHelper.CreateAccessoryToolbar (() => entry.ResignFirstResponder());
-      entry.HorizontalAlignment = UIControlContentHorizontalAlignment.Fill;
+      entry.TextAlignment = UITextAlignment.Right;
 
       SetNativeControl (entry);
       UpdateDateFromModel (false);
