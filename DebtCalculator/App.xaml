@@ -19,7 +19,19 @@
           <Color x:Key="LydiaGray">#727272</Color>
 			    <local:PaymentListDataTemplateSelector x:Key="PaymentTemplateSelector"/>
 			    <local:EntryTypeToStringConverter x:Key="EntryTypeToStringConverter" />
-      			<Thickness x:Key="ListViewItemMargin" Left="10" Top="10" Right="10" Bottom="0" />
+      		<Thickness x:Key="ListViewItemMargin" Left="10" Top="10" Right="10" Bottom="0" />
+			    <Font x:Key="Something" />
+
+          <Style x:Key="labelStyle" TargetType="Label">
+				    <Setter Property="FontFamily">
+              <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String" iOS="Roboto" Android="Arial" />
+              </Setter.Value>
+            </Setter>				
+          </Style>
+          <Style TargetType="Label" BasedOn="{StaticResource labelStyle}" />
+<!--			    <Style TargetType="EntryCell" BasedOn="{StaticResource labelStyle}" />-->
+			
          </ResourceDictionary>
        </Application.Resources>
 </Application>

@@ -188,6 +188,9 @@ namespace DebtCalculatorLibrary.DataLayer
       if (!Directory.Exists(Paths.SavedFilesDirectory))
         Directory.CreateDirectory(Paths.SavedFilesDirectory);
 
+      if (!Directory.Exists (Paths.DefaultsDirectory))
+        Directory.CreateDirectory (Paths.DefaultsDirectory);
+
       bool fileAdded = false;
 
       if (File.Exists(filename) == false)

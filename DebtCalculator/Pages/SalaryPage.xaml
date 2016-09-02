@@ -5,6 +5,8 @@ xmlns:controls="clr-namespace:DebtCalculator.Controls"
 xmlns:converters="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
   <local:SalaryPage.Content>
     <StackLayout>
+			<Label Margin="10,10,10,0" BackgroundColor="Transparent" LineBreakMode="WordWrap" FontSize="16"
+        Text="Applying a portion of your annual raise can help you pay off debt faster. If you get a 3% raise, we suggest using 1% of that to pay off debt.                   "/>
       <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="">

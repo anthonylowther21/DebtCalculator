@@ -35,7 +35,7 @@ namespace DebtCalculator.Shared
 
     public async void ActionSheetAsync()
     {
-      var result = await UserDialogs.Instance.ActionSheetAsync("New Debt", "Cancel", null, "House Loan", 
+      var result = await UserDialogs.Instance.ActionSheetAsync(null, "Cancel", null, "House Loan", 
                                                                "Car Loan", "Student Loan", "Other Loan", "Credit Card");
       switch (result)
       {

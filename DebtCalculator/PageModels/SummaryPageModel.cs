@@ -18,6 +18,7 @@ namespace DebtCalculator.Shared
     private double _remainingBalance = 0;
     private int _monthsSaved = 0;
     private double _totalDebt = 0;
+    private string _emptyMessage = null;
 
     private DateTime _originalPayoffDate = DateTime.Now;
     private DateTime _snowballPayoffDate = DateTime.Now;
@@ -28,8 +29,28 @@ namespace DebtCalculator.Shared
     {
     }
 
+    private void UpdateEmptyMessage ()
+    {
+      if (DebtApp.Shared.DebtManager.Debts.Count > 0)
+        EmptyMessage = null;
+      else
+        EmptyMessage = "Go to the Debts page to get started!";
+    }
+
+    public string EmptyMessage {
+      get {
+        return _emptyMessage;
+      }
+      set {
+        _emptyMessage = value;
+        SetPropertyChanged ("EmptyMessage");
+      }
+    }
+
     public void LoadData()
     {
+      UpdateEmptyMessage ();
+
       if (DebtApp.Shared.DebtManager.Debts.Count > 0)
       {
         _totalDebt = 0;

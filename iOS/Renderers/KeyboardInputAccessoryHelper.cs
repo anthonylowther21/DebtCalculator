@@ -19,9 +19,7 @@ namespace DebtCalculator.iOS
       };
 
       UIBarButtonItem uIBarButtonSpace = new UIBarButtonItem (UIBarButtonSystemItem.FlexibleSpace);
-      UIBarButtonItem uIBarButtonDone = new UIBarButtonItem (UIBarButtonSystemItem.Done, delegate (object o, EventArgs a) {
-        doneHandler();
-      });
+      UIBarButtonItem uIBarButtonDone = new UIBarButtonItem (UIBarButtonSystemItem.Done, (sender, e) => doneHandler());
       uIToolbar.SetItems (new UIBarButtonItem[] 
         {
           uIBarButtonSpace,

@@ -35,12 +35,22 @@ namespace DebtCalculator.Shared
 
     protected override void OnAppearing()
     {
-      //Use linq to sorty our monkeys by name and then group them by the new name sort property
-      var grouped = from item in DebtApp.Shared.Calculate(true)
-                                       group item by item.Date into itemGroup
-                                       select new Grouping<DateTime, AmortizationEntry> (itemGroup.Key, itemGroup);
+      if (DebtApp.Shared.DebtManager.Debts.Count > 0) 
+      {
+        //Use linq to sorty our monkeys by name and then group them by the new name sort property
+        var grouped = from item in DebtApp.Shared.Calculate (true)
+                      group item by item.Date into itemGroup
+                      select new Grouping<DateTime, AmortizationEntry> (itemGroup.Key, itemGroup);
 
-      this.ViewModel.Amortizations = new ObservableCollection<Grouping<DateTime, AmortizationEntry>> (grouped);
+        this.ViewModel.Amortizations = new ObservableCollection<Grouping<DateTime, AmortizationEntry>> (grouped);
+      }
+
+      this.ViewModel.UpdateEmptyMessage ();
+
+      if (this.ViewModel.EmptyMessage == null)
+        this.Content = _listView;
+      else
+        this.Content = _emptyMessageLayout;
 
       base.OnAppearing();
     }

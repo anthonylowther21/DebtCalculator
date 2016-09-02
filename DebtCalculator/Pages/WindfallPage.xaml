@@ -15,10 +15,10 @@ xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
                         <Label Text="Windfall Applied Date" VerticalTextAlignment="Center" />
-                        <DatePicker Date="{Binding WindfallDate}, Mode=TwoWay}" 
+                        <local:CustomDatePicker Date="{Binding WindfallDate}, Mode=TwoWay}" 
                                     HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                             <DatePicker.Format>MMMM yyyy</DatePicker.Format>
-                        </DatePicker>
+                        </local:CustomDatePicker>
                     </StackLayout>
                 </ViewCell>
                 <SwitchCell Text="Recurring?" On="{Binding IsRecurring}"></SwitchCell>

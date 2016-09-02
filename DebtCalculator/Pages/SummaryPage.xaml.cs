@@ -20,6 +20,12 @@ namespace DebtCalculator.Shared
     protected override void OnAppearing()
     {
       this.ViewModel.LoadData();
+
+      if (this.ViewModel.EmptyMessage == null)
+        this.Content = _listView;
+      else
+        this.Content = _emptyMessageLayout;
+
       base.OnAppearing();
     }
 	}

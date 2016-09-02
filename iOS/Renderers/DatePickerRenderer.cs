@@ -35,7 +35,8 @@ namespace DebtCalculator.iOS
     /// <param name="view">The view.</param>
     private void SetBorder(DatePicker view)
     {
-      //Control.BorderStyle = view.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None;
+      Control.BorderStyle = UITextBorderStyle.None;
+      //view.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None;
     }
 
     //
@@ -61,21 +62,23 @@ namespace DebtCalculator.iOS
       UITextField entry = new NoCaretField {
         BorderStyle = UITextBorderStyle.RoundedRect
       };
-      entry.Started += new EventHandler (OnStarted);
-      entry.Ended += new EventHandler (OnEnded);
+      entry.Started += OnStarted;
+      entry.Ended += OnEnded;
       _picker = new UIDatePicker {
         Mode = UIDatePickerMode.Date,
-        TimeZone = new NSTimeZone ("UTC")
+        TimeZone = new NSTimeZone ("UTC"),
+        HorizontalAlignment = UIControlContentHorizontalAlignment.Right
       };
 
       entry.InputView = _picker;
       entry.InputAccessoryView = KeyboardInputAccessoryHelper.CreateAccessoryToolbar (() => entry.ResignFirstResponder());
+      entry.HorizontalAlignment = UIControlContentHorizontalAlignment.Fill;
 
       SetNativeControl (entry);
       UpdateDateFromModel (false);
       UpdateMaximumDate ();
       UpdateMinimumDate ();
-      _picker.ValueChanged += new EventHandler (HandleValueChanged);
+      _picker.ValueChanged += HandleValueChanged;
 
       var view = (CustomDatePicker)Element;
 
