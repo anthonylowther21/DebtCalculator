@@ -19,7 +19,7 @@
             <Label Grid.ColumnSpan="2" Text="{Binding Name}" FontSize="18" VerticalOptions="Start"/>
             <Label Grid.Row="1" Text="Salary" FontSize="16" 
                 HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-            <Label Grid.Row="2" Text="Start" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" FontSize="16" /> 
+            <Label Grid.Row="2" Text="Yearly Increase" HorizontalTextAlignment="Start" VerticalOptions="Center" VerticalTextAlignment="Center" FontSize="16" /> 
             <Label Grid.Row="1" Grid.Column="1" Text="{Binding StartingSalary, Mode=OneWay, StringFormat='{0:C}'}" FontSize="18" 
                 HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
             <Label Grid.Row="2" Grid.Column="1" Text="{Binding YearlySnowballIncreasePercent, Mode=OneWay, StringFormat='{0:P}'}" FontSize="18" 
