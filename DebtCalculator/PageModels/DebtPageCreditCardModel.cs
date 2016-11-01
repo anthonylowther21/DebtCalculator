@@ -48,6 +48,7 @@ namespace DebtCalculator.Shared
       { 
         _debtEntry.CurrentBalance = DoubleToCurrencyHelper.ConvertBack (value, CurrentBalance.Length);
         SetPropertyChanged("CurrentBalance");
+        InvalidateMinimumMonthlyPayment ();
       }
     }
 
@@ -73,6 +74,17 @@ namespace DebtCalculator.Shared
       }
     }
 
+    public string MinimumMonthlyPaymentLimit {
+      get {
+        return DoubleToCurrencyHelper.Convert (_debtEntry.MinimumMonthlyPaymentLimit);
+      }
+      set {
+        _debtEntry.MinimumMonthlyPaymentLimit = DoubleToCurrencyHelper.ConvertBack (value, MinimumMonthlyPaymentLimit.Length);
+        SetPropertyChanged ("MinimumMonthlyPaymentLimit");
+        InvalidateMinimumMonthlyPayment ();
+      }
+    }
+
     public void InvalidateMinimumMonthlyPayment()
     {
       SetPropertyChanged("MinimumMonthlyPayment");
@@ -92,6 +104,10 @@ namespace DebtCalculator.Shared
       else if (_debtEntry.YearlyInterestRate <= 0) 
       {
         callBack ("Loan Debt", "Yearly Interest Rate must be greater than 0.000 %");
+      }
+      else if (_debtEntry.MinimumMonthlyPaymentLimit <= 0)
+      {
+        callBack ("Loan Debt", "Minimum Payment must be greater than $0.00");
       }
       else 
       {

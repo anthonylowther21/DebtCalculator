@@ -51,7 +51,11 @@ namespace DebtCalculator.Library
     public double CurrentBalance
     {
       get { return _currentBalance; }
-      set { _currentBalance = value; }
+      set 
+      { 
+        _currentBalance = value;
+        if (_debtType == DebtType.CreditCard) InitializeMonthlyPayment ();
+      }
     }
 
     public double YearlyInterestRate
@@ -82,26 +86,31 @@ namespace DebtCalculator.Library
       
     public double MinimumMonthlyPayment { get; private set; } = -1;
     public double MonthlyInterest { get; private set; }
+    public double MinimumMonthlyPaymentLimit { get; set; } = 40;
 
     private void InitializeMonthlyPayment()
     {
       // If we aren't initialized, then don't proceed
-      if (_currentBalance < 0 || _loanTerm < 0 ||
-          _startingBalance < 0 || _yearlyInterestRate < 0) {
-        return;
-      }
 
       if (_debtType == DebtType.HouseLoan || _debtType == DebtType.CarLoan || 
           _debtType == DebtType.StudentLoan || _debtType == DebtType.OtherLoan)
       {
-        MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
-        double monthlyInterest_Loan_Term = Math.Pow((1 + MonthlyInterest), LoanTerm);
-        MinimumMonthlyPayment = MonthlyInterest * StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
+        if (_currentBalance >= 0 || _loanTerm >= 0 ||
+          _startingBalance >= 0 || _yearlyInterestRate >= 0) 
+        {
+          MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
+          double monthlyInterest_Loan_Term = Math.Pow ((1 + MonthlyInterest), LoanTerm);
+          MinimumMonthlyPayment = MonthlyInterest * StartingBalance * monthlyInterest_Loan_Term / (monthlyInterest_Loan_Term - 1);
+        }
       }
       else if (_debtType == DebtType.CreditCard)
       {
-        MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
-        MinimumMonthlyPayment = 40;
+        if (_currentBalance >= 0 || _yearlyInterestRate >= 0) 
+        {
+          MonthlyInterest = YearlyInterestRate * 100 * _yearly_to_monthly_interest_term_inverse;
+          double possiblePayment = MonthlyInterest * CurrentBalance + 10;
+          MinimumMonthlyPayment = (possiblePayment > MinimumMonthlyPaymentLimit ) ? possiblePayment : MinimumMonthlyPaymentLimit;
+        }
       }
     }
   }

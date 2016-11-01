@@ -56,7 +56,12 @@ namespace DebtCalculator.Library
             allFinished = false;
           }
         }
-        simulatedDate = simulatedDate.AddMonths(1);
+        try {
+          simulatedDate = simulatedDate.AddMonths (1);
+        } catch (Exception ex) 
+        {
+          bool dance = true;
+        }
       }
 
       watch.Stop();
@@ -72,6 +77,16 @@ namespace DebtCalculator.Library
       double startingBalance = debtEntry.CurrentBalance;
 
       double interestPortion = debtEntry.MonthlyInterest * debtEntry.CurrentBalance;
+
+      double minimumMonthlyPayment = debtEntry.MinimumMonthlyPayment;
+
+      if (debtEntry.DebtType == DebtType.CreditCard &&
+          minimumMonthlyPayment < debtEntry.MinimumMonthlyPaymentLimit) 
+      {
+        minimumMonthlyPayment = debtEntry.MinimumMonthlyPaymentLimit;
+      }
+
+
       double minimumPrincipal = debtEntry.MinimumMonthlyPayment - interestPortion;
       double principalPortion = minimumPrincipal + additionalPrincipal;
 
