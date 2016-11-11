@@ -56,6 +56,7 @@ namespace DebtCalculatorLibrary.DataLayer
       {
         LoadInputsFile(_previousInputsFile, data);
       }
+      _currentInputsFile = string.Empty;
     }
 
     /// <summary>
