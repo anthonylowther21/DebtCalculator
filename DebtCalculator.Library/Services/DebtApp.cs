@@ -10,6 +10,9 @@ namespace DebtCalculatorLibrary.Services
     private DebtManager _debtManager;
     private PaymentManager _paymentManager;
     private DebtSnowballCalculator _debtSnowballCalculator;
+    private bool _calculationIsDirty = true;
+
+    public Action<bool> CalculationDirtyChanged; 
 
     static DebtApp _shared = null;
 
@@ -27,6 +30,19 @@ namespace DebtCalculatorLibrary.Services
         return (_shared == null) ? _shared = new DebtApp() : _shared;
       }
     }
+
+    public bool CalculationIsDirty {
+      get {
+        return _calculationIsDirty;
+      }
+      set {
+        if (_calculationIsDirty != value) {
+          _calculationIsDirty = value;
+          if (CalculationDirtyChanged != null) CalculationDirtyChanged (_calculationIsDirty);
+        }
+      }
+    }
+
 
     public DebtManager DebtManager
     {

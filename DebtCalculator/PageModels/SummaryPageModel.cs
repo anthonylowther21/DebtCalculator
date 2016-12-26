@@ -15,7 +15,6 @@ namespace DebtCalculator.Shared
     private double _originalInterest = 0;
     private double _snowballInterest = 0;
     private double _savedInterest = 0;
-    private double _remainingBalance = 0;
     private int _monthsSaved = 0;
     private double _totalDebt = 0;
     private string _emptyMessage = null;
@@ -27,6 +26,7 @@ namespace DebtCalculator.Shared
 
     public SummaryPageModel ()
     {
+      DebtApp.Shared.CalculationDirtyChanged += (isDirty) => { if (isDirty) ClearData (); };
     }
 
     private void UpdateEmptyMessage ()
@@ -98,8 +98,20 @@ namespace DebtCalculator.Shared
         _monthsSaved = DateTimeHelpers.GetMonthDifference (_originalPayoffDate, _snowballPayoffDate);
 
         SetPropertyChanged("");
+        DebtApp.Shared.CalculationIsDirty = false;
         //You can do stuff here
       }
+    }
+
+    public void ClearData ()
+    {
+      _totalDebt = -1;
+      _snowballInterest = -1;
+      _savedInterest = -1;
+      _snowballPayoffDate = DateTime.Now;
+      _originalPayoffDate = DateTime.Now;
+      _monthsSaved = -1;
+      SetPropertyChanged ("");
     }
 
     public string TotalDebt

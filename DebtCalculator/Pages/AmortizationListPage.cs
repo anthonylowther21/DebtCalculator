@@ -13,7 +13,7 @@ namespace DebtCalculator.Shared
 	{
     public AmortizationListPage ()
 		{
-			InitializeComponent ();
+      InitializeComponent ();
 		}
 
     public void Item_Selected(object sender, ItemTappedEventArgs e)
@@ -45,6 +45,7 @@ namespace DebtCalculator.Shared
         this.ViewModel.Amortizations = new ObservableCollection<Grouping<DateTime, AmortizationEntry>> (grouped);
       }
 
+      DebtApp.Shared.CalculationIsDirty = false;
       this.ViewModel.UpdateEmptyMessage ();
 
       if (this.ViewModel.EmptyMessage == null)

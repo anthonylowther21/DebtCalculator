@@ -271,6 +271,7 @@ namespace DebtCalculatorLibrary.DataLayer
         input.Close();
       }
 
+      DebtApp.Shared.CalculationIsDirty = true;
       if (fileAdded)
         OnFileListChanged();
     }

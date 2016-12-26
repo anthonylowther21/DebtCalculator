@@ -16,9 +16,16 @@ namespace DebtCalculator.Shared
 
     public AmortizationListPageModel ()
     {
+      DebtApp.Shared.CalculationDirtyChanged += (isDirty) => { if (isDirty) ClearPage (); };
     }
 
     public ObservableCollection<Grouping<DateTime, AmortizationEntry>> Amortizations { get; set; }
+
+    public void ClearPage ()
+    {
+      Amortizations = null;
+      SetPropertyChanged ("Amortizations");
+    }
 
     public void UpdateEmptyMessage ()
     {
