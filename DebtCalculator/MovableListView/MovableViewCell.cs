@@ -1,4 +1,6 @@
 ﻿using System.Windows.Input;
+using DebtCalculatorLibrary.Business;
+using DebtCalculatorLibrary.Services;
 using Xamarin.Forms;
 
 namespace DebtCalculator.Shared
@@ -54,10 +56,14 @@ namespace DebtCalculator.Shared
             set { SetValue(BeginReorderCommandProperty, value); }
         }
 
-        public ICommand EndReorderCommand
+        public ICommand EndReorderCommand 
         {
-            get { return (ICommand)GetValue(EndReorderCommandProperty); }
-            set { SetValue(EndReorderCommandProperty, value); }
+          get 
+          {
+            return new Command (() => {
+              InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, null);
+            });
+          }
         }
     }
 }
