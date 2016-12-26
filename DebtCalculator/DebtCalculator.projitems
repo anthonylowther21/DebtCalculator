@@ -108,6 +108,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MyListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\MyAbsoluteLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\IObservableCollectionEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\MovableViewCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ObservableCollectionEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ReorderCommandParam.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -120,6 +124,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Effects\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MovableListView\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

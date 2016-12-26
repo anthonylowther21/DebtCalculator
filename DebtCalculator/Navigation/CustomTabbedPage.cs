@@ -12,7 +12,7 @@ namespace DebtCalculator
     CustomNavigationPage _amortizationPage;
     CustomNavigationPage _summaryPage;
 
-    public Color BarBackgroundColor { get; private set; }
+    public new Color BarBackgroundColor { get; private set; }
 
     public CustomTabbedPage()
     {

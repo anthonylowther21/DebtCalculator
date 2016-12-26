@@ -2,9 +2,6 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DebtCalculator.Shared;
-using FreshMvvm;
-using DebtCalculator.Shared;
 using XLabs.Forms.Controls;
 
 namespace DebtCalculator.Shared

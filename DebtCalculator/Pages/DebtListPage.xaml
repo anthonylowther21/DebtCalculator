@@ -18,7 +18,7 @@
                 HasUnevenRows="true" SeparatorVisibility="None">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <ViewCell>
+            <local:MovableViewCell>
               <ViewCell.View>
                 <AbsoluteLayout Padding="{StaticResource ListViewItemMargin}"  
                     BackgroundColor="Transparent">
@@ -37,7 +37,7 @@
                      </Grid>
                 </AbsoluteLayout>
               </ViewCell.View>
-            </ViewCell>
+            </local:MovableViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
       </local:MyListView>

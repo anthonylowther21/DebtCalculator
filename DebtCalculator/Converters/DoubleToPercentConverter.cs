@@ -39,10 +39,12 @@ namespace DebtCalculator.Shared
 
     static public double ConvertBack(string value, int _previousLength)
     {
+      if (value[value.Length - 1] == '.') return 0;
+
       int newLength = value.Length;
       if (value.Contains ("%")) 
       {       
-        value = value.Remove (value.IndexOf ("%") - 1, 2);
+        value = value.Replace (" %", "");
         newLength += 2;
       }
 

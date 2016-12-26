@@ -40,7 +40,7 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public ObservableCollection<DebtEntry> Debts { get; set; } = DebtApp.Shared.DebtManager.Debts;
+    public ObservableCollectionEx<DebtEntry> Debts { get; set; } = DebtApp.Shared.DebtManager.Debts;
   }
 }
 
