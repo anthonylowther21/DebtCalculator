@@ -4,7 +4,7 @@
   x:Class="DebtCalculator.Shared.SummaryPage"
   xmlns:local="clr-namespace:DebtCalculator.Shared"
   BackgroundColor="{Static local:Colors.PageBackground}"
-  Title="Summary">
+  Title="{Binding ScenarioName}">
   <local:SummaryPageXaml.ToolbarItems>
       <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
   </local:SummaryPageXaml.ToolbarItems>

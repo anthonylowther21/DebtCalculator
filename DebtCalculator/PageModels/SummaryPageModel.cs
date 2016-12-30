@@ -7,6 +7,8 @@ using FreshMvvm;
 using PropertyChanged;
 using System.Collections.Generic;
 using DebtCalculatorLibrary.Services;
+using DebtCalculatorLibrary.Business;
+using System.IO;
 
 namespace DebtCalculator.Shared
 {
@@ -64,7 +66,7 @@ namespace DebtCalculator.Shared
         bool invalid = false;
         foreach (var entry in amortization)
         {
-          if (entry.EndBalance == -9999)
+          if (entry.EndBalance == -9999.00)
           {
             invalid = true;
             break;
@@ -108,10 +110,18 @@ namespace DebtCalculator.Shared
       _totalDebt = -1;
       _snowballInterest = -1;
       _savedInterest = -1;
-      _snowballPayoffDate = DateTime.Now;
-      _originalPayoffDate = DateTime.Now;
+      _snowballPayoffDate = DateTime.MinValue;
+      _originalPayoffDate = DateTime.MinValue;
       _monthsSaved = -1;
       SetPropertyChanged ("");
+    }
+
+    public string ScenarioName 
+    {
+      get 
+      {
+        return ShortStringHelper.Convert(Path.GetFileName(InputsFileManager.CurrentInputsFile));
+      }
     }
 
     public string TotalDebt
@@ -142,7 +152,14 @@ namespace DebtCalculator.Shared
     {
       get
       {
-        return string.Format ("{0:MMMM yyyy}", _snowballPayoffDate);
+        if (_snowballPayoffDate == DateTime.MinValue)
+        {
+          return string.Empty;
+        }
+        else
+        {
+          return string.Format ("{0:MMMM yyyy}", _snowballPayoffDate);
+        }
       }
     }
 
@@ -150,9 +167,16 @@ namespace DebtCalculator.Shared
     {
       get 
       {
+        if (_monthsSaved < 0)
+        {
+          return string.Empty; 
+        }
+        else
+        {
         int years = _monthsSaved / 12;
         int months = _monthsSaved % 12;
         return string.Format ("{0} years\n {1} months", years, months);
+        }
       }
     }
   }

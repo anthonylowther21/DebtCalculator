@@ -112,6 +112,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MovableListView\MovableViewCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ObservableCollectionEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ReorderCommandParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SelectedFileFormatConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

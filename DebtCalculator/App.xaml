@@ -12,6 +12,7 @@
 			     <local:AmortizationGroupSumConverter x:Key="AmortizationGroupSumConverter"/>
 			     <local:IsNullToBoolConverter x:Key="IsNullToBoolConverter"/>
 			     <local:IsNotNullToBoolConverter x:Key="IsNotNullToBoolConverter"/>
+           <local:SelectedFileFormatConverter x:Key="SelectedFileFormatConverter"/>
           <Color x:Key="grayPrimary">#ADB7BE</Color>
           <Color x:Key="grayLight">#ECF0F1</Color>
           <Color x:Key="grayDark">#76828A</Color>

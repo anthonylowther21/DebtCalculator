@@ -30,12 +30,12 @@ namespace DebtCalculator
     protected override void OnStart ()
     {
       // Handle when your app starts
-      InputsFileManager.LoadOnAppLaunch (DebtApp.Shared);
+      //InputsFileManager.LoadOnAppLaunch (DebtApp.Shared);
     }
 
     protected override void OnSleep ()
     {
-      InputsFileManager.SaveUserDefaults (DebtApp.Shared);
+      //InputsFileManager.SaveUserDefaults (DebtApp.Shared);
     }
 
     protected override void OnResume ()

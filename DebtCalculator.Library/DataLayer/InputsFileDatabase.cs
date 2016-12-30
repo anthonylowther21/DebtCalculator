@@ -72,6 +72,7 @@ namespace DebtCalculatorLibrary.DataLayer
       debtApp.PaymentManager.SnowballEntries.Clear ();
 
       _currentInputsFile = openFilePath;
+      DebtApp.Shared.CalculationIsDirty = true;
 
       foreach (var item in File.ReadAllLines(openFilePath))
       {
