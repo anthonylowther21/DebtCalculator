@@ -60,7 +60,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PickerCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseContentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseNotify.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseViewModel.cs" />
@@ -83,8 +82,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\Grouping.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\AmortizationGroupSumConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Interface\ITabPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScenarioItemPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomDatePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericEntryCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToCurrencyConverter.cs" />
@@ -94,15 +91,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\FocusEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\TableSectionHeader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SnowballItemView.xaml.cs">
-      <DependentUpon>SnowballItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SalaryItemView.xaml.cs">
-      <DependentUpon>SalaryItemView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\WindfallItemView.xaml.cs">
-      <DependentUpon>WindfallItemView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentListDataTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EntryTypeToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullConverter.cs" />
@@ -113,6 +101,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ObservableCollectionEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ReorderCommandParam.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\SelectedFileFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\ScenarioItemPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SalaryItemView.xaml.cs">
+      <DependentUpon>SalaryItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowballItemView.xaml.cs">
+      <DependentUpon>SnowballItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WindfallItemView.xaml.cs">
+      <DependentUpon>WindfallItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\ITabPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -121,10 +120,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)MVVM\" />
     <Folder Include="$(MSBuildThisFileDirectory)FontAwesome\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Interface\" />
-    <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
     <Folder Include="$(MSBuildThisFileDirectory)Effects\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)MovableListView\" />
   </ItemGroup>
   <ItemGroup>
@@ -173,13 +169,13 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtLoanPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SnowballItemView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\SalaryItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SalaryItemView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\SnowballItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\WindfallItemView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WindfallItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

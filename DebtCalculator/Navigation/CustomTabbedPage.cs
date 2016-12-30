@@ -42,8 +42,6 @@ namespace DebtCalculator
       _amortizationPage.SelectedTabIcon = FontAwesome.FACalendar;
       this.Children.Add(_amortizationPage);
     }
-
-
   }
 }
 
