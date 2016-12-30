@@ -50,12 +50,12 @@
                           <ColumnDefinition Width="3*" />
                         </Grid.ColumnDefinitions>
                           <Label Grid.Column="0" Grid.RowSpan="3" Text="{Binding DebtType, Converter={StaticResource DebtTypeToIconConverter}}" 
-                            Font="FontAwesome" FontSize="30" VerticalOptions="Center" TextColor="Green" HorizontalTextAlignment="Center"/>
+                            Font="FontAwesome" FontSize="30" VerticalOptions="Center" TextColor="{Static local:Colors.DebtIconColor}" HorizontalTextAlignment="Center"/>
                           <Label Grid.Column="1" Grid.RowSpan="3" Text="{Binding DebtName}" FontSize="18" VerticalOptions="Center"/>
                           <StackLayout Grid.Column="2" HorizontalOptions="EndAndExpand">
-                            <Label Text="Payment" FontSize="16" 
+                            <Label Text="Payment:" FontSize="16" FontAttributes="Italic"
                               HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
-                            <Label Text="Balance" FontSize="16" 
+                            <Label Text="Balance:" FontSize="16" FontAttributes="Italic"
                               HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" VerticalTextAlignment="Center" /> 
                           </StackLayout>
                           <StackLayout Grid.Column="3" HorizontalOptions="EndAndExpand">

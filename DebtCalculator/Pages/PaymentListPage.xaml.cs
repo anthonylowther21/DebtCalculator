@@ -34,16 +34,16 @@ namespace DebtCalculator.Shared
 
     public async void ActionSheetAsync()
     {
-      var result = await UserDialogs.Instance.ActionSheetAsync(null, "Cancel", null, null, "New Snowball", "New Salary", "New Windfall");
+      var result = await UserDialogs.Instance.ActionSheetAsync(null, "Cancel", null, null, "Snowball", "Salary", "Windfall");
       switch (result)
       {
-        case "New Snowball":
+        case "Snowball":
           this.PushSnowballPage ();
           break;
-        case "New Salary":
+        case "Salary":
           this.PushSalaryPage();
           break;
-        case "New Windfall":
+        case "Windfall":
           this.PushWindfallPage();
           break;
         default:

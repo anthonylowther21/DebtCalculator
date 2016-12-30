@@ -20,6 +20,7 @@ namespace DebtCalculator.Shared
     public static Color LightLightGreen = Color.FromHex("#d7f3ce");
     public static Color PageBackground = Color.FromHex("#ECF0F1");
     public static Color GroupHeader = Color.FromHex("727272");
+    public static Color DebtIconColor = Colors.TabBarSelected;
   }
 }
 
