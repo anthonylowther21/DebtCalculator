@@ -112,6 +112,7 @@
       <DependentUpon>WindfallItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\ITabPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\ScenarioOptionsPageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

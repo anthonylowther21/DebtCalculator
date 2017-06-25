@@ -9,6 +9,7 @@ namespace DebtCalculatorLibrary.Services
   {
     private DebtManager _debtManager;
     private PaymentManager _paymentManager;
+    private ScenarioOptions _scenarioOptions;
     private DebtSnowballCalculator _debtSnowballCalculator;
     private bool _calculationIsDirty = true;
 
@@ -20,6 +21,7 @@ namespace DebtCalculatorLibrary.Services
     {
       _debtManager = new DebtManager();
       _paymentManager = new PaymentManager();
+      _scenarioOptions = new ScenarioOptions ();
       _debtSnowballCalculator = new DebtSnowballCalculator();
     }
 
@@ -57,6 +59,11 @@ namespace DebtCalculatorLibrary.Services
     public DebtSnowballCalculator DebtSnowballCalculator
     {
       get { return _debtSnowballCalculator; }
+    }
+
+    public ScenarioOptions ScenarioOptions
+    {
+      get { return _scenarioOptions; }
     }
 
     public ObservableCollection<AmortizationEntry> Calculate(bool applySnowballs = true)

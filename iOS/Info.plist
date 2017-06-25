@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Debt Calculator</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.CDI.Demo</string>
+	<string>com.CreativeSolutions.DebtApp</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -61,5 +61,7 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>CFBundleName</key>
+	<string>Debt Calculator</string>
 </dict>
 </plist>

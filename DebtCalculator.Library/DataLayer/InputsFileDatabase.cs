@@ -212,6 +212,7 @@ namespace DebtCalculatorLibrary.DataLayer
         input.WriteAttributeString("ProgramName", "Debt Calculator");
         input.WriteAttributeString("ProgramVersion", "0.0.0.3");
         input.WriteAttributeString("PathFileName", filename);
+        input.WriteAttributeString ("StartDate", data.ScenarioOptions.StartDate.ToShortDateString ());
         input.WriteAttributeString("Date", DateTime.Now.ToString("MM.dd.yyyy"));
         input.WriteAttributeString("Time", DateTime.Now.ToString("HH:mm"));
         input.WriteAttributeString("VersionMajor", FileVersionMajor);

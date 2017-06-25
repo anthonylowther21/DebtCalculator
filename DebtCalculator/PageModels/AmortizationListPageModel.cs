@@ -9,7 +9,7 @@ using DebtCalculatorLibrary.Services;
 
 namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
+  [AddINotifyPropertyChangedInterface]
   public class AmortizationListPageModel : BaseViewModel
   {
     private string _emptyMessage = null;
