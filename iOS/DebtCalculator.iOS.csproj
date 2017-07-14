@@ -69,7 +69,7 @@
     <BuildIpa>true</BuildIpa>
     <IpaPackageName>com.CreativeSolutions.DebtApp</IpaPackageName>
     <CodesignProvision>iOS Team Provisioning Profile: com.CreativeSolutions.DebtApp</CodesignProvision>
-    <MtouchSdkVersion></MtouchSdkVersion>
+    <MtouchSdkVersion>10.3</MtouchSdkVersion>
 <DelaySign>false</DelaySign>
 <AssemblyOriginatorKeyFile>com.CreativeSolutions.DebtApp</AssemblyOriginatorKeyFile>
   </PropertyGroup>

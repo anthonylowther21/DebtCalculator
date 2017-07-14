@@ -65,7 +65,7 @@ namespace DebtCalculator.Shared
         result = double.Parse (value.ToString (), NumberStyles.Currency);
 
         int newLength = value.ToString ().Length;
-        if (result != 0) {
+        if (result != 0.00) {
           if (result > MAX_CURRENCY) {
             result = MAX_CURRENCY;
           } else if (newLength == 1) {
