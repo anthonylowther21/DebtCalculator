@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+﻿﻿using Xamarin.Forms;
 using System;
 using System.Globalization;
 
@@ -20,7 +20,7 @@ namespace DebtCalculator.Shared
       {
         result /= 100;
       }
-      return result;
+      return result; //double test
     }
   }
 
