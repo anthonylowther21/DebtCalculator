@@ -64,11 +64,11 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Developer: anthonylowther@icloud.com (YAZ3ZWC4H5)</CodesignKey>
+    <CodesignKey>iPhone Developer: Anthony Lowther (PU3V65UFG6)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <BuildIpa>true</BuildIpa>
     <IpaPackageName>com.AnthonyLowther.DebtApp</IpaPackageName>
-    <CodesignProvision>iOS Team Provisioning Profile: com.AnthonyLowther.DebtApp</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <MtouchSdkVersion>10.3</MtouchSdkVersion>
 <DelaySign>false</DelaySign>
 <AssemblyOriginatorKeyFile>com.CreativeSolutions.DebtApp</AssemblyOriginatorKeyFile>
@@ -143,25 +143,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-76.png" />
-    <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-Small.png" />
-    <BundleResource Include="Resources\Icon-Small%402x.png" />
-    <BundleResource Include="Resources\Icon-Small%403x.png" />
-    <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
     <BundleResource Include="Resources\FontAwesome.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\256 Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -214,6 +197,18 @@
     <Folder Include="Renderers\" />
     <Folder Include="Effects\" />
     <Folder Include="MovableListView.IOS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-Small.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-Small%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-Small-40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon-Small-40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\180 - iPhone App Icon 2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\87 - iPhone App Icon 2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\120 - iPhone App Icon.png" />
   </ItemGroup>
   <Import Project="..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets" Condition="Exists('..\packages\Fody.2.1.0\build\netstandard1.0\Fody.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -99,4 +99,7 @@
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+  </ItemGroup>
 </Project>
