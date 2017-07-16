@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtCalculator.UITests", "U
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "DebtCalculator.Library", "DebtCalculator.Library\DebtCalculator.Library.shproj", "{9CB4C11E-A15A-452F-9C29-819F3A0B2DE6}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Sport.Shared", "..\..\Github\Sport\Sport.Shared\Sport.Shared.shproj", "{41F81E17-0EAA-42C4-BA10-CCFCB2F09F77}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Sport.Shared", "..\..\Github\Sport\Sport.Shared\Sport.Shared.shproj", "{14AD23F8-9362-4A44-ABE1-A2951E7462B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,12 +63,9 @@ Global
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.TextStylePolicy = $1
-		$1.inheritsSet = VisualStudio
-		$1.inheritsScope = text/plain
 		$1.scope = application/xaml+xml
-		$1.FileWidth = 120
-		$1.TabWidth = 2
-		$1.IndentWidth = 2
+		$1.FileWidth = 80
+		$1.TabsToSpaces = True
 		$0.CSharpFormattingPolicy = $2
 		$2.IndentSwitchBody = True
 		$2.IndentBlocksInsideExpressions = True
@@ -94,46 +91,16 @@ Global
 		$2.BeforeDelegateDeclarationParentheses = False
 		$2.NewParentheses = False
 		$2.SpacesBeforeBrackets = False
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
 		$2.scope = text/x-csharp
-		$2.IndentSwitchSection = True
-		$2.NewLinesForBracesInProperties = True
-		$2.NewLinesForBracesInAccessors = True
-		$2.NewLinesForBracesInAnonymousMethods = True
-		$2.NewLinesForBracesInControlBlocks = True
-		$2.NewLinesForBracesInAnonymousTypes = True
-		$2.NewLinesForBracesInObjectCollectionArrayInitializers = True
-		$2.NewLinesForBracesInLambdaExpressionBody = True
-		$2.NewLineForElse = True
-		$2.NewLineForCatch = True
-		$2.NewLineForFinally = True
-		$2.NewLineForMembersInObjectInit = True
-		$2.NewLineForMembersInAnonymousTypes = True
-		$2.NewLineForClausesInQuery = True
-		$2.SpacingAfterMethodDeclarationName = False
-		$2.SpaceAfterMethodCallName = False
-		$2.SpaceBeforeOpenSquareBracket = False
-		$2.WrappingPreserveSingleLine = False
-		$2.WrappingKeepStatementsOnSingleLine = False
 		$0.StandardHeader = $3
-		$3.Text = 
-		$3.IncludeInNewFiles = True
 		$0.TextStylePolicy = $4
-		$4.FileWidth = 120
-		$4.TabsToSpaces = False
-		$4.inheritsSet = VisualStudio
-		$4.inheritsScope = text/plain
 		$4.scope = text/plain
 		$0.TextStylePolicy = $5
-		$5.FileWidth = 120
-		$5.TabWidth = 2
-		$5.IndentWidth = 2
-		$5.inheritsSet = VisualStudio
-		$5.inheritsScope = text/plain
-		$5.scope = application/xaml+xml
+		$5.FileWidth = 80
+		$5.scope = text/x-csharp
+		$5.TabsToSpaces = True
 		$0.XmlFormattingPolicy = $6
-		$6.inheritsSet = null
 		$6.scope = application/xaml+xml
+		$0.VersionControlPolicy = $7
 	EndGlobalSection
 EndGlobal

@@ -31,7 +31,10 @@ namespace DebtCalculator.Shared
 
     public ObservableCollection<BaseClass> AllEntries { get; private set; }
 
-    public ObservableCollection<Grouping<Type, BaseClass>> GroupedItems { get; set; }
+    public ObservableCollection<Grouping<Type, BaseClass>> GroupedItems 
+    { 
+      get; set; 
+    }
 
     private void UpdateEmptyMessage ()
     {
@@ -67,10 +70,11 @@ namespace DebtCalculator.Shared
       UpdateEmptyMessage ();
 
       var grouped = from item in AllEntries
-        group item by item.GetType() into itemGroup
-                          select new Grouping<Type, BaseClass> (itemGroup.Key, itemGroup);
+                    group item by item.GetType () into itemGroup
+                    select new Grouping<Type, BaseClass> (itemGroup.Key, itemGroup);
 
       GroupedItems = new ObservableCollection<Grouping<Type, BaseClass>> (grouped);
+      SetPropertyChanged ("GroupedItems");
     }
   }
 }

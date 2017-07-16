@@ -3,6 +3,7 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
+  [AddINotifyPropertyChangedInterfaceAttribute]
   public class WindfallEntry : BaseClass
   {
     private double _amount = -1;

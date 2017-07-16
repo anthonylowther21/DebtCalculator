@@ -3,6 +3,7 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
+  [AddINotifyPropertyChangedInterfaceAttribute]
   public class SalaryEntry : BaseClass
   {
     private double _startingSalary = -1;

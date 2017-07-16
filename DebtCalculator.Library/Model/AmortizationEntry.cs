@@ -3,6 +3,7 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
+  [AddINotifyPropertyChangedInterfaceAttribute]
   public class AmortizationEntry
   {
     public AmortizationEntry ( string debtName,  

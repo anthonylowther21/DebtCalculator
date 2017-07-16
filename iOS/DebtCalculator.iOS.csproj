@@ -25,7 +25,7 @@
     <MtouchProfiling>false</MtouchProfiling>
     <MtouchI18n>
     </MtouchI18n>
-<CodesignKey>iPhone Developer: anthonylowther@icloud.com (YAZ3ZWC4H5)</CodesignKey>
+<CodesignKey>iPhone Developer: Anthony Lowther (PU3V65UFG6)</CodesignKey>
 <DelaySign>false</DelaySign>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -67,8 +67,8 @@
     <CodesignKey>iPhone Developer: anthonylowther@icloud.com (YAZ3ZWC4H5)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <BuildIpa>true</BuildIpa>
-    <IpaPackageName>com.CreativeSolutions.DebtApp</IpaPackageName>
-    <CodesignProvision>iOS Team Provisioning Profile: com.CreativeSolutions.DebtApp</CodesignProvision>
+    <IpaPackageName>com.AnthonyLowther.DebtApp</IpaPackageName>
+    <CodesignProvision>iOS Team Provisioning Profile: com.AnthonyLowther.DebtApp</CodesignProvision>
     <MtouchSdkVersion>10.3</MtouchSdkVersion>
 <DelaySign>false</DelaySign>
 <AssemblyOriginatorKeyFile>com.CreativeSolutions.DebtApp</AssemblyOriginatorKeyFile>

@@ -1,23 +1,22 @@
-﻿﻿using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using System;
 using System.Globalization;
 
 namespace DebtCalculator.Shared
-{ 
+{
   class DoubleToPercentConverter : IValueConverter
   {
-    public object Convert(object value, Type targetType, object parameter,
+    public object Convert (object value, Type targetType, object parameter,
       System.Globalization.CultureInfo culture)
     {
       return ((double)value * 100);
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter,
+    public object ConvertBack (object value, Type targetType, object parameter,
       System.Globalization.CultureInfo culture)
     {
       double result;
-      if (Double.TryParse(value.ToString(), out result))
-      {
+      if (Double.TryParse (value.ToString (), out result)) {
         result /= 100;
       }
       return result; //double test
@@ -28,14 +27,11 @@ namespace DebtCalculator.Shared
   {
     const double MAX_PERCENT = 100.0;
 
-    static public string Convert(double value)
+    static public string Convert (double value)
     {
-      if (value < 0) 
-      {
+      if (value < 0) {
         return string.Empty;
-      } 
-      else 
-      {
+      } else {
         return string.Format ("{0:0.000}", value * 100);
       }
     }

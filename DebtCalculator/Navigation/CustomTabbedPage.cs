@@ -18,12 +18,6 @@ namespace DebtCalculator
     {
       BarBackgroundColor = Colors.TabBarBackground;
 
-      _summaryPage = new CustomNavigationPage(new SummaryPage());
-      _summaryPage.Title = "Summary";
-      _summaryPage.TabIcon = FontAwesome.FALineChart;
-      _summaryPage.SelectedTabIcon = FontAwesome.FALineChart;
-      this.Children.Add(_summaryPage);
-
       _debtsPage = new CustomNavigationPage(new DebtListPage());
       _debtsPage.Title = "Debts";
       _debtsPage.TabIcon = FontAwesome.FABank;
@@ -41,6 +35,12 @@ namespace DebtCalculator
       _amortizationPage.TabIcon = FontAwesome.FACalendar;
       _amortizationPage.SelectedTabIcon = FontAwesome.FACalendar;
       this.Children.Add(_amortizationPage);
+
+      _summaryPage = new CustomNavigationPage (new SummaryPage ());
+      _summaryPage.Title = "Summary";
+      _summaryPage.TabIcon = FontAwesome.FALineChart;
+      _summaryPage.SelectedTabIcon = FontAwesome.FALineChart;
+      this.Children.Add (_summaryPage);
     }
   }
 }

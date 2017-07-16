@@ -4,6 +4,7 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
+  [AddINotifyPropertyChangedInterfaceAttribute]
   public class DebtEntry : BaseClass
   {
     private double  _startingBalance    = -1;
@@ -11,6 +12,7 @@ namespace DebtCalculator.Library
     private double  _yearlyInterestRate = -1;
     private int     _loanTerm           = -1;
     private DebtType _debtType = DebtType.OtherLoan;
+    private double _minimumMonthlyPaymentLimit = 40;
 
     private const double _yearly_to_monthly_interest_term_inverse = 1.0 / 12.0 / 100.0;
 
@@ -86,7 +88,18 @@ namespace DebtCalculator.Library
       
     public double MinimumMonthlyPayment { get; private set; } = -1;
     public double MonthlyInterest { get; private set; }
-    public double MinimumMonthlyPaymentLimit { get; set; } = 40;
+    public double MinimumMonthlyPaymentLimit 
+    { 
+      get 
+      {
+        return _minimumMonthlyPaymentLimit;
+      }
+      set 
+      {
+        _minimumMonthlyPaymentLimit = value;
+        InitializeMonthlyPayment ();
+      }
+    }
 
     private void InitializeMonthlyPayment()
     {

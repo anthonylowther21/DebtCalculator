@@ -34,6 +34,7 @@ namespace DebtCalculator.Library
       CreateLocalCopies(debtManagerXX, paymentManagerXX, applySnowballs);
 
       DateTime simulatedDate = DateTime.Now;
+      DateTime originalDate = simulatedDate;
 
       var watch = Stopwatch.StartNew();
 
@@ -41,7 +42,6 @@ namespace DebtCalculator.Library
 
       bool allFinished = false;
 
-      simulatedDate = DateTime.Now;
       // Simulate the months and apply the snowball to debts each month
       while (!allFinished)
       {
@@ -58,6 +58,8 @@ namespace DebtCalculator.Library
         }
         try {
           simulatedDate = simulatedDate.AddMonths (1);
+          if (DateTimeHelpers.GetMonthDifference (simulatedDate, originalDate) > 600)
+            break;
         } catch (Exception ex) 
         {
           bool dance = true;

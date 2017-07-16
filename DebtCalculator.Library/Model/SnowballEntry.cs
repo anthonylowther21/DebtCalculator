@@ -3,6 +3,7 @@ using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
+  [AddINotifyPropertyChangedInterfaceAttribute]
   public class SnowballEntry : BaseClass
   {
     private string _name = string.Empty;
