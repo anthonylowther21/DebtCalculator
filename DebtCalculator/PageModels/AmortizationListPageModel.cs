@@ -9,9 +9,9 @@ using DebtCalculatorLibrary.Services;
 
 namespace DebtCalculator.Shared
 {
-  [AddINotifyPropertyChangedInterface]
   public class AmortizationListPageModel : BaseViewModel
   {
+    private ObservableCollection<Grouping<DateTime, AmortizationEntry>> _amortizations = null;
     private string _emptyMessage = null;
 
     public AmortizationListPageModel ()
@@ -19,7 +19,14 @@ namespace DebtCalculator.Shared
       DebtApp.Shared.CalculationDirtyChanged += (isDirty) => { if (isDirty) ClearPage (); };
     }
 
-    public ObservableCollection<Grouping<DateTime, AmortizationEntry>> Amortizations { get; set; }
+    public ObservableCollection<Grouping<DateTime, AmortizationEntry>> Amortizations 
+    {
+      get { return _amortizations; }
+      set {
+        _amortizations = value;
+        SetPropertyChanged ("Amortizations");
+      }
+    }
 
     public void ClearPage ()
     {
