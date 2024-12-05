@@ -9,7 +9,6 @@ using DebtCalculatorLibrary.Business;
 
 namespace DebtCalculator.Shared
 {
-  [ImplementPropertyChanged]
   public class WindfallPageModel : BaseViewModel
   {
     WindfallEntry _windfall = new WindfallEntry();
@@ -26,28 +25,41 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double Amount
+    public string Name 
+    { 
+      get 
+      { 
+        return ShortStringHelper.Convert(_windfall.Name);
+      }
+      set 
+      { 
+        _windfall.Name = ShortStringHelper.ConvertBack (value);
+        SetPropertyChanged("Name");
+      }
+    }
+
+    public string Amount
     {
       get
       {
-        return _windfall.Amount;
+        return DoubleToCurrencyHelper.Convert (_windfall.Amount);
       }
       set
       {
-        _windfall.Amount = value;
+        _windfall.Amount = DoubleToCurrencyHelper.ConvertBack (value, Amount.Length);
         SetPropertyChanged("Amount");
       }
     }
 
-    public DateTime WindfallDate
+    public string WindfallDate
     {
       get
       {
-        return _windfall.WindfallDate;
+        return  DateToStringHelper.Convert(_windfall.WindfallDate);
       }
       set
       {
-        _windfall.WindfallDate = value;
+        _windfall.WindfallDate = DateToStringHelper.ConvertBack (value);
         SetPropertyChanged("WindfallDate");
       }
     }
@@ -65,23 +77,49 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public int RecurringFrequency
+    public string RecurringFrequency
     {
       get
       {
-        return _windfall.RecurringFrequency;
+        return DoubleToMonthHelper.Convert(_windfall.RecurringFrequency);
       }
       set
       {
-        _windfall.RecurringFrequency = value;
+        _windfall.RecurringFrequency = DoubleToMonthHelper.ConvertBack (value);
         SetPropertyChanged("RecurringFrequency");
       }
     }
 
-    public void SaveWindfall(Action callback)
+    public bool Validate(Action<string, string> callBack)
     {
-      DebtApp.Shared.PaymentManager.UpdateWindfall(_windfall);
-      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callback);
+      bool result = false;
+      if (_windfall.Name == string.Empty) 
+      {
+        callBack ("Windfall", "Name cannot be empty");
+      }
+      else if (_windfall.Amount <= 0) 
+      {
+        callBack ("Windfall", "Windfall amount must be greater than $0.00");
+      }
+      else if (_windfall.IsRecurring && _windfall.RecurringFrequency <= 0) 
+      {
+        callBack ("Windfall", "Windfall recurring frequency must be greater than 0");
+      }
+      else if (_windfall.WindfallDate == DateTime.MinValue) 
+      {
+        callBack ("Windfall", "Windfall date has not been entered");
+      }
+      else 
+      {
+        result = true;
+      }
+      return result;
+    }
+
+    public void Save (Action callBack)
+    {
+      DebtApp.Shared.PaymentManager.UpdateWindfall (_windfall);
+      InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
     public void DeleteWindfall(Action callBack)

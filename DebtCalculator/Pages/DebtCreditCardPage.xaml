@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<local:DebtCreditCardPageXaml xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.DebtCreditCardPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared"
+xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" 
+		BackgroundColor="{Static local:Colors.PageBackground}">
+  <local:DebtCreditCardPage.Content>
+    <StackLayout>
+      <TableView Intent="Settings">
+        <TableRoot>
+            <TableSection Title="">
+                <EntryCell Label="Debt Name" Placeholder="Debt Name" Text="{Binding Name}" Keyboard="Text" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Placeholder="$5,000.00" Label="Current Balance" Text="{Binding CurrentBalance}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+                <local:NumericEntryCell Placeholder="2.990 %" Label="APY (%)" Text="{Binding YearlyInterestRate}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+			    <local:NumericEntryCell Placeholder="$40.00" Label="Minimum Payment" Text="{Binding MinimumMonthlyPaymentLimit}" Keyboard="Numeric" HorizontalTextAlignment="End"/>
+             </TableSection>
+             <TableSection Title="">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="15, 0, 15, 0">
+                       <Label Text="Monthly Payment" VerticalTextAlignment="Center" />
+                       <Label Text="{Binding MinimumMonthlyPayment, Mode=TwoWay, StringFormat='{0:C}'}"
+                              HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                              HorizontalTextAlignment="End"/>
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+      </TableView>
+      <AbsoluteLayout Padding="15, 10, 15, 20"  
+          BackgroundColor="Transparent">
+          <Grid BackgroundColor="Transparent" Padding="0" HeightRequest="80" VerticalOptions="Center"
+            AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+              </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" BackgroundColor="Red" FontSize="20" TextColor="Black" BorderWidth="0" Text="Delete" Clicked="Delete_Button_Clicked"></Button>
+                <Button Grid.Column="2" BackgroundColor="{Static local:Colors.TabBarSelected}" FontSize="20" TextColor="White" BorderWidth="0" Text="Save" Clicked="Save_Button_Clicked"></Button>
+           </Grid>
+      </AbsoluteLayout>
+    </StackLayout>
+  </local:DebtCreditCardPage.Content>
+</local:DebtCreditCardPageXaml> 

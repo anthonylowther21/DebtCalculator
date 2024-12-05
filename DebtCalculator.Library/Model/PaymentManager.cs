@@ -9,11 +9,18 @@ namespace DebtCalculator.Library
   {
     private ObservableCollection<SalaryEntry> _salaryEntries = new ObservableCollection<SalaryEntry>();
     private ObservableCollection<WindfallEntry> _windfallEntries = new ObservableCollection<WindfallEntry>();
+    private ObservableCollection<SnowballEntry> _snowballEntries = new ObservableCollection<SnowballEntry> ();
     private double _snowballAmount = 0;
     private const double inv_twelve = 1 / 12.0;
 
     public PaymentManager ()
     {
+    }
+
+    public ObservableCollection<SnowballEntry> SnowballEntries 
+    {
+      get { return _snowballEntries; }
+      set { _snowballEntries = value; }
     }
 
     public ObservableCollection<SalaryEntry> SalaryEntries
@@ -28,19 +35,17 @@ namespace DebtCalculator.Library
       set { _windfallEntries = value; }
     }
 
-    public double SnowballAmount 
-    { 
-      get { return _snowballAmount; }
-      set { _snowballAmount = value; }
-    }
-
     public double GetTotalMonthlySnowball (DateTime simulatedDate)
     {
-      double amount = SnowballAmount;
+      double amount = 0;
+      foreach (var item in SnowballEntries) 
+      {
+        amount += item.Amount;
+      }
 
       foreach (WindfallEntry windfallEntry in this.WindfallEntries)
       {
-        int monthDifference = GetMonthDifference(simulatedDate, windfallEntry.WindfallDate);
+        int monthDifference = DateTimeHelpers.GetMonthDifference(simulatedDate, windfallEntry.WindfallDate);
 
         if (monthDifference == 0)
         {
@@ -57,7 +62,7 @@ namespace DebtCalculator.Library
       {
         double finalSalary = salaryEntry.StartingSalary;
 
-        int monthDifference = GetMonthDifference(simulatedDate, salaryEntry.YearlyIncreaseAppliedDate);
+        int monthDifference = DateTimeHelpers.GetMonthDifference(simulatedDate, salaryEntry.YearlyIncreaseAppliedDate);
 
         if (monthDifference >= 0)
         {
@@ -71,6 +76,45 @@ namespace DebtCalculator.Library
 
       return amount;
 
+    }
+
+    public void UpdateSnowball (SnowballEntry item)
+    {
+      SnowballEntry oldItem = null;
+
+      foreach (var entry in _snowballEntries) 
+      {
+        if (entry.Id == item.Id) 
+        {
+          oldItem = entry;
+          break;
+        }
+      }
+
+      if (oldItem != null) 
+      {
+        _snowballEntries.Remove (oldItem);
+      }
+
+      _snowballEntries.Add (item);
+    }
+
+    public void DeleteSnowball (SnowballEntry item)
+    {
+      SnowballEntry oldItem = null;
+
+      foreach (var entry in _snowballEntries) 
+      {
+        if (entry.Id == item.Id) 
+        {
+          oldItem = entry;
+        }
+      }
+
+      if (oldItem != null) 
+      {
+        _snowballEntries.Remove (oldItem);
+      }
     }
 
     public void UpdateSalary (SalaryEntry item)
@@ -150,9 +194,14 @@ namespace DebtCalculator.Library
       }
     }
 
-    private int GetMonthDifference(DateTime lValue, DateTime rValue)
+    public ObservableCollection<SnowballEntry> CloneSnowballs ()
     {
-      return (lValue.Month - rValue.Month) + 12 * (lValue.Year - rValue.Year);
+      ObservableCollection<SnowballEntry> clones = new ObservableCollection<SnowballEntry> ();
+      foreach (var item in _snowballEntries) 
+      {
+        clones.Add (item.Clone ());
+      }
+      return clones;
     }
 
     public ObservableCollection<SalaryEntry> CloneSalaries()

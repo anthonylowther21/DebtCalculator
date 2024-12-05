@@ -25,49 +25,88 @@ namespace DebtCalculator.Shared
       }
     }
 
-    public double StartingSalary 
+    public string Name 
+    { 
+      get 
+      { 
+        return ShortStringHelper.Convert(_salary.Name);
+      }
+      set 
+      { 
+        _salary.Name = ShortStringHelper.ConvertBack (value);
+        SetPropertyChanged("Name");
+      }
+    }
+
+    public string StartingSalary 
     { 
       get
       { 
-        return _salary.StartingSalary;
+        return DoubleToCurrencyHelper.Convert(_salary.StartingSalary);
       }
       set
       {
-        _salary.StartingSalary = value;
+        _salary.StartingSalary = DoubleToCurrencyHelper.ConvertBack (value, StartingSalary.Length);
         SetPropertyChanged("StartingSalary");
       }
     }
 
-    public double YearlySnowballIncreasePercent 
+    public string YearlySnowballIncreasePercent 
     { 
       get
       { 
-        return _salary.YearlySnowballIncreasePercent;
+        return DoubleToPercentHelper.Convert (_salary.YearlySnowballIncreasePercent);
       }
       set
       {
-        _salary.YearlySnowballIncreasePercent = value;
+        _salary.YearlySnowballIncreasePercent = DoubleToPercentHelper.ConvertBack (value, YearlySnowballIncreasePercent.Length);
         SetPropertyChanged("YearlySnowballIncreasePercent");
       }
     }
 
-    public DateTime YearlyIncreaseAppliedDate 
+    public string YearlyIncreaseAppliedDate 
     { 
       get
       { 
-        return _salary.YearlyIncreaseAppliedDate;
+        return DateToStringHelper.Convert(_salary.YearlyIncreaseAppliedDate);
       }
       set
       {
-        _salary.YearlyIncreaseAppliedDate = value;
+        _salary.YearlyIncreaseAppliedDate = DateToStringHelper.ConvertBack (value);
         SetPropertyChanged("YearlyIncreaseAppliedDate");
       }
     }
 
-    public void SaveSalary(Action callBack)
+    public bool Validate(Action<string, string> callBack)
     {
-      DebtApp.Shared.PaymentManager.UpdateSalary(_salary);
-      InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
+      bool result = false;
+      if (_salary.Name == string.Empty) 
+      {
+        callBack ("Salary", "Name cannot be empty");
+      }
+      else if (_salary.StartingSalary <= 0) 
+      {
+        callBack ("Salary", "Starting Salary must be greater than $0.00");
+      }
+      else if (_salary.YearlyIncreaseAppliedDate == DateTime.MinValue) 
+      {
+        callBack ("Salary", "Yearly Increase Applied Date has not been entered");
+      }
+      else if (_salary.YearlySnowballIncreasePercent <= 0) 
+      {
+        callBack ("Salary", "Yearly Increase Percent must be greater than 0.000 %");
+      }
+      else 
+      {
+        result = true;
+      }
+      return result;
+    }
+
+    public void Save(Action callBack)
+    {
+      DebtApp.Shared.PaymentManager.UpdateSalary (_salary);
+      InputsFileManager.SaveInputsFileAsync (InputsFileManager.CurrentInputsFile, DebtApp.Shared, callBack);
     }
 
     public void DeleteSalary(Action callBack)

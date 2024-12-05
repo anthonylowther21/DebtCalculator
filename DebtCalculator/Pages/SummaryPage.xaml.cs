@@ -12,9 +12,20 @@ namespace DebtCalculator.Shared
 			InitializeComponent ();
 		}
 
+    public void Menu_Button_Clicked(object sender, EventArgs e)
+    {
+      this.Navigation.PushModalAsync (new CustomNavigationPage(new MenuPage (() => OnAppearing())));
+    }
+
     protected override void OnAppearing()
     {
       this.ViewModel.LoadData();
+
+      if (this.ViewModel.EmptyMessage == null)
+        this.Content = _listView;
+      else
+        this.Content = _emptyMessageLayout;
+
       base.OnAppearing();
     }
 	}

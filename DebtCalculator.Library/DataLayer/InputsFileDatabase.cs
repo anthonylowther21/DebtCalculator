@@ -56,6 +56,7 @@ namespace DebtCalculatorLibrary.DataLayer
       {
         LoadInputsFile(_previousInputsFile, data);
       }
+      _currentInputsFile = string.Empty;
     }
 
     /// <summary>
@@ -68,9 +69,10 @@ namespace DebtCalculatorLibrary.DataLayer
       debtApp.DebtManager.Debts.Clear();
       debtApp.PaymentManager.WindfallEntries.Clear();
       debtApp.PaymentManager.SalaryEntries.Clear();
-      debtApp.PaymentManager.SnowballAmount = 0;
+      debtApp.PaymentManager.SnowballEntries.Clear ();
 
       _currentInputsFile = openFilePath;
+      DebtApp.Shared.CalculationIsDirty = true;
 
       foreach (var item in File.ReadAllLines(openFilePath))
       {
@@ -89,6 +91,11 @@ namespace DebtCalculatorLibrary.DataLayer
               //Get element name and switch on it
               switch (readInputs.Name)
               {
+                case "FileInfo":
+                DateTime temp = DateTime.Now;
+                DateTime.TryParse(readInputs["Date"], out temp);
+                debtApp.ModifiedDate = temp;
+                  break;
                 case "Debts":
                   //Detect this element.
                   Console.WriteLine("Start <Debts> element.");
@@ -106,14 +113,26 @@ namespace DebtCalculatorLibrary.DataLayer
                         Double.Parse(readInputs["StartingBalance"]),
                         Double.Parse(readInputs["CurrentBalance"]),
                         Double.Parse(readInputs["YearlyInterestRate"]),
-                        Int32.Parse(readInputs["LoanTerm"])));
+                        Int32.Parse(readInputs["LoanTerm"]),
+                        (DebtType)Enum.Parse(typeof(DebtType), readInputs["DebtType"])));
                       break;
+                  }
+                case "SnowballEntry": 
+                  {
+                    //Detect this element.
+                    Console.WriteLine ("Start <SnowballEntry> element.");
+                    debtApp.PaymentManager.SnowballEntries.Add (
+                      new SnowballEntry (
+                        (string)readInputs ["Name"],
+                        Double.Parse (readInputs ["Amount"])));
+                    break;
                   }
                 case "SalaryEntry":
                   {
                     Console.WriteLine("Start <SalaryEntry> element.");
                     debtApp.PaymentManager.SalaryEntries.Add(
                       new SalaryEntry(
+                        (string)readInputs["Name"],
                         Double.Parse(readInputs["StartingSalary"]),
                         Double.Parse(readInputs["YearlySnowballIncreasePercent"]),
                         DateTime.Parse(readInputs["YearlyIncreaseAppliedDate"])));
@@ -125,16 +144,11 @@ namespace DebtCalculatorLibrary.DataLayer
                     Console.WriteLine("Start <SalaryEntry> element.");
                     debtApp.PaymentManager.WindfallEntries.Add(
                       new WindfallEntry(
+                        (string)readInputs["Name"],
                         Double.Parse(readInputs["WindfallAmount"]),
                         DateTime.Parse(readInputs["WindfallDate"]),
                         Boolean.Parse(readInputs["IsRecurring"]),
                         Int32.Parse(readInputs["RecurringFrequency"])));
-                    break;
-                  }
-                case "Snowball":
-                  {
-                    Console.WriteLine("Start <Snowball> element.");
-                    debtApp.PaymentManager.SnowballAmount = Double.Parse(readInputs["SnowballAmount"]);
                     break;
                   }
               }
@@ -176,6 +190,9 @@ namespace DebtCalculatorLibrary.DataLayer
       if (!Directory.Exists(Paths.SavedFilesDirectory))
         Directory.CreateDirectory(Paths.SavedFilesDirectory);
 
+      if (!Directory.Exists (Paths.DefaultsDirectory))
+        Directory.CreateDirectory (Paths.DefaultsDirectory);
+
       bool fileAdded = false;
 
       if (File.Exists(filename) == false)
@@ -202,7 +219,6 @@ namespace DebtCalculatorLibrary.DataLayer
         input.WriteEndElement(); // FileInfo
 
         input.WriteStartElement("Debts");
-
         //Iterate through Inputs to save their current values
         foreach (DebtEntry entry in data.DebtManager.Debts)
         {
@@ -212,6 +228,7 @@ namespace DebtCalculatorLibrary.DataLayer
           input.WriteAttributeString("CurrentBalance", entry.CurrentBalance.ToString());
           input.WriteAttributeString("YearlyInterestRate", entry.YearlyInterestRate.ToString());
           input.WriteAttributeString("LoanTerm", entry.LoanTerm.ToString());
+          input.WriteAttributeString("DebtType", entry.DebtType.ToString());
           input.WriteEndElement(); // DebtEntry
         }
 
@@ -222,6 +239,7 @@ namespace DebtCalculatorLibrary.DataLayer
         foreach (SalaryEntry entry in data.PaymentManager.SalaryEntries)
         {
           input.WriteStartElement("SalaryEntry");
+          input.WriteAttributeString("Name", entry.Name);
           input.WriteAttributeString("StartingSalary", entry.StartingSalary.ToString());
           input.WriteAttributeString("YearlyIncreaseAppliedDate", entry.YearlyIncreaseAppliedDate.ToString());
           input.WriteAttributeString("YearlySnowballIncreasePercent", entry.YearlySnowballIncreasePercent.ToString());
@@ -231,6 +249,7 @@ namespace DebtCalculatorLibrary.DataLayer
         foreach (WindfallEntry entry in data.PaymentManager.WindfallEntries)
         {
           input.WriteStartElement("WindfallEntry");
+          input.WriteAttributeString("Name", entry.Name);
           input.WriteAttributeString("WindfallAmount", entry.Amount.ToString());
           input.WriteAttributeString("IsRecurring", entry.IsRecurring.ToString());
           input.WriteAttributeString("RecurringFrequency", entry.RecurringFrequency.ToString());
@@ -238,9 +257,13 @@ namespace DebtCalculatorLibrary.DataLayer
           input.WriteEndElement(); // WindfallEntry
         }
 
-        input.WriteStartElement("Snowball");
-        input.WriteAttributeString("SnowballAmount", data.PaymentManager.SnowballAmount.ToString());
-        input.WriteEndElement(); // Snowball
+        foreach (SnowballEntry entry in data.PaymentManager.SnowballEntries) 
+        {
+          input.WriteStartElement ("SnowballEntry");
+          input.WriteAttributeString ("Name", entry.Name);
+          input.WriteAttributeString ("Amount", entry.Amount.ToString ());
+          input.WriteEndElement (); // WindfallEntry
+        }
 
         input.WriteEndElement(); // Payments
         input.WriteEndElement(); // Root
@@ -249,6 +272,7 @@ namespace DebtCalculatorLibrary.DataLayer
         input.Close();
       }
 
+      DebtApp.Shared.CalculationIsDirty = true;
       if (fileAdded)
         OnFileListChanged();
     }

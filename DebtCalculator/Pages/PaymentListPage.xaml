@@ -1,11 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<d:MyBasePage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DebtCalculator.Shared.PaymentListPage"
-xmlns:d="clr-namespace:DebtCalculator.Shared">
-  <d:MyBasePage.Content>
-    <StackLayout Orientation="Vertical" Padding="15">
-      <Button BorderWidth="1" Text="Snowball" Clicked="Snowball_Button_Clicked"></Button>
-      <Button BorderWidth="1" Text="Salaries" Clicked="Salary_Button_Clicked"></Button>
-      <Button BorderWidth="1" Text="Windfalls" Clicked="Windfall_Button_Clicked"></Button>
-    </StackLayout>
-  </d:MyBasePage.Content>
-</d:MyBasePage> 
+<local:PaymentListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+x:Class="DebtCalculator.Shared.PaymentListPage"
+xmlns:local="clr-namespace:DebtCalculator.Shared" Title="Strategy"
+xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" 
+		BackgroundColor="{Static local:Colors.PageBackground}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="&#xf067;" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
+        <ToolbarItem Name="&#xf07c;" Order="Primary" Priority="1" Clicked="Menu_Button_Clicked"/>
+    </ContentPage.ToolbarItems>
+  <local:PaymentListPage.Content>
+    <AbsoluteLayout>
+			<ListView x:Name="_listView"
+					ItemTapped="Item_Selected"
+            ItemTemplate="{StaticResource PaymentTemplateSelector}" 
+            ItemsSource="{Binding GroupedItems}"
+					  IsGroupingEnabled="True"
+					  GroupDisplayBinding="{Binding Mode=OneWay, Converter={StaticResource EntryTypeToStringConverter}}"
+            HasUnevenRows="True"
+            SeparatorVisibility="None" BackgroundColor="Transparent">
+  			<ListView.GroupHeaderTemplate> 
+          <DataTemplate> 
+            <ViewCell> 
+              <StackLayout BackgroundColor="{Static local:Colors.GroupHeader}" HeightRequest="40"
+									Orientation="Horizontal" VerticalOptions="FillAndExpand" Padding="10, 8, 0, 0"> 
+                <Label Text="{Binding Key, Converter={StaticResource EntryTypeToStringConverter}}" TextColor="White" FontSize="20" VerticalOptions="Center" 
+                VerticalTextAlignment="Center" BackgroundColor="Transparent" FontAttributes="Bold"/> 
+              </StackLayout> 
+            </ViewCell> 
+          </DataTemplate> 
+        </ListView.GroupHeaderTemplate> 
+      </ListView>
+  		<local:MyAbsoluteLayout x:Name="_emptyMessageLayout"
+          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+          AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+          BackgroundColor="{Static local:Colors.PageBackground}">
+        <Label AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1"
+            VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="{Binding EmptyMessage}" HorizontalTextAlignment="Center"/>
+      </local:MyAbsoluteLayout>
+    </AbsoluteLayout>
+  </local:PaymentListPage.Content>
+</local:PaymentListPageXaml> 

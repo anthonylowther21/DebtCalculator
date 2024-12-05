@@ -9,6 +9,7 @@ namespace DebtCalculator.Library
   public class BaseClass : IEditableObject
   {
     Hashtable props = null;
+    private string _name = string.Empty;
 
     public BaseClass()
     {
@@ -20,6 +21,12 @@ namespace DebtCalculator.Library
     public BaseClass Clone()
     {
       return (BaseClass)this.MemberwiseClone();
+    }
+
+    public string Name 
+    { 
+      get { return _name; }
+      set { _name = value; }
     }
 
     public void BeginEdit()

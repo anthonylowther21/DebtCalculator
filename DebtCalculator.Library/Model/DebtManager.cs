@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using DebtCalculator.Shared;
 using System.Collections.Generic;
 using System.Linq;
 using PropertyChanged;
@@ -8,13 +9,13 @@ namespace DebtCalculator.Library
 {
   public class DebtManager
   {
-    private ObservableCollection<DebtEntry> _debtEntries = new ObservableCollection<DebtEntry>();
+    private ObservableCollectionEx<DebtEntry> _debtEntries = new ObservableCollectionEx<DebtEntry>();
 
     public DebtManager ()
     {
     }
 
-    public ObservableCollection<DebtEntry> Debts 
+    public ObservableCollectionEx<DebtEntry> Debts 
     { 
       get { return _debtEntries; } 
       set { _debtEntries = value; }
@@ -60,9 +61,9 @@ namespace DebtCalculator.Library
       }
     }
 
-    public ObservableCollection<DebtEntry> CloneDebts()
+    public ObservableCollectionEx<DebtEntry> CloneDebts()
     {
-      ObservableCollection<DebtEntry> clones = new ObservableCollection<DebtEntry>();
+      ObservableCollectionEx<DebtEntry> clones = new ObservableCollectionEx<DebtEntry>();
       foreach (var item in _debtEntries)
       {
         clones.Add(item.Clone());

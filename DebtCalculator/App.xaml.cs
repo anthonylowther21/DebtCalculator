@@ -10,18 +10,13 @@ namespace DebtCalculator
 {
   public partial class App : Application
   {
-    CustomImplementedNav _customImplementedNav;
+    CustomTabbedPage _customTabbedPage;
     public App()
     {
       InitializeComponent();
 
-      _customImplementedNav = new CustomImplementedNav(this);
-      MainPage = _customImplementedNav;
-    }
-
-    public void SetSideMenuVisibility(bool shown)
-    {
-      _customImplementedNav.IsPresented = shown;
+      _customTabbedPage = new CustomTabbedPage();
+      MainPage = _customTabbedPage;
     }
 
     public new static App Current
@@ -35,15 +30,12 @@ namespace DebtCalculator
     protected override void OnStart ()
     {
       // Handle when your app starts
+      //InputsFileManager.LoadOnAppLaunch (DebtApp.Shared);
     }
 
     protected override void OnSleep ()
     {
-      // Handle when your app sleeps
-      if (InputsFileManager.CurrentInputsFile != string.Empty)
-      {
-        InputsFileManager.SaveInputsFileAsync(InputsFileManager.CurrentInputsFile, DebtApp.Shared , () => {});
-      }
+      //InputsFileManager.SaveUserDefaults (DebtApp.Shared);
     }
 
     protected override void OnResume ()

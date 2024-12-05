@@ -2,7 +2,7 @@
 <local:SalaryListPageXaml xmlns="http://xamarin.com/schemas/2014/forms" 
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 x:Class="DebtCalculator.Shared.SalaryListPage"
-xmlns:local="clr-namespace:DebtCalculator.Shared">
+xmlns:local="clr-namespace:DebtCalculator.Shared" BackgroundColor="{Static local:Colors.PageBackground}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Add" Clicked="Add_Button_Clicked" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>

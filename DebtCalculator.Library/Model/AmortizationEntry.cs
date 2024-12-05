@@ -1,12 +1,12 @@
 ﻿using System;
-using DebtCalculator.Utility;
 using PropertyChanged;
 
 namespace DebtCalculator.Library
 {
   public class AmortizationEntry
   {
-    public AmortizationEntry ( string debtName,      
+    public AmortizationEntry ( string debtName,  
+                              DebtType debtType,
                                     DateTime date, 
                                     double startBalance,  
                                     double interest, 
@@ -15,6 +15,7 @@ namespace DebtCalculator.Library
                                     double endBalance)
     {
       DebtName = debtName;
+      DebtType = debtType;
       Date = date;
       StartBalance = startBalance;
       MinimumInterest = interest;
@@ -29,6 +30,7 @@ namespace DebtCalculator.Library
     }
 
     public string DebtName { get; private set; }
+    public DebtType DebtType { get; private set; }
     public DateTime Date { get; private set; }
     public double StartBalance { get; private set; }
     public double MinimumInterest { get; private set; }
@@ -40,7 +42,7 @@ namespace DebtCalculator.Library
     public void WriteToConsole(AmortizationEntry output)
     {
       string message = output.DebtName +
-        ": " + DateTimeExtensions.ToShortMonthName(output.Date) + " " + output.Date.Year +
+        ": " + DateTimeHelpers.ToShortMonthName(output.Date) + " " + output.Date.Year +
         " Starting Balance: " + output.StartBalance.ToString("C") +
         " Min Interest: " + output.MinimumInterest.ToString("C") +
         " Min Principal: " + output.MinimumPrincipal.ToString("C") +

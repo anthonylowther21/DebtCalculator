@@ -4,9 +4,10 @@ namespace DebtCalculator.Library
 {
   public enum DebtType
   {
-    Car,
-    Mortgage,
-    Loan,
+    HouseLoan,
+    CarLoan,
+    StudentLoan,
+    OtherLoan,
     CreditCard
   }
 }

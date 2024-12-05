@@ -2,10 +2,37 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" 
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 x:Class="DebtCalculator.App" 
-       xmlns:converters="clr-namespace:DebtCalculator.Shared">
+       xmlns:local="clr-namespace:DebtCalculator.Shared">
        <Application.Resources>
          <ResourceDictionary>
-           <converters:DoubleToPercentConverter x:Key="DoubleToPercentConverter"/>
+           <local:DoubleToCurrencyConverter x:Key="DoubleToCurrencyConverter"/>
+           <local:DoubleToPercentConverter x:Key="DoubleToPercentConverter"/>
+           <local:DebtTypeToIconConverter x:Key="DebtTypeToIconConverter"/>
+			     <local:ListPaddingConverter x:Key="ListPaddingConverter"/>
+			     <local:AmortizationGroupSumConverter x:Key="AmortizationGroupSumConverter"/>
+			     <local:IsNullToBoolConverter x:Key="IsNullToBoolConverter"/>
+			     <local:IsNotNullToBoolConverter x:Key="IsNotNullToBoolConverter"/>
+           <local:SelectedFileFormatConverter x:Key="SelectedFileFormatConverter"/>
+          <Color x:Key="grayPrimary">#ADB7BE</Color>
+          <Color x:Key="grayLight">#ECF0F1</Color>
+          <Color x:Key="grayDark">#76828A</Color>
+          <Color x:Key="grayMedium">#9AA4AB</Color>
+          <Color x:Key="LydiaGray">#727272</Color>
+			    <local:PaymentListDataTemplateSelector x:Key="PaymentTemplateSelector"/>
+			    <local:EntryTypeToStringConverter x:Key="EntryTypeToStringConverter" />
+      		<Thickness x:Key="ListViewItemMargin" Left="10" Top="10" Right="10" Bottom="0" />
+			    <Font x:Key="Something" />
+
+          <Style x:Key="labelStyle" TargetType="Label">
+				    <Setter Property="FontFamily">
+              <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String" iOS="Roboto" Android="Arial" />
+              </Setter.Value>
+            </Setter>				
+          </Style>
+          <Style TargetType="Label" BasedOn="{StaticResource labelStyle}" />
+<!--			    <Style TargetType="EntryCell" BasedOn="{StaticResource labelStyle}" />-->
+			
          </ResourceDictionary>
        </Application.Resources>
 </Application>

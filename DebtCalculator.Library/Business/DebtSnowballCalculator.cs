@@ -25,7 +25,7 @@ namespace DebtCalculator.Library
       {
         _localPaymentManager.WindfallEntries = paymentManager.CloneWindfalls();
         _localPaymentManager.SalaryEntries = paymentManager.CloneSalaries();
-        _localPaymentManager.SnowballAmount = paymentManager.SnowballAmount;
+        _localPaymentManager.SnowballEntries = paymentManager.CloneSnowballs ();
       }
     }
 
@@ -42,6 +42,7 @@ namespace DebtCalculator.Library
       bool allFinished = false;
 
       simulatedDate = DateTime.Now;
+      // Simulate the months and apply the snowball to debts each month
       while (!allFinished)
       {
         double salarySnowball = _localPaymentManager.GetTotalMonthlySnowball(simulatedDate);
@@ -55,7 +56,12 @@ namespace DebtCalculator.Library
             allFinished = false;
           }
         }
-        simulatedDate = simulatedDate.AddMonths(1);
+        try {
+          simulatedDate = simulatedDate.AddMonths (1);
+        } catch (Exception ex) 
+        {
+          bool dance = true;
+        }
       }
 
       watch.Stop();
@@ -71,6 +77,16 @@ namespace DebtCalculator.Library
       double startingBalance = debtEntry.CurrentBalance;
 
       double interestPortion = debtEntry.MonthlyInterest * debtEntry.CurrentBalance;
+
+      double minimumMonthlyPayment = debtEntry.MinimumMonthlyPayment;
+
+      if (debtEntry.DebtType == DebtType.CreditCard &&
+          minimumMonthlyPayment < debtEntry.MinimumMonthlyPaymentLimit) 
+      {
+        minimumMonthlyPayment = debtEntry.MinimumMonthlyPaymentLimit;
+      }
+
+
       double minimumPrincipal = debtEntry.MinimumMonthlyPayment - interestPortion;
       double principalPortion = minimumPrincipal + additionalPrincipal;
 
@@ -91,8 +107,15 @@ namespace DebtCalculator.Library
         debtEntry.CurrentBalance = 0;
         if (applySnowball)
         {
-          paymentManager.WindfallEntries.Add(new WindfallEntry(Math.Abs(possibleBalance), currentDate.AddMonths(1)));
-          paymentManager.SnowballAmount += debtEntry.MinimumMonthlyPayment;
+          paymentManager.WindfallEntries.Add(new WindfallEntry(string.Empty, Math.Abs(possibleBalance), currentDate.AddMonths(1)));
+          if (paymentManager.SnowballEntries.Count > 0) 
+          {
+            paymentManager.SnowballEntries [0].Amount += debtEntry.MinimumMonthlyPayment;
+          } 
+          else 
+          {
+            paymentManager.SnowballEntries.Add (new SnowballEntry ("Temp", debtEntry.MinimumMonthlyPayment));
+          }
         }
       }
       else if (possibleBalance > debtEntry.CurrentBalance)
@@ -106,7 +129,7 @@ namespace DebtCalculator.Library
       }
 
       AmortizationEntry output = new AmortizationEntry(
-        debtEntry.Name, currentDate, startingBalance, interestPortion, 
+        debtEntry.Name, debtEntry.DebtType, currentDate, startingBalance, interestPortion, 
         minimumPrincipal, additionalPrincipal, debtEntry.CurrentBalance);
 
       // We always use up all of the additional principle, otherwise it gets added as a windfall the 

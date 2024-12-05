@@ -17,10 +17,6 @@
       <DependentUpon>DebtListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Pages\MyBasePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtPageModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml.cs">
-      <DependentUpon>DebtPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PageModels\SnowballPageModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SnowballPage.xaml.cs">
       <DependentUpon>SnowballPage.xaml</DependentUpon>
@@ -58,15 +54,12 @@
       <DependentUpon>AmortizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Theme\Colors.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToPercentConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\SaveModalPage.xaml.cs">
       <DependentUpon>SaveModalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Navigation\FreshNavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PickerCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\YearMonthPicker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomImplementedNav.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseContentPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseNotify.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MVVM\BaseViewModel.cs" />
@@ -74,7 +67,51 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\InputsFileHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtPageCreditCardModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtCreditCardPage.xaml.cs">
+      <DependentUpon>DebtCreditCardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DebtLoanPage.xaml.cs">
+      <DependentUpon>DebtLoanPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\DebtLoanPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomNavigationPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DebtTypeToIconConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FontAwesome\FontAwesome.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ListPaddingConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MVVM\Grouping.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\AmortizationGroupSumConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\CustomTabbedPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CustomDatePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NumericEntryCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToCurrencyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleToMonthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ShortStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToDoubleConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\FocusEffect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TableSectionHeader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PaymentListDataTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\EntryTypeToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MyListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\MyAbsoluteLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\IObservableCollectionEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\MovableViewCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ObservableCollectionEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovableListView\ReorderCommandParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\SelectedFileFormatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PageModels\ScenarioItemPageModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SalaryItemView.xaml.cs">
+      <DependentUpon>SalaryItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SnowballItemView.xaml.cs">
+      <DependentUpon>SnowballItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\WindfallItemView.xaml.cs">
+      <DependentUpon>WindfallItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Navigation\ITabPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
@@ -82,16 +119,15 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)MVVM\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)FontAwesome\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Effects\" />
+    <Folder Include="$(MSBuildThisFileDirectory)MovableListView\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SnowballPage.xaml">
@@ -125,6 +161,21 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtCreditCardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\DebtLoanPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\SalaryItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\SnowballItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\WindfallItemView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
